@@ -1,0 +1,13 @@
+ASSIGNMENT #1 - Create a file, a commit, and push it to the server
+- create a new file with your name/nickname in the folder "FORGE", e.g. yourname.py
+- go to source control icon on the left icons menu (3rd from top) and add a message "Added my file" and do a "commit" (press)
+- push the commit into the repository (in origin/main branch). In VS code this is done by clicking on the bottom left icons (the little arrows show how many comits are to push and how many new ones are to pull )
+
+Assignment #2 - create your own branch, 
+- A branch is like a copy of the project you are branching from, and where you can create you own path for changes that later can be merged again
+- create a new branch called YourNameBranch. Tip: click on bottom left icon (the name of the current branch: "main") and follow logic
+- edit your file with a briliant, but small programm in python. For example, make a program similar to what you did in the collaborative environment
+- COMMIT your changes (add a short message to your commit, e.g. my first commit)
+- PUSH your changes from your branch to the server
+
+
