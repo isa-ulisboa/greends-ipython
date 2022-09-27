@@ -1,5 +1,1 @@
 print ("GreenDS is great!")
-print ("GreenDS is great!")
-print ("GreenDS is great!")
-print ("GreenDS is great! 4")
-print ("GreenDS is great! 5")
