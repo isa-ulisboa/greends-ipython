@@ -1,2 +1,2 @@
 print ("GreenDS is great!")
-print("test")
+print ("GreenDS is even greater!")
