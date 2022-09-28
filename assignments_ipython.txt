@@ -13,4 +13,4 @@ Assignment #2 - create a new branch on your fork,
 - edit your file with a briliant, but small programm in python. For example, make a program similar to what you did in the collaborative environment
 - COMMIT your changes (add a short message to your commit, e.g. my first commit)
 - PUSH your changes from your branch to the server
-
+ 
