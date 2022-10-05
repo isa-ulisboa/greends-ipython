@@ -1,1 +1,0 @@
-print ("GreenDS is great!")
