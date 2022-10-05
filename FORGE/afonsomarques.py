@@ -1,5 +1,4 @@
-from re import X
 
-names = ["john marry linda carl"]
+names = ("john")
 Names = names.capitalize()
 print (Names)
