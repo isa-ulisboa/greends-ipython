@@ -2,6 +2,9 @@ def myFirstGreenDSFunction(arg1, agr2):
     print(arg1,agr2)
     return 'GREEN DS'
 
+agr1 = "data source 1"
+agr2 = "data source 2"
+
 def test():
     return 'something'
 a = test()
