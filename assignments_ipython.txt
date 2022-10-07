@@ -1,12 +1,14 @@
-ASSIGNMENT #1 - Fork, create a file, commit it, push it, and request a pull
+# ASSIGNMENT #1 - Fork, create a file, commit it, push it, and request a pull
 - FORK our main repository (https://github.com/isa-ulisboa/greends-ipython) into your account
 - CLONE your forked repository into your local machine
 - create a new file with your name/nickname in the folder "FORGE", e.g. yourname.py
+- Add some simple code you have learned in the class
+- Run the program and make sure there is no errors, before commiting (next step)
 - go to source control icon on the left icons menu (3rd from top) and add a message "Added my file" and do a COMMIT (press)
 - push the commit into the repository. In VS code this is done by clicking on the bottom left icons (the little arrows show how many comits are to push and how many new ones are to pull )
 - Press Pull Request on your repository
 
-Assignment #2 - create a new branch on your fork, 
+# ASSIGNMENT #2 - create a new branch on your fork, 
 - Keep working on your forked repository
 - A branch is like a copy of the project you are branching from, and where you can create you own path for changes (e.g. a new idea/add-in) that later can be merged again into the main project
 - create a new branch called YourName1stBranch. Tip: click on bottom left icon (the name of the current branch: "main") and follow logic
@@ -14,3 +16,38 @@ Assignment #2 - create a new branch on your fork,
 - COMMIT your changes (add a short message to your commit, e.g. my first commit)
 - PUSH your changes from your branch to the server
 
+# ASSIGNMENT #3 - create a project to interact with your namespaces
+- in your fork, within the FORGE folder, create a folder called YOURNAME
+- in this new folder create another folder called "myForge"
+- move the file you created before (yourname.py) into the new folder YOURNAME your created
+- create :
+    - a file called myFunctions.py into the folder YOURNAME
+    - a file called myOtherFunctions.py into the folder YOURNAME/myForge
+- in the file myFunctions.py create
+    - two different functions returning two different strings
+- in the file myOtherFunctions.py create
+    - one function returning a string
+    - assign to variables (val1, val2, val3) , 3 different datatypes (int, string, list)
+- in yourname.py file add code to:
+   1. import your myfunctions module
+   2. how would you do to import your module myOtherFunctions ?
+   3. assign to a variable called res the result of the first function of myFunctions module
+   4. print the res variable
+   5. assign to a variable called res the result of the second function of myFunctions module
+   6. print the res variable
+   7. print the variable val1, val2 and val3 from the module myOtherFunctions
+   8. create an alias of the myOtherFunctions module and redo steps 3, 4, 5, 7, using the alias 
+   9. add this line of code: from myForge.myOtherFunctions import *  
+        - how to redo steps c, d and g following logic?
+   10. add this line of code: from myForge import myOtherFunctions
+        - how to redo steps c, d and g following logic?
+   11. Final note:  This code flow is only to explain and demosntrate namespaces. 
+                    In your code, you only use one style and place all imports in 
+                    the beginning of the code
+            
+# ASSIGNMENT #4 - First touch with green real world - Soil Field Capacity
+- Create a function (e.g. in your file myFunctions.py) that returns the Volumetric Water Content at saturation (Field Capacity) a Soil
+- Read this article https://tinyurl.com/zmvrt94z
+- Focus on the pedotransfer fucntions from Table 5 
+- Tip: validate with your colleagues the result with a particular set of given arguments
+ 
