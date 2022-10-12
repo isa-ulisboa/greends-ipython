@@ -29,4 +29,4 @@ def FieldCapacity(C,D,S,OM,TP):
 
 
        #C-percentage clay;D-bulk density;S-percentage silt;OM-percentage organic matter;
-       # TP-opsoil andsubsoil are qualitative variables having the value of 1 or 0#
+       # TP-opsoil andsubsoil are qualitative variables having the value of 1 or 0""#
