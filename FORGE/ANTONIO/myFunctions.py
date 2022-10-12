@@ -4,7 +4,7 @@ import math
 
 
 def myfunction():
-    return "hi"
+    return "h"
 
 def function2():
     return "ola"
