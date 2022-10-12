@@ -22,3 +22,5 @@ print(var3)
 
 a = 2
 a
+
+import pandas as pd
