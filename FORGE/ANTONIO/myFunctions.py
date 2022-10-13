@@ -12,7 +12,7 @@ def function2():
 
 
 
-def FieldCapacity(C,S,D,OM,TP):
+def FieldCapacity(C,D,S,OM,TP):
     
     val1=0.7919
     val2=0.001691*C
@@ -30,7 +30,7 @@ def FieldCapacity(C,S,D,OM,TP):
 
     return val1+val2-val3-val4+val5+val6+val7+val8-val9-val10-val11-val12
 
-print(FieldCapacity(0.2,0.2,1.3,0.05,1))
+print(FieldCapacity(0.2,1.3,0.1,0.05,1))
 
 
        #C-percentage clay;D-bulk density;S-percentage silt;OM-percentage organic matter;
