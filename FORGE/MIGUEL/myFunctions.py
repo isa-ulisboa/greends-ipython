@@ -1,3 +1,6 @@
+from math import log
+
+
 def myfirst():
     return "Hello"
 
@@ -10,6 +13,7 @@ def soil_field_capacity(C,D,S,OM,topsoil):
     a=0.7919
     b=0.001691*C
     c=0.29619*D
+    d=0.000001491*S**2
     e=0.0000821*OM**2
     f=0.02427*C**-1
     g=0.01113*S**-1
@@ -19,6 +23,4 @@ def soil_field_capacity(C,D,S,OM,topsoil):
     k=0.001183*D*OM
     l=0.0001664*topsoil*S
 
-    return a+b-c-d+e+f+g+h,i-j-k-l
-
-print(soil_field_capacity(0.2,0.2,1.3,0.05,1))
+    return a+b-c-d+e+f+g+h-i-j-k-l
