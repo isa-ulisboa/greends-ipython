@@ -21,5 +21,5 @@ print(myforge.myotherfunctions.val1)
 print(myforge.myotherfunctions.val2)
 print(myforge.myotherfunctions.val3)
 
-res = myfunctions.VolWaterContent(2,2,2,2,0)
+res = myfunctions.VolWaterContent(0.2, 1.3, 0.2, 0.05, 1)
 print(res)
