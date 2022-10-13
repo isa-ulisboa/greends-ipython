@@ -1,6 +1,13 @@
 import numpy as np
 
-def vol_water_content(C, S, OM, D, topsoil):       #C - Percentage of clay; S - Percentage of silt; OM - Percentage of organic matter; D - Bulk density; topsoil - qualitative variable
+def vol_water_content(C, S, OM, D, topsoil):
+    
+    """
+    
+    C - Percentage of clay; S - Percentage of silt; OM - Percentage of organic matter; D - Bulk density; topsoil - qualitative variable
+
+    """
+
     a = 0.7919
     b = 0.001691*C
     c = 0.29619*D
