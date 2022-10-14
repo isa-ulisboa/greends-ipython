@@ -1,1 +1,1 @@
-print("some simple code")
+print("some brilliant small progam")
