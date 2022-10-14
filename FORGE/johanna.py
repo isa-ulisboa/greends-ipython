@@ -1,1 +1,0 @@
-print("some brilliant small progam")
