@@ -1,11 +1,17 @@
 import numpy as np
 
-def vol_water_content(C, S, OM, D, topsoil):
-    
-    """
-    
-    C - Percentage of clay; S - Percentage of silt; OM - Percentage of organic matter; D - Bulk density; topsoil - qualitative variable
+def vol_water_content(C, S, OM, D, topsoil):       
+    """Description of the arguments 
 
+    Args:
+        C (float): Percentage of clay
+        S (float): Percentage of silt
+        OM (float): Percentage of organic matter
+        D (float): Bulk density
+        topsoil (integer): qualitative variable
+
+    Returns:
+        float: soil field capacity
     """
 
     a = 0.7919
