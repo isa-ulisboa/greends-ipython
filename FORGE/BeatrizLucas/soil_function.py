@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as np 
 
 def vol_water_soil_content(C, D, S, OM, topsoil):
     a = 0.7919
@@ -13,10 +13,10 @@ def vol_water_soil_content(C, D, S, OM, topsoil):
     j = 0.000619*D*C
     k = 0.001183*D*OM
     l = 0.0001664*topsoil*S
-    
+       
     return a+b-c-d+e+f+g+h-i-j-k-l
 
-print(vol_water_soil_content(1, 2, 3, 4, 1))
+print(vol_water_soil_content(0.2, 1.3, 0.2, 0.05, 1))
 
 
         
