@@ -1,4 +1,4 @@
-'''
+
 #Funções
 def teste2():
     return 'myFunc= diogo'
@@ -7,7 +7,7 @@ def teste2():
 def teste3():
     return 'myFunc= aleleluia'
 
-#########################
+''''
 def t1():
     return ('ola')
 
@@ -18,6 +18,7 @@ def t2(x,y):
 
 print('Soma:', t2(10,20))
 '''
+
 
 import math
 def FieldCapacity(C,D,S,OM,TP):
