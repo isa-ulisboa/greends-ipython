@@ -20,10 +20,9 @@ c.close()
 #Create a new file named GreenDSfile1_samplelast100.csv to store the last 100 lines
 a = open("GreenDSfile1.csv")
 lst = a.readlines()
-last100lines=lst[-100:]
 a.close()
 d = open("GreenDSfile1_samplelast100.csv", "w")
 for i in range(100):
-    d.writelines(last100lines[i])
+    d.writelines(lst[-i-1])
 d.close()
 
