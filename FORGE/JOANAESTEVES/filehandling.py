@@ -1,4 +1,3 @@
-import sys
 f = open("GreenDSfile1.csv")
 f.close()
 
