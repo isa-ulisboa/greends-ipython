@@ -1,8 +1,4 @@
-def my_funnction1():
-    print ("python is amazing")
 
-def my_function2():
-    print ("python is very nice")
 
 import numpy as np
 
@@ -16,6 +12,3 @@ def vap_pres_def(Tmax, Tmin, RHm):
     Ea = (RHm/100)*Es
     VPD = (Es-Ea)
     return(VPD)
-
-
-
