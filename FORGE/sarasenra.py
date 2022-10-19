@@ -1,4 +1,5 @@
-x = 2
-y = x + 4
+x = 4
+y = x + 5
+print (y)
 
-print [y]
+print ("SS")
