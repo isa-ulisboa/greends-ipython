@@ -1,0 +1,22 @@
+# ASSIGNMENT # 6 - Adding Vapor Pressure Deficit to a climate file. 
+## Difficulty (1-5): 3 
+- Sync your Fork
+- Consider the file "Climate_hisafe_kmnievaluation_..."
+- Consider the file "FAO 56.pdf" in our literature folder https://tinyurl.com/29bsu7mm or even section 2.1, page 3 of this report: https://tinyurl.com/w5t9v2d3 
+- read section:
+  - Vapour Pressure (page 33-40 of the pdf)
+  - Focus on Box 7 (page 40) 
+- Create a file in your FORGE folder named climate_vpd.py
+- In your FORGE/myfunctions.py create another function:
+  - called calculate_vpd
+  - which is going to calculate Vapour Pressure Deficit according to FAO Report nr 56
+- In your climate_vpd.py create code to:
+  - Open the file "Climate_hisafe_kmnievaluation_..."
+  - Store the climate information at your will (e.g in one list, several lists, explore the module csv, etc) 
+  - Remember: You need to avoid reading the header in the calculations
+  - Create a new list called lst_vpd
+  - Populate the list with the result of your function "calculate_vpd" (Tip: search for the list method append() )
+  - Create, in your FORGE/YourName a new file named "Climate_hisafe_kmnievaluation_..._vpd.csv". The result will be a identical file with an extra column with VPD values
+- Do the same process to the file "Climate_hisafe_knmircp85_..."
+- Commit (after checking there are no errors), Push, Create PR (Pull Request)
+
