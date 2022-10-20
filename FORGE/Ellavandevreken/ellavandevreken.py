@@ -53,3 +53,4 @@ for i in range(10):
 import netCDF4 as nc
 #deze lijn kan je nog niet uitvoeren want ik moest eerst nog pip downloaden eenmaal dat gebeurd is moet je in terminal intypen: 
 #pip install netCDF4
+
