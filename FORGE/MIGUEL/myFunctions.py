@@ -1,4 +1,4 @@
-from math import log
+from math import exp, log
 
 
 def myfirst():
@@ -24,3 +24,21 @@ def soil_field_capacity(C,D,S,OM,topsoil):
     l=0.0001664*topsoil*S
 
     return a+b-c-d+e+f+g+h-i-j-k-l
+
+#Tmax = Temp max (ºC)
+#Tmin = Temp min (ºC)
+#RHmean = Mean of Relative Humidity (kPa)
+def calculate_vpd(Tmax,Tmin,RHmean):
+    eTmax=((0.6108*exp((17.27*Tmax))/(Tmax+237.3)))
+    eTmin=((0.6108*exp((17.27*Tmin))/(Tmin+237.3)))
+
+    #saturation vapour pressure: es
+    es=(eTmax+eTmin)/2
+
+    #actual vapour pressure: ea
+    ea=(es*RHmean)/100
+
+    #vapour pressure deficit: vpd
+    vpd=es-ea
+    return(vpd)
+
