@@ -16,7 +16,7 @@ def vol_water_soil_content(C, D, S, OM, topsoil):
        
     return a+b-c-d+e+f+g+h-i-j-k-l
 
-print(vol_water_soil_content(0.2, 1.3, 0.2, 0.05, 1))
+print(vol_water_soil_content(0.2, 1.3, 0.1, 0.05, 1))
 
 
         
