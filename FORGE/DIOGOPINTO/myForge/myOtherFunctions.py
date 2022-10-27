@@ -25,3 +25,6 @@ var3= ['Antonio','Ze', 'Roberto','Afonso']
 random.shuffle(var3)
 
 print (t3())
+
+def t6():
+    return print('ola')
