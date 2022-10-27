@@ -27,7 +27,5 @@ print(fieldcapacity(0.2,1.3,0.2,0.05,1))
 
 def calculate_vpd(Tmax, Tmin, RHmean):
     es= ((0.6108 * math.exp((17.27 * Tmax)/(Tmax + 237.3)))+(0.6108 * math.exp((17.27 * Tmin)/(Tmin + 237.3))))/2
-    
-    ea = es * RHmean/100
-
-    return es - ea
+    ea = (es * RHmean)/100
+    return (es - ea)
