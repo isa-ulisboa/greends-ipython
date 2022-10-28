@@ -1,6 +1,6 @@
 # ASSIGNMENT # 6 - Adding Vapor Pressure Deficit to a climate file. 
 ## Difficulty (1-5): 3 
-- Sync your Fork
+- Sync your Fork (Fetch). If you have commits ahead, contribute first (Pull Request)
 - Consider the file "Climate_hisafe_kmnievaluation_..."
 - Consider the file "FAO 56.pdf" in our literature folder https://tinyurl.com/29bsu7mm or even section 2.1, page 3 of this report: https://tinyurl.com/w5t9v2d3 
 - read section:
@@ -19,4 +19,3 @@
   - Create, in your FORGE/YourName a new file named "Climate_hisafe_kmnievaluation_..._vpd.csv". The result will be a identical file with an extra column with VPD values
 - Do the same process to the file "Climate_hisafe_knmircp85_..."
 - Commit (after checking there are no errors), Push, Create PR (Pull Request)
-
