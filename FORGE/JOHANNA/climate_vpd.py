@@ -14,7 +14,7 @@ for i in range(nLines-2): #-2 iterations. Use below always i+2 to avoid the head
     tmax = float(climate_info[i+2][3]) # get tmax from 4th column and convert to number
     tmin = float(climate_info[i+2][4])
     rh = float(climate_info[i+2][5]) 
-    vpd = round( mF.calculate_vpd(tmax, tmin, rh), 2)  # calculate vpd, round to 4 decimal places
+    vpd = round( mF.calculate_vpd(tmax, tmin, rh), 2)  # calculate vpd, round to 2 decimal places
     climate_info[i+2].append(vpd) # append the calculated vpd to the matching list in climate_info
 
 climate_info[1].append('vpd') #add title 'vpd' for vpd-value column
