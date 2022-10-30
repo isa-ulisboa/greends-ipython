@@ -16,8 +16,6 @@ print(var2)
 
 print('ola')
 
-
-
 ''''
 import myFunctions
 import myForge.myOtherFunctions
@@ -28,3 +26,4 @@ print(impr2)
 impr3=myForge.myOtherFunctions.t3()
 print (impr3)
 '''
+
