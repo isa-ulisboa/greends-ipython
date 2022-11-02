@@ -1,6 +1,15 @@
+#ASSIGNMENT 3
+
+def myFirstGreenDSFunction():
+    return "this is my first greenDS function"
+
+def mySecondGreenDSFunction():
+    return "This is my second greenDS function"
+
+
 #ASSIGNMENT #4
 
-import math
+import math  
 
 def FieldCapacity(C,D,S,OM,TS):
     val1 = 0.7919
@@ -17,7 +26,7 @@ def FieldCapacity(C,D,S,OM,TS):
     val12 = 0.0001664*TS*S
     return val1+val2-val3-val4+val5+val6+val7+val8-val9-val10-val11-val12
 
-print(FieldCapacity(0.2,1.3,0.1,0.05,1))
+print("The field capacity is", FieldCapacity(0.2,1.3,0.1,0.05,1))
 
 
 
