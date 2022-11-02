@@ -20,5 +20,5 @@ def soil_field_capacity(C, S, OM, D, TS):
 
     return a+b-c-d+e+f+g+h-i-j-k-l
 
-print(soil_field_capacity(0.2, 0.2, 0.05, 1.3, 1))
+
     
