@@ -39,13 +39,12 @@ print(FieldCapacity(0.2,1.3,0.1,0.05,1))
 
 
 
-def calculate_vpd(tmax,tmin,rh):
+def calculate_vpd(Tmax,Tmin,RHmean):
 
-    a=0.6108*exp((17.27*tmax)/(tmax+237.3))
-    b=0.6108*exp((17.27*tmin)/(tmin+237.3))
+    a=0.6108*math.exp((17.27*Tmax)/(Tmax+237.3))
+    b=0.6108*math.exp((17.27*Tmin)/(Tmin+237.3))
     c=(a+b)/2
-    d=c*rh/100
+    d=c*RHmean/100
 
     return (c-d)
 
-print(calculate_vpd(15.56,2.78,73.95))
