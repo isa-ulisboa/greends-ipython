@@ -14,9 +14,9 @@ def calculate_vpd(Tmax, Tmin, RHmean):
     """_summary_This function calculates the daily vapor pressure deficit (kPa). 
       
     Args:
-        Tmax (list): daily values of the maximum temperature (celsius)
-        Tmin (list): daily values of the minimum temperature (celsius)
-        RHmean (list): daily values of the mean realtive humidity (percentage)
+        Tmax (float): daily values of the maximum temperature (celsius)
+        Tmin (float): daily values of the minimum temperature (celsius)
+        RHmean (float): daily values of the mean realtive humidity (percentage)
 
     Variables inside the function:
         eo_Tmax (float): saturation vapour pressure at daily maximum temperature (kPa)
