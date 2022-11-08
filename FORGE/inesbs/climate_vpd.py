@@ -69,3 +69,4 @@ with open("Climate_hisafe_knmircp85_daily_from_01-01-2006_to_31-12-2100_vpd.csv"
     write = csv.writer(f3)
     write.writerows(values)
 f3.close()
+fin.close()
