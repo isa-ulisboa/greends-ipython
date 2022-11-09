@@ -12,7 +12,7 @@ with open ("Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010.cs
     i=0
     for row in csvreader:
         lst.append(row)
-#print(lst[0])               #se quiser ver o que existe na 1.ª linha
+#print(lst[0])           #se quiser ver o que existe na 1.ª linha
 
 
 #create a new list called "lst_vpd" and populate the list with result function "calculate_vpd"
@@ -20,7 +20,7 @@ lst_vpd = []
 i=0
 
 #from myFunctions import calculate_vpd
-def calculate_vpd (Tmax, Tmin, RHmean):    #função aqui pq não estava a fazer o import acima
+def calculate_vpd (Tmax, Tmin, RHmean):    #função novamente aqui pq não estava a fazer o import acima
     val1 = 0.6108
     val2 = math.exp((17.27*Tmax)/(Tmax + 273.3))
     val3 = val1
