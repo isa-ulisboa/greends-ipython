@@ -12,7 +12,7 @@ with open ("Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010.cs
     i=0
     for row in csvreader:
         lst.append(row)
-print(lst[0])               #se quiser ver o que existe na 1.ª linha
+#print(lst[0])               #se quiser ver o que existe na 1.ª linha
 
 
 #create a new list called "lst_vpd" and populate the list with result function "calculate_vpd"
@@ -35,17 +35,22 @@ def calculate_vpd (Tmax, Tmin, RHmean):    #função aqui pq não estava a fazer
 
 for row in lst:
     lst_vpd.append(calculate_vpd(Tmax=float(row[3]), Tmin=float(row[4]), RHmean=float(row[5])))
-print(lst_vpd[0])
 
-lst_final = []
+
 for i in range(0,len(lst)):
-    lst_final.append(lst[i])
-    lst_final.append(lst_vpd[i])
-print(lst_final[0])
+    lst_vf = []
+    lst_vf.append(lst_vpd[i])
+    lst[i] = lst[i] + lst_vf
 
-with open ("Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010_vpd.csv", 'w') as ch:
-    for row in lst_final:
+
+with open ("FORGE/SAMUEL/myForge/Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010_vpd.csv", 'w') as ch:
+    ch.write(header1[0])
+    ch.write(header2[0] + ", vpd")    #falta aparecer ",vpd" no cabeçalho ficheiro!!! Como se faz?
+    
+    for row in lst:
         for i in range(0, len(row)):
-           ch.write(str(row[i]) + ",")    
-           print(row[i])
+            ch.write(str(row[i]) + ",")  
+        ch.write("\n")  
+            #print(row[i])
+
 
