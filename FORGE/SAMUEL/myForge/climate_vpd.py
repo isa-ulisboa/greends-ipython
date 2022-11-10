@@ -26,11 +26,8 @@ def calculate_vpd (Tmax, Tmin, RHmean):    #função novamente aqui pq não esta
     val3 = val1
     val4 = math.exp((17.27*Tmin)/(Tmin + 273.3))
     Es = (val1*val2+val3*val4)/2
-
     Ea = RHmean/100*Es
-  
     VPD = Es - Ea
-
     return(VPD)
 
 for row in lst:
@@ -52,5 +49,6 @@ with open ("FORGE/SAMUEL/myForge/Climate_hisafe_knmievaluation_daily_from_01-01-
             ch.write(str(row[i]) + ",")  
         ch.write("\n")  
             #print(row[i])
+
 
 
