@@ -1,5 +1,5 @@
 from cmath import log, log10
-
+import numpy as np
 
 def myfunction():
     return "GreenDS"
@@ -21,8 +21,8 @@ def VolWaterContent(c, d, s, om, ts):
 import math
 
 def VPdef(Tmax, Tmin, RHmean):
-    e0_Tmax = 0.6108 * math.exp((17.27 * Tmax)/(Tmax + 237.3))
-    e0_Tmin = 0.6108 * math.exp((17.27 * Tmin)/(Tmin + 237.3))
+    e0_Tmax = 0.6108 * np.exp((17.27 * Tmax)/(Tmax + 237.3))
+    e0_Tmin = 0.6108 * np.exp((17.27 * Tmin)/(Tmin + 237.3))
     es = (e0_Tmax + e0_Tmin)/2
     ea = es * RHmean/100
     return es - ea
