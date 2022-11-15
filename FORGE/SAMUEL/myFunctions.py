@@ -11,6 +11,7 @@ def mySecondGreenDSFunction():
 
 import math  
 
+
 def FieldCapacity(C,D,S,OM,TS):
     val1 = 0.7919
     val2 = 0.001691*C
@@ -32,6 +33,7 @@ print("The field capacity is", FieldCapacity(0.2,1.3,0.1,0.05,1))
 #ASSIGNMENT #6
 
 def calculate_vpd (Tmax, Tmin, RHmean):
+   
     val1 = 0.6108
     val2 = math.exp((17.27*Tmax)/(Tmax + 273.3))
     val3 = val1
@@ -47,6 +49,27 @@ def calculate_vpd (Tmax, Tmin, RHmean):
 print(calculate_vpd(15.56, 2.29, 73.95))
 
 
+#ASSIGNEMT 7
 
+import numpy   #para o ass. 7
 
+def calculate_vpd_7 (Tmax, Tmin, RHmean):
+    data = numpy.array(Tmax)
+    data2 = numpy.array(Tmin)
+    data3 = numpy.array(RHmean)
+    
+    for i in range(0, len(data)):
 
+        val1 = 0.6108
+        val2 = math.exp((17.27*Tmax)/(Tmax + 273.3))
+        val3 = val1
+        val4 = math.exp((17.27*Tmin)/(Tmin + 273.3))
+        Es = (val1*val2+val3*val4)/2
+
+        Ea = RHmean/100*Es
+  
+    VPD = Es - Ea
+
+    return(VPD)
+
+print(calculate_vpd(15.56, 2.29, 73.95))
