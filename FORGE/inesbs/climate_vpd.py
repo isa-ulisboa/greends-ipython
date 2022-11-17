@@ -30,7 +30,7 @@ for line in lst1:
 # print ([row[5] for row in all_values])  #code to print values from a column
 
 import csv
-with open("Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010_vpd.csv", "w", newline= '') as f2:
+with open("FORGE/inesbs/Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010_vpd.csv", "w", newline= '') as f2:
 
     write = csv.writer(f2)
     write.writerows(all_values)
@@ -64,7 +64,7 @@ for day in lst3:
     counter += 1
 
 
-with open("Climate_hisafe_knmircp85_daily_from_01-01-2006_to_31-12-2100_vpd.csv", "w", newline = '') as f3:
+with open("FORGE/inesbs/Climate_hisafe_knmircp85_daily_from_01-01-2006_to_31-12-2100_vpd.csv", "w", newline = '') as f3:
 
     write = csv.writer(f3)
     write.writerows(values)
