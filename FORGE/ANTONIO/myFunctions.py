@@ -1,4 +1,4 @@
-from cmath import log
+from cmath import exp, log
 from math import e
 import math
 
@@ -35,3 +35,16 @@ print(FieldCapacity(0.2,1.3,0.1,0.05,1))
 
        #C-percentage clay;D-bulk density;S-percentage silt;OM-percentage organic matter;
        # TP-opsoil andsubsoil are qualitative variables having the value of 1 or 0""#
+
+
+
+
+def calculate_vpd(Tmax,Tmin,RHmean):
+
+    a=0.6108*math.exp((17.27*Tmax)/(Tmax+237.3))
+    b=0.6108*math.exp((17.27*Tmin)/(Tmin+237.3))
+    c=(a+b)/2
+    d=c*RHmean/100
+
+    return (c-d)
+

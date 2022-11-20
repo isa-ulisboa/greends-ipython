@@ -8,7 +8,7 @@
   - Open the file
   - Count the number of lines
   - Print the number of files
-  - Create a new file named GreenDSfile1_sample500k.csv to store the **first 500 000 lines**
-  - Create a new file named GreenDSfile1_samplelast100.csv to store the **last 100 lines**
+  - Create a new file named GreenDSfile1_sample500k.csv to store the **first 500 000 lines** and store it in your FORGE/YourName
+  - Create a new file named GreenDSfile1_samplelast100.csv to store the **last 100 lines** and store it in your FORGE/YourName
 - Commit (after checking there are no errors), Push, Create PR (Pull Request)
 
