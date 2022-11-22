@@ -26,3 +26,15 @@ def VPdef(Tmax, Tmin, RHmean):
     es = (e0_Tmax + e0_Tmin)/2
     ea = es * RHmean/100
     return es - ea
+
+
+#assignment 8
+def geo_index(x_value, x_array):
+    """
+    Returns:
+        _type_: nearest index of the coordinate found in the x_array
+    """
+
+    geo_idx = (np.abs(x_array - x_value)).argmin()
+    
+    return geo_idx
