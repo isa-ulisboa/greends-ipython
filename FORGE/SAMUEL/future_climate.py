@@ -9,6 +9,9 @@ Future = pd.read_csv('Climate_hisafe_knmircp85_daily_from_01-01-2006_to_31-12-21
 #print(Current)
 # Calculate VPD with pandas (your vpd function should work with numpy instead math library)
 # The following creates an additional column called "VPD" where your function is used
-#Current["VPD"] = myFunctions.calculate_vpd(Current["tasmax"],Current["tasmin"],Current["hurs"] )
-#Future["VPD"] = myFunctions.calculate_vpd(Future["tasmax"],Future["tasmin"],Future["hurs"] )
-print(Current["tasmax"])
+Current["VPD"] = myFunctions.calculate_vpd_7(Current["tasmax"],Current["tasmin"],Current["hurs"] )
+Future["VPD"] = myFunctions.calculate_vpd_7(Future["tasmax"],Future["tasmin"],Future["hurs"] )
+#print(Current["tasmax"])
+
+#Current.insert(10,column="VPD",value=Current["VPD"])
+#Future.insert(10,column="VPD",value=Future["VPD"])

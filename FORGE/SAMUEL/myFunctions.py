@@ -54,22 +54,18 @@ print(calculate_vpd(15.56, 2.29, 73.95))
 import numpy   #para o ass. 7
 
 def calculate_vpd_7 (Tmax, Tmin, RHmean):
-    data = numpy.array(Tmax)
-    data2 = numpy.array(Tmin)
-    data3 = numpy.array(RHmean)
+    #data = numpy.array(Tmax)
     
-    for i in range(0, len(data)):
+    val1 = 0.6108
+    val2 = numpy.exp((17.27*Tmax)/(Tmax + 273.3))
+    val3 = val1
+    val4 = numpy.exp((17.27*Tmin)/(Tmin + 273.3))
+    Es = (val1*val2+val3*val4)/2
 
-        val1 = 0.6108
-        val2 = math.exp((17.27*Tmax)/(Tmax + 273.3))
-        val3 = val1
-        val4 = math.exp((17.27*Tmin)/(Tmin + 273.3))
-        Es = (val1*val2+val3*val4)/2
-
-        Ea = RHmean/100*Es
+    Ea = RHmean/100*Es
   
     VPD = Es - Ea
 
     return(VPD)
 
-print(calculate_vpd(15.56, 2.29, 73.95))
+print(calculate_vpd_7(15.56, 2.29, 73.95))
