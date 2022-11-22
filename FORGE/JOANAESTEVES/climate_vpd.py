@@ -23,7 +23,7 @@ for i in range(lst_lines - 2):
     lst_vpd.append(vpd)
 
 # Create a new csv file in our folder - it will have an extra column with the vpd values
-with open("Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010_vpd.csv", "w", newline='') as new_csvfile:
+with open("c:/Users/joana/Desktop/GDS/INTPY/greends-ipython-1/FORGE/JOANAESTEVES/Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010_vpd.csv", "w", newline='') as new_csvfile:
     for i in range(lst_lines):
         f = csv.writer(new_csvfile)
         clim_info[i].append(lst_vpd[i])
@@ -73,8 +73,9 @@ for i in range(lst_lines - 2):
     lst_vpd.append(vpd)
 
 # Create a new csv file in our folder - it will have an extra column with the vpd values
-with open("Climate_hisafe_knmircp85_daily_from_01-01-2006_to_31-12-2100_vpd.csv", "w", newline='') as new_csvfile:
+with open("c:/Users/joana/Desktop/GDS/INTPY/greends-ipython-1/FORGE/JOANAESTEVES/Climate_hisafe_knmircp85_daily_from_01-01-2006_to_31-12-2100_vpd.csv", "w", newline='') as new_csvfile:
     for i in range(lst_lines):
         f = csv.writer(new_csvfile)
         clim_info[i].append(lst_vpd[i])
         f.writerow(clim_info[i])
+        
