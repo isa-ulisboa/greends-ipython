@@ -1,5 +1,5 @@
 import math
-exp = math.exp
+import numpy as np
 
 # Assignment #3
 # define two different functions returning two different strings
@@ -28,9 +28,28 @@ def calculate_vpd(Tmax, Tmin, RHmean):
         RHmean (float): Mean relative humidity (%)
     """
     # calculate es = mean saturation pressure in kPa
-    es = (0.6108 * exp( 17.27*Tmax / (Tmax+237.3) ) + 0.6108*exp( 17.27*Tmin / (Tmin+237.3) ) ) / 2 
+    es = (0.6108 * np.exp( 17.27*Tmax / (Tmax+237.3) ) + 0.6108*np.exp( 17.27*Tmin / (Tmin+237.3) ) ) / 2 
     # calculate ea = actual vapour pressure in kPa
     ea = RHmean / 100 * es
     # calculate vapour pressure deficit in kPa
     vpd = es - ea 
     return(vpd)
+
+# Assignment #8
+# create a function to find the index of nearest coordinate,
+# receiving as arguments a number (coordinate) and a list (of coordinates),
+# returning the index of the nearest coodinate found in that list
+def nearest_coord_index(coord, coord_list):
+    """given a coordinate and a list of coordinates, this function returns the index of
+    the nearest coordinate in the list to the given coordinate
+
+    Args:
+        mycoord (float): the given coordinate
+        coord_list (list): list of coordinates we have values for
+    
+    Returns:
+        index (integer): index of that coordinate in the list which is closest to the given one (arg1)
+
+    """
+    index = np.absolute(coord_list-coord).argmin()
+    return(index)
