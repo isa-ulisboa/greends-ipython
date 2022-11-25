@@ -23,7 +23,7 @@ lon_index = mf.geo_index(-9.720, lon_values)
 
 #Precipitation for 85 degrees north, 202 degrees east
 
-print(prec_values[:, lat_index, lon_index], prec.units)
+print(prec_values[0, lat_index, lon_index], prec.units)
 
 ds.close()
 
