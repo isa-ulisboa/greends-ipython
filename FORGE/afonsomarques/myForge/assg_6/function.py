@@ -12,3 +12,5 @@ def vap_pres_def(Tmax, Tmin, RHm):
     Ea = (RHm/100)*Es
     VPD = (Es-Ea)
     return(VPD)
+
+
