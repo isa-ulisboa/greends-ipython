@@ -33,3 +33,10 @@ def calculate_vpd(Tmax, Tmin, RHmean):
     es = (eo_Tmax + eo_Tmin)/2
     ea = es * RHmean/100
     return es - ea
+
+import numpy as np
+#create a function  to find the index of nearest coordinate, eg a function that receives as arguments 1) a number (coordinate), and 2) a list (of coordinates), returning the index of the nearest coodinate found in that list
+def nearest_index(value_given, array_i):
+    difference_array= np.absolute(array_i-value_given)
+    nearest_idx = difference_array.argmin()
+    return nearest_idx
