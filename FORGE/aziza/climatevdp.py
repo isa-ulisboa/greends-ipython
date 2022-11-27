@@ -19,7 +19,7 @@ climate1[1].append('vpd')
 with open("FORGE/aziza/Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010_vpd.csv", "w", newline='') as newfile_1981_2010:
     for i in range(nLines1):
         csv.writer(newfile_1981_2010, doublequote=False, escapechar='', quotechar=None).writerow(climate1[i])
-# 2nd file 
+# 2nd file traitement
 # open the 2nd file and change into a list 
 with open("Climate_hisafe_knmircp85_daily_from_01-01-2006_to_31-12-2100.csv", 'r') as rowdata_2006_2100:
     climate2 = list(csv.reader(rowdata_2006_2100))
