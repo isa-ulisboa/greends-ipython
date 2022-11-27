@@ -1,4 +1,6 @@
 import math
+import numpy as np
+
 
 
 def function():
@@ -26,6 +28,8 @@ def fieldcapacity(C,D,S,OM,TS):
 print(fieldcapacity(0.2,1.3,0.2,0.05,1))
 
 def calculate_vpd(Tmax, Tmin, RHmean):
-    es= ((0.6108 * math.exp((17.27 * Tmax)/(Tmax + 237.3)))+(0.6108 * math.exp((17.27 * Tmin)/(Tmin + 237.3))))/2
-    ea = (es * RHmean)/100
-    return (es - ea)
+    eo_Tmax = 0.6108 * np.exp((17.27 * Tmax)/(Tmax + 237.3))
+    eo_Tmin = 0.6108 * np.exp((17.27 * Tmin)/(Tmin + 237.3))
+    es = (eo_Tmax + eo_Tmin)/2
+    ea = es * RHmean/100
+    return es - ea
