@@ -11,8 +11,8 @@ ds = nc.Dataset(fn)
 ###
 
 #list of the lat, lon, coordinates and precipitation
-lats = ds.variables['lat'][:]#85
-lons = ds.variables['lon'][:]#202
+lats_var = ds.variables['lat'][:]#85
+lons_var = ds.variables['lon'][:]#202
 prec = ds.variables['WDEP_PREC'][:]
 
 ###time is "irelevant" because it as only one value
@@ -23,13 +23,11 @@ precipitation = ds.variables['WDEP_PREC']
 
 #insert the coordinates you want
 lat_value = 38.568
-lat_index = aux_func.indexlat2(lat_value)
-
-#insert the coordiantes you want
 lon_value = -9.720
-lon_index = aux_func.indexlon2(lon_value)
+cor_indexes = aux_func.index_lat_and_lon(lat_value, lon_value, lats_var, lons_var)
+#print(cor_indexes[0])
 
 #just to be more readable
 print('')
-print( 'Registered precipitation ->',  prec[0, lat_index, lon_index], precipitation.units)
+print( 'Registered precipitation ->',  prec[0, cor_indexes[0], cor_indexes[1]], precipitation.units)
 print('')

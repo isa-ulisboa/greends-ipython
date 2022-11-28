@@ -1,11 +1,3 @@
-# Load your NetCDF as before:
-import netCDF4 as nc 
-fn = 'EMEP01_rv4.42_year.2019met_2019emis.nc' # update this path to your own file
-ds = nc.Dataset(fn)
-#list of the lat, lon, coordinates and precipitation
-lats = ds.variables['lat'][:]#85
-lons = ds.variables['lon'][:]#202
-time = ds.variables['time'][0]
 
 ###inLat: 38.568, inLon: -9.720
 
@@ -31,18 +23,22 @@ def indexlon (y):
 #i believe but im not 100% sure because i did not have a differnt one to test
 ######################
 
-def indexlat2 (y):
+### to get the cordinate indexes its a simple regression
+### y=mx+b where x the desired value
+
+
+
+def index_lat_and_lon (y, x, lats, lons):
+    
+    #####for lat
     m = lats[1]-lats[0]
     m_rv = round(1/m)
     inx = m_rv*(y-lats[0])
     y_lat = (int(inx))
-    return (y_lat)
+    ######for lon
+    m1 = lons[1]-lons[0]
+    m1_rv = round(1/m1)
+    in_x = m1_rv*(x-lons[0])
+    x_lat = (int(in_x))
+    return (y_lat, x_lat)
 #print(indexlat2(38.568))
-
-def indexlon2 (x):
-    m = lons[1]-lons[0]
-    m_rv = round(1/m)
-    in_x = m_rv*(x-lons[0])
-    y_lat = (int(in_x))
-    return (y_lat)
-#print(indexlon2(-9.720))
