@@ -21,4 +21,13 @@ def soil_field_capacity(C, S, OM, D, TS):
     return a+b-c-d+e+f+g+h-i-j-k-l
 
 
+#assignment 6 - calculate Vapour Pressure Deficit    
+
+import math
+
+def calculate_vpd(Tmax, Tmin, RHmean):
+    es = (0.6108*math.exp(17.27*Tmax/(Tmax+237.3))+0.6108*math.exp(17.27*Tmin/(Tmin+237.3)))/2
+    ea = RHmean/100*es
+    vpd = es - ea
+    return vpd
     
