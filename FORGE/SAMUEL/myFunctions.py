@@ -69,3 +69,11 @@ def calculate_vpd_7 (Tmax, Tmin, RHmean):
     return(VPD)
 
 print(calculate_vpd_7(15.56, 2.29, 73.95))
+
+
+#ASSIGNMENT 8
+
+def nearest_index(value, values_array):
+    ind_nearest = (np.abs(values_array - value)).argmin()
+    return ind_nearest
+
