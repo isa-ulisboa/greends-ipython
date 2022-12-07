@@ -51,7 +51,7 @@ print(calculate_vpd(15.56, 2.29, 73.95))
 
 #ASSIGNEMT 7
 
-import numpy   #para o ass. 7
+import numpy  #para o ass. 7
 
 def calculate_vpd_7 (Tmax, Tmin, RHmean):
     #data = numpy.array(Tmax)
@@ -72,6 +72,8 @@ print(calculate_vpd_7(15.56, 2.29, 73.95))
 
 
 #ASSIGNMENT 8
+
+import numpy as np
 
 def nearest_index(value, values_array):
     ind_nearest = (np.abs(values_array - value)).argmin()
