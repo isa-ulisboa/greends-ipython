@@ -1,6 +1,5 @@
 #ass8.py
 import netCDF4 as nc
-import numpy as np
 import myFunctions as mf
 
 ds =nc.Dataset("EMEP01_rv4.42_year.2019met_2019emis.nc")
@@ -23,4 +22,4 @@ print(lat_index)
 print(lon_index)
 
 #Precipitation for lat_index, lon_index
-print("A precipitação nas coordenadas %f,%f é:" %(lat_index,lon_index), prec_values[0, lat_index, lon_index], prec.units)
+print("A precipitação nas coordenadas %.2f,%.2f é:" %(lat_values[lat_index],lon_values[lon_index]), round(prec_values[0, lat_index, lon_index], 0), prec.units)
