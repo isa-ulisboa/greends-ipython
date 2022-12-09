@@ -27,3 +27,20 @@ def calculate_vpd(Tmax, Tmin, RHmean):
     ea = es*(RHmean/100)
 
     return es - ea
+
+
+# Assignment nº8
+
+def obtain_index(coord, coord_list):
+    """Function that retrieves the nearest index of geographical coordinates in order to obtain precipitation data from the specified location.
+
+    Args:
+        coord (float): Retrieves the latitude or longitude in question.
+        coord_list (list): Expresses a list of the studied coordinate from the netCDF file.
+        
+    Returns:
+        index (float): Index of the nearest coordinate from the one requested.
+    """
+    closest_id = (np.absolute(coord_list-coord)).argmin()
+
+    return closest_id
