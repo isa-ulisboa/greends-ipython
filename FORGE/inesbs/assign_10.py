@@ -16,7 +16,7 @@ parser.add_argument('--lat', type = float, required=True)
 parser.add_argument('--lon', type = float, required=True)
 parser.add_argument('--file', type = str, required=True)
 
-args = parser.parse_args()
+args = parser.parse_args() 
 
 ### Section end - PIECE OF CODE TO HANDLE THE ARGUMENTS
 

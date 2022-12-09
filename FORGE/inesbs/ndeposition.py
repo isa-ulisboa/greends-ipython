@@ -10,7 +10,7 @@ ds = nc.Dataset(fn)
 #list of the lat, lon, coordinates and precipitation
 lats = ds.variables['lat'][:]
 lons = ds.variables['lon'][:]
-dry_NOXdep = ds.variables['DDEP_OXN_m2Grid']
+dry_NOXdep = ds.variables['DDEP_OXN_m2Grid'] 
 
 # names os layers
 # Wet deposition of oxidized nitrogen --- WDEP_OXN

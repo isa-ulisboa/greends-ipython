@@ -3,7 +3,7 @@ import argparse
 
 # define arguments
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser() 
 
 parser.add_argument('--tmax', type = float, required=True)
 parser.add_argument('--tmin', type = float, required=True, help = "this is min temp in celsius")
