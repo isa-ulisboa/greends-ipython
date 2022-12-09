@@ -40,8 +40,8 @@ precipitation_values = ds.variables['WDEP_PREC'][:]
 
 # Get the closest indexes from location inLat: 38.568, inLon: -9.720
 
-lat_index = func.nearest_index(38.568, lat_values)
-lon_index = func.nearest_index(-9.720, lon_values)
+lat_index = func.closest_index(38.568, lat_values)
+lon_index = func.closest_index(-9.720, lon_values)
 
 #print(lat_index, lat.units)
 #print(lon_index, lon.units)
