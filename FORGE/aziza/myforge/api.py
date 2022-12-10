@@ -23,3 +23,4 @@ try:
   print(res)
 except Exception as err:
     print (f"unexpected {err=}, {type(err)=}")
+#https://www.w3schools.com/bootstrap/bootstrap_grid_basic.asp
