@@ -30,4 +30,15 @@ def calculate_vpd(Tmax, Tmin, RHmean):
     ea = RHmean/100*es
     vpd = es - ea
     return vpd
+
+#assignment 8 - Create a program to retrieve the value of Precipitation given a latitute and longitude coordinate. (Real World)
+
+def geo_idx(xx, xx_array):
+    index = np.abs(xx_array - xx).argmin()
+    return index
+    
+
+
+
+
     

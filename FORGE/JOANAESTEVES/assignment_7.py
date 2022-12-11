@@ -5,8 +5,8 @@ sys.path.append('c:/Users/joana/Desktop/GDS/INTPY/greends-ipython-1/FORGE/JOANAE
 import pandas as pd
 import myFunctions as mf
 
-Current = pd.read_csv('c:/Users/joana/Desktop/GDS/INTPY/greends-ipython-1/Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010.csv', skiprows=[0])
-Future = pd.read_csv('c:/Users/joana/Desktop/GDS/INTPY/greends-ipython-1/Climate_hisafe_knmircp85_daily_from_01-01-2006_to_31-12-2100.csv', skiprows=[0])
+Current = pd.read_csv('../../Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010.csv', skiprows=[0])
+Future = pd.read_csv('../../Climate_hisafe_knmircp85_daily_from_01-01-2006_to_31-12-2100.csv', skiprows=[0])
 
 # To add a new column at the end of the table we use the [] operator
 Current['VPD'] = mf.calculate_vpd(Current['tasmax'], Current['tasmin'], Current['hurs'])
