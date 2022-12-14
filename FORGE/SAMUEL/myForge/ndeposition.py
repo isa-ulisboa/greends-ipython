@@ -3,7 +3,7 @@
 import netCDF4 as nc 
 import numpy as np
 import json
-fn = 'EMEP01_rv4.42_year.2019met_2019emis.nc' # update this path to your own file
+fn = 'EMEP01_rv4.42_year.2019met_2019emis.nc'  # update this path to your own file
 
 ds = nc.Dataset(fn)
 
