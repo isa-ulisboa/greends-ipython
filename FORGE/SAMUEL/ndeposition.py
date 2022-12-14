@@ -60,3 +60,4 @@ a = {
 with open ("assignemtn9.json", "w") as f:
     b=json.dumps(a)
     json.dump(b,f)
+
