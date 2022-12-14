@@ -28,12 +28,7 @@ dry_RDNdep = ds.variables['DDEP_RDN_m2Grid'][:]   #Dry deposition of reduced nit
 wet_OXNdep = ds.variables['WDEP_OXN'][:]          #wet deposition of oxidized nitrogen (pagina emep)
 wet_RDNdep = ds.variables['WDEP_RDN'][:]         #wet deposition of reduced nitrogen (pagina emep)
 
-d1 = dry_OXNdep[0, lat_index, lon_index]   #d de dry
-d2 = dry_RDNdep[0, lat_index, lon_index]
-w1 = wet_OXNdep[0, lat_index, lon_index]    #w de wet
-w2 = wet_RDNdep[0, lat_index, lon_index]
-
-ndeposition.
+final_deposition = ndeposition.calculate_deposition(file_name, nearest_lat, nearest_lon)
 
 a = {
     "version": "0.1",
@@ -48,7 +43,7 @@ a = {
     },
     "data": {
         "total_n_deposition": {
-            "value": final_nitrogen,
+            "value": final_deposition,
             "unit": "kg ha-1"
         }
     }
