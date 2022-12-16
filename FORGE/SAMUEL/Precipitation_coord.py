@@ -1,4 +1,5 @@
-#ass8.py
+#ASSIGNMENT 8 (Precipitation_coord.py)
+
 import netCDF4 as nc
 import myFunctions as mf
 
