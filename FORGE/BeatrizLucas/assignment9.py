@@ -66,7 +66,7 @@ data = {
                     "with 0.1 degrees resolution (approx 11.1 km) - Dry and wet deposition of oxidized and reduced N"
                     "(DDEP_OXN_m2Grid + DDEP_RDN_m2Grid + WDEP_OXN + WDEP_RDN) converted from mgN m-2 to kg ha-1",
     "coordinate_requested": {
-        "lon": lon,
+        "lon": lon_value,
         "lat": lat_value
 },
     "coordinate_retrieved": {
