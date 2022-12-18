@@ -1,45 +1,28 @@
-from csv import DictReader, DictWriter
+
 import sys
 import argparse
-import glob
-import pandas as pd
 import aux_func
-import datetime
 
-    #list all files with the corresponding file type 
-csv_files = glob.glob('*vpd.csv')
-#print(csv_files)
 
     #define the  arguments
 parser = argparse.ArgumentParser()
-#parser.add_argument('--day', type = int, required = True)
-#parser.add_argument('--month', type = int, required = True)
-#parser.add_argument('--year', type = int, required = True)
-parser.add_argument('--data', type=lambda s: datetime.date.strptime(s, '%Y-%m-%d'))
-parser.add_argument('--file', type = str, required = True)
+parser.add_argument('--Tmax', type = float, required = True)
+parser.add_argument('--Tmin', type = float, required = True)
+parser.add_argument('--RHm', type = float, required = True)
 
 args = parser.parse_args()
 
-#wrk_data = [args.year, args.month, args.day]
+    #ensure logical values
+if float(args.Tmin) > float(args.Tmax):
+    print ('--- SERIOUSLY? ---')
+    print ('--- Tmax SMALLER THEN Tmin ---')
+    sys.exit()
 
+if float(args.RHm) > 100:
+    print ('--- RHm IS A PERCENTAGE ---')
+    sys.exit()
 
-try:
-    if args.file in csv_files:
-        data= args.file
-        #print (data)
-        if data in aux_func.date:
-            print ('carlos')
-        else:
-            print ('miguel')
-
-    
-        
-    
-    
-
-except FileNotFoundError:
-    print('')
-    print("--- CAN YOU PLEASE INSERT AN EXISTING DATASET? ---")
-    print('')
-    print ('--> currently existing dataset(s):', csv_files)
-    print('')
+    #calculate the vpd and print it
+wrk_vpd = aux_func.vap_pres_def(args.Tmax, args.Tmin, args.RHm)
+print ('')
+print ('--> VPD =', round(wrk_vpd, 2))

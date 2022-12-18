@@ -1,34 +1,15 @@
+import numpy as np
 
-import pandas as pd
-import datetime
-
-data= pd.read_csv('Climate_hisafe_knmircp85_daily_from_01-01-2006_to_31-12-2100_vpd.csv',skiprows=1)
-
-def validate(data):
-    wrk_y = data['Year']
-    wrk_m = data['Month']
-    wrk_d = data['Day']
-    wrk_vpd = data['vpd']
-
-    size = wrk_y.size
-    try:
-        for index in range(size):
-            date = datetime.date(wrk_y[index],wrk_m[index],wrk_d[index])
-            #print(date, wrk_vpd[index])
-            #print (date)
-        return True
-    except ValueError:
-        return False
-
-validate (data)
-
-
-
-
-
-#x = datetime.datetime(wrk_y, 5, 17)
-#
-#print(size)
+def vap_pres_def(Tmax, Tmin, RHm):
+    #vap_pres_def = vapor pressure deficit (kPa)
+    #Tmax = max temperature (ºC)
+    #Tmin = min temperature (ºC)
+    #RHm = mean Relative Humidity (kPa)
+    
+    Es = ((0.6108*np.exp((17.27*Tmax)/(Tmax+237.3)))+(0.6108*np.exp((17.27*Tmin)/(Tmin+237.3)))/2)
+    Ea = (RHm/100)*Es
+    VPD = (Es-Ea)
+    return(VPD)
 
 
 
