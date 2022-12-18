@@ -71,7 +71,7 @@ def calculate_vpd_7 (Tmax, Tmin, RHmean):
 print(calculate_vpd_7(15.56, 2.29, 73.95))
 
 
-#ASSIGNMENT 8
+#ASSIGNMENT 8 (in myFunctions.py)
 
 import numpy as np
 
