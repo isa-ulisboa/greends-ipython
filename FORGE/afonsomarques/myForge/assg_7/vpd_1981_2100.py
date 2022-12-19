@@ -34,4 +34,3 @@ plt.legend()
 plt.grid()
 # showing the plot
 plt.show()
-
