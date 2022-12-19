@@ -7,7 +7,7 @@ def function():
 
 def string():
     return "hey"
-
+#assignment n4
 def fieldcapacity(C,D,S,OM,TS): 
     val1=0.7919 
     val2=0.001691*C
