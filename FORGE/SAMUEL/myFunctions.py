@@ -1,6 +1,16 @@
+#ASSIGNMENT 3
+
+def myFirstGreenDSFunction():
+    return "this is my first greenDS function"
+
+def mySecondGreenDSFunction():
+    return "This is my second greenDS function"
+
+
 #ASSIGNMENT #4
 
-import math
+import math  
+
 
 def FieldCapacity(C,D,S,OM,TS):
     val1 = 0.7919
@@ -17,11 +27,55 @@ def FieldCapacity(C,D,S,OM,TS):
     val12 = 0.0001664*TS*S
     return val1+val2-val3-val4+val5+val6+val7+val8-val9-val10-val11-val12
 
-print(FieldCapacity(0.2,1.3,0.1,0.05,1))
+print("The field capacity is", FieldCapacity(0.2,1.3,0.1,0.05,1))
 
 
+#ASSIGNMENT #6
+
+def calculate_vpd (Tmax, Tmin, RHmean):
+   
+    val1 = 0.6108
+    val2 = math.exp((17.27*Tmax)/(Tmax + 273.3))
+    val3 = val1
+    val4 = math.exp((17.27*Tmin)/(Tmin + 273.3))
+    Es = (val1*val2+val3*val4)/2
+
+    Ea = RHmean/100*Es
+  
+    VPD = Es - Ea
+
+    return(VPD)
+
+print(calculate_vpd(15.56, 2.29, 73.95))
 
 
+#ASSIGNEMT 7
+
+import numpy  #para o ass. 7
+
+def calculate_vpd_7 (Tmax, Tmin, RHmean):
+    #data = numpy.array(Tmax)
+    
+    val1 = 0.6108
+    val2 = numpy.exp((17.27*Tmax)/(Tmax + 273.3))
+    val3 = val1
+    val4 = numpy.exp((17.27*Tmin)/(Tmin + 273.3))
+    Es = (val1*val2+val3*val4)/2
+
+    Ea = RHmean/100*Es
+  
+    VPD = Es - Ea
+
+    return(VPD)
+
+print(calculate_vpd_7(15.56, 2.29, 73.95))
 
 
+#ASSIGNMENT 8 (in myFunctions.py)
+
+import numpy as np
+
+def nearest_index(value, values_array):
+    ind_nearest = (np.abs(values_array - value)).argmin()
+    return ind_nearest
 

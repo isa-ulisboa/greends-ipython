@@ -63,7 +63,7 @@ def calculate_vpd(Tmax, Tmin, RHmean):
 ## Assignment 8 function_Coordinates function
 ## A function to find the index of nearest coordinate
 
-def nearest_index(x_value, x_array):
+def closest_index(x_value, x_array):
     """_summary_
 
         Calculation of the nearest index that a given longitude or latitude corresponds in the NetCDF grid.
@@ -76,6 +76,6 @@ def nearest_index(x_value, x_array):
         _type_: nearest index of the coordinate found in the x_array
     """
 
-    nearest_idx = (np.abs(x_array - x_value)).argmin()
+    closest_idx = (np.abs(x_array - x_value)).argmin()
     
-    return nearest_idx
+    return closest_idx
