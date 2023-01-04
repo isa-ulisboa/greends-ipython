@@ -39,7 +39,7 @@
    8. create an alias of the myOtherFunctions module and redo steps 3, 4, 5, 7, using the alias 
    9. add this line of code: from myForge.myOtherFunctions import *  
         - how to redo steps c, d and g following logic?
-   10. add this line of code: from myForge import myOtherFunctions
+   10. add this line of code: q
         - how to redo steps c, d and g following logic?
    11. Final note:  This code flow is only to explain and demosntrate namespaces. 
                     In your code, you only use one style and place all imports in 
