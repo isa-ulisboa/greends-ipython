@@ -22,3 +22,10 @@ print(var3)
 
 a = 2
 a
+
+def closest_index(x_value, x_array):
+  
+
+    closest_idx = (np.abs(x_array - x_value)).argmin()
+    
+    return closest_idx
