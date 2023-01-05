@@ -1,7 +1,7 @@
 #assignment 6
-#zie bestand JOHANNA onderaan deze file
+#zie bestand onderaan deze file
 """
-#zelf wat probeersle maar NB, vraag iemand anders 
+#first idea
 f = open("Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010.csv") 
 
 # import csv
@@ -14,14 +14,14 @@ geg = f.readlines()
 l=len(geg)
 names=geg[1]
 val = geg[2:l-1]
-f.close()
+zf.close()
 
 import pandas as pd
 gegevens = pd.read_csv('Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010.csv', header = 1) 
 
 #gegevens is een list, header = 1 moet je doen omdat de kolomtitels op de 2e lijn staan in het excelbestand
 """
-#johanna
+
 # Assignment #6
 import csv
 import myFunctions as mF      
@@ -51,7 +51,7 @@ for i in range(nLines-2):
 # Create, in your FORGE/YourName a new file named "Climate_hisafe_kmnievaluation_..._vpd.csv". The result will be a identical file with an extra column with VPD values
 with open("FORGE/Ellavandevreken/Climate_hisafe_knmievaluation_daily_from_01-01-1981_to_31-12-2010_vpd.csv", "w", newline='') as newfile:
     for i in range(nLines):
-        newfile_write = csv.writer(newfile, doublequote=False, escapechar=None, quotechar=None)  #eerst hadden we gewoon csv.writer(newfile) maar dan kreeg jij bij eerste lijn met link te veel aanhaaltekens hier niet meer, dit komt van discord van johanne in opmerking, ik moet nog checken of het dan nu wel werkt
+        newfile_write = csv.writer(newfile, doublequote=False, escapechar=None, quotechar=None)  #eerst hadden we gewoon csv.writer(newfile) maar dan kreeg jij bij eerste lijn met link te veel aanhaaltekens hier niet meer, dit komt van discord van in opmerking, ik moet nog checken of het dan nu wel werkt
         climate_info[i].append(lst_vpd[i])
         newfile_write.writerow(climate_info[i])
 
