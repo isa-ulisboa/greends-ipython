@@ -32,20 +32,14 @@ args = parser.parse_args()
 #Next24Rain_treshold - 2
 #VPD_treshold - 0.5
 
+# 1 -Organize your user input data for easier reading
+
 inLat                     = args.latitude # replace this value with what you collect with your API
 inLon                     = args.longitude # replace this value with what you collect with your API
 inSoilType                = args.soiltype # replace this value with what you collect with your API
 inpFCritical              = args.pFCritical # replace this value with what you collect with your API
 invpd_treshold            = args.vpd_treshold # replace this value with what you collect with your API
 innext24h_rain_treshold   = args.next24rain_treshold # replace this value with what you collect with your API
-
-# 1 -Organize your user input data for easier reading
-#inLat                     = 37.64
-#inLon                     = -7.66
-#inSoilType                = 1
-#inpFCritical              = 3.1
-#invpd_treshold            = 0.5
-#innext24h_rain_treshold   = 2
 
 # 2 - Create a dictionary of weather forecast with the group1 work. In the meantime you can use material.Output1Group1 as a mockup result
 Forecast = group1_output.getHourlyWeatherForescast(inLat,inLon)
