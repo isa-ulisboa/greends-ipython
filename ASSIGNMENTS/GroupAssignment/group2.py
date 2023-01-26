@@ -4,6 +4,8 @@
 
 import math
 
+
+#dictionary of values from api
 Output1Group1 = {"latitude":37.64,"longitude":-7.6600003,"generationtime_ms":1.3810396194458008,"utc_offset_seconds":0,"timezone":"GMT","timezone_abbreviation":"GMT","elevation":53.0,
        "current_weather":{"temperature":14.7,"windspeed":3.3,"winddirection":193.0,"weathercode":1,"time":"2022-12-15T11:00"},
        "hourly_units":{"time":"iso8601","temperature_2m":"°C","relativehumidity_2m":"%","precipitation":"mm","soil_moisture_9_27cm":"m³/m³","vapor_pressure_deficit":"kPa"},
@@ -25,7 +27,7 @@ VWC_3_9 =Output1Group1['hourly']['soil_moisture_3_9cm']
 VWC_9_27 =Output1Group1['hourly']['soil_moisture_9_27cm']
 # print(VWC_9_27)
 
-
+#dictionary of values from soils
 soils={
     "1":{"name": "Coarse","alpha":"0.0383","ks":"600","nsoil":"1.3774","thetas":"0.403","thetar":"0.025"},
 	"2":{"name": "Medium","alpha":"0.0314","ks":"120.61","nsoil":"1.1804","thetas":"0.439","thetar":"0.01"},
@@ -38,11 +40,10 @@ soils={
 soilType = list(soils.items())
 #print(soilType)
 
-
 def get_mSoil(nSoil):
     return 1-1/nSoil
 
-
+# function to define water tension
 def get_pF(Theta, alpha, Thetar, Thetas,nSoil):
     mSoil=get_mSoil(nSoil)
     psi_part1 = 1/alpha
@@ -87,6 +88,6 @@ def get_pF_forecast(VWC,soilType):
 #example
 # print(get_pF_forecast(VWC_9_27, "5"))
 
-print(get_pF_forecast(VWC_3_9, "2"))
+#can print multiple lists if needed
 
-print(get_pF_forecast(VWC_9_27, "5"))
+print(get_pF_forecast(VWC_3_9, "2"))
