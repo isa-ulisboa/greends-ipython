@@ -3,7 +3,7 @@ from matplotlib.ticker import (MultipleLocator)
 import numpy as np
 import material
 import argparse
-import group_1_output
+import group1_output
 import group2_output
 
 parser = argparse.ArgumentParser()
@@ -50,7 +50,7 @@ innext24h_rain_treshold   = args.next24rain_treshold # replace this value with w
 #innext24h_rain_treshold   = 2
 
 # 2 - Create a dictionary of weather forecast with the group1 work. In the meantime you can use material.Output1Group1 as a mockup result
-Forecast = group_1_output.getHourlyWeatherForescast(inLat,inLon)
+Forecast = group1_output.getHourlyWeatherForescast(inLat,inLon)
 
 # 3 - Organize your data series
 dates = Forecast['hourly']['time']
