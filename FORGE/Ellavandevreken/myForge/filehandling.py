@@ -16,4 +16,3 @@ for i in range(100): #van 0 tot 99
     fout2.writelines(lines[x-100+i])
 fout2.close()
 
-#ik weet niet hoe je die files in de folder  myforge zet via een commando dus ik heb ze gewoon versleept
