@@ -88,7 +88,7 @@ for idx,i in enumerate(vpd):
 
 
 # to use this code, go to terminal and use this input below
-# python group3_output.py --latitude 37.64 --longitude -7.66 --soiltype 3 --pFCritical 3.1 --next24rain_treshold 2 --vpd_treshold 0.5 
+# python group3_endpoint_Vasco.py --latitude 37.64 --longitude -7.66 --soiltype 3 --pFCritical 3.1 --next24rain_treshold 2 --vpd_treshold 0.5 
 
 # python group2_visualization.py --latitude 37.64 --longitude -7.66 --soiltype 3 --pFCritical 3.1 --next24rain_treshold 2 --vpd_treshold 0.5 
         
