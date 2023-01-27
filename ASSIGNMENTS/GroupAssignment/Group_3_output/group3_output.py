@@ -3,7 +3,7 @@ from matplotlib.ticker import (MultipleLocator)
 import numpy as np
 import material
 import argparse
-import group1_output
+import group_1_output
 import group2_output
 
 parser = argparse.ArgumentParser()
