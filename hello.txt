@@ -1,1 +1,0 @@
-If you are reading this file in your local machine, congrats. You've just cloned your first repository!
