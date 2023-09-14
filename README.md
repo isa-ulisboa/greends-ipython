@@ -11,7 +11,6 @@
 
 1. [CS50](https://cs50.harvard.edu/python/2022/), Section on "Functions, Variables"
    * [Shorts: Visual Code for CS50](https://cs50.harvard.edu/python/2022/shorts/visual_studio_code_for_cs50/)
-   * Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk)
     
 2. Some useful keyworks for the command line interface in terminal:
 * `echo > filename` to create a new file (same as `code filename` in CS50 videos)
@@ -23,3 +22,20 @@
 * `cd foldername` change directory, e.g. `cd ..` 
 * `rmdir foldername` to delete folder
 * `clear` to clear terminal window
+
+3. [CS50](https://cs50.harvard.edu/python/2022/), Section on "Functions, Variables"
+   * Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk):
+     - functions, parameters, arguments
+     - return value, input function
+     - variables and assignments
+     - comments
+     - strings (str data type)
+     - `\n` (newline)
+     - format string, e.g. `f"hello {name}")`
+     - first examples of methods (built-in function)  on strings, e.g. `name.strip()` (47')
+     - chain methods (52'30)
+     - other methods on strings: `title, split`
+     - integers (int data type) (59'40)
+     - operations: `+, -, *, /, %`
+     - interactive mode for Python `>>>`  [1:00]
+
