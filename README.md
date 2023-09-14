@@ -8,11 +8,11 @@
     
 3. Some useful keyworks for the command line interface:
 * `echo > filename` to create a new file (same as `code filename` in CS50 videos)
-* `ls´ to list files in folder
-* `cp filename newfilename´ to copy a file
-* `mv filename newfilename´ to rename file
-* `rm filename´ to delete (remove) file
-* `mkdir foldername´ to create new folder
-* `cd foldername´ change directory
-* `rmdir foldername´ to delete folder
-* `clear´to clear terminal window
+* `ls` to list files in folder
+* `cp filename newfilename` to copy a file
+* `mv filename newfilename` to rename file
+* `rm filename` to delete (remove) file
+* `mkdir foldername` to create new folder
+* `cd foldername` change directory
+* `rmdir foldername` to delete folder
+* `clear` to clear terminal window
