@@ -7,7 +7,7 @@
   * VS Code Python extension: A Visual Studio Code extension with rich support for the Python language (for all actively supported versions of the language: >=3.7), including features such as IntelliSense (Pylance), linting, debugging, code navigation, code formatting, refactoring, variable explorer, test explorer, and more!
     
 3. Some useful keyworks for the command line interface:
-* `echo > filename´ to create a new file (same as `code filename´ in CS50 videos)
+* `echo > filename` to create a new file (same as `code filename` in CS50 videos)
 * `ls´ to list files in folder
 * `cp filename newfilename´ to copy a file
 * `mv filename newfilename´ to rename file
