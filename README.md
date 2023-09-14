@@ -25,7 +25,6 @@
 
 3. [CS50](https://cs50.harvard.edu/python/2022/), Section on "Functions, Variables"
    * Notes: [Lecture 0](https://cs50.harvard.edu/python/2022/notes/0/)
-     
     Creating Code with Python
     Functions
     Bugs
