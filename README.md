@@ -24,29 +24,8 @@
 * `clear` to clear terminal window
 
 3. [CS50](https://cs50.harvard.edu/python/2022/), Section on "Functions, Variables"
-   * Notes: [Lecture 0](https://cs50.harvard.edu/python/2022/notes/0/):
-   ```
-    Creating Code with Python
-    Functions
-    Bugs
-    Improving Your First Python Program
-        Variables
-        Comments
-        Pseudocode
-    Further Improving Your First Python Program
-    Strings and Paremeters
-        A small problem with quotation marks
-    Formatting Strings
-    More on Strings
-    Integers or int
-    Readability Wins
-    Float Basics
-    More on Floats
-    Def
-    Returning Values
-    Summing Up
-   ```
-
+   * Notes: [Lecture 0](https://cs50.harvard.edu/python/2022/notes/0/)
+   
    * Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk):
      - functions, parameters, arguments
      - return value, input function
