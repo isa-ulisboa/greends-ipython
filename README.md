@@ -17,7 +17,7 @@
 * `echo > filename` to create a new file (same as `code filename` in CS50 videos)
 * `ls` to list files in folder
 * `cp filename newfilename` to copy a file, e.g. `cp ..\hello.py  \farewell.py` (`..` represents parent folder)
-* `mv filename newfilename` to rename or move file, e.g. `my farewell.py `goodbye.py` or `mv farewell.py ..` (move one folder up)
+* `mv filename newfilename` to rename or move file, e.g. `my farewell.py goodbye.py` or `mv farewell.py ..` (move one folder up)
 * `rm filename` to delete (remove) file
 * `mkdir foldername` to create new folder
 * `cd foldername` change directory, e.g. `cd ..` 
