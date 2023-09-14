@@ -37,5 +37,5 @@
      - other methods on strings: `title, split`
      - integers (int data type) (59'40)
      - operations: `+, -, *, /, %`
-     - interactive mode for Python `>>>`  [1:00]
+     - interactive mode for Python `>>>`  (1:00)
 
