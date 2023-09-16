@@ -39,6 +39,6 @@
     More on Strings.
 
    
-   * Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk): follow video and recreate exercises on VS Code up to 59' approximately (up to the section on integers 'Int').
+   * Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk): follow video and recreate exercises on VS Code up to 59' approximately (up to the section on integers 'Int').
     
 
