@@ -13,9 +13,9 @@
    * [Shorts: Visual Code for CS50](https://cs50.harvard.edu/python/2022/shorts/visual_studio_code_for_cs50/)
     
 2. Some useful keyworks for the command line interface in terminal:
-* `echo > filename` to create a new file (same as `code filename` in CS50 videos)
+* `echo > filename` to create a new file (same as `code filename` in CS50 videos); to create an empty file, just press return when asked for the argument.
 * `ls` to list files in folder
-* `cp filename newfilename` to copy a file, e.g. `cp ..\hello.py  \farewell.py` (`..` represents parent folder)
+* `cp filename newfilename` to copy a file, e.g. `cp ..\hello.py  farewell.py` (`..` represents parent folder)
 * `mv filename newfilename` to rename or move file, e.g. `my farewell.py goodbye.py` or `mv farewell.py ..` (move one folder up)
 * `rm filename` to delete (remove) file
 * `mkdir foldername` to create new folder
@@ -33,19 +33,12 @@
         Comments,
         Pseudocode;
     Further Improving Your First Python Program;
-    Strings and Paremeters; 
+    Strings and Parameters; 
         A small problem with quotation marks;
     Formatting Strings;
-    More on Strings;
-    Integers or int;
-    Readability Wins;
-    Float Basics;
-    More on Floats;
-    Def;
-    Returning Values;
-    Summing Up.
+    More on Strings.
 
    
-   * Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk):
+   * Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk): follow video and recreate exercises on VS Code up to 59' approximately (up to the section on integers 'Int').
     
 
