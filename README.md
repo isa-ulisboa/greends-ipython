@@ -10,7 +10,7 @@
 ## Class 1 (September 15, 2023)
 
 1. [CS50](https://cs50.harvard.edu/python/2022/), Section on "Functions, Variables"
-   * [Shorts: Visual Code for CS50](https://cs50.harvard.edu/python/2022/shorts/visual_studio_code_for_cs50/)
+   * **Do before next class.** [Shorts: Visual Code for CS50](https://cs50.harvard.edu/python/2022/shorts/visual_studio_code_for_cs50/)
     
 2. Some useful keyworks for the command line interface in terminal:
 * `echo > filename` to create a new file (same as `code filename` in CS50 videos); to create an empty file, just press return when asked for the argument.
@@ -39,6 +39,6 @@
     More on Strings.
 
    
-   * Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk): follow video and recreate exercises on VS Code up to 59' approximately (up to the section on integers 'int').
+   * **Do before next class.** Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk): follow video and recreate exercises on VS Code up to 59' approximately (up to the section on integers 'int').
     
 
