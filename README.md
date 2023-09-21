@@ -51,4 +51,4 @@ A nice interactive site is W3schools' [Python Tutorial](https://www.w3schools.co
 ## Class 2 (September 22, 2023)
 
 1. [CS50](https://cs50.harvard.edu/python/2022/), Section on "Functions, Variables" (continued)
-2. Try [Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/): "indoor voice", "playback speed", and "making faces" (check [the emoji chart](https://unicode.org/emoji/charts/full-emoji-list.html).
+2. Try [Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/): "indoor voice", "playback speed", and "making faces". For this last one, check [the emoji chart](https://unicode.org/emoji/charts/full-emoji-list.html).
