@@ -7,6 +7,11 @@
   * VS Code; Download from VS code site
   * VS Code Python extension: A Visual Studio Code extension with rich support for the Python language (for all actively supported versions of the language: >=3.7), including features such as IntelliSense (Pylance), linting, debugging, code navigation, code formatting, refactoring, variable explorer, test explorer, and more!
 
+## Python documentation
+
+You can find information on basic concepts and features of the Python language and system at  [The Python Tutorial](https://docs.python.org/3/tutorial/index.html). In particular, you might be interested in the following specific topics discussed in class:
+* [f-strings](https://docs.python.org/3/tutorial/inputoutput.html)
+
 ## Class 1 (September 15, 2023)
 
 1. [CS50](https://cs50.harvard.edu/python/2022/), Section on "Functions, Variables"
