@@ -11,7 +11,8 @@
 The main tutorial for the class is [CS50](https://cs50.harvard.edu/python/2022/).
 
 You can find information on basic concepts and features of the Python language and system at  [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html). In particular, you might be interested in the following specific topics discussed in class:
-* [text in Python](https://docs.python.org/3/tutorial/introduction.html#text);
+* [text](https://docs.python.org/3/tutorial/introduction.html#text);
+* [numbers](https://docs.python.org/3/tutorial/introduction.html#numbers)
 * [f-strings and other formatting options](https://docs.python.org/3/tutorial/inputoutput.html);
 
 A nice interactive site is W3schools' [Python Tutorial](https://www.w3schools.com/python/default.asp) where you can find in particular an easy to use  [Python reference documentation](https://www.w3schools.com/python/python_reference.asp).
