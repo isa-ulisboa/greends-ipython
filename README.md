@@ -14,6 +14,7 @@ You can find information on basic concepts and features of the Python language a
 * [text](https://docs.python.org/3/tutorial/introduction.html#text);
 * [numbers](https://docs.python.org/3/tutorial/introduction.html#numbers)
 * [f-strings and other formatting options](https://docs.python.org/3/tutorial/inputoutput.html);
+* [Lists](https://docs.python.org/3/tutorial/introduction.html#lists)
 
 A nice interactive site is W3schools' [Python Tutorial](https://www.w3schools.com/python/default.asp) where you can find in particular an easy to use  [Python reference documentation](https://www.w3schools.com/python/python_reference.asp).
 
@@ -64,7 +65,7 @@ A nice interactive site is W3schools' [Python Tutorial](https://www.w3schools.co
 ## Class 3 (September 29, 2023)
 
 1. Questionnaire Q1 on the topics of the homework;
-2. Work on [Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/): Enstein. Work on [Problem set 1](https://cs50.harvard.edu/python/2022/psets/1/): The Hitchhiker’s Guide to the Galaxy's Deep Thought, Home Federal Savings Bank, File Extensions.
+2. Work on [Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/): Einstein. Work on [Problem set 1](https://cs50.harvard.edu/python/2022/psets/1/): The Hitchhiker’s Guide to the Galaxy's Deep Thought, Home Federal Savings Bank, File Extensions.
 3. Presentation of topics for next class:  Modulo; Creating Our Own Parity Function; Pythonic; match, Loops; While Loops; For Loops; Improving with User Input; More About Lists
 Length (i.e. up to just before Dictionaries in Lecture 2)
 5. **Do before next class.** Study the remainder of [Lecture 1](https://cs50.harvard.edu/python/2022/notes/1/) starting at "Modulo" and watch video  [CS50 Video Player: Lecture 1](https://video.cs50.io/_b6NgY_pMdw) after 34'.
