@@ -18,6 +18,8 @@ You can find information on basic concepts and features of the Python language a
 
 A nice interactive site is W3schools' [Python Tutorial](https://www.w3schools.com/python/default.asp) where you can find in particular an easy to use  [Python reference documentation](https://www.w3schools.com/python/python_reference.asp).
 
+Another nice and very clear series of videos on Python are available in this Youtube channel: [Python Tutorials by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)
+
 ## Class 1 (September 15, 2023)
 
 1. [CS50](https://cs50.harvard.edu/python/2022/), Section on "Functions, Variables"
