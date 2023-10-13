@@ -88,7 +88,7 @@ In particular, you might be interested in the following specific topics discusse
 
 ## Class 5 (October 13, 2023)
 
-1. Questionnaire Q3 on the topics of the homework;
+1. Questionnaire Q3 on the topics of the homework (if you don't have access to your area in Fenix: [link](Q3_max_18.pdf))
 2. Work on problems from [Problem Set 3](https://cs50.harvard.edu/python/2022/psets/3/).
 7. **Do before next class.** [Lecture 4](https://cs50.harvard.edu/python/2022/notes/4/) and video [CS50 Video Player: Lecture 4](https://video.cs50.io/MztLZWibctI)
 8. **Do before next class.** Try solving problems from [Problem Set 4](https://cs50.harvard.edu/python/2022/psets/4/). Try problem "Guessing Game" (not hard) and "Little Professor" (group assignment).
