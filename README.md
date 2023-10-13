@@ -91,6 +91,6 @@ In particular, you might be interested in the following specific topics discusse
 1. Questionnaire Q3 on the topics of the homework;
 2. Work on problems from [Problem Set 3](https://cs50.harvard.edu/python/2022/psets/3/).
 7. **Do before next class.** [Lecture 4](https://cs50.harvard.edu/python/2022/notes/4/) and video [CS50 Video Player: Lecture 4](https://video.cs50.io/MztLZWibctI)
-8. **Do before next class.** Try solving problems from [Problem Set 4](https://cs50.harvard.edu/python/2022/psets/4/). Try problem "Guessing Game" (not hard) and "Little Professor" (group assigment).
+8. **Do before next class.** Try solving problems from [Problem Set 4](https://cs50.harvard.edu/python/2022/psets/4/). Try problem "Guessing Game" (not hard) and "Little Professor" (group assignment).
    
 **Topics to prepare before next class**: *Libraries, Random, Statistics, Command-Line Arguments, slice, Packages, APIs, Making Your Own Libraries*
