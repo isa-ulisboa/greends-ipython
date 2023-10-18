@@ -30,7 +30,7 @@ You can find information on basic concepts and features of the Python language a
 
 1. List of both simple and more advanced programming exercises that you can run and test online: [programming-23.mooc.fi](https://programming-23.mooc.fi/all-exercises). Sign-in to have access to code editor and testing.
    
-2. Compiled list of [CS50P proposed problems](https://raw.githack.com/isa-ulisboa/greends-ipython/main/problems.html)
+2. Compiled list of [CS50P proposed problems](https://raw.githack.com/isa-ulisboa/greends-ipython/main/problems.html)  (to be completed)
 
 
 ## Class 1 (September 15, 2023)
