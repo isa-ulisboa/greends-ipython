@@ -54,6 +54,8 @@ You can find information on basic concepts and features of the Python language a
    
 2. Compiled list of [CS50P proposed problems](https://raw.githack.com/isa-ulisboa/greends-ipython/main/problems.html)  (to be completed)
 
+### Other links
+1. PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit)
 
 ## Class 1 (September 15, 2023)
 
