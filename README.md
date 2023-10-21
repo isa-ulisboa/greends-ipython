@@ -129,5 +129,14 @@ You can find information on basic concepts and features of the Python language a
    
 **Topics to prepare before next class**: *Libraries, Random, Statistics, Command-Line Arguments, slice, Packages, APIs, Making Your Own Libraries*
 
+## Class 6 (October 20, 2023)
 
-[q4](q4.pdf)
+1. Questionnaire Q4 on the topics of the homework (if you don't have access to your area in Fenix: [link](q4.pdf))
+2. Evaluated group assignment ("Little Professor") in class
+3. Discussed references in Python with examples from Part 5 of [PP.fi](https://programming-23.mooc.fi/) and made experiments with PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit).
+4. **Do before next class.** Some groups still have to improve the previous assignment. All groups should solve Problem P3 (also a group assigment):
+   - [Description of the problem](assignment_P3.pdf)
+   - [Incomplete code](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/distances_incomplete.py)
+   - Groups members should try to collaborate by syncronizing their work through VSCode and GitHub using the Source Control menu in VSCode:
+    * Notes on [how to clone GitHub repository and syncronize it with local folder](Clone_GitHub_repository_and_syncronize_with_local_folder.pdf)
+    * Notes on [how to publish a local folder to GitHub](VSCode_local_folder_to_GitHub.pdf)
