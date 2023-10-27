@@ -47,6 +47,7 @@ You can find information on basic concepts and features of the Python language a
 * [f-strings and other formatting options](https://docs.python.org/3/tutorial/inputoutput.html);
 * [Lists](https://docs.python.org/3/tutorial/introduction.html#lists) and video [Python Tutorial for Beginners 4: Lists, Tuples, and Sets](https://www.youtube.com/watch?v=W8KRzm-HUcc&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=4&t=1223s)
 * [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries), see video [Python Tutorial for Beginners 5: Dictionaries - Working with Key-Value Pairs](https://www.youtube.com/watch?v=daefaLgNkw0&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=5&pp=iAQB)
+* I/O and csv files: [File Objects - Reading and Writing to Files](https://www.youtube.com/watch?v=Uh2ebFW8OYM&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=25); [CSV Module - How to Read, Parse, and Write CSV Files](https://www.youtube.com/watch?v=q5uM4VKywbA&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=28)
 
 ### Problem sets
 
@@ -135,8 +136,19 @@ You can find information on basic concepts and features of the Python language a
 2. Evaluated group assignment ("Little Professor") in class
 3. Discussed references in Python with examples from Part 5 of [PP.fi](https://programming-23.mooc.fi/) and made experiments with PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit).
 4. **Do before next class.** Some groups still have to improve the previous assignment. All groups should solve Problem P3 (also a group assigment):
-   - [Description of the problem](assignment_P3.pdf)
+   - [P3: Problem description](assignment_P3.pdf)
    - [Incomplete code](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/distances_incomplete.py)
    - Groups members should try to collaborate by syncronizing their work through VSCode and GitHub using the Source Control menu in VSCode:
     * Notes on [how to clone GitHub repository and syncronize it with local folder](Clone_GitHub_repository_and_syncronize_with_local_folder.pdf)
     * Notes on [how to publish a local folder to GitHub](VSCode_local_folder_to_GitHub.pdf)
+
+## Class 7 (October 27, 2023)
+
+1. Questionnaire Q5 on recent topics (if you don't have access to your area in Fenix: [link](q5.pdf))
+2. Evaluated group assignment P3 ("Distances") in class
+3. Unit tests with `pytest`: examples 
+4. **Do before next class (November, 11).**
+   * [Lecture 5 on Unit tests](https://cs50.harvard.edu/python/2022/notes/5/) and video [CS50 Video Player: Lecture 5](https://video.cs50.io/tIrcxwLqzjQ)
+   * Complete group assigment, which is mostly about extending P3 and creating unit tests for it. Groups members should collaborate through VSCode and GitHub using the Source Control menu in VSCode. [P4: Problem description](assignment_P4.pdf)
+   * [Lecture 6 on File I/O](https://cs50.harvard.edu/python/2022/notes/6/) and video [CS50 Video Player: Lecture 6](https://video.cs50.io/KD-Yoel6EVQ)
+
