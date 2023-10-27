@@ -144,7 +144,7 @@ You can find information on basic concepts and features of the Python language a
 
 ## Class 7 (October 27, 2023)
 
-1. Questionnaire Q5 on recent topics (if you don't have access to your area in Fenix: [link]
+1. Questionnaire Q5 on recent topics (if you don't have access to your area in Fenix: [link](Q5_max_12.pdf)
 2. Evaluated group assignment P3 ("Distances") in class
 3. Unit tests with `pytest`: examples 
 4. **Do before next class (November, 11).**
