@@ -144,11 +144,11 @@ You can find information on basic concepts and features of the Python language a
 
 ## Class 7 (October 27, 2023)
 
-1. Questionnaire Q5 on recent topics (if you don't have access to your area in Fenix: [link](q5.pdf))
+1. Questionnaire Q5 on recent topics (if you don't have access to your area in Fenix: [link]
 2. Evaluated group assignment P3 ("Distances") in class
 3. Unit tests with `pytest`: examples 
 4. **Do before next class (November, 11).**
    * [Lecture 5 on Unit tests](https://cs50.harvard.edu/python/2022/notes/5/) and video [CS50 Video Player: Lecture 5](https://video.cs50.io/tIrcxwLqzjQ)
-   * Complete group assigment, which is mostly about extending P3 and creating unit tests for it. Groups members should collaborate through VSCode and GitHub using the Source Control menu in VSCode. [P4: Problem description](assignment_P4.pdf)
+   * New group assigment, which is mostly about creating unit tests for code. Groups members should collaborate through VSCode and GitHub using the Source Control menu in VSCode. [P4: Problem description]
    * [Lecture 6 on File I/O](https://cs50.harvard.edu/python/2022/notes/6/) and video [CS50 Video Player: Lecture 6](https://video.cs50.io/KD-Yoel6EVQ)
 
