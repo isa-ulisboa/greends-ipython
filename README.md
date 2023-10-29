@@ -149,6 +149,6 @@ You can find information on basic concepts and features of the Python language a
 3. Unit tests with `pytest`: examples 
 4. **Do before next class (November, 11).**
    * [Lecture 5 on Unit tests](https://cs50.harvard.edu/python/2022/notes/5/) and video [CS50 Video Player: Lecture 5](https://video.cs50.io/tIrcxwLqzjQ)
-   * New group assigment, which is mostly about creating unit tests for code. Groups members should collaborate through VSCode and GitHub using the Source Control menu in VSCode. [P4: Problem description]
+   * Group assignment, which is mostly about creating unit tests for code. Groups members should collaborate through VSCode and GitHub using Source Control menu in VSCode or git command lines. [P4: Problem description](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/assignment_P4.pdf); files: [myfunctions.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myfunctions.py); [myhaversine.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myhaversine.py); [some_distances.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/some_distances.py)
    * [Lecture 6 on File I/O](https://cs50.harvard.edu/python/2022/notes/6/) and video [CS50 Video Player: Lecture 6](https://video.cs50.io/KD-Yoel6EVQ)
 
