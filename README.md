@@ -139,6 +139,7 @@ You can find information on basic concepts and features of the Python language a
    - [P3: Problem description](assignment_P3.pdf)
    - [Incomplete code](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/distances_incomplete.py)
    - Groups members should try to collaborate by syncronizing their work through VSCode and GitHub using the Source Control menu in VSCode:
+    * [Working with GitHub in VS Code (VSCode documentation)](https://code.visualstudio.com/docs/sourcecontrol/github)
     * Notes on [how to clone GitHub repository and syncronize it with local folder](Clone_GitHub_repository_and_syncronize_with_local_folder.pdf)
     * Notes on [how to publish a local folder to GitHub](VSCode_local_folder_to_GitHub.pdf)
 
