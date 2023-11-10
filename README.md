@@ -159,6 +159,5 @@ You can find information on basic concepts and features of the Python language a
 2. Evaluate group assignment P4 on Unit Tests ("Haverside") in class
 3. Pandas: series and dataframes; I/O; first examples
 4. **Do before next class (November, 11).**
-   * [Lecture on introduction to Pandas](https://harvard-iacs.github.io/2021-CS109A/lectures/lecture02/notebook-3/);
-   * Data for the lecture: [avocado.csv](avocado.csv) or [avocado.zip](avocado.zip);
+   * [Pandas documentation/getting started tutorials](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html)
    * Optional: Check videos on Pandas on [Python Tutorials by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU): from [Python Pandas Tutorial (Part 2): DataFrame and Series Basics - Selecting Rows and Columns](https://www.youtube.com/watch?v=zmdjNSmRXF4&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=129) to [Python Pandas Tutorial (Part 6): Add/Remove Rows and Columns From DataFrames] (Python Pandas Tutorial (Part 6): Add/Remove Rows and Columns From DataFrames).
