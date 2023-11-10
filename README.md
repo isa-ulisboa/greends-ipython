@@ -155,7 +155,7 @@ You can find information on basic concepts and features of the Python language a
 
 ## Class 8 (November 10, 2023)
 
-1. Questionnaire Q6 on recent topics (if you don't have access to your area in Fenix: [link](Q6.pdf)
+1. Questionnaire Q6 on recent topics. If you don't have access to your area in Fenix: [link](Q6_max_12.pdf)
 2. Evaluate group assignment P4 on Unit Tests ("Haverside") in class
 3. Pandas: series and dataframes; I/O; first examples
 4. **Do before next class (November, 11).**
