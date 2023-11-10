@@ -146,10 +146,19 @@ You can find information on basic concepts and features of the Python language a
 ## Class 7 (October 27, 2023)
 
 1. Questionnaire Q5 on recent topics (if you don't have access to your area in Fenix: [link](Q5_max_12.pdf)
-2. Evaluated group assignment P3 ("Distances") in class
+2. Evaluate group assignment P3 ("Distances") in class
 3. Unit tests with `pytest`: examples 
 4. **Do before next class (November, 11).**
    * [Lecture 5 on Unit tests](https://cs50.harvard.edu/python/2022/notes/5/) and video [CS50 Video Player: Lecture 5](https://video.cs50.io/tIrcxwLqzjQ)
    * Group assignment, which is mostly about creating unit tests for code. Groups members should collaborate through VSCode and GitHub using Source Control menu in VSCode or git command lines. [P4: Problem description](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/assignment_P4.pdf); files: [myfunctions.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myfunctions.py); [myhaversine.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myhaversine.py); [some_distances.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/some_distances.py)
    * [Lecture 6 on File I/O](https://cs50.harvard.edu/python/2022/notes/6/) and video [CS50 Video Player: Lecture 6](https://video.cs50.io/KD-Yoel6EVQ)
 
+## Class 8 (November 10, 2023)
+
+1. Questionnaire Q6 on recent topics (if you don't have access to your area in Fenix: [link](Q6.pdf)
+2. Evaluate group assignment P4 on Unit Tests ("Haverside") in class
+3. Pandas: series and dataframes; I/O; first examples
+4. **Do before next class (November, 11).**
+   * [Lecture on introduction to Pandas](https://harvard-iacs.github.io/2021-CS109A/lectures/lecture02/notebook-3/);
+   * Data for the lecture [avocado.csv](avocado.csv);
+   * Optional: Check videos on Pandas on [Python Tutorials by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU): from [Python Pandas Tutorial (Part 2): DataFrame and Series Basics - Selecting Rows and Columns](https://www.youtube.com/watch?v=zmdjNSmRXF4&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=129) to [Python Pandas Tutorial (Part 6): Add/Remove Rows and Columns From DataFrames] (Python Pandas Tutorial (Part 6): Add/Remove Rows and Columns From DataFrames).
