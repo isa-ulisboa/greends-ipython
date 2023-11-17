@@ -158,6 +158,17 @@ You can find information on basic concepts and features of the Python language a
 1. Questionnaire Q6 on recent topics. If you don't have access to your area in Fenix: [link](Q6_max_12.pdf)
 2. Evaluate group assignment P4 on Unit Tests ("Haverside") in class
 3. Pandas: series and dataframes; I/O; first examples
-4. **Do before next class (November, 11).**
+4. **Do before next class (November 17).**
    * [Pandas documentation/getting started tutorials](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html) up to section "How to combine data from multiple tables".
    * Optional: Check videos on Pandas on [Python Tutorials by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU): from [Python Pandas Tutorial (Part 2): DataFrame and Series Basics - Selecting Rows and Columns](https://www.youtube.com/watch?v=zmdjNSmRXF4&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=129) to [Python Pandas Tutorial (Part 6): Add/Remove Rows and Columns From DataFrames](https://www.youtube.com/watch?v=HQ6XO9eT-fc).
+
+## Class 9 (November 17, 2023)
+
+1. Questions about Pandas.
+2. Questionnaire Q7 on recent topics. If you don't have access to your area in Fenix: [link](Q7.pdf)
+3. Finish to evaluate group assignment P4 on Unit Tests ("Haverside") in class (remaining groups)
+4. Regular expressions (regex)
+5. **Do before next class (November 24).**
+ - [Lecture 7](https://cs50.harvard.edu/python/2022/notes/7/) and video [CS50 Video Player: Lecture 7](https://video.cs50.io/hy3sd9MOAcc)
+ - Solve problems from [Problem Set 7](https://cs50.harvard.edu/python/2022/psets/7/). In particular, you should solve problems "NUMB3RS" and "Regular, um, Expressions", following the instructions (i.e. solve an test your solution).
+ - Try [https://regex101.com/](https://regex101.com/) to do experiments and understand better how "regex" works.
