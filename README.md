@@ -10,12 +10,12 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 * [Class 1](#class-1-september-15-2023)
 * [Class 2](#class-2-september-22-2023)
 * [Class 3](#class-3-september-29-2023)
-* [Class 4](https://isa-ulisboa.github.io/greends-ipython/#class-4-october-6-2023)
-* [Class 5](https://isa-ulisboa.github.io/greends-ipython/#class-5-october-13-2023)
-* [Class 6](https://isa-ulisboa.github.io/greends-ipython/#class-6-october-20-2023)
-* [Class 7](#class-7-october-27-2023)
-* [Class 8](class-8-november-10-2023)
-* [Class 9](#class-9-november-17-2023)
+* [Class 4](#class-4-october-6-2023)
+* [Class 5](#class-5-october-13-2023)
+* [Class 6](#class-6-october-20-2023)
+* [Class 7](#class-7-october-27-2023): File I/O
+* [Class 8](class-8-november-10-2023): Pandas
+* [Class 9](#class-9-november-17-2023): Regular expressions
 * [Class 10]()
 * 
 
@@ -187,6 +187,17 @@ You can find information on basic concepts and features of the Python language a
 2. Questionnaire Q7 on recent topics. If you don't have access to your area in Fenix: [link](Q7_max_12.pdf)
 3. Finish to evaluate group assignment P4 on Unit Tests ("Haverside") in class (remaining groups)
 4. Regular expressions (regex)
+5. **Do before next class (November 24).**
+ * [Lecture 7](https://cs50.harvard.edu/python/2022/notes/7/) and video [CS50 Video Player: Lecture 7](https://video.cs50.io/hy3sd9MOAcc)
+ * Solve problems from [Problem Set 7](https://cs50.harvard.edu/python/2022/psets/7/). In particular, you should solve problems "NUMB3RS" and "Regular, um, Expressions", following the instructions (i.e. solve and test your solution).
+ * Try [https://regex101.com/](https://regex101.com/) to do experiments and understand better how "regex" works.
+
+## Class 10 (November 17, 2023)
+
+1. Questions about regular expressions and problems  "NUMB3RS" and "Regular, um, Expressions". Indication on how to submit the assignment.
+2. Questionnaire Q8 on recent topics. If you don't have access to your area in Fenix: [link](Q8.pdf)
+3. Presentation of the semester project.
+4. Object-oriented programming: see 
 5. **Do before next class (November 24).**
  * [Lecture 7](https://cs50.harvard.edu/python/2022/notes/7/) and video [CS50 Video Player: Lecture 7](https://video.cs50.io/hy3sd9MOAcc)
  * Solve problems from [Problem Set 7](https://cs50.harvard.edu/python/2022/psets/7/). In particular, you should solve problems "NUMB3RS" and "Regular, um, Expressions", following the instructions (i.e. solve and test your solution).
