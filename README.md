@@ -7,16 +7,16 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 ## Topics:
 
 * [Course contents, documentation and tutorials](#python-documentation-and-tutorials)
-* [Class 1](#class-1-september-15-2023)
-* [Class 2](#class-2-september-22-2023)
-* [Class 3](#class-3-september-29-2023)
-* [Class 4](#class-4-october-6-2023)
-* [Class 5](#class-5-october-13-2023)
-* [Class 6](#class-6-october-20-2023)
+* [Class 1](#class-1-september-15-2023): Install Python and VSCode; first examples; strings
+* [Class 2](#class-2-september-22-2023): Floats; Conditionals; ...
+* [Class 3](#class-3-september-29-2023): Loops; Lists; ...
+* [Class 4](#class-4-october-6-2023): Dictionaries; Functions; ...
+* [Class 5](#class-5-october-13-2023): Libraries; ...
+* [Class 6](#class-6-october-20-2023): Organizing and testing code; Unit tests
 * [Class 7](#class-7-october-27-2023): File I/O
 * [Class 8](class-8-november-10-2023): Pandas
 * [Class 9](#class-9-november-17-2023): Regular expressions
-* [Class 10]()
+* [Class 10](#class-10-november-24-2023): Object-oriented programming
 * 
 
 ## Install Python 3 and Visual Studio Code (VS Code)
