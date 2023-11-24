@@ -192,13 +192,13 @@ You can find information on basic concepts and features of the Python language a
  * Solve problems from [Problem Set 7](https://cs50.harvard.edu/python/2022/psets/7/). In particular, you should solve problems "NUMB3RS" and "Regular, um, Expressions", following the instructions (i.e. solve and test your solution).
  * Try [https://regex101.com/](https://regex101.com/) to do experiments and understand better how "regex" works.
 
-## Class 10 (November 17, 2023)
+## Class 10 (November 24, 2023)
 
 1. Questions about regular expressions and problems  "NUMB3RS" and "Regular, um, Expressions". Indication on how to submit the assignment.
 2. Questionnaire Q8 on recent topics. If you don't have access to your area in Fenix: [link](Q8.pdf)
-3. Presentation of the semester project.
-4. Object-oriented programming: see 
+3. Presentation of the **semester project**.
+4. Object-oriented programming: see script [mage_v1.py](OOP)
 5. **Do before next class (November 24).**
- * [Lecture 7](https://cs50.harvard.edu/python/2022/notes/7/) and video [CS50 Video Player: Lecture 7](https://video.cs50.io/hy3sd9MOAcc)
- * Solve problems from [Problem Set 7](https://cs50.harvard.edu/python/2022/psets/7/). In particular, you should solve problems "NUMB3RS" and "Regular, um, Expressions", following the instructions (i.e. solve and test your solution).
- * Try [https://regex101.com/](https://regex101.com/) to do experiments and understand better how "regex" works.
+ * [Lecture 8](https://cs50.harvard.edu/python/2022/notes/8/) on OOP
+ * Video [CS50 Video Player: Lecture 8](https://video.cs50.io/e4fwY9ZsxPw)
+   
