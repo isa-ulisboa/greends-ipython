@@ -198,7 +198,7 @@ You can find information on basic concepts and features of the Python language a
 2. Questionnaire Q8 on recent topics. If you don't have access to your area in Fenix: [link](Q8.pdf)
 3. Presentation of the **semester project**.
 4. Object-oriented programming: see script [mage_v1.py](OOP/mage_v1.py)
-5. **Do before next class (November 24).**
+5. **Do before next class (December 15).**
  * [Lecture 8](https://cs50.harvard.edu/python/2022/notes/8/) on OOP
  * Video [CS50 Video Player: Lecture 8](https://video.cs50.io/e4fwY9ZsxPw)
    
