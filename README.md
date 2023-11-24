@@ -1,4 +1,23 @@
-# greends-ipython 2023/2024
+# Introduction to Python 2023/2024
+
+Masters in Data Science applied to agricultural and food sciences, environment, and forestry engineering.
+
+Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
+
+## Topics:
+
+* [Course contents, documentation and tutorials](#python-documentation-and-tutorials)
+* [Class 1](#class-1-september-15-2023)
+* [Class 2](#class-2-september-22-2023)
+* [Class 3](#class-3-september-29-2023)
+* [Class 4](https://isa-ulisboa.github.io/greends-ipython/#class-4-october-6-2023)
+* [Class 5](https://isa-ulisboa.github.io/greends-ipython/#class-5-october-13-2023)
+* [Class 6]()
+* [Class 7]()
+* [Class 8]()
+* [Class 9]()
+* [Class 10]()
+* 
 
 ## Install Python 3 and Visual Studio Code (VS Code)
 
