@@ -4,20 +4,26 @@ Masters in Data Science applied to agricultural and food sciences, environment, 
 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
-## Topics:
+## Contents:
+
+<details markdown="block">
+  
+<summary> Classes description</summary>
 
 * Course contents, documentation and tutorials
-* [Class 1](#class-1-september-15-2023): Install Python and VSCode; first examples; strings
-* [Class 2](#class-2-september-22-2023): Floats; Conditionals; ...
-* [Class 3](#class-3-september-29-2023): Loops; Lists; ...
-* [Class 4](#class-4-october-6-2023): Dictionaries; Functions; ...
-* [Class 5](#class-5-october-13-2023): Libraries; ...
-* [Class 6](#class-6-october-20-2023): Organizing and testing code; Unit tests
-* [Class 7](#class-7-october-27-2023): File I/O
-* [Class 8](class-8-november-10-2023): Pandas
-* [Class 9](#class-9-november-17-2023): Regular expressions
-* [Class 10](#class-10-november-24-2023): Object-oriented programming
-* [Class 11](#class-11-december-15-2023): Object-oriented programming; sets, global, args and kwargs
+* [Class 1](#classes): Install Python and VSCode; first examples; strings
+* [Class 2](#classes): Floats; Conditionals; ...
+* [Class 3](#classes): Loops; Lists; ...
+* [Class 4](#classes): Dictionaries; Functions; ...
+* [Class 5](#classes): Libraries; ...
+* [Class 6](#classes): Organizing and testing code; Unit tests
+* [Class 7](#classes): File I/O
+* [Class 8](classes): Pandas
+* [Class 9](#classes): Regular expressions
+* [Class 10](#classes): Object-oriented programming
+* [Class 11](#classes): Object-oriented programming; sets, global, args and kwargs
+
+</details>
 
 ## Install Python 3 and Visual Studio Code (VS Code)
 
