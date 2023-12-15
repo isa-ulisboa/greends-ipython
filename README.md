@@ -4,26 +4,195 @@ Masters in Data Science applied to agricultural and food sciences, environment, 
 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
-## Contents:
+## Class contents:
 
 <details markdown="block">
-  
-<summary> Classes description</summary>
+<summary> Class 1 (September 15, 2023): Install Python and VSCode; first examples; strings</summary>
+ 
+1. [CS50P](https://cs50.harvard.edu/python/2022/weeks/0/), Section on "Functions, Variables"
+   * **Do before next class.** [Shorts: Visual Code for CS50P](https://cs50.harvard.edu/python/2022/shorts/visual_studio_code_for_cs50/)
+    
+2. Some useful keyworks for the command line interface in terminal:
+* `code filename.py` to create a new file 
+* `ls` to list files in folder
+* `cp filename newfilename` to copy a file, e.g. `cp ..\hello.py  farewell.py` (`..` represents parent folder)
+* `mv filename newfilename` to rename or move file, e.g. `my farewell.py goodbye.py` or `mv farewell.py ..` (move one folder up)
+* `rm filename` to delete (remove) file
+* `mkdir foldername` to create new folder
+* `cd foldername` change directory, e.g. `cd ..` 
+* `rmdir foldername` to delete folder
+* `clear` to clear terminal window
 
-* Course contents, documentation and tutorials
-* [Class 1](#classes): Install Python and VSCode; first examples; strings
-* [Class 2](#classes): Floats; Conditionals; ...
-* [Class 3](#classes): Loops; Lists; ...
-* [Class 4](#classes): Dictionaries; Functions; ...
-* [Class 5](#classes): Libraries; ...
-* [Class 6](#classes): Organizing and testing code; Unit tests
-* [Class 7](#classes): File I/O
-* [Class 8](classes): Pandas
-* [Class 9](#classes): Regular expressions
-* [Class 10](#classes): Object-oriented programming
-* [Class 11](#classes): Object-oriented programming; sets, global, args and kwargs
+3. [CS50P](https://cs50.harvard.edu/python/2022/weeks/0/), Section on "Functions, Variables"
+   * Notes: [Lecture 0](https://cs50.harvard.edu/python/2022/notes/0/)
+    Creating Code with Python; 
+    Functions; 
+    Bugs; 
+    Improving Your First Python Program:
+        Variables,
+        Comments,
+        Pseudocode;
+    Further Improving Your First Python Program;
+    Strings and Parameters; 
+        A small problem with quotation marks;
+    Formatting Strings;
+    More on Strings.
+
+   
+   * **Do before next class.** Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk): follow video and recreate exercises on VS Code up to 59' approximately (up to the section on integers 'int').
 
 </details>
+
+<details markdown="block">
+
+ <summary> Class 2 (September 22, 2023): Floats; Conditionals; ...</summary>
+
+1. Questionnaire Q0 (test) on the topics of the previous class;
+2. Work on [Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/): "indoor voice", "playback speed", and "making faces". For this last one, check [the emoji chart](https://unicode.org/emoji/charts/full-emoji-list.html) and follow the instructions: Every emoji has a unique Unicode assigned to it. When using Unicode with Python, replace "+" with "000" from the Unicode. And then prefix the Unicode with "\\". For example, "U+1F605" will be used as "\U0001F605". But there are alternative ways to encode emojis in your Python code: check [this link](https://www.makeuseof.com/how-to-include-emojis-in-your-python-code/)
+4. **Do before next class.** Complete [Lecture 0](https://cs50.harvard.edu/python/2022/notes/0/) and video [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) until the end, on the following topics: Integers or int; Readability Wins; Float Basics; More on Floats; Def; Returning Values
+5. **Do before next class.** Study [Lecture 1](https://cs50.harvard.edu/python/2022/notes/1/) up to "Modulo" and watch video  [CS50 Video Player: Lecture 1](https://video.cs50.io/_b6NgY_pMdw) up to approximately 34' on the topics: Conditionals, if Statements, Control Flow, or, and.
+
+**All topics to prepare before next class**: *Integers or int; Readability Wins; Float Basics; More on Floats; Def; Returning Values; Conditionals, if Statements, Control Flow, or, and, How to organize a program with `main()` and auxiliary functions.*
+
+</details>
+
+<details markdown="block">
+
+ <summary> Class 3 (September 29, 2023): Loops; Lists; ...</summary>
+
+
+1. Questionnaire Q1 on the topics of the homework;
+2. Work on [Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/): Einstein. Work on [Problem set 1](https://cs50.harvard.edu/python/2022/psets/1/): The Hitchhiker’s Guide to the Galaxy's Deep Thought, Home Federal Savings Bank, File Extensions.
+5. **Do before next class.** Study the remainder of [Lecture 1](https://cs50.harvard.edu/python/2022/notes/1/) starting at "Modulo" and watch video  [CS50 Video Player: Lecture 1](https://video.cs50.io/_b6NgY_pMdw) after 34'.
+6. **Do before next class.** Study [Lecture 2](https://cs50.harvard.edu/python/2022/notes/2/) up to "More about lists" and "Length" and watch video  [CS50 Video Player: Lecture 2](https://video.cs50.io/-7xg8pGcP6w) up to approximately 45'.
+7. **Do before next class.** Try solving problems from [Problem Set 2](https://cs50.harvard.edu/python/2022/psets/2/): Camel; Coke Machine; Just setting up my twttr
+
+**Topics to prepare before next class**: *Modulo; Creating Our Own Parity Function; Pythonic; match, Loops; While Loops; For Loops; Improving with User Input; More About Lists; Length*
+
+
+
+</details>
+
+<details markdown="block">
+
+ <summary> Class 4 (October 6, 2023): Dictionaries; Functions; ...</summary>
+
+1. Questionnaire Q2 on the topics of the homework;
+2. Work on problems from [Problem Set 2](https://cs50.harvard.edu/python/2022/psets/2/): Camel; Coke Machine; Just setting up my twttr (P1: submit in Fenix one of those problems to be indicated in class)
+6. **Do before next class.** Study remainder of [Lecture 2](https://cs50.harvard.edu/python/2022/notes/2/)  watch video  [CS50 Video Player: Lecture 2](https://video.cs50.io/-7xg8pGcP6w) starting at Dictionaries (~45').
+7. **Do before next class.** [Lecture 3](https://cs50.harvard.edu/python/2022/notes/3/) and video [CS50 Video Player: Lecture 3](https://video.cs50.io/LW7g1169v7w)
+8. **Do before next class.** Try solving problems from [Problem Set 3](https://cs50.harvard.edu/python/2022/psets/3/). Note: for the "Taqueria" problem: EOFError is the error raised by "CRTL-D" in Mac and "CTRL-Z" in Windows.
+   
+**Topics to prepare before next class**: *Dictionaries, More on code modularity (Mario example), Exceptions, Runtime Errors, try, else, Creating a Function to Get an Integer, pass*
+
+
+</details>
+
+<details markdown="block">
+
+ <summary> Class 5 (October 13, 2023):  Libraries; … </summary>
+
+
+1. Questionnaire Q3 on the topics of the homework (if you don't have access to your area in Fenix: [link](Q3_max_18.pdf))
+2. Work on problems from [Problem Set 3](https://cs50.harvard.edu/python/2022/psets/3/).
+7. **Do before next class.** [Lecture 4](https://cs50.harvard.edu/python/2022/notes/4/) and video [CS50 Video Player: Lecture 4](https://video.cs50.io/MztLZWibctI)
+8. **Do before next class.** Try solving problems from [Problem Set 4](https://cs50.harvard.edu/python/2022/psets/4/). Try problem "Guessing Game" (not hard) and "Little Professor" (group assignment). For the group assigment, the goal is to fill the missing code in [professor_incomplete.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/professor_incomplete.py). The completed code should pass the correctness test in [https://cs50.dev/](https://cs50.dev/).
+   
+**Topics to prepare before next class**: *Libraries, Random, Statistics, Command-Line Arguments, slice, Packages, APIs, Making Your Own Libraries*
+
+
+
+</details>
+
+<details markdown="block">
+
+ <summary>Class 6 (October 20, 2023): Organizing and testing code; Unit tests</summary>
+
+
+1. Questionnaire Q4 on the topics of the homework (if you don't have access to your area in Fenix: [link](q4.pdf))
+2. Evaluated group assignment ("Little Professor") in class
+3. Discussed references in Python with examples from Part 5 of [PP.fi](https://programming-23.mooc.fi/) and made experiments with PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit).
+4. **Do before next class.** Some groups still have to improve the previous assignment. All groups should solve Problem P3 (also a group assigment):
+   - [P3: Problem description](assignment_P3.pdf)
+   - [Incomplete code](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/distances_incomplete.py)
+   - Groups members should try to collaborate by syncronizing their work through VSCode and GitHub using the Source Control menu in VSCode:
+    * [Working with GitHub in VS Code (VSCode documentation)](https://code.visualstudio.com/docs/sourcecontrol/github)
+    * Notes on [how to clone GitHub repository and syncronize it with local folder](Clone_GitHub_repository_and_syncronize_with_local_folder.pdf)
+    * Notes on [how to publish a local folder to GitHub](VSCode_local_folder_to_GitHub.pdf)
+
+
+
+</details>
+
+<details markdown="block">
+
+ <summary>  Class 7 (October 27, 2023):  File I/O</summary>
+
+
+1. Questionnaire Q5 on recent topics (if you don't have access to your area in Fenix: [link](Q5_max_12.pdf)
+2. Evaluate group assignment P3 ("Distances") in class
+3. Unit tests with `pytest`: examples 
+4. **Do before next class (November, 11).**
+   * [Lecture 5 on Unit tests](https://cs50.harvard.edu/python/2022/notes/5/) and video [CS50 Video Player: Lecture 5](https://video.cs50.io/tIrcxwLqzjQ)
+   * Group assignment, which is mostly about creating unit tests for code. Groups members should collaborate through VSCode and GitHub using Source Control menu in VSCode or git command lines. [P4: Problem description](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/assignment_P4.pdf); files: [myfunctions.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myfunctions.py); [myhaversine.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myhaversine.py); [some_distances.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/some_distances.py)
+   * [Lecture 6 on File I/O](https://cs50.harvard.edu/python/2022/notes/6/) and video [CS50 Video Player: Lecture 6](https://video.cs50.io/KD-Yoel6EVQ)
+
+
+</details>
+
+<details markdown="block">
+
+<summary> Class 8 (November 10, 2023): Pandas </summary>
+
+1. Questionnaire Q6 on recent topics. If you don't have access to your area in Fenix: [link](Q6_max_12.pdf)
+2. Evaluate group assignment P4 on Unit Tests ("Haverside") in class
+3. Pandas: series and dataframes; I/O; first examples
+4. **Do before next class (November 17).**
+   * [Pandas documentation/getting started tutorials](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html) up to section "How to combine data from multiple tables".
+   * Optional: Check videos on Pandas on [Python Tutorials by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU): from [Python Pandas Tutorial (Part 2): DataFrame and Series Basics - Selecting Rows and Columns](https://www.youtube.com/watch?v=zmdjNSmRXF4&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=129) to [Python Pandas Tutorial (Part 6): Add/Remove Rows and Columns From DataFrames](https://www.youtube.com/watch?v=HQ6XO9eT-fc).
+
+</details>
+
+<details markdown="block">
+
+<summary> Class 9 (November 17, 2023): Regular expressions </summary>
+
+1. Questions about Pandas.
+2. Questionnaire Q7 on recent topics. If you don't have access to your area in Fenix: [link](Q7_max_12.pdf)
+3. Finish to evaluate group assignment P4 on Unit Tests ("Haverside") in class (remaining groups)
+4. Regular expressions (regex)
+5. **Do before next class (November 24).**
+ * [Lecture 7](https://cs50.harvard.edu/python/2022/notes/7/) and video [CS50 Video Player: Lecture 7](https://video.cs50.io/hy3sd9MOAcc)
+ * Solve problems from [Problem Set 7](https://cs50.harvard.edu/python/2022/psets/7/). In particular, you should solve problems "NUMB3RS" and "Regular, um, Expressions", following the instructions (i.e. solve and test your solution).
+ * Try [https://regex101.com/](https://regex101.com/) to do experiments and understand better how "regex" works.
+
+
+</details>
+
+<details markdown="block">
+
+<summary> Class 10 (November 24, 2023): Object-oriented programming </summary>
+
+1. Questions about regular expressions and problems  "NUMB3RS" and "Regular, um, Expressions". Indication on how to submit the assignment.
+2. Questionnaire Q8 on recent topics. If you don't have access to your area in Fenix: [link](Q8.pdf)
+3. Presentation of the **semester project**.
+4. Object-oriented programming: see script [mage_v1.py](OOP/mage_v1.py)
+5. **Do before next class (December 15).**
+ * [Lecture 8](https://cs50.harvard.edu/python/2022/notes/8/) on OOP
+ * Video [CS50 Video Player: Lecture 8](https://video.cs50.io/e4fwY9ZsxPw)
+
+</details>
+
+<details markdown="block">
+
+<summary> Class 11 (December 15, 2023): Object-oriented programming; sets, global, args and kwargs </summary>
+
+1. Problem *Jar*
+
+</details>
+
+
+
 
 ## Install Python 3 and Visual Studio Code (VS Code)
 
@@ -97,191 +266,4 @@ You can find information on basic concepts and features of the Python language a
 
 ### Other links
 1. PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit)
-
-## Classes
-
-<details markdown="block">
-<summary> Class 1 (September 15, 2023)</summary>
- 
-1. [CS50P](https://cs50.harvard.edu/python/2022/weeks/0/), Section on "Functions, Variables"
-   * **Do before next class.** [Shorts: Visual Code for CS50P](https://cs50.harvard.edu/python/2022/shorts/visual_studio_code_for_cs50/)
-    
-2. Some useful keyworks for the command line interface in terminal:
-* `code filename.py` to create a new file 
-* `ls` to list files in folder
-* `cp filename newfilename` to copy a file, e.g. `cp ..\hello.py  farewell.py` (`..` represents parent folder)
-* `mv filename newfilename` to rename or move file, e.g. `my farewell.py goodbye.py` or `mv farewell.py ..` (move one folder up)
-* `rm filename` to delete (remove) file
-* `mkdir foldername` to create new folder
-* `cd foldername` change directory, e.g. `cd ..` 
-* `rmdir foldername` to delete folder
-* `clear` to clear terminal window
-
-3. [CS50P](https://cs50.harvard.edu/python/2022/weeks/0/), Section on "Functions, Variables"
-   * Notes: [Lecture 0](https://cs50.harvard.edu/python/2022/notes/0/)
-    Creating Code with Python; 
-    Functions; 
-    Bugs; 
-    Improving Your First Python Program:
-        Variables,
-        Comments,
-        Pseudocode;
-    Further Improving Your First Python Program;
-    Strings and Parameters; 
-        A small problem with quotation marks;
-    Formatting Strings;
-    More on Strings.
-
-   
-   * **Do before next class.** Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk): follow video and recreate exercises on VS Code up to 59' approximately (up to the section on integers 'int').
-
-</details>
-
-<details markdown="block">
-
- <summary> Class 2 (September 22, 2023)</summary>
-
-1. Questionnaire Q0 (test) on the topics of the previous class;
-2. Work on [Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/): "indoor voice", "playback speed", and "making faces". For this last one, check [the emoji chart](https://unicode.org/emoji/charts/full-emoji-list.html) and follow the instructions: Every emoji has a unique Unicode assigned to it. When using Unicode with Python, replace "+" with "000" from the Unicode. And then prefix the Unicode with "\\". For example, "U+1F605" will be used as "\U0001F605". But there are alternative ways to encode emojis in your Python code: check [this link](https://www.makeuseof.com/how-to-include-emojis-in-your-python-code/)
-4. **Do before next class.** Complete [Lecture 0](https://cs50.harvard.edu/python/2022/notes/0/) and video [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) until the end, on the following topics: Integers or int; Readability Wins; Float Basics; More on Floats; Def; Returning Values
-5. **Do before next class.** Study [Lecture 1](https://cs50.harvard.edu/python/2022/notes/1/) up to "Modulo" and watch video  [CS50 Video Player: Lecture 1](https://video.cs50.io/_b6NgY_pMdw) up to approximately 34' on the topics: Conditionals, if Statements, Control Flow, or, and.
-
-**All topics to prepare before next class**: *Integers or int; Readability Wins; Float Basics; More on Floats; Def; Returning Values; Conditionals, if Statements, Control Flow, or, and, How to organize a program with `main()` and auxiliary functions.*
-
-</details>
-
-<details markdown="block">
-
- <summary> Class 3 (September 29, 2023)</summary>
-
-
-1. Questionnaire Q1 on the topics of the homework;
-2. Work on [Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/): Einstein. Work on [Problem set 1](https://cs50.harvard.edu/python/2022/psets/1/): The Hitchhiker’s Guide to the Galaxy's Deep Thought, Home Federal Savings Bank, File Extensions.
-5. **Do before next class.** Study the remainder of [Lecture 1](https://cs50.harvard.edu/python/2022/notes/1/) starting at "Modulo" and watch video  [CS50 Video Player: Lecture 1](https://video.cs50.io/_b6NgY_pMdw) after 34'.
-6. **Do before next class.** Study [Lecture 2](https://cs50.harvard.edu/python/2022/notes/2/) up to "More about lists" and "Length" and watch video  [CS50 Video Player: Lecture 2](https://video.cs50.io/-7xg8pGcP6w) up to approximately 45'.
-7. **Do before next class.** Try solving problems from [Problem Set 2](https://cs50.harvard.edu/python/2022/psets/2/): Camel; Coke Machine; Just setting up my twttr
-
-**Topics to prepare before next class**: *Modulo; Creating Our Own Parity Function; Pythonic; match, Loops; While Loops; For Loops; Improving with User Input; More About Lists; Length*
-
-
-
-</details>
-
-<details markdown="block">
-
- <summary> Class 4 (October 6, 2023)</summary>
-
-1. Questionnaire Q2 on the topics of the homework;
-2. Work on problems from [Problem Set 2](https://cs50.harvard.edu/python/2022/psets/2/): Camel; Coke Machine; Just setting up my twttr (P1: submit in Fenix one of those problems to be indicated in class)
-6. **Do before next class.** Study remainder of [Lecture 2](https://cs50.harvard.edu/python/2022/notes/2/)  watch video  [CS50 Video Player: Lecture 2](https://video.cs50.io/-7xg8pGcP6w) starting at Dictionaries (~45').
-7. **Do before next class.** [Lecture 3](https://cs50.harvard.edu/python/2022/notes/3/) and video [CS50 Video Player: Lecture 3](https://video.cs50.io/LW7g1169v7w)
-8. **Do before next class.** Try solving problems from [Problem Set 3](https://cs50.harvard.edu/python/2022/psets/3/). Note: for the "Taqueria" problem: EOFError is the error raised by "CRTL-D" in Mac and "CTRL-Z" in Windows.
-   
-**Topics to prepare before next class**: *Dictionaries, More on code modularity (Mario example), Exceptions, Runtime Errors, try, else, Creating a Function to Get an Integer, pass*
-
-
-</details>
-
-<details markdown="block">
-
- <summary> Class 5 (October 13, 2023) </summary>
-
-
-1. Questionnaire Q3 on the topics of the homework (if you don't have access to your area in Fenix: [link](Q3_max_18.pdf))
-2. Work on problems from [Problem Set 3](https://cs50.harvard.edu/python/2022/psets/3/).
-7. **Do before next class.** [Lecture 4](https://cs50.harvard.edu/python/2022/notes/4/) and video [CS50 Video Player: Lecture 4](https://video.cs50.io/MztLZWibctI)
-8. **Do before next class.** Try solving problems from [Problem Set 4](https://cs50.harvard.edu/python/2022/psets/4/). Try problem "Guessing Game" (not hard) and "Little Professor" (group assignment). For the group assigment, the goal is to fill the missing code in [professor_incomplete.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/professor_incomplete.py). The completed code should pass the correctness test in [https://cs50.dev/](https://cs50.dev/).
-   
-**Topics to prepare before next class**: *Libraries, Random, Statistics, Command-Line Arguments, slice, Packages, APIs, Making Your Own Libraries*
-
-
-
-</details>
-
-<details markdown="block">
-
- <summary>Class 6 (October 20, 2023)</summary>
-
-
-1. Questionnaire Q4 on the topics of the homework (if you don't have access to your area in Fenix: [link](q4.pdf))
-2. Evaluated group assignment ("Little Professor") in class
-3. Discussed references in Python with examples from Part 5 of [PP.fi](https://programming-23.mooc.fi/) and made experiments with PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit).
-4. **Do before next class.** Some groups still have to improve the previous assignment. All groups should solve Problem P3 (also a group assigment):
-   - [P3: Problem description](assignment_P3.pdf)
-   - [Incomplete code](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/distances_incomplete.py)
-   - Groups members should try to collaborate by syncronizing their work through VSCode and GitHub using the Source Control menu in VSCode:
-    * [Working with GitHub in VS Code (VSCode documentation)](https://code.visualstudio.com/docs/sourcecontrol/github)
-    * Notes on [how to clone GitHub repository and syncronize it with local folder](Clone_GitHub_repository_and_syncronize_with_local_folder.pdf)
-    * Notes on [how to publish a local folder to GitHub](VSCode_local_folder_to_GitHub.pdf)
-
-
-
-</details>
-
-<details markdown="block">
-
- <summary>  Class 7 (October 27, 2023)</summary>
-
-
-1. Questionnaire Q5 on recent topics (if you don't have access to your area in Fenix: [link](Q5_max_12.pdf)
-2. Evaluate group assignment P3 ("Distances") in class
-3. Unit tests with `pytest`: examples 
-4. **Do before next class (November, 11).**
-   * [Lecture 5 on Unit tests](https://cs50.harvard.edu/python/2022/notes/5/) and video [CS50 Video Player: Lecture 5](https://video.cs50.io/tIrcxwLqzjQ)
-   * Group assignment, which is mostly about creating unit tests for code. Groups members should collaborate through VSCode and GitHub using Source Control menu in VSCode or git command lines. [P4: Problem description](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/assignment_P4.pdf); files: [myfunctions.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myfunctions.py); [myhaversine.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myhaversine.py); [some_distances.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/some_distances.py)
-   * [Lecture 6 on File I/O](https://cs50.harvard.edu/python/2022/notes/6/) and video [CS50 Video Player: Lecture 6](https://video.cs50.io/KD-Yoel6EVQ)
-
-
-</details>
-
-<details markdown="block">
-
-<summary> Class 8 (November 10, 2023) </summary>
-
-1. Questionnaire Q6 on recent topics. If you don't have access to your area in Fenix: [link](Q6_max_12.pdf)
-2. Evaluate group assignment P4 on Unit Tests ("Haverside") in class
-3. Pandas: series and dataframes; I/O; first examples
-4. **Do before next class (November 17).**
-   * [Pandas documentation/getting started tutorials](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html) up to section "How to combine data from multiple tables".
-   * Optional: Check videos on Pandas on [Python Tutorials by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU): from [Python Pandas Tutorial (Part 2): DataFrame and Series Basics - Selecting Rows and Columns](https://www.youtube.com/watch?v=zmdjNSmRXF4&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=129) to [Python Pandas Tutorial (Part 6): Add/Remove Rows and Columns From DataFrames](https://www.youtube.com/watch?v=HQ6XO9eT-fc).
-
-</details>
-
-<details markdown="block">
-
-<summary> Class 9 (November 17, 2023) </summary>
-
-1. Questions about Pandas.
-2. Questionnaire Q7 on recent topics. If you don't have access to your area in Fenix: [link](Q7_max_12.pdf)
-3. Finish to evaluate group assignment P4 on Unit Tests ("Haverside") in class (remaining groups)
-4. Regular expressions (regex)
-5. **Do before next class (November 24).**
- * [Lecture 7](https://cs50.harvard.edu/python/2022/notes/7/) and video [CS50 Video Player: Lecture 7](https://video.cs50.io/hy3sd9MOAcc)
- * Solve problems from [Problem Set 7](https://cs50.harvard.edu/python/2022/psets/7/). In particular, you should solve problems "NUMB3RS" and "Regular, um, Expressions", following the instructions (i.e. solve and test your solution).
- * Try [https://regex101.com/](https://regex101.com/) to do experiments and understand better how "regex" works.
-
-
-</details>
-
-<details markdown="block">
-
-<summary> Class 10 (November 24, 2023) </summary>
-
-1. Questions about regular expressions and problems  "NUMB3RS" and "Regular, um, Expressions". Indication on how to submit the assignment.
-2. Questionnaire Q8 on recent topics. If you don't have access to your area in Fenix: [link](Q8.pdf)
-3. Presentation of the **semester project**.
-4. Object-oriented programming: see script [mage_v1.py](OOP/mage_v1.py)
-5. **Do before next class (December 15).**
- * [Lecture 8](https://cs50.harvard.edu/python/2022/notes/8/) on OOP
- * Video [CS50 Video Player: Lecture 8](https://video.cs50.io/e4fwY9ZsxPw)
-
-</details>
-
-<details markdown="block">
-
-<summary> Class 11 (December 15, 2023) </summary>
-
-1. Problem *Jar*
-
-</details>
 
