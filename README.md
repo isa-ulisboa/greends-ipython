@@ -6,7 +6,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 ## Topics:
 
-* [Course contents, documentation and tutorials](#python-documentation-and-tutorials)
+* Course contents, documentation and tutorials
 * [Class 1](#class-1-september-15-2023): Install Python and VSCode; first examples; strings
 * [Class 2](#class-2-september-22-2023): Floats; Conditionals; ...
 * [Class 3](#class-3-september-29-2023): Loops; Lists; ...
@@ -17,20 +17,30 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 * [Class 8](class-8-november-10-2023): Pandas
 * [Class 9](#class-9-november-17-2023): Regular expressions
 * [Class 10](#class-10-november-24-2023): Object-oriented programming
-* 
+* [Class 11](#class-11-december-15-2023): Object-oriented programming; sets, global, args and kwargs
 
 ## Install Python 3 and Visual Studio Code (VS Code)
+
+<details markdown="block">
+  
+<summary> Steps to install Python 3 and Visual Studio Code</summary>
 
 [Python in VS Code](https://code.visualstudio.com/docs/python/python-tutorial):
   * Python 3 interpreter; For Windows, download either from python.org or from the Microsoft Store; For macOS install Python using Homebrew; Linux: built-in Python 3 installation
   * VS Code; Download from VS code site
   * VS Code Python extension: A Visual Studio Code extension with rich support for the Python language (for all actively supported versions of the language: >=3.7), including features such as IntelliSense (Pylance), linting, debugging, code navigation, code formatting, refactoring, variable explorer, test explorer, and more!
 
+</details>
+
 ## Python documentation and tutorials
 
 ### CS50P
 The main tutorial for the class is [CS50P](https://cs50.harvard.edu/python/2022/weeks/). The table below compares the contents of that course with another well-known 
 free online Python Programming course at [PP.fi](https://programming-23.mooc.fi/). The **CS50P** course problem sets tend to be difficult, while you can find at **PP.fi** a set of problems with a larger range of difficulty, from very easy to advanced. Both online courses provide a platform for coding and testing the corretness of the solutions. Both courses provide recorded lectures: [CS50P](https://cs50.harvard.edu/python/2022/weeks/) and [PP.fi](https://programming-23.mooc.fi/#lectures).
+
+<details markdown="block">
+  
+<summary> Comparison of CS50P and PP.fi</summary>
 
 | CS50P     | Contents |  PP.fi | Contents |
 | ----------- | ----------- |----------- | ----------- |
@@ -50,13 +60,16 @@ free online Python Programming course at [PP.fi](https://programming-23.mooc.fi/
 | Lecture 9 | set; Global Variables; Constants; Type Hints; Docstrings; argparse; Unpacking; args and kwargs; map; List Comprehensions; filter; Dictionary Comprehensions; enumerate; Generators and Iterators | Part 11 |  List comprehensions; More comprehensions; Recursion; More recursion examples |
 | | | Part 12 | Functions as arguments; Generators; Functional programming; Regular expressions|
 
-
+</details>
 
 
 ### Documentation
 You can find information on basic concepts and features of the Python language and system at  [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html). 
 
-### Tutorials
+### Other tutorials
+
+<details markdown="block">
+<summary> w3schools, etc </summary>
 
 1. A nice interactive site is W3schools' [Python Tutorial](https://www.w3schools.com/python/default.asp) where you can find in particular an easy to use  [Python reference documentation](https://www.w3schools.com/python/python_reference.asp).
 
@@ -68,6 +81,8 @@ You can find information on basic concepts and features of the Python language a
 * [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries), see video [Python Tutorial for Beginners 5: Dictionaries - Working with Key-Value Pairs](https://www.youtube.com/watch?v=daefaLgNkw0&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=5&pp=iAQB)
 * I/O and csv files: [File Objects - Reading and Writing to Files](https://www.youtube.com/watch?v=Uh2ebFW8OYM&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=25); [CSV Module - How to Read, Parse, and Write CSV Files](https://www.youtube.com/watch?v=q5uM4VKywbA&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=28)
 
+</details>
+
 ### Problem sets
 
 1. List of both simple and more advanced programming exercises that you can run and test online: [programming-23.mooc.fi](https://programming-23.mooc.fi/all-exercises). Sign-in to have access to code editor and testing.
@@ -77,8 +92,11 @@ You can find information on basic concepts and features of the Python language a
 ### Other links
 1. PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit)
 
-## Class 1 (September 15, 2023)
+## Classes
 
+<details markdown="block">
+<summary> Class 1 (September 15, 2023)</summary>
+ 
 1. [CS50P](https://cs50.harvard.edu/python/2022/weeks/0/), Section on "Functions, Variables"
    * **Do before next class.** [Shorts: Visual Code for CS50P](https://cs50.harvard.edu/python/2022/shorts/visual_studio_code_for_cs50/)
     
@@ -110,8 +128,12 @@ You can find information on basic concepts and features of the Python language a
 
    
    * **Do before next class.** Video on [CS50 Video Player](https://video.cs50.io/JP7ITIXGpHk) or [YouTube](https://youtu.be/JP7ITIXGpHk): follow video and recreate exercises on VS Code up to 59' approximately (up to the section on integers 'int').
-    
-## Class 2 (September 22, 2023)
+
+</details>
+
+<details markdown="block">
+
+ <summary> Class 2 (September 22, 2023)</summary>
 
 1. Questionnaire Q0 (test) on the topics of the previous class;
 2. Work on [Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/): "indoor voice", "playback speed", and "making faces". For this last one, check [the emoji chart](https://unicode.org/emoji/charts/full-emoji-list.html) and follow the instructions: Every emoji has a unique Unicode assigned to it. When using Unicode with Python, replace "+" with "000" from the Unicode. And then prefix the Unicode with "\\". For example, "U+1F605" will be used as "\U0001F605". But there are alternative ways to encode emojis in your Python code: check [this link](https://www.makeuseof.com/how-to-include-emojis-in-your-python-code/)
@@ -120,7 +142,12 @@ You can find information on basic concepts and features of the Python language a
 
 **All topics to prepare before next class**: *Integers or int; Readability Wins; Float Basics; More on Floats; Def; Returning Values; Conditionals, if Statements, Control Flow, or, and, How to organize a program with `main()` and auxiliary functions.*
 
-## Class 3 (September 29, 2023)
+</details>
+
+<details markdown="block">
+
+ <summary> Class 3 (September 29, 2023)</summary>
+
 
 1. Questionnaire Q1 on the topics of the homework;
 2. Work on [Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/): Einstein. Work on [Problem set 1](https://cs50.harvard.edu/python/2022/psets/1/): The Hitchhiker’s Guide to the Galaxy's Deep Thought, Home Federal Savings Bank, File Extensions.
@@ -130,7 +157,13 @@ You can find information on basic concepts and features of the Python language a
 
 **Topics to prepare before next class**: *Modulo; Creating Our Own Parity Function; Pythonic; match, Loops; While Loops; For Loops; Improving with User Input; More About Lists; Length*
 
-## Class 4 (October 6, 2023)
+
+
+</details>
+
+<details markdown="block">
+
+ <summary> Class 4 (October 6, 2023)</summary>
 
 1. Questionnaire Q2 on the topics of the homework;
 2. Work on problems from [Problem Set 2](https://cs50.harvard.edu/python/2022/psets/2/): Camel; Coke Machine; Just setting up my twttr (P1: submit in Fenix one of those problems to be indicated in class)
@@ -140,7 +173,13 @@ You can find information on basic concepts and features of the Python language a
    
 **Topics to prepare before next class**: *Dictionaries, More on code modularity (Mario example), Exceptions, Runtime Errors, try, else, Creating a Function to Get an Integer, pass*
 
-## Class 5 (October 13, 2023)
+
+</details>
+
+<details markdown="block">
+
+ <summary> Class 5 (October 13, 2023) </summary>
+
 
 1. Questionnaire Q3 on the topics of the homework (if you don't have access to your area in Fenix: [link](Q3_max_18.pdf))
 2. Work on problems from [Problem Set 3](https://cs50.harvard.edu/python/2022/psets/3/).
@@ -149,7 +188,14 @@ You can find information on basic concepts and features of the Python language a
    
 **Topics to prepare before next class**: *Libraries, Random, Statistics, Command-Line Arguments, slice, Packages, APIs, Making Your Own Libraries*
 
-## Class 6 (October 20, 2023)
+
+
+</details>
+
+<details markdown="block">
+
+ <summary>Class 6 (October 20, 2023)</summary>
+
 
 1. Questionnaire Q4 on the topics of the homework (if you don't have access to your area in Fenix: [link](q4.pdf))
 2. Evaluated group assignment ("Little Professor") in class
@@ -162,7 +208,14 @@ You can find information on basic concepts and features of the Python language a
     * Notes on [how to clone GitHub repository and syncronize it with local folder](Clone_GitHub_repository_and_syncronize_with_local_folder.pdf)
     * Notes on [how to publish a local folder to GitHub](VSCode_local_folder_to_GitHub.pdf)
 
-## Class 7 (October 27, 2023)
+
+
+</details>
+
+<details markdown="block">
+
+ <summary>  Class 7 (October 27, 2023)</summary>
+
 
 1. Questionnaire Q5 on recent topics (if you don't have access to your area in Fenix: [link](Q5_max_12.pdf)
 2. Evaluate group assignment P3 ("Distances") in class
@@ -172,7 +225,12 @@ You can find information on basic concepts and features of the Python language a
    * Group assignment, which is mostly about creating unit tests for code. Groups members should collaborate through VSCode and GitHub using Source Control menu in VSCode or git command lines. [P4: Problem description](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/assignment_P4.pdf); files: [myfunctions.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myfunctions.py); [myhaversine.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myhaversine.py); [some_distances.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/some_distances.py)
    * [Lecture 6 on File I/O](https://cs50.harvard.edu/python/2022/notes/6/) and video [CS50 Video Player: Lecture 6](https://video.cs50.io/KD-Yoel6EVQ)
 
-## Class 8 (November 10, 2023)
+
+</details>
+
+<details markdown="block">
+
+<summary> Class 8 (November 10, 2023) </summary>
 
 1. Questionnaire Q6 on recent topics. If you don't have access to your area in Fenix: [link](Q6_max_12.pdf)
 2. Evaluate group assignment P4 on Unit Tests ("Haverside") in class
@@ -181,7 +239,11 @@ You can find information on basic concepts and features of the Python language a
    * [Pandas documentation/getting started tutorials](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html) up to section "How to combine data from multiple tables".
    * Optional: Check videos on Pandas on [Python Tutorials by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU): from [Python Pandas Tutorial (Part 2): DataFrame and Series Basics - Selecting Rows and Columns](https://www.youtube.com/watch?v=zmdjNSmRXF4&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=129) to [Python Pandas Tutorial (Part 6): Add/Remove Rows and Columns From DataFrames](https://www.youtube.com/watch?v=HQ6XO9eT-fc).
 
-## Class 9 (November 17, 2023)
+</details>
+
+<details markdown="block">
+
+<summary> Class 9 (November 17, 2023) </summary>
 
 1. Questions about Pandas.
 2. Questionnaire Q7 on recent topics. If you don't have access to your area in Fenix: [link](Q7_max_12.pdf)
@@ -192,7 +254,12 @@ You can find information on basic concepts and features of the Python language a
  * Solve problems from [Problem Set 7](https://cs50.harvard.edu/python/2022/psets/7/). In particular, you should solve problems "NUMB3RS" and "Regular, um, Expressions", following the instructions (i.e. solve and test your solution).
  * Try [https://regex101.com/](https://regex101.com/) to do experiments and understand better how "regex" works.
 
-## Class 10 (November 24, 2023)
+
+</details>
+
+<details markdown="block">
+
+<summary> Class 10 (November 24, 2023) </summary>
 
 1. Questions about regular expressions and problems  "NUMB3RS" and "Regular, um, Expressions". Indication on how to submit the assignment.
 2. Questionnaire Q8 on recent topics. If you don't have access to your area in Fenix: [link](Q8.pdf)
@@ -201,4 +268,14 @@ You can find information on basic concepts and features of the Python language a
 5. **Do before next class (December 15).**
  * [Lecture 8](https://cs50.harvard.edu/python/2022/notes/8/) on OOP
  * Video [CS50 Video Player: Lecture 8](https://video.cs50.io/e4fwY9ZsxPw)
-   
+
+</details>
+
+<details markdown="block">
+
+<summary> Class 11 (December 15, 2023) </summary>
+
+1. Problem *Jar*
+
+</details>
+
