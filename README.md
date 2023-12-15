@@ -187,7 +187,12 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 <summary> Class 11 (December 15, 2023): Object-oriented programming; sets, global, args and kwargs </summary>
 
-1. Problem *Jar*
+1. Solve [Cookie jar problem ](https://cs50.harvard.edu/python/2022/psets/8/jar/) and submit code in Fenix (P6)
+2. Questionnaire Q9 on object-oriented programming; 
+4. Presentation of some [additional Python topics](https://cs50.harvard.edu/python/2022/weeks/9/) with examples
+5. **Do before next class (December 22).**
+ * [Lecture 9](https://cs50.harvard.edu/python/2022/notes/9/) 
+ * Video [CS50 Video Player: Lecture 9](https://video.cs50.io/6pgodt1mezg)
 
 </details>
 
