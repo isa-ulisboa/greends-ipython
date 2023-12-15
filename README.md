@@ -185,7 +185,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 <details markdown="block">
 
-<summary> Class 11 (December 15, 2023): Object-oriented programming; sets, global, args and kwargs </summary>
+<summary> Class 11 (December 15, 2023): Object-oriented programming; sets, global, unpacking, args and kwargs </summary>
 
 1. Solve [Cookie jar problem ](https://cs50.harvard.edu/python/2022/psets/8/jar/) and submit code in Fenix (P6)
 2. Questionnaire Q9 on object-oriented programming; 
@@ -195,9 +195,6 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  * Video [CS50 Video Player: Lecture 9](https://video.cs50.io/6pgodt1mezg)
 
 </details>
-
-
-
 
 ## Install Python 3 and Visual Studio Code (VS Code)
 
