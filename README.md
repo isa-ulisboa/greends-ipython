@@ -191,7 +191,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 2. Questionnaire Q9 on object-oriented programming; 
 4. Presentation of some [additional Python topics](https://cs50.harvard.edu/python/2022/weeks/9/) with examples
 5. **Do before next class (December 22).**
- * [Lecture 9](https://cs50.harvard.edu/python/2022/notes/9/) 
+ * [Lecture 9](https://cs50.harvard.edu/python/2022/notes/9/); in particular, explore the following topics: sets, global variables, constants, unpacking, args (*) and kwargs (**), map, list comprehensions, filter, dictionary comprehensions.
  * Video [CS50 Video Player: Lecture 9](https://video.cs50.io/6pgodt1mezg)
 
 </details>
