@@ -200,7 +200,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 <details markdown="block">
 
-<summary> Class 12 (December 2, 2023): Args and kwargs, list comprehension, dictionary comprehension </summary>
+<summary> Class 12 (December 22, 2023): Args and kwargs, list comprehension, dictionary comprehension </summary>
  
 1. Discussion of assigments P5 (*numb3rs* and *um*)
 2. Discussion of guidelines for final project
