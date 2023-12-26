@@ -197,6 +197,18 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 </details>
 
+
+<details markdown="block">
+
+<summary> Class 12 (December 2, 2023): Args and kwargs, list comprehension, dictionary comprehension </summary>
+ 
+1. Discussion of assigments P5 (*numb3rs* and *um*)
+2. Discussion of guidelines for final project
+3. Presentation of some topics from [Lecture 9](https://cs50.harvard.edu/python/2022/notes/9/):  args (*) and kwargs (**), list comprehensions, lambda functions, map, filter, dictionary comprehensions.
+4. Observations about using vectorization to speed-up computations.
+</details>
+
+
 ## Install Python 3 and Visual Studio Code (VS Code)
 
 <details markdown="block">
