@@ -194,6 +194,8 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  * [Lecture 9](https://cs50.harvard.edu/python/2022/notes/9/); in particular, explore the following topics: sets, global variables, constants, unpacking, args (*) and kwargs (**), map, list comprehensions, filter, dictionary comprehensions.
  * Video [CS50 Video Player: Lecture 9](https://video.cs50.io/6pgodt1mezg)
  * Sugestion: Video [Python Tutorial: Comprehensions - How they work and why you should be using them](https://www.youtube.com/watch?v=3dt4OGnU5sM)
+6. Example of use of `*args`and `**kwargs`: [args.py](ETC/args.py)
+   
 
 </details>
 
