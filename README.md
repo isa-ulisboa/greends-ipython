@@ -10,7 +10,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 <summary> Class 1 (September 15, 2023): Install Python and VSCode; first examples; strings</summary>
  
 1. [CS50P](https://cs50.harvard.edu/python/2022/weeks/0/), Section on "Functions, Variables"
-   * **Do before next class.** [Shorts: Visual Code for CS50P](https://cs50.harvard.edu/python/2022/shorts/visual_studio_code_for_cs50/)
+   * **Do before next class.** [Visual Code for CS50P](https://cs50.harvard.edu/python/2022/shorts/visual_studio_code_for_cs50/)
     
 2. Some useful keyworks for the command line interface in terminal:
 * `code filename.py` to create a new file 
@@ -96,7 +96,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 1. Questionnaire Q3 on the topics of the homework 
 2. Work on problems from [Problem Set 3](https://cs50.harvard.edu/python/2022/psets/3/).
 7. **Do before next class.** [Lecture 4](https://cs50.harvard.edu/python/2022/notes/4/) and video [CS50 Video Player: Lecture 4](https://video.cs50.io/MztLZWibctI)
-8. **Do before next class.** Try solving problems from [Problem Set 4](https://cs50.harvard.edu/python/2022/psets/4/). Try problem "Guessing Game" (not hard) and "Little Professor" (group assignment). For the group assigment, the goal is to fill the missing code in [professor_incomplete.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/professor_incomplete.py). The completed code should pass the correctness test in [https://cs50.dev/](https://cs50.dev/).
+8. **Do before next class.** Try solving problems from [Problem Set 4](https://cs50.harvard.edu/python/2022/psets/4/). Try problem "Guessing Game" (not hard) and "Little Professor" (group assignment). For the group assigment, the goal is to fill the missing code in [professor_incomplete.py](assignments/professor_incomplete.py). The completed code should pass the correctness test in [https://cs50.dev/](https://cs50.dev/).
    
 **Topics to prepare before next class**: *Libraries, Random, Statistics, Command-Line Arguments, slice, Packages, APIs, Making Your Own Libraries*
 
@@ -208,7 +208,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 2. Discussion of guidelines for final project
 3. Presentation of some topics from [Lecture 9](https://cs50.harvard.edu/python/2022/notes/9/):  args (*) and kwargs (**), list comprehensions, lambda functions, map, filter, dictionary comprehensions.
 
-   Example: distinct possible ways of creating a list with all the cubes of even numbers up to *N*. In the last cases, `map` applies a given function to each element of a list. Likewise, `filter` applies a boolean function to filter elements of a list. Both function can be executed in parallel over the elements of the list since the 
+   Example: distinct possible ways of creating a list with all the cubes of even numbers up to *N*. In the last cases, `map` applies a given function to each element of a list. Likewise, `filter` applies a boolean function to filter elements of a list. Both function can be executed in parallel over the elements of the list since each output is independent of the outputs for the remainder elements of the list.
    * With list comprehension:
      ```
      def cube(x):
@@ -229,9 +229,13 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
      even_numbers=list(filter(lambda x: x%2==0, numbers))
      cubes=list(map(lambda x: x*x*x,even_numbers))
      ```
+   * The most compact way of solving the problem involves `lambda` and list comprehension. In the example below, if one would just write `lambda x: x*x*x` instead pf `(lambda x: x*x*x)(x)` the output list would be a list of lambda functions. 
+     ```
+     L=[(lambda x: x*x*x)(x) for x in range(N) if x%2==0]
+     ``` 
 5. Observations about using vectorization to speed-up computations.
 
-   A conditional can be replaced by arithmetic and logical operations. For example, let `L=[x/5 for x in range(-10,10)]` be a list of numbers between -2 and 2, and say we want to apply the stepwise linear sigmoid function to the elements of the list. One could define *sigma* as below and then apply it to `L` with `map`.
+   A conditional can be replaced by arithmetic and logical operations. For example, let `L=[x/5 for x in range(-10,10)]` be a list of equally spaced numbers between -2 and 2, and say we want to apply the stepwise linear sigmoid function to the elements of the list. One could define *sigma* as below and then apply it to `L` with `map`.
    ```
    def sigma(x):
        if x>1:
@@ -242,12 +246,20 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
            return x
    list(map(sigma,L))
    ```
-   However, instead of using the conditional `if` once can define *sigma* in a simpler way with logical and arithmetic operations. Note that we don't need to define explicitly *sigma*: it could be encapsulated in a `lambda` function `lambda x: (x>=1)*1+(-1<x<1)*x+(x<=-1)*-1` as the first argument of `map`.
+   However, instead of using the conditional `if` once can define *sigma* in a simpler way with logical and arithmetic operations. 
    ```
    def sigma(x):
        return (x>=1)*1+(-1<x<1)*x+(x<=-1)*-1
    list(map(sigma,L))
    ```
+   Note that we don't need to define explicitly *sigma*: it could be encapsulated in a `lambda` function `lambda x: (x>=1)*1+(-1<x<1)*x+(x<=-1)*-1` as the first argument of `map`. One advantage of using arithmetic and logical operations is that computations can then be easily vectorized, which allows to speed them up, since the processing time for a pair of vectors is similar to the processing time for a pair of numbers.
+
+   Similarly to *list comprehension*, Python provides *dictionary comprehension* which allows to create dictionaries. The example below uses `ord`which is a function that returns the *ascii* index of a character, to create a dictionary of vowels, where the key is the vowel in uppercase and the value is the rank of the letter starting at 0 for *a*.
+   ```
+   {x.upper(): ord(x.lower())-97 for x in 'aeiou'} # returns {'A': 0, 'E': 4, 'I': 8, 'O': 14, 'U': 20}
+   ```
+
+   
 </details>
 
 
