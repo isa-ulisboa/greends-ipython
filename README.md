@@ -142,8 +142,8 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 <summary> Class 8 (November 10, 2023): Pandas </summary>
 
 1. Questionnaire Q6 on recent topics. 
-2. Evaluate group assignment P4 on Unit Tests ("Haverside") in class
-3. Pandas: series and dataframes; I/O; first examples
+2. Evaluate group assignment on Unit Tests in class (P4 "Haversine").
+3. Pandas: series and dataframes; I/O; first examples.
 4. **Do before next class (November 17).**
    * [Pandas documentation/getting started tutorials](https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html) up to section "How to combine data from multiple tables".
    * Optional: Check videos on Pandas on [Python Tutorials by Corey Schafer](https://www.youtube.com/playlist?list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU): from [Python Pandas Tutorial (Part 2): DataFrame and Series Basics - Selecting Rows and Columns](https://www.youtube.com/watch?v=zmdjNSmRXF4&list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&index=129) to [Python Pandas Tutorial (Part 6): Add/Remove Rows and Columns From DataFrames](https://www.youtube.com/watch?v=HQ6XO9eT-fc).
@@ -173,7 +173,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 1. Questions about regular expressions and problems  "NUMB3RS" and "Regular, um, Expressions". Indication on how to submit the assignment.
 2. Questionnaire Q8 on recent topics. 
 3. Presentation of the **semester project**.
-4. Object-oriented programming: see script [mage_v1.py](OOP/mage_v1.py)
+4. Object-oriented programming: see script [mage_v1.py](https://github.com/isa-ulisboa/greends-ipython/blob/main/OOP/mage_v1.py)
 5. **Do before next class (December 15).**
  * [Lecture 8](https://cs50.harvard.edu/python/2022/notes/8/) on OOP
  * Video [CS50 Video Player: Lecture 8](https://video.cs50.io/e4fwY9ZsxPw)
@@ -191,7 +191,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  * [Lecture 9](https://cs50.harvard.edu/python/2022/notes/9/); in particular, explore the following topics: sets, global variables, constants, unpacking, args (*) and kwargs (**), map, list comprehensions, filter, dictionary comprehensions.
  * Video [CS50 Video Player: Lecture 9](https://video.cs50.io/6pgodt1mezg)
  * Sugestion: Video [Python Tutorial: Comprehensions - How they work and why you should be using them](https://www.youtube.com/watch?v=3dt4OGnU5sM)
-6. Example of use of `*args`and `**kwargs`: [args.py](ETC/args.py)
+6. Example of use of `*args`and `**kwargs`. Check examples scripts in the [ETC folder](https://github.com/isa-ulisboa/greends-ipython/tree/main/ETC).
    
 
 </details>
@@ -203,7 +203,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  
 1. Discussion of assigments P5 (*numb3rs* and *um*)
 2. Discussion of guidelines for final project
-3. Presentation of some topics from [Lecture 9](https://cs50.harvard.edu/python/2022/notes/9/):  args (*) and kwargs (**), list comprehensions, lambda functions, map, filter, dictionary comprehensions.
+3. Presentation of some topics from [Lecture 9](https://cs50.harvard.edu/python/2022/notes/9/):  args (*) and kwargs (**), list comprehensions, lambda functions, map, filter, dictionary comprehensions. Check examples scripts in the [ETC folder](https://github.com/isa-ulisboa/greends-ipython/tree/main/ETC).
 
    Example: distinct possible ways of creating a list with all the cubes of even numbers up to *N*. In the last cases, `map` applies a given function to each element of a list. Likewise, `filter` applies a boolean function to filter elements of a list. Both function can be executed in parallel over the elements of the list since each output is independent of the outputs for the remainder elements of the list.
    * With list comprehension:
