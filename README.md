@@ -202,12 +202,52 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 <details markdown="block">
 
-<summary> Class 12 (December 22, 2023): Args and kwargs, list comprehension, dictionary comprehension </summary>
+<summary> Class 12 (December 22, 2023): Args and kwargs, list comprehension, dictionary comprehension, lambda, map, filter </summary>
  
 1. Discussion of assigments P5 (*numb3rs* and *um*)
 2. Discussion of guidelines for final project
 3. Presentation of some topics from [Lecture 9](https://cs50.harvard.edu/python/2022/notes/9/):  args (*) and kwargs (**), list comprehensions, lambda functions, map, filter, dictionary comprehensions.
-4. Observations about using vectorization to speed-up computations.
+
+   Example: distinct possible ways of creating a list with all the cubes of even numbers up to *N*. In the last cases, `map` applies a given function to each element of a list. Likewise, `filter` applies a boolean function to filter elements of a list. Both function can be executed in parallel over the elements of the list since the 
+   * With list comprehension:
+     ```
+     def cube(x):
+         return x*x*x
+     L=[cube(x) for x in range(N) if x%2==0]
+     ```
+   * With `filter` to select even numbers and `map`to compute cubes:
+     ```
+     def even(x):
+         return x%2==0
+     numbers=list(range(N))
+     even_numbers=list(filter(even, numbers))
+     cubes=list(map(cube,even_numbers))
+     ```
+   * Also with `filter` and `map` but defining implicitly the *cube* and *even* functions with `lambda` instead of `def`: 
+     ```
+     numbers=list(range(N))
+     even_numbers=list(filter(lambda x: x%2==0, numbers))
+     cubes=list(map(lambda x: x*x*x,even_numbers))
+     ```
+5. Observations about using vectorization to speed-up computations.
+
+   A conditional can be replaced by arithmetic and logical operations. For example, let `L=[x/5 for x in range(-10,10)]` be a list of numbers between -2 and 2, and say we want to apply the stepwise linear sigmoid function to the elements of the list. One could define *sigma* as below and then apply it to `L` with `map`.
+   ```
+   def sigma(x):
+       if x>1:
+           return 1
+       elif x<-1:
+           return -1
+       else:
+           return x
+   list(map(sigma,L))
+   ```
+   However, instead of using the conditional `if` once can define *sigma* in a simpler way with logical and arithmetic operations. Note that we don't need to define explicitly *sigma*: it could be encapsulated in a `lambda` function `lambda x: (x>=1)*1+(-1<x<1)*x+(x<=-1)*-1` as the first argument of `map`.
+   ```
+   def sigma(x):
+       return (x>=1)*1+(-1<x<1)*x+(x<=-1)*-1
+   list(map(sigma,L))
+   ```
 </details>
 
 
