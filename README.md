@@ -113,8 +113,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 2. Evaluated group assignment ("Little Professor") in class
 3. Discussed references in Python with examples from Part 5 of [PP.fi](https://programming-23.mooc.fi/) and made experiments with PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit).
 4. **Do before next class.** Some groups still have to improve the previous assignment. All groups should solve Problem P3 (also a group assigment):
-   - [P3: distances problem description](https://github.com/isa-ulisboa/greends-ipython/blob/main/assignments/P3_distances.pdf)
-   - [Incomplete code](https://github.com/isa-ulisboa/greends-ipython/blob/main/assignments/P3_distances_incomplete.py)
+   - [P3_distances description and file](https://github.com/isa-ulisboa/greends-ipython/tree/main/assignments/P3_distances)
    - Groups members should try to collaborate by syncronizing their work through VSCode and GitHub using the Source Control menu in VSCode:
     * [Working with GitHub in VS Code (VSCode documentation)](https://code.visualstudio.com/docs/sourcecontrol/github)
     * Notes on [how to clone GitHub repository and syncronize it with local folder](https://github.com/isa-ulisboa/greends-ipython/blob/main/github_vscode/Clone_GitHub_repository_and_syncronize_with_local_folder.pdf)
