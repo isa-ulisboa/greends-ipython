@@ -113,14 +113,12 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 2. Evaluated group assignment ("Little Professor") in class
 3. Discussed references in Python with examples from Part 5 of [PP.fi](https://programming-23.mooc.fi/) and made experiments with PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit).
 4. **Do before next class.** Some groups still have to improve the previous assignment. All groups should solve Problem P3 (also a group assigment):
-   - [P3: Problem description](assignment_P3.pdf)
-   - [Incomplete code](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/distances_incomplete.py)
+   - [P3: distances problem description](https://github.com/isa-ulisboa/greends-ipython/blob/main/assignments/P3_distances.pdf)
+   - [Incomplete code](https://github.com/isa-ulisboa/greends-ipython/blob/main/assignments/P3_distances_incomplete.py)
    - Groups members should try to collaborate by syncronizing their work through VSCode and GitHub using the Source Control menu in VSCode:
     * [Working with GitHub in VS Code (VSCode documentation)](https://code.visualstudio.com/docs/sourcecontrol/github)
-    * Notes on [how to clone GitHub repository and syncronize it with local folder](Clone_GitHub_repository_and_syncronize_with_local_folder.pdf)
-    * Notes on [how to publish a local folder to GitHub](VSCode_local_folder_to_GitHub.pdf)
-
-
+    * Notes on [how to clone GitHub repository and syncronize it with local folder](https://github.com/isa-ulisboa/greends-ipython/blob/main/github_vscode/Clone_GitHub_repository_and_syncronize_with_local_folder.pdf)
+    * Notes on [how to publish a local folder to GitHub](https://github.com/isa-ulisboa/greends-ipython/blob/main/github_vscode/VSCode_local_folder_to_GitHub.pdf)
 
 </details>
 
@@ -134,9 +132,8 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 3. Unit tests with `pytest`: examples 
 4. **Do before next class (November, 11).**
    * [Lecture 5 on Unit tests](https://cs50.harvard.edu/python/2022/notes/5/) and video [CS50 Video Player: Lecture 5](https://video.cs50.io/tIrcxwLqzjQ)
-   * Group assignment, which is mostly about creating unit tests for code. Groups members should collaborate through VSCode and GitHub using Source Control menu in VSCode or git command lines. [P4: Problem description](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/assignment_P4.pdf); files: [myfunctions.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myfunctions.py); [myhaversine.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/myhaversine.py); [some_distances.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/some_distances.py)
+   * Group assignment, which is mostly about creating unit tests for code. Groups members should collaborate through VSCode and GitHub using Source Control menu in VSCode or git command lines. The problem description and the necessary files are available at [P4_haversine](https://github.com/isa-ulisboa/greends-ipython/tree/main/assignments/P4_haversine).
    * [Lecture 6 on File I/O](https://cs50.harvard.edu/python/2022/notes/6/) and video [CS50 Video Player: Lecture 6](https://video.cs50.io/KD-Yoel6EVQ)
-
 
 </details>
 
