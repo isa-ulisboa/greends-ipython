@@ -93,7 +93,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  <summary> Class 5 (October 13, 2023):  Libraries; … </summary>
 
 
-1. Questionnaire Q3 on the topics of the homework (if you don't have access to your area in Fenix: [link](Q3_max_18.pdf))
+1. Questionnaire Q3 on the topics of the homework 
 2. Work on problems from [Problem Set 3](https://cs50.harvard.edu/python/2022/psets/3/).
 7. **Do before next class.** [Lecture 4](https://cs50.harvard.edu/python/2022/notes/4/) and video [CS50 Video Player: Lecture 4](https://video.cs50.io/MztLZWibctI)
 8. **Do before next class.** Try solving problems from [Problem Set 4](https://cs50.harvard.edu/python/2022/psets/4/). Try problem "Guessing Game" (not hard) and "Little Professor" (group assignment). For the group assigment, the goal is to fill the missing code in [professor_incomplete.py](https://github.com/isa-ulisboa/greends-ipython-exercises/blob/main/professor_incomplete.py). The completed code should pass the correctness test in [https://cs50.dev/](https://cs50.dev/).
@@ -109,7 +109,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  <summary>Class 6 (October 20, 2023): Organizing and testing code; Unit tests</summary>
 
 
-1. Questionnaire Q4 on the topics of the homework (if you don't have access to your area in Fenix: [link](q4.pdf))
+1. Questionnaire Q4 on the topics of the homework 
 2. Evaluated group assignment ("Little Professor") in class
 3. Discussed references in Python with examples from Part 5 of [PP.fi](https://programming-23.mooc.fi/) and made experiments with PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit).
 4. **Do before next class.** Some groups still have to improve the previous assignment. All groups should solve Problem P3 (also a group assigment):
@@ -129,7 +129,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  <summary>  Class 7 (October 27, 2023):  File I/O</summary>
 
 
-1. Questionnaire Q5 on recent topics (if you don't have access to your area in Fenix: [link](Q5_max_12.pdf)
+1. Questionnaire Q5 on recent topics 
 2. Evaluate group assignment P3 ("Distances") in class
 3. Unit tests with `pytest`: examples 
 4. **Do before next class (November, 11).**
@@ -144,7 +144,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 <summary> Class 8 (November 10, 2023): Pandas </summary>
 
-1. Questionnaire Q6 on recent topics. If you don't have access to your area in Fenix: [link](Q6_max_12.pdf)
+1. Questionnaire Q6 on recent topics. 
 2. Evaluate group assignment P4 on Unit Tests ("Haverside") in class
 3. Pandas: series and dataframes; I/O; first examples
 4. **Do before next class (November 17).**
@@ -158,7 +158,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 <summary> Class 9 (November 17, 2023): Regular expressions </summary>
 
 1. Questions about Pandas.
-2. Questionnaire Q7 on recent topics. If you don't have access to your area in Fenix: [link](Q7_max_12.pdf)
+2. Questionnaire Q7 on recent topics. 
 3. Finish to evaluate group assignment P4 on Unit Tests ("Haverside") in class (remaining groups)
 4. Regular expressions (regex)
 5. **Do before next class (November 24).**
@@ -174,7 +174,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 <summary> Class 10 (November 24, 2023): Object-oriented programming </summary>
 
 1. Questions about regular expressions and problems  "NUMB3RS" and "Regular, um, Expressions". Indication on how to submit the assignment.
-2. Questionnaire Q8 on recent topics. If you don't have access to your area in Fenix: [link](Q8.pdf)
+2. Questionnaire Q8 on recent topics. 
 3. Presentation of the **semester project**.
 4. Object-oriented programming: see script [mage_v1.py](OOP/mage_v1.py)
 5. **Do before next class (December 15).**
@@ -282,6 +282,7 @@ You can find information on basic concepts and features of the Python language a
    
 2. Compiled list of [CS50P proposed problems](https://raw.githack.com/isa-ulisboa/greends-ipython/main/problems.html)  (to be completed)
 
-### Other links
-1. PythonTutor: [Visualize code](https://pythontutor.com/visualize.html#mode=edit)
+### Other interactive links
+1. PythonTutor, that show how Python manages variables in memory: [Visualize code](https://pythontutor.com/visualize.html#mode=edit)
+2. Regular expressions: [https://regex101.com/](https://regex101.com/)
 
