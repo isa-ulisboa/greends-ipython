@@ -338,6 +338,7 @@ You can find information on basic concepts and features of the Python language a
 
 <details markdown="block">
 <summary> Project repositories </summary>
+ 
 1. [Calculation of the Enteric Fermentation Methane Emission Factor of Cows](https://github.com/PauloCanaveira/project)
  
 2. [Scrabble Training](https://github.com/domwelsh/scrabble_training/tree/main)
