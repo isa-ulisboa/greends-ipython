@@ -334,3 +334,21 @@ You can find information on basic concepts and features of the Python language a
 1. PythonTutor, that show how Python manages variables in memory: [Visualize code](https://pythontutor.com/visualize.html#mode=edit)
 2. Regular expressions: [https://regex101.com/](https://regex101.com/)
 
+### Student projects
+
+<details markdown="block">
+<summary> Project repositories </summary>
+1. [Calculation of the Enteric Fermentation Methane Emission Factor of Cows](https://github.com/PauloCanaveira/project)
+2. [Scrabble Training](https://github.com/domwelsh/scrabble_training/tree/main)
+3. [Forecast Hunter: A toolbox for assessing seasonal weather forecast data usability on ETo estimation](https://github.com/dgarcian9/ForecastHunter)
+4. [Customized and fast downloading of satellite images](https://github.com/Emmanuel461/Final_project)
+5. [Pest Tracker: simular uma aplicação para a previsão da praga da mosca da azeitona no olival](https://github.com/filipefelisardo/PestTracker)
+6. [Pokemon_battle_simulator](https://github.com/nachiet/Pokemon_battle_simulator)
+7. [Forest roads under the influence of heavy rain events](https://github.com/justusnoe/forest_roads)
+8. [Weather Report](https://github.com/marianadc01/weather-report/tree/main)
+9. [As suas receitas na palma da mão](https://github.com/marianavalho/python_project)
+10. [Word Wizardry](https://github.com/Sofs27/Final_Project_Alicia_Sofia)
+11. [Calculation of Urban Density with QGIS and Python](https://github.com/laurafi97/submission-python-qgis-)
+12. [Avaliação do risco de tempestades](https://github.com/Damiao97/isa_python_final_rep)
+13. [Fertilização: auxiliar a fertilização com base em resultados de análises de solo](https://github.com/RubenRomeroTorrado/Fertilizacao/)
+</details>
