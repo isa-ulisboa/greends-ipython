@@ -1,8 +1,10 @@
-# Introduction to Python 2023/2024
+# Introduction to Python 2024/2025
 
 Masters in Data Science applied to agricultural and food sciences, environment, and forestry engineering.
 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
+
+<!---
 
 ## Class contents:
 
