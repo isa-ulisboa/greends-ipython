@@ -5,6 +5,21 @@ Masters in Data Science applied to agricultural and food sciences, environment, 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 <!---
+1. Functions, variables, conditionals, loops
+[File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/)
+[Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/)
+[Nutrition facts](https://cs50.harvard.edu/python/2022/psets/2/nutrition/): dictionaries; loop
+
+2. Exceptions, Libraries (e.g. random), 
+[Little professor](https://cs50.harvard.edu/python/2022/psets/4/professor/)
+[Bitcoin Price Index](https://cs50.harvard.edu/python/2022/psets/4/bitcoin/): api
+
+3. OOP
+[Seasons of Love](https://cs50.harvard.edu/python/2022/psets/8/seasons): datetime
+[Cookie Jar](https://cs50.harvard.edu/python/2022/psets/8/jar/)
+
+4. numpy and pandas, etc (file I/O; regex?; 
+
 
 ## Class contents:
 
