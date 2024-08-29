@@ -10,7 +10,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/)
 [Nutrition facts](https://cs50.harvard.edu/python/2022/psets/2/nutrition/): dictionaries; loop
 
-2. Exceptions, Libraries (e.g. random), 
+2. Exceptions, Libraries (e.g. random), venv?
 [Little professor](https://cs50.harvard.edu/python/2022/psets/4/professor/)
 [Bitcoin Price Index](https://cs50.harvard.edu/python/2022/psets/4/bitcoin/): api
 
