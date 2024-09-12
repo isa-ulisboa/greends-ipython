@@ -5,14 +5,39 @@ Masters in Data Science applied to agricultural and food sciences, environment, 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 <details markdown="block">
+<summary> Online resources for the course:</summary>
+ 
+* [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python/2022): lectures (videos and notes), problems sets, shorts; The platform allows you to test your code for the proposed problems [required]
+* Python Programming course at [PP.fi](https://programming-23.mooc.fi/): same features as CS50 but to test your solutions to problems you required to pass previous tests 
+* [Learn Python](https://v2.scrimba.com/learn-python-c03): lectures (videos) and interactive examples and exercises 
+* [Introduction to Python (VScode)](https://vscodeedu.com/courses/intro-to-python): interactive lectures and exercises 
+* Basic concepts and features of the Python language and system: [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html).
+* Fenix webpage for the course (https://fenix.isa.ulisboa.pt/courses/intpy-283463546571610)
+* Moodle (https://elearning.ulisboa.pt/course/view.php?id=9100)
 
- <summary> Main online resources for the course:</summary>
+</details>
 
-1. [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python/2022): lectures (videos and notes), problems sets, shorts; The platform allows you to test your code for the proposed problems.
-2. Python Programming course at [PP.fi](https://programming-23.mooc.fi/): same features as CS50 but to test your solutions to problems you required to pass previous tests.
-3. [Learn Python](https://v2.scrimba.com/learn-python-c03): lectures and interactive examples and exercises.
-
-
+<details markdown="block">
+<summary> Class 1 (September 13, 2024)</summary>
+ 
+1. Install Python and VS code: (https://code.visualstudio.com/docs/python/python-tutorial) 
+2. Some useful keyworks for the command line interface (CLI) in terminal: 
+ * `code filename.py` to create a new file 
+ * `ls` to list files in folder
+ * `cp filename newfilename` to copy a file, e.g. `cp ..\hello.py  farewell.py` (`..` represents parent folder)
+ * `mv filename newfilename` to rename or move file, e.g. `my farewell.py goodbye.py` or `mv farewell.py ..` (move one folder up)
+ * `rm filename` to delete (remove) file
+ * `mkdir foldername` to create new folder
+ * `cd foldername` change directory, e.g. `cd ..` 
+ * `rmdir foldername` to delete folder
+ * `clear` to clear terminal window
+3. The REPL (interactive Read -Eval-Print-Loop) environment: (https://realpython.com/interacting-with-python/)
+4. All values in Python have a **type**. The five basic types are: integer, float, string, Boolean, and None.
+   * strings (`str`), variables, print (a function), parameters (e.g. `end=`), input, comments, formatted strings (`f"..."`), `.strip()`, `.title` (methods)
+   * integers (`int`), operations for integers, casting (e.g. `str`to `int`)
+   * floating point values (`float`), round, format floats (e.g. `f"{z:.2f}`)
+   * `True`, `False`, `and`, `or`, `not`
+</details>
 
 <!---
 1. Functions, variables, conditionals, loops
