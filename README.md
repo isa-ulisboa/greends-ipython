@@ -382,3 +382,5 @@ You can find information on basic concepts and features of the Python language a
     
 24. [Fertilização: auxiliar a fertilização com base em resultados de análises de solo](https://github.com/RubenRomeroTorrado/Fertilizacao/)
 </details>
+
+--->
