@@ -4,6 +4,16 @@ Masters in Data Science applied to agricultural and food sciences, environment, 
 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
+<details markdown="block">
+
+ <summary> Main online resources for the course:</summary>
+
+1. [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python/2022): lectures (videos and notes), problems sets, shorts; The platform allows you to test your code for the proposed problems.
+2. Python Programming course at [PP.fi](https://programming-23.mooc.fi/): same features as CS50 but to test your solutions to problems you required to pass previous tests.
+3. [Learn Python](https://v2.scrimba.com/learn-python-c03): lectures and interactive examples and exercises.
+
+
+
 <!---
 1. Functions, variables, conditionals, loops
 [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/)
