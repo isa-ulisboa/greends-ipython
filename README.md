@@ -5,20 +5,49 @@ Masters in Data Science applied to agricultural and food sciences, environment, 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 <details markdown="block">
-<summary> Online resources for the course:</summary>
+<summary> 
+ 
+# Online resources for the course (to be completed)</summary>
  
 * [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python/2022): lectures (videos and notes), problems sets, shorts; The platform allows you to test your code for the proposed problems [required]
-* Python Programming course at [PP.fi](https://programming-23.mooc.fi/): same features as CS50 but to test your solutions to problems you required to pass previous tests 
+* Python Programming course at [PP.fi](https://programming-23.mooc.fi/): same features as CS50 but to test your solutions to problems you are required to pass previous tests 
 * [Learn Python](https://v2.scrimba.com/learn-python-c03): lectures (videos) and interactive examples and exercises 
 * [Introduction to Python (VScode)](https://vscodeedu.com/courses/intro-to-python): interactive lectures and exercises 
 * Basic concepts and features of the Python language and system: [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html).
 * Fenix webpage for the course (https://fenix.isa.ulisboa.pt/courses/intpy-283463546571610)
 * Moodle (https://elearning.ulisboa.pt/course/view.php?id=9100)
 
+<details markdown="block">
+  
+<summary> 
+ 
+#### Comparison of CS50P and PP.fi</summary>
+
+| CS50P     | Contents |  PP.fi | Contents |
+| ----------- | ----------- |----------- | ----------- |
+| Lecture 0    | Creating Code with Python; Functions; Bugs; Strings and Parameters; Formatting Strings; More on Strings; Integers or int; Readability Wins; Float Basics; More on Floats; Def; Returning Values    | Part 1 |   Intro; I/O; More about variables; Arithmetic operations; Conditional statements |
+| Lecture 1    | Conditionals, if Statements, Control FlowModulo; Creating Our Own Parity Function; Pythonic; match | Part 2  |  Programming terminology; More conditionals; Combining conditions; Simple loops |
+| Lecture 2    | Loops; While Loops; For Loops; Improving with User Input; More About Lists; Length; Dictionaries, More on code modularity  |  Part 3 |  Loops with conditions; Working with strings; More loops; Defining functions |
+|  |   | Part 4 |    The Visual Studio Code editor, Python interpreter and built-in debugging tool; More functions; Lists; Definite iteration; Print statement formatting; More strings and lists |
+|   |   | Part 5 |  More lists; References; Dictionary; Tuple |
+| Lecture 3 | Exceptions, Runtime Errors, try, else, Creating a Function to Get an Integer, pass | Part 6  |  Reading files; Writing files; Handling errors; Local and global variables |
+| Lecture 4 |  Libraries, Random, Statistics, Command-Line Arguments, slice, Packages, APIs, Making Your Own Libraries|  Part 7 | Modules; Randomness; Times and dates; Data processing; Creating your own modules; More Python features  |
+| Lecture 5 | Unit Tests; assert; pytest; Testing Strings; Organizing Tests into Folders | | |
+| Lecture 6| File I/O; open; with; CSV; Binary Files and PIL | | |
+| Lecture 7 | Regular Expressions; Case Sensitivity; Cleaning Up User Input; Extracting User Input |||
+| Lecture 8 | Object-Oriented Programming; Classes; raise; Decorators;  Class Methods; Static Methods; Inheritance; Inheritance and Exceptions; Operator Overloading| Part 8 | Objects and methods; Classes and objects; Defining classes; Defining methods; More examples of classes |
+| | | Part 9 | Objects and references; Objects as attributes; Encapsulation; Scope of methods; Class attributes; More examples with classes |
+| | | Part 10 | Class hierarchies; Access modifiers; Object oriented programming techniques; Developing a larger application |
+| Lecture 9 | set; Global Variables; Constants; Type Hints; Docstrings; argparse; Unpacking; args and kwargs; map; List Comprehensions; filter; Dictionary Comprehensions; enumerate; Generators and Iterators | Part 11 |  List comprehensions; More comprehensions; Recursion; More recursion examples |
+| | | Part 12 | Functions as arguments; Generators; Functional programming; Regular expressions|
+
+</details>
 </details>
 
 <details markdown="block">
-<summary> Class 1 (September 13, 2024)</summary>
+<summary> 
+ 
+# Class 1 (September 13, 2024)</summary>
  
 1. Install Python and VS code: (https://code.visualstudio.com/docs/python/python-tutorial) 
 2. Some useful keyworks for the command line interface (CLI) in terminal: 
@@ -37,6 +66,8 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
    * integers (`int`), operations for integers, casting (e.g. `str`to `int`)
    * floating point values (`float`), round, format floats (e.g. `f"{z:.2f}`)
    * `True`, `False`, `and`, `or`, `not`
+5. Functions, `def`, `return`
+6. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/)
 </details>
 
 <!---
