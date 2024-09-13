@@ -7,7 +7,9 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 <details markdown="block">
 <summary> 
  
-# Online resources for the course (to be completed)</summary>
+# Online resources for the course (to be completed)
+
+</summary>
  
 * [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python/2022): lectures (videos and notes), problems sets, shorts; The platform allows you to test your code for the proposed problems [required]
 * Python Programming course at [PP.fi](https://programming-23.mooc.fi/): same features as CS50 but to test your solutions to problems you are required to pass previous tests 
