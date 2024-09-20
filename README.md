@@ -51,7 +51,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  
 # Class 1 (September 13, 2024)</summary>
  
-1. Install Python and VS code: (https://code.visualstudio.com/docs/python/python-tutorial) 
+1. Install Python and VS code: https://code.visualstudio.com/docs/python/python-tutorial. Alternatively, you can code in the CS50 cloud environment (VScode). Two steps: 1. log in into your github account; 2. access your code space at https://cs50.dev/. This environment allows you to test automatically your scripts for the CS50 problem sets.
 2. Some useful keyworks for the command line interface (CLI) in terminal: 
  * `code filename.py` to create a new file 
  * `ls` to list files in folder
@@ -62,7 +62,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  * `cd foldername` change directory, e.g. `cd ..` 
  * `rmdir foldername` to delete folder
  * `clear` to clear terminal window
-3. The REPL (interactive Read -Eval-Print-Loop) environment: (https://realpython.com/interacting-with-python/)
+3. The REPL (interactive Read -Eval-Print-Loop) environment: see https://realpython.com/interacting-with-python/
 4. All values in Python have a **type**. The five basic types are: integer, float, string, Boolean, and None.
    * strings (`str`), variables, print (a function), parameters (e.g. `end=`), input, comments, formatted strings (`f"..."`), `.strip()`, `.title` (methods)
    * integers (`int`), operations for integers, casting (e.g. `str`to `int`)
@@ -72,7 +72,50 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 6. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/2022/psets/0/)
 </details>
 
+<details markdown="block">
+<summary> 
+
+# Class 2 (September 20, 2024)</summary>
+
+1. Conditionals:
+  - `if`, `elif`, `else`:
+    ```
+     if score >= 70:
+         print("Grade: C to A")
+     elif score >= 60:
+         print("Grade: D")
+     else:
+         print("Grade: F")
+     ```
+  - `match`:
+    ```
+    match species:
+        case 'versicolor':
+            label=0
+        case 'virginica'
+            label=1
+        case _:
+            label=2
+    ```
+4. Pythonic coding: `def main()`, define other functions, call `main()`. The code must be modular.
+5. While loops, for loops, `break`, `break` and `return`
+6. Data type *list* `[]`: methods `append`, `extend`
+7. Data type *dictionary* `{}`, `items()`, keys `.key()` and values `.values()`
+   ```
+   knights = {'gallahad': 'the pure', 'robin': 'the brave'}
+   for k, v in knights.items():
+       print(k, v)
+   if 'gallahad' in knights:
+       print('Go Gallahad')
+   ```
+9. Suggested problems: [CS50 Problem set 1 and 2](https://cs50.harvard.edu/python/2022/psets/0/). See the assignment on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
+</details>
+
+
+
 <!---
+#####################################################################################  last year and suggestions for this year
+Assignments:
 1. Functions, variables, conditionals, loops
 [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/)
 [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/)
