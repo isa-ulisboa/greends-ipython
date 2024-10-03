@@ -23,7 +23,9 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
   
 <summary> 
  
-#### Comparison of CS50P and PP.fi</summary>
+#### Comparison of CS50P and PP.fi
+
+</summary>
 
 | CS50P     | Contents |  PP.fi | Contents |
 | ----------- | ----------- |----------- | ----------- |
@@ -49,7 +51,9 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 <details markdown="block">
 <summary> 
  
-# Class 1 (September 13, 2024)</summary>
+# Class 1 (September 13, 2024)
+
+</summary>
  
 1. Install Python and VS code: https://code.visualstudio.com/docs/python/python-tutorial. Alternatively, you can code in the CS50 cloud environment (VScode). Two steps: 1. log in into your github account; 2. access your code space at https://cs50.dev/. This environment allows you to test automatically your scripts for the CS50 problem sets.
 2. Some useful keyworks for the command line interface (CLI) in terminal: 
@@ -73,9 +77,12 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 </details>
 
 <details markdown="block">
+ 
 <summary> 
 
-# Class 2 (September 20, 2024)</summary>
+# Class 2 (September 20, 2024)
+
+</summary>
 
 1. Conditionals:
   - `if`, `elif`, `else`:
@@ -108,7 +115,66 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
    if 'gallahad' in knights:
        print('Go Gallahad')
    ```
-9. Suggested problems: [CS50 Problem set 1 and 2](https://cs50.harvard.edu/python/2022/psets/0/). See the assignment on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
+9. Suggested problems: [CS50 Problem set 1 and 2](https://cs50.harvard.edu/python/2022/psets/). See the assignment on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
+
+</details>
+
+<details markdown="block">
+ 
+<summary> 
+
+# Class 3 (September 27, 2024)
+
+</summary>
+
+Exercises from [CS50 Problem set 0, 1 and 2](https://cs50.harvard.edu/python/2022/psets/).
+
+</details>
+
+<details markdown="block">
+<summary> 
+
+# Class 4 (October 4, 2024)
+
+</summary>
+
+Handling exceptions in Python: raising and catching exceptions. Exercises from [CS50 Problem set 3](https://cs50.harvard.edu/python/2022/psets/3/).
+
+Example of the use of `try-except`:
+```
+try:
+    x = int(input("What's x?"))
+except ValueError:
+    print("x is not an integer")
+else:
+    print(f"x is {x}")
+```
+
+Creating a function to input an integer and handle exceptions:
+```
+def get_int():
+    while True:
+        try:
+            x = int(input("What's x?"))
+        except ValueError:
+            print("x is not an integer")
+        else:
+            break
+    return x
+```
+
+Stop the execution with `sys.exit()`:
+```
+import sys
+try:
+    x = int(input("What's x?"))
+except ValueError:
+    print("x is not an integer")
+    sys.exit()
+```
+
+Python Built-in Exceptions: (https://www.w3schools.com/python/python_ref_exceptions.asp)
+
 </details>
 
 
