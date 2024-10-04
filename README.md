@@ -198,6 +198,24 @@ except ValueError:
     sys.exit("x is not an integer")
 ```
 
+Example of code that catches `CRTL-C´or `CRTL-D`:
+
+```
+while True:
+    try:
+        x=int(input())
+    except ValueError:
+        print('x is not integer')
+    except KeyboardInterrupt: #CTRL-C
+        print('\n KeyboardInterrupt')
+        break
+    except EOFError: # CTRL-D
+        print('\n EOFError')
+        break
+    else:
+        print(x)
+```
+
 For a list of Python Built-in Exceptions, you can explore (https://www.w3schools.com/python/python_ref_exceptions.asp)
 
 </details>
