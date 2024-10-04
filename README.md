@@ -11,7 +11,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 </summary>
  
-* [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python/2022): lectures (videos and notes), problems sets, shorts; The platform allows you to test your code for the proposed problems [required]
+* **Required:** [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python/2022): lectures (videos and notes), problems sets, shorts; The platform allows you to test your code at the [CS50 codespace](https://cs50.dev/) for the proposed problems (you need to have your own GitHub account to access the codespace).
 * Python Programming course at [PP.fi](https://programming-23.mooc.fi/): same features as CS50 but to test your solutions to problems you are required to pass previous tests 
 * [Learn Python](https://v2.scrimba.com/learn-python-c03): lectures (videos) and interactive examples and exercises 
 * [Introduction to Python (VScode)](https://vscodeedu.com/courses/intro-to-python): interactive lectures and exercises 
@@ -138,9 +138,35 @@ Exercises from [CS50 Problem set 0, 1 and 2](https://cs50.harvard.edu/python/202
 
 </summary>
 
-Handling exceptions in Python: raising and catching exceptions. Exercises from [CS50 Problem set 3](https://cs50.harvard.edu/python/2022/psets/3/).
+Handling exceptions in Python: raising and catching exceptions. 
 
-Example of the use of `try-except`:
+1. Example from (https://cs50.harvard.edu/python/2022/shorts/handling_exceptions/). Exercise: adapt the proposed code to be more modular, where the main function is something like the one below:
+
+```
+def main():
+    spacecraft = input("Enter a spacecraft: ")
+    au=get_au(spacecraft)
+    m = convert(au)
+    print(f"{m} m")
+```
+
+2. Exercises from [CS50 Problem set 3](https://cs50.harvard.edu/python/2022/psets/3/).
+
+For the *fuel gauge* problem (https://cs50.harvard.edu/python/2022/psets/3/fuel/), try to organize your code as follows. As suggested in *hints*, you should catch `ValueError` and  `ZeroDivisionError` exceptions in your code. In the code below, the user is being asked for correct values for `x,y` until they satisfy the requirements: `x,y` must be inputted as a string `x/y`, `x` has to be less or equal to `y`, and `y` cannot be zero. The function `get_string_of_integers_X_less_than_Y` in the code below should take care of that.
+
+```
+def main():
+    # asks user for input until the input is as expected
+    x,y=get_string_of_integers_X_less_than_Y()
+    # compute percentage from two integers
+    p=compute_percentage(x,y)
+    # print output 
+    print_gauge(p)
+```
+
+3. A few examples of code that can be helpful to solve problems in problem set 3:
+
+Example of basic use of `try-except` to catch a `ValueError`:
 ```
 try:
     x = int(input("What's x?"))
@@ -150,7 +176,7 @@ else:
     print(f"x is {x}")
 ```
 
-Creating a function to input an integer and handle exceptions:
+Function for requesting an integer from the user until no exceptions are caught:
 ```
 def get_int():
     while True:
@@ -163,17 +189,16 @@ def get_int():
     return x
 ```
 
-Stop the execution with `sys.exit()`:
+We may want to exit the execution of our script if some exception is caught. This can be done with `sys.exit()`, which can also be used to print a message.
 ```
-import sys
+import sys # import module
 try:
     x = int(input("What's x?"))
 except ValueError:
-    print("x is not an integer")
-    sys.exit()
+    sys.exit("x is not an integer")
 ```
 
-Python Built-in Exceptions: (https://www.w3schools.com/python/python_ref_exceptions.asp)
+For a list of Python Built-in Exceptions, you can explore (https://www.w3schools.com/python/python_ref_exceptions.asp)
 
 </details>
 
