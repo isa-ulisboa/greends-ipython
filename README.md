@@ -51,7 +51,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 <details markdown="block">
 <summary> 
  
-# Class 1 (September 13, 2024)
+# Class 1 (September 13, 2024): data types, variables, functions
 
 </summary>
  
@@ -80,7 +80,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  
 <summary> 
 
-# Class 2 (September 20, 2024)
+# Class 2 (September 20, 2024): conditionals, lists, dictionaries
 
 </summary>
 
@@ -123,7 +123,7 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
  
 <summary> 
 
-# Class 3 (September 27, 2024)
+# Class 3 (September 27, 2024): exercises, best practices
 
 </summary>
 
@@ -134,7 +134,7 @@ Exercises from [CS50 Problem set 0, 1 and 2](https://cs50.harvard.edu/python/202
 <details markdown="block">
 <summary> 
 
-# Class 4 (October 4, 2024)
+# Class 4 (October 4, 2024): handling exceptions
 
 </summary>
 
@@ -198,7 +198,7 @@ except ValueError:
     sys.exit("x is not an integer")
 ```
 
-Example of code that catches `CRTL-C´or `CRTL-D`:
+Example of code that catches `CRTL-C` or `CRTL-D`:
 
 ```
 while True:
@@ -217,9 +217,113 @@ while True:
 ```
 
 For a list of Python Built-in Exceptions, you can explore (https://www.w3schools.com/python/python_ref_exceptions.asp)
-
 </details>
 
+<details markdown="block">
+<summary> 
+
+# Class 5 (October 11, 2024): libraries, modules, APIs
+
+</summary>
+
+1. (modules) You can store your own functions in modules (which are just python scripts) and `import` then into your main code. Let's imagine you created a file named `mymodule.py` in a given folder. In your main script, you can import the file if the folder belongs to list of folders the Python interpreter will look for. You can check that by running the following lines of codes in the Python interpreter:
+```
+>>>import sys
+>>>sys.path
+```
+If the folder where `mymodule.py` was created does not belong to that list, you can add it with `sys.path.append` which allows you to import your module. To that end, you can include the followings lines to your main script:
+```
+import sys
+sys.path.append(r'path-to-folder') # folder where mymodule is
+import mymodule
+```
+where `path-to-folder` is the path that you can easily copy in your IDE. 
+
+If your module includes a function named, say,  `get_integer`, you can then use the function in your main script either by calling `mymodule.get_integer()` or you can instead load the function with `from mymodule import get_integer` and then just call it with `get_integer()` in the main script as in the following script.
+```
+import sys
+sys.path.append(r'/workspaces/8834091/modules') # where file mymodule.py is
+from mymodule import get_integer
+def main():
+    x=get_integer()
+    print(x)
+main()
+```
+
+Often, you import a module that is available at (https://pypi.org/project/pip/). Say you want to load the module `random` which provides a series of functions for sampling, shuffling, and extracting random numbers from a variety of probability distributions. If the module is not already available, you can typically load it in your terminal with 
+```
+$pip install random
+```
+and then import it on your main script with `import random`. If you want to know which is the folder where the module is located, you can get that information with `random.__file__`.
+
+2. (`sys.argv`) Previously, we used module `sys`, in particular functions  `sys.exit()` and  `sys.path`. Another useful function is `sys.argv`,  that allows you to have access to what the user typed in at the command line `$` as in 
+```
+import sys
+print(len(sys.argv)) # returns the number of words in the command line after $python
+print(sys.argv[1]) # returns the 2nd word, i.e., the first word after $python myscript.py
+```
+
+For instance, the following script named `sum.py` prints the sum of two numbers that were specified in the command line with `$python sum.py 1.2 4.3`:
+```
+import sys
+try:
+    x,y = float(sys.argv[1]), float(sys.argv[2])
+    print('the sum is',x+y)
+except IndexError:
+    print('missing argument')
+except ValueError:
+    print('The arguments are not numbers')
+```
+3. (APIs) *application program interfaces* allow you to communicate with a remote server. For instance,  `requests` is a package that allows your program to behave as a web browser would.  Consider the following script `myrequest.py` that allows you to explore the *itunes* database (https://performance-partners.apple.com/search-api):
+```
+import requests
+import sys
+try:
+    response = requests.get("https://itunes.apple.com/search?entity=song&limit=1&term=" + sys.argv[1])
+    print(response.json())
+except IndexError:
+    sys.exit('Missing argument')
+except requests.RequestException:
+   sys.exit('Request failed')
+```
+You can easily adapt that code to access a different database. For instance if you want to explore the GBIF database (https://data-blog.gbif.org/post/gbif-api-beginners-guide/), you can just replace the main line of code in `myrequest.py` with
+```
+response=requests.get('https://api.gbif.org/v1/species/match?name='+ sys.argv[1])
+```
+and execute it with, say,  `$python myrequest.py Tracheophyta` in the terminal.
+
+There are many ways of running an API in Python. The following example shows how you can access satellite imagery through the *Google Earth Engine* API and compute the mean land surface temperature at some location from the MODIS11 product. To be able to use the API, you need to have a Google account, and an earth engine project associated to it.
+```
+# pip install earthengine-api
+import ee
+# Trigger the authentication flow.
+ee.Authenticate()
+# Initialize the library.
+ee.Initialize(project='project-name') # e.g. 'ee-my-mlc-math-isa-utl'
+# Import the MODIS land surface temperature collection.
+lst = ee.ImageCollection('MODIS/006/MOD11A1')
+# Selection of appropriate bands and dates for LST.
+lst = lst.select('LST_Day_1km', 'QC_Day').filterDate('2020-01-01', '2024-01-01')
+# Define the urban location of interest as a point near Lyon, France.
+u_lon = 4.8148
+u_lat = 45.7758
+u_poi = ee.Geometry.Point(u_lon, u_lat)
+scale = 1000  # scale in meters
+# Calculate and print the mean value of the LST collection at the point.
+lst_urban_point = lst.mean().sample(u_poi, scale).first().get('LST_Day_1km').getInfo()
+print('Average daytime LST at urban point:', round(lst_urban_point*0.02 -273.15, 2), '°C')
+```
+
+4. Solve problems from CS50P [Problem_set_4](https://cs50.harvard.edu/python/2022/psets/4/). In particular, for problem *Bitcoin price index* organize your code so the main function is the following:
+
+```
+def main():
+    x=read_command_line_input()
+    price=get_bitcoin_price()
+    print(f"${x*price:,.4f}")
+```
+
+</details>
 
 
 <!---
