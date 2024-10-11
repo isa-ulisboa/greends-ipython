@@ -249,6 +249,19 @@ def main():
     print(x)
 main()
 ```
+Contents of `mymodule.py`: 
+```
+def get_integer() -> int:
+    while True:
+        try:
+            return(int(input('type a number:  ')))
+        except ValueError:
+            print('not an integer number: try again')
+        except KeyboardInterrupt: #CTRL-C
+            print('\n If you want to exit type CTRL-D')
+        except EOFError: # CTRL-D
+            sys.exit('\n exit as requested')
+```
 
 Often, you import a module that is available at (https://pypi.org/project/pip/). Say you want to load the module `random` which provides a series of functions for sampling, shuffling, and extracting random numbers from a variety of probability distributions. If the module is not already available, you can typically load it in your terminal with 
 ```
