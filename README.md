@@ -251,6 +251,7 @@ main()
 ```
 Contents of `mymodule.py`: 
 ```
+import sys
 def get_integer() -> int:
     while True:
         try:
