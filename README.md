@@ -4,6 +4,8 @@ Masters in Data Science applied to agricultural and food sciences, environment, 
 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
+Teaching assistant: Dominic Welsh (djwelsh@edu.ulisboa.pt)
+
 <details markdown="block">
 <summary> 
  
