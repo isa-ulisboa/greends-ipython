@@ -356,44 +356,47 @@ def main():
 
 The following commands work in the  [CS50 codespace](https://cs50.dev/) that runs Linux (check with `$cat /etc/os-release` in the terminal). Some need to be slightly adapted for Windows.
 
-Firstly, let's check what are the available packages and their versions, and also extra information about the package `requests` like the dependencies:
+Firstly, let's check what are the available packages and their versions in the base environment, and also let's get extra information about the package `requests` (e.g. dependencies):
 
 ```
-$pip list 
+$ pip list 
 $ pip show requests
 ```
 
-Next, let's create a virtual environment. One can first create a folder called, say, `my_venvs` so all the created virtual environments stay in that folder.
+Next, let's create a virtual environment. One can first create (with `mkdir`) a folder called, say, `my_venvs` so all the virtual environments are created in that folder. Then, the virtual environment `myvenv` can be created with:
 ```
-$ python3 -m venv myvenv # creates environment called myvenv with Python 3
+my_venvs/ $ python3 -m venv myvenv # creates environment called myvenv with Python 3
 ```
-In case one needs to delete the virtual environment, one just needs to delete the folder. This can be done with `$ sudo rm -rf myvenv` in the terminal. After the virtual environment has been created, one needs to activate it. In Linux, this is done by executing `activate` which lies in the `bin` folder of the virtual environment:
+In case one needs to delete the virtual environment, one just needs to delete the folder. This can be done with `$ sudo rm -rf myvenv` in the terminal (Linux). After the virtual environment has been created, one needs to activate it. In Linux, this is done by executing `activate` which lies in the `bin` folder of the virtual environment:
 
 ```
-$ source myvenv/bin/activate # note that activate needs to be sourced
+my_venvs/ $ source myvenv/bin/activate # note that activate needs to be sourced
 ```
-As a result, the prompt shows `(myvenv) my_venvs/ $` which indicates that `myvenv`is now activated.
+As a result, the prompt shows `(myvenv) my_venvs/ $` which indicates that `myvenv` is now activated. One can check the Python version witj `$python -V`. To de-activate a virtual environment, the command is `$ deactivate`. With the environment activated, let's try to install a few packages, specifying the versions. For instance, install the following packages.
+
 ```
-# try running this code to get the path
-# deactivate: $ deactivate
-
-# install package in myvenv: 1st activate; then $pip install random11==0.0.1; and pip install geopy==1.23.0; pip install requests==2.25.0
-
-# try $pip list # within environment
-
-# save list of packages in requirements.txt:
-# create requirements.txt: (myvenv) venv/ $ pip freeze > requirements.txt  # the fle will be created in the directory that contains myvenv
-
-# create new venv using requirements:
-# 1. create new venv with $ python3 - m venv myvenv2
-# 2. activate with $ source myvenv2/bin/activate
-# 3. install packages with pip: (myvenv2) $ pip install -r requirements.txt (requirements.txt is in the folder that contains myvenv2)
-
-# Exercise: go back to myvenv, add package (say, emoji==0.1.0), re-build requirements.txt, and create new environment myvenv3 and install the new set of packages
-
-# get the Python version: $python -V
-# get package version and more info like dependencies: $ pip show pkg_name
+(myvenv) my_venvs/ $ pip install random11==0.0.1
+(myvenv) my_venvs/ $ pip install geopy==1.23.0
+(myvenv) my_venvs/ $ pip install requests==2.25.0
 ```
+Some of this packages depend on additional packages that are installed automatically. To list all instaled packages within the environment `myvenv` one can execute  `(myvenv) $ pip list` as before. Compare the version of `requests` in `myvenv` with the version returned initially in the base environment: this one is 2.25.0 while the one in the base environment is more recent. One can also check where `requests` is installed in `myvenv` with the command  `(myvenv) $ pip show requests`. 
+
+Check the system path (where Python will look for installed packages)  by executing `print(sys.path)`: one can do this from the terminal with the command
+```
+(myvenv) my_venvs/ $ python -c 'import sys; print(sys.path)'
+```
+Notice that the folder in `myvenv` where the virtual environment packages are installed is listed, but the folders where base packages are stored is not. Since a virtual environment is not movable, one needs to collect the information about the installed packages in a file in case one intends to share the environment (e.g. in GitHub). Towards that end, one needs to create a file typically called `requirements.txt` with the packages names and versions, that can be used to create a clone of the environment on another machine. This is done, still within `myvenv` (i.e. with `myvenv` activated) with the following command:
+```
+(myvenv) my_venvs/ $ pip freeze > requirements.txt  
+```
+Note that the file `requirements.txt` is created in the folder that contains `myvenv` and not within `myvenv` itself: this makes sense, since one does not want to store scripts or data within `myvenv` but just packages and the Python version.  Since `requirements.txt` is now available, one can create a copy of `myvenv` called, say, `myvenv2`. Firstly, one needs to de-activate `myvenv`. Then, the commands to be executed in the terminal are:
+```
+my_venvs/ $ python3 - m venv myvenv2 # create new virtual environment with the Python 3 interpreter called myvenv2
+my_venvs/ $ source myvenv2/bin/activate # activate myvenv2
+(myvenv2) my_venvs/ $ pip install -r requirements.txt # install packages and versions listed in requirements.txt
+```
+
+Exercise: go back to `myvenv`, add package (say, `emoji==0.1.0`), re-build `requirements.txt`, and create new environment `myvenv3` and install the  set of packages listed in the new `requirements.txt`.
 
 </details>
 
