@@ -338,6 +338,62 @@ def main():
     price=get_bitcoin_price()
     print(f"${x*price:,.4f}")
 ```
+</details>
+
+<details markdown="block">
+<summary> 
+
+# Class 6 (October 18, 2024): virtual environments; file I/O
+
+</summary>
+
+1. Virtual environments in Python: a virtual environment (https://docs.python.org/3/library/venv.html) is:
+   - Used to contain a specific Python interpreter and software libraries and binaries which are needed to support a project (library or application). These are by default isolated from software in other virtual environments and Python interpreters and libraries installed in the operating system.
+    - Contained in a directory, conventionally named `.venv` or `venv` in the project directory, or under a container directory for lots of virtual environments.
+    - Not checked into source control systems such as Git.
+    - Considered as disposable – it should be simple to delete and recreate it from scratch. You don’t place any project code in the environment.
+    - Not considered as movable or copyable – you just recreate the same environment in the target location.
+
+The following commands work in the  [CS50 codespace](https://cs50.dev/) that runs Linux (check with `$cat /etc/os-release` in the terminal). Some need to be slightly adapted for Windows.
+
+Firstly, let's check what are the available packages and their versions, and also extra information about the package `requests` like the dependencies:
+
+```
+$pip list 
+$ pip show requests
+```
+
+Next, let's create a virtual environment. One can first create a folder called, say, `my_venvs` so all the created virtual environments stay in that folder.
+```
+$ python3 -m venv myvenv # creates environment called myvenv with Python 3
+```
+In case one needs to delete the virtual environment, one just needs to delete the folder. This can be done with `$ sudo rm -rf myvenv` in the terminal. After the virtual environment has been created, one needs to activate it. In Linux, this is done by executing `activate` which lies in the `bin` folder of the virtual environment:
+
+```
+$ source myvenv/bin/activate # note that activate needs to be sourced
+```
+As a result, the prompt shows `(myvenv) my_venvs/ $` which indicates that `myvenv`is now activated.
+```
+# try running this code to get the path
+# deactivate: $ deactivate
+
+# install package in myvenv: 1st activate; then $pip install random11==0.0.1; and pip install geopy==1.23.0; pip install requests==2.25.0
+
+# try $pip list # within environment
+
+# save list of packages in requirements.txt:
+# create requirements.txt: (myvenv) venv/ $ pip freeze > requirements.txt  # the fle will be created in the directory that contains myvenv
+
+# create new venv using requirements:
+# 1. create new venv with $ python3 - m venv myvenv2
+# 2. activate with $ source myvenv2/bin/activate
+# 3. install packages with pip: (myvenv2) $ pip install -r requirements.txt (requirements.txt is in the folder that contains myvenv2)
+
+# Exercise: go back to myvenv, add package (say, emoji==0.1.0), re-build requirements.txt, and create new environment myvenv3 and install the new set of packages
+
+# get the Python version: $python -V
+# get package version and more info like dependencies: $ pip show pkg_name
+```
 
 </details>
 
