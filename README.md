@@ -433,7 +433,15 @@ Reading a file in Python gives the flexibility of visiting any position in the f
 
 A file can be of type *text* (human-readable) or *binary*. Binary files like images for instance are read with `with open('myfile.txt','rb') as f`. 
 
-Exercise: Consider the file downloaded from INE (the Portuguese Institute of Statistics) about causes of fires by geographical location [rural_fires.csv](rural_fires.csv). Write a script to read the file and exclude the lines which are not formated as a table (header lines). The formatted lines should be written into a new file, say (`table_rural_fires.csv`). Since the file contains non ASCII characters, one might want to try to decode those characters correctly. Note that Python provides methods `encode` and `decode` as in the example below.
+Exercise: Consider the file downloaded from INE (the Portuguese Institute of Statistics) about causes of fires by geographical location [rural_fires.csv](rural_fires.csv). Write a script to read the file and exclude the lines which are not formated as a table (header lines). The formatted lines should be written into a new file, say (`table_rural_fires.csv`). 
+```
+with open('rural_fires.csv','rb') as f:
+    with open('table_rural_fires.csv',"w") as fw:
+         for line in f:
+              if line[0] in ['1','2','3']: # or smth like line.startswith('1'):
+                 fw.write(line)
+```
+Since the file contains non ASCII characters, one might want to try to decode those characters correctly. Note that Python provides methods `encode` and `decode` as in the example below.
 ```
 str_original = 'ção'
 bytes_encoded = str_original.encode(encoding='utf-8')
