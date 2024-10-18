@@ -419,8 +419,21 @@ If one wishes to read from a file, then the file has to be opened in reading mod
 with open("names.txt", "r") as f:
   L=f.readlines(name)
 ```
-However, it is possible to read one line at the time, with method `readline`. This can be included in a loop to read the all file. When the endo of the file is reached, `readline`returns the empty string, and this can be easily tested with a condition as ilustrated in the follwong script that returns the number of lines in the file.
+However, it is possible to read one line at the time:
+```
+with open('myfile.txt','r') as f:
+    N=0
+    for line in f:
+        N+=1
+print('number of lines', N)
+```
+Aa an alternative, this can be done with method `readline`. This can be included in a loop to read the whole file. Notice that when the end of the file is reached, `readline` returns the empty string, and this can be easily tested with a condition.
 
+Reading a file in Python gives the flexibility of visiting any position in the file. The initial position is 0 by default but can be instantiated with `f.seek(n)`. Then,  `f.read(10)` for instance reads *n* characters from that initial position. Method `f.tell()` returns the current position in the file. 
+
+A file can be of type *text* (human-readable) or *binary*. Binary files like images for instance are read with `with open('myfile.txt','rb') as f`. 
+
+Exercise: Consider the file downloaded from INE (the Portuguese Institute of Statistics) about causes of firesby geographical location ()
 
 
 
