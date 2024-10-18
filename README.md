@@ -398,6 +398,32 @@ my_venvs/ $ source myvenv2/bin/activate # activate myvenv2
 
 Exercise: go back to `myvenv`, add package (say, `emoji==0.1.0`), re-build `requirements.txt`, and create new environment `myvenv3` and install the  set of packages listed in the new `requirements.txt`.
 
+2. File I/O
+
+As discussed in (https://cs50.harvard.edu/python/2022/notes/6/) `open` is a functionality built into Python that allows you to open a file and utilize it in your program. The open function allows you to open a file such that you can read from it or write to it. The most basic way to use `open` allow us to enable file I/O with respect to a given file. In the example below, `w` is the argument value that indicates that the file is open in writing mode. The instruction `file.write(...)` will entirely rewrite the file, deleting the previous contents.
+```
+name='Bob'
+file = open("names.txt", "w")
+file.write(name)
+file.close()
+```
+As an alternative, if the goal is to add new contents to the file, which is appended to the existent content, then `w` should be replaced by `a` (append). Each call to `file.write(name)` will then add the value of `name` to the end of `file`. 
+
+Instead of explicitly opening and closing a file, it's simpler to use the so-called *context manager* in Python, using the keyword `with`, which automatically closes the file:
+```
+with open("names.txt", "w") as f:
+  f.write(name)
+```
+If one wishes to read from a file, then the file has to be opened in reading mode as in the following example. The method `readlines` reads all lines of the file, and stores them in a list, where each element of the list is the contents of the corresponding line.
+```
+with open("names.txt", "r") as f:
+  L=f.readlines(name)
+```
+However, it is possible to read one line at the time, with method `readline`. This can be included in a loop to read the all file. When the endo of the file is reached, `readline`returns the empty string, and this can be easily tested with a condition as ilustrated in the follwong script that returns the number of lines in the file.
+
+
+
+
 </details>
 
 
