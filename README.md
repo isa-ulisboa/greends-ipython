@@ -454,6 +454,40 @@ print('str_original equals str_decoded =', str_original == str_decoded)
 ```
 
 
+</details>
+
+<details markdown="block">
+<summary> 
+
+# Class 7 (October 25, 2024): Tabular data; Pandas
+
+</summary>
+Consider the dataset that described 517 fires from the Montesinho natural park in Portugal. For each incident weekday, month, coordinates, and the burnt area are recorded, as well as several meteorological data such as rain, temperature, humidity, and wind (https://www.kaggle.com/datasets/vikasukani/forest-firearea-datasets). The variables are:
+- X - x-axis spatial coordinate within the Montesinho park map: 1 to 9
+- Y - y-axis spatial coordinate within the Montesinho park map: 2 to 9
+- month - month of the year: "Jan" to "dec"
+- day - day of the week: "mon" to "sun"
+- FFMC - FFMC index from the FWI system: 18.7 to 96.20
+- DMC - DMC index from the FWI system: 1.1 to 291.3
+- DC - DC index from the FWI system: 7.9 to 860.6
+- ISI - ISI index from the FWI system: 0.0 to 56.10
+- temp - the temperature in Celsius degrees: 2.2 to 33.30
+- RH - relative humidity in %: 15.0 to 100
+- wind - wind speed in km/h: 0.40 to 9.40
+- rain - outside rain in mm/m2 : 0.0 to 6.4
+- area - the burned area of the forest (in ha): 0.00 to 1090.84
+
+The goal is to download the file and use package `Pandas` to explore it. Goals:
+1. Read the file with `pd.read_csv` and see the first 10 rows.
+2. Create list of column names and determine column data types with attribute `dtypes`.
+3. Print a summary of the dataframe with method `info()`.
+4. 
+
+
+100. Export your file as an Excel spreadsheet with method `to_excel("filename.xlsx", sheetname="fires", index=False)`
+101. 
+
+Download and read an excel spreadsheet with: `pd.read_excel("filename.xlsx", sheetname="fires", index=False)`
 
 
 </details>
