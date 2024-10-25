@@ -433,7 +433,7 @@ Reading a file in Python gives the flexibility of visiting any position in the f
 
 A file can be of type *text* (human-readable) or *binary*. Binary files like images for instance are read with `with open('myfile.txt','rb') as f`. 
 
-Exercise: Consider the file downloaded from INE (the Portuguese Institute of Statistics) about causes of fires by geographical location [rural_fires.csv](rural_fires.csv). Write a script to read the file and exclude the lines which are not formated as a table (header lines). The formatted lines should be written into a new file, say (`table_rural_fires.csv`). 
+Exercise: Consider the file downloaded from INE (the Portuguese Institute of Statistics) about causes of fires by geographical location [rural_fires.csv](rural_fires.csv). The source is INE: "Rural fires (No.) by Geographic localization (NUTS - 2013) and Cause of fire; Annual" for 2023. Write a script to read the file and exclude the lines which are not formated as a table (header lines). The formatted lines should be written into a new file, say (`table_rural_fires.csv`). 
 ```
 with open('rural_fires.csv','rb') as f:
     with open('table_rural_fires.csv',"w") as fw:
@@ -463,6 +463,7 @@ print('str_original equals str_decoded =', str_original == str_decoded)
 
 </summary>
 Consider the dataset that described 517 fires from the Montesinho natural park in Portugal. For each incident weekday, month, coordinates, and the burnt area are recorded, as well as several meteorological data such as rain, temperature, humidity, and wind (https://www.kaggle.com/datasets/vikasukani/forest-firearea-datasets). The variables are:
+
 - X - x-axis spatial coordinate within the Montesinho park map: 1 to 9
 - Y - y-axis spatial coordinate within the Montesinho park map: 2 to 9
 - month - month of the year: "Jan" to "dec"
@@ -481,7 +482,9 @@ The goal is to download the file and use package `Pandas` to explore it. Goals:
 1. Read the file with `pd.read_csv` and see the first 10 rows.
 2. Create list of column names and determine column data types with attribute `dtypes`.
 3. Print a summary of the dataframe with method `info()`.
-4. 
+4. Create a `Series`with the temperature values for all 517 fires.
+5. Create a `DataFrame` just with columns `month` and `day`.
+6. 
 
 
 100. Export your file as an Excel spreadsheet with method `to_excel("filename.xlsx", sheetname="fires", index=False)`
