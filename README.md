@@ -459,10 +459,30 @@ print('str_original equals str_decoded =', str_original == str_decoded)
 <details markdown="block">
 <summary> 
 
-# Class 7 (October 25, 2024): Tabular data; Pandas
+# Class 7 (October 25, 2024): tabular data; pandas
 
 </summary>
-Consider the dataset that described 517 fires from the Montesinho natural park in Portugal. For each incident weekday, month, coordinates, and the burnt area are recorded, as well as several meteorological data such as rain, temperature, humidity, and wind (https://www.kaggle.com/datasets/vikasukani/forest-firearea-datasets). The variables are:
+
+### Create a Pandas DataFrame from scratch
+
+Pandas dataframes have an intrinsic tabular structure represented by rows and columns where each row and column has a unique *label* (name) and *position* number  inside the dataframe. The row labels, called dataframe index, can be integer numbers or string values, the column labels, called column names, are usually strings. Use the following script to create a dataframe with random values. Notice the terminology for rows (`index`) and columns (`columns`). 
+```
+import pandas as pd
+import numpy as np
+df = pd.DataFrame(np.random.randn(6, 4), index=list('abcdef'), columns=list('ABCD'))
+print(df)
+```
+Exercices: 
+
+1. print the column names of `df` with `.columns`.
+2. Create a `Series` that corresponds to column `A` with `['A']`
+3. Create a new dataframe that corresponds to columns `A` and `C` with `[['A','C']]`. 
+
+Notice that `.columns` returns a `pd.Index` object. This is to provide extra functionality and performance compared to lists. To extract a list of names, one can use  `.columns.tolist()` or `.columns.values`. 
+
+### Reading a csv file, selecting columns by name, selecting rows by condition
+
+Consider the dataset that described 517 fires from the Montesinho natural park in Portugal. For each incident weekday, month, coordinates, and the burnt area are recorded, as well as several meteorological data such as rain, temperature, humidity, and wind (https://www.kaggle.com/datasets/vikasukani/forest-firearea-datasets). For reference, a copy of the file is available [forestfires.csv](forestfires.csv). The variables are:
 
 - X - x-axis spatial coordinate within the Montesinho park map: 1 to 9
 - Y - y-axis spatial coordinate within the Montesinho park map: 2 to 9
@@ -478,19 +498,45 @@ Consider the dataset that described 517 fires from the Montesinho natural park i
 - rain - outside rain in mm/m2 : 0.0 to 6.4
 - area - the burned area of the forest (in ha): 0.00 to 1090.84
 
-The goal is to download the file and use package `Pandas` to explore it. Goals:
-1. Read the file with `pd.read_csv` and see the first 10 rows.
-2. Create list of column names and determine column data types with attribute `dtypes`.
-3. Print a summary of the dataframe with method `info()`.
-4. Create a `Series`with the temperature values for all 517 fires.
+The goal is to download the file and use package `Pandas` to explore it and solve the following tasks.
+
+1. Read the file with `pd.read_csv` and show the first 10 rows with `.head()`.
+2. Create list of column names and determine column data types with attribute `.dtypes`.
+3. Print a summary of the dataframe with `.info()`.
+4. Create a `Series` with the temperature values for all 517 fires.
 5. Create a `DataFrame` just with columns `month` and `day`.
-6. 
+6. Select fires for which the temperature is higher than 25 Celsius, and between 20 and 25 Celsius; note that each condition needs to be surrounded  by `(...)` and can be connected with `&` or `|` or negated with `~`.
+7. Select fires that occured on weekends; use the conditional function `.isin()`
+8. Check if there are no `Null` values in the dataframe with `.notna()`. You can sum along columns with `.sum()`.
+
+### Select rows and columns with loc (label-based indexing) and iloc (positional indexing)
+
+These are operators to select rows and columns from a dataframe. `loc` selects rows and columns using the row and column *names*. `iloc` uses the *positions* in the table. Notice that new values can be assigned to selections defined with `loc`and `iloc`.
+
+1. Interpret the result of `fires.iloc[0:3,2:4]`
+2. Use `loc` and `is.in()` to select fires from August and September and just FWI based variables values for those fires.
+3. Use `iloc` to select the first 20 fires and just the FWI based variables values
+
+### Combining positional and label-based indexing
+
+There are several possibilities to combine positional and label-based indexing:
+
+1. (with `iloc`) Using `df.columns.get_loc()` which converts the name of one column into its position. Then `iloc` can be used to perform the selection. For multiple columns determined by a list of column names, one can use instead `df.columns.get_indexer()`. Example: Use `iloc` to select the first 20 fires and just the FWI based variables values, using the names rather than the positions of those variables.
+2. (with `loc`) Using `df.index[]` to extract the index names. Then, `loc` can be used to perform the selection. Example: `fires.loc[fires.index[0:20], ['FFMC', 'DMC', 'DC', 'ISI']]`.
+
+### Exporting to file
+
+Exporting is done with operations named `.to_...` as listed in (https://pandas.pydata.org/docs/user_guide/io.html)
+
+1. Export your file as an Excel spreadsheet with  `.to_excel("filename.xlsx", sheetname="fires", index=False)`
+2. Read an Excel spreadsheet with: `pd.read_excel("filename.xlsx", sheetname="fires", index=False)`
+
+### Use generative AI to help with the following tasks
+1. Create a dataframe from a dictionary
+2. Reduce the fires dataframe with `group_by` to get just one row per month, and average temperature, average RH, and number of fires per month. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
+3. Merge with new dataframe to get a new variable that contains the full name of the month. See (https://pandas.pydata.org/docs/user_guide/merging.html)
 
 
-100. Export your file as an Excel spreadsheet with method `to_excel("filename.xlsx", sheetname="fires", index=False)`
-101. 
-
-Download and read an excel spreadsheet with: `pd.read_excel("filename.xlsx", sheetname="fires", index=False)`
 
 
 </details>
