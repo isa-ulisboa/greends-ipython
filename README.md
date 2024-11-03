@@ -500,7 +500,7 @@ Consider the dataset that described 517 fires from the Montesinho natural park i
 
 The goal is to download the file and use package `Pandas` to explore it and solve the following tasks.
 
-1. Read the file with `pd.read_csv` and show the first 10 rows with `.head()`.
+1. Read the file with `pd.read_csv` into a new object `fires`, and show the first 10 rows with `fires.head(10)`.
 2. Create list of column names and determine column data types with attribute `.dtypes`.
 3. Print a summary of the dataframe with `.info()`.
 4. Create a `Series` with the temperature values for all 517 fires.
@@ -521,8 +521,9 @@ These are operators to select rows and columns from a dataframe. `loc` selects r
 
 There are several possibilities to combine positional and label-based indexing:
 
-1. (with `iloc`) Using `df.columns.get_loc()` which converts the name of one column into its position. Then `iloc` can be used to perform the selection. For multiple columns determined by a list of column names, one can use instead `df.columns.get_indexer()`. Example: Use `iloc` to select the first 20 fires and just the FWI based variables values, using the names rather than the positions of those variables.
-2. (with `loc`) Using `df.index[]` to extract the index names. Then, `loc` can be used to perform the selection. Example: `fires.loc[fires.index[0:20], ['FFMC', 'DMC', 'DC', 'ISI']]`.
+1. (with `iloc`) Using `df.columns.get_loc()` which converts the name of one column into its position. Then `iloc` can be used to perform the selection. For multiple columns determined by a list of column names, one can use instead `df.columns.get_indexer()`. Example: Use `iloc` to select the first 20 fires and just the FWI based variables values, using the names rather than the positions of those variables. Solution: `FWI_positions=fires.columns.get_indexer(['FFMC','DMC','DC','ISI'])` and `
+fires.iloc[0:20,FWI_positions]`
+2. (with `loc`) Using `df.index[]` to extract the index names. Then, `loc` can be used to perform the selection. Solution: `fires.loc[fires.index[0:20], ['FFMC', 'DMC', 'DC', 'ISI']]`.
 
 ### Exporting to file
 
@@ -532,17 +533,68 @@ Exporting is done with operations named `.to_...` as listed in (https://pandas.p
 2. Read an Excel spreadsheet with: `pd.read_excel("filename.xlsx", sheetname="fires", index=False)`
 
 ### Use generative AI to help with the following tasks
-1. Create a dataframe from a dictionary
-2. Reduce the fires dataframe with `group_by` to get just one row per month, and average temperature, average RH, and number of fires per month. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
+1. Create a dataframe from a dictionary: for instance create a dictionary where keys are `jan`, `feb`, `mar`, for all 12 months, and the values are `January`, `February`, `, March` and so on.
+```
+months=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+dict_months={M[0:3].lower(): M for M in months} # create dictionary by dict comprehension
+df=pd.DataFrame.from_dict(dict_months, orient='index') # create data frame form dictionary
+```
 3. Merge with new dataframe to get a new variable that contains the full name of the month. See (https://pandas.pydata.org/docs/user_guide/merging.html)
-
-
-
+4. Reduce the fires dataframe with `group_by` to get just one row per month, and average temperature, average RH, and number of fires per month. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
 
 </details>
 
+<details markdown="block">
+<summary> 
 
+# Class 8 (November 8, 2024): OOP
+
+</summary>
+
+Suppose that one wants write a script in python usung classes to monitor plants at a nursery. Initially plants grow from seeds in trays and one wants to keep track of the number of trays and plants per tray. All plants in a tray are from the same species. Then, at some point, small plants are transferred to individual pots (one plant per pot). At the end, pots are sold. One wants to track the number of plants of each species that are in the nursery.
+
+For this type of problem, one wants to mimic entities of the real world (plants, trays, pots, and the nursery) as objects in  Python code. Object-oriented programming is an intuitive form of doing so.
+
+Creating a class the standard way, with the `__init__` method:
+```
+class Plant:
+    def __init__(self, species):
+        self.species = species
+```
+or creating with the `@dataclass` decorator, see (https://docs.python.org/3/library/dataclasses.html):
+```
+from dataclasses import dataclass
+
+@dataclass
+class Plant:
+    species: str
+```
+A class can have methods, which are functions defined for objects of the class. In the example below, `Tray` is a class with methods `remove_plants` (with one argument which is the number of plants to remove from the tray and place in pots) 
+```
+@dataclass
+class Tray:
+    species: str
+    number_of_plants: int
+    def remove_plants(self, number): # self refers to the object of the class
+        number=min(number,self.number_of_plants) #cannot remove more than available
+        self.number_of_plants -= number
+        return [Plant(self.species) for _ in range(number)]
+    def is_empty(self): # returns True of False
+        return self.number_of_plants == 0
+```
+
+
+### Use generative AI to help with the following tasks
+1. Create a script for the problem. Which classes does your script create? Which methods are available for each class?
+2. Verify if the script removes trays that are empty from the inventory, and update it to do that
+3. Adapt your code
+4. Redifine classes created the standard way (with `__init__`) by classes defined with the `@dataclass` decorator (available since Python 3.7). What has changed on your code?
+
+</details>
 <!---
+
+I want to write a script in python sung classes to monitor plants at a nursery. Initially plants grow from seeds in trays and I want to keep track of the number of trays and plants per tray. All plants in a tray are from the same species. Then, at some point, small plants are transferred to individual pots (one plant per pot) . At the end, pots are sold. I want to track the number of plants of each species that are in the nursery.
+
 #####################################################################################  last year and suggestions for this year
 Assignments:
 1. Functions, variables, conditionals, loops
