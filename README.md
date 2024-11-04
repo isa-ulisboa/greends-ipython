@@ -539,15 +539,29 @@ months=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August'
 dict_months={M[0:3].lower(): M for M in months} # create dictionary by dict comprehension
 df=pd.DataFrame.from_dict(dict_months, orient='index') # create data frame form dictionary
 ```
-3. Merge with new dataframe to get a new variable that contains the full name of the month. See (https://pandas.pydata.org/docs/user_guide/merging.html)
-4. Reduce the fires dataframe with `group_by` to get just one row per month, and average temperature, average RH, and number of fires per month. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
+2. Merge with new dataframe to get a new variable that contains the full name of the month. See (https://pandas.pydata.org/docs/user_guide/merging.html)
 
 </details>
 
 <details markdown="block">
 <summary> 
 
-# Class 8 (November 8, 2024): OOP
+# Class 8 (November 8, 2024): tabular data; pandas (cont'd)
+
+</summary>
+
+Create a jupyter notebook for this class. If you're using your CS50 codespace, create a file with `code mynotebook.ipynb` and follow the suggestions for jupyter notebooks in your codespace session.
+
+### Use generative AI to help with the following tasks
+
+Reduce the fires dataframe with `group_by` to get just one row per month, and average temperature, average RH, and number of fires per month. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
+
+</details>
+
+<details markdown="block">
+<summary> 
+
+# Class 9 (November 15, 2024): OOP
 
 </summary>
 
