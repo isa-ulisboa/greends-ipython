@@ -533,28 +533,41 @@ Exporting is done with operations named `.to_...` as listed in (https://pandas.p
 2. Read an Excel spreadsheet with: `pd.read_excel("filename.xlsx", sheetname="fires", index=False)`
 
 ### Use generative AI to help with the following tasks
-1. Create a dataframe from a dictionary: for instance create a dictionary where keys are `jan`, `feb`, `mar`, for all 12 months, and the values are `January`, `February`, `, March` and so on.
+1. Create a dataframe `months_df` from a dictionary: for instance create a dictionary where keys are `jan`, `feb`, `mar`, for all 12 months, and the values are `January`, `February`, `, March` and so on.
 ```
-months=['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-dict_months={M[0:3].lower(): M for M in months} # create dictionary by dict comprehension
-df=pd.DataFrame.from_dict(dict_months, orient='index') # create data frame form dictionary
+month_data = {
+    'Month': [
+        'January', 'February', 'March', 'April', 'May', 'June', 
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ],
+    'mth': [
+        'jan', 'feb', 'mar', 'apr', 'may', 'jun', 
+        'jul', 'aug', 'sep', 'oct', 'nov', 'dec'
+    ]
+}
+months_df = pd.DataFrame(month_data)
+
 ```
 2. Merge with new dataframe to get a new variable that contains the full name of the month. See (https://pandas.pydata.org/docs/user_guide/merging.html)
+```
+merged_df = pd.merge(fires, months_df, left_on='month', right_on='mth', how='left')
+merged_df.drop(columns='mth', inplace=True)
+```
 
 </details>
 
 <details markdown="block">
 <summary> 
 
-# Class 8 (November 8, 2024): tabular data; pandas (cont'd)
+# Class 8 (November 8, 2024): pandas (cont'd), jupyter notebooks
 
 </summary>
 
-Create a jupyter notebook for this class. If you're using your CS50 codespace, create a file with `code mynotebook.ipynb` and follow the suggestions for jupyter notebooks in your codespace session.
+Create a jupyter notebook for this class. If you're using your CS50 codespace, create a new file with `code mynotebook.ipynb` and follow the suggestions for jupyter notebooks in your codespace session.
 
 ### Use generative AI to help with the following tasks
 
-Reduce the fires dataframe with `group_by` to get just one row per month, and average temperature, average RH, and number of fires per month. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
+1. Reduce the fires dataframe with `group_by` to get just one row per month, and average temperature, average RH, and number of fires per month. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
 
 </details>
 
