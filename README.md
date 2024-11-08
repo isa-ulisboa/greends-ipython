@@ -9,7 +9,7 @@ Teaching assistant: Dominic Welsh (djwelsh@edu.ulisboa.pt)
 <details markdown="block">
 <summary> 
  
-# Online resources for the course (to be completed)
+# Online resources for the course
 
 </summary>
  
@@ -563,11 +563,15 @@ merged_df.drop(columns='mth', inplace=True)
 
 </summary>
 
-Create a jupyter notebook for this class. If you're using your CS50 codespace, create a new file with `code mynotebook.ipynb` and follow the suggestions for jupyter notebooks in your codespace session.
+Create a jupyter notebook for this class. If you're using your CS50 codespace, create a new file in the terminal with `$code mynotebook.ipynb` and follow the suggestions for jupyter notebooks in your codespace session.
 
 ### Use generative AI to help with the following tasks
 
-1. Reduce the fires dataframe with `group_by` to get just one row per month, and average temperature, average RH, and number of fires per month. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
+1. Reduce the `fires` dataframe with method `.groupby` to get just one row per month, and average temperature, average RH, and number of fires per month. The goal is to create a dataframe named `firesbymonth` with columns `avg_temp`, `avg_RH` and `fire_count`. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
+2. What is the effect of adding the method `.reset_index()` to the previous command?
+3. Sort the dataframe `firesbymonth`, such that the 12 rows are ordered by month correctly: `jan`, `feb`, `mar`, and so on.
+4. Create a new column called 'in `firesbymonth` of type string that indicates if a month is `dry&hot`, `dry&cold`, `wet&hot` or `wet&cold`. Use the mean values of `avg_temp`, `avg_RH` to establish the appropriate thresholds.
+5. Re-organize the information in `fires` into a two-way table that shows the numbers of fires per day of the week and per month, where `NaN` are replaced by 0. Towards that end, explore the `.pivot_table` method.
 
 </details>
 
