@@ -565,13 +565,15 @@ merged_df.drop(columns='mth', inplace=True)
 
 Create a jupyter notebook for this class. If you're using your CS50 codespace, create a new file in the terminal with `$code mynotebook.ipynb` and follow the suggestions for jupyter notebooks in your codespace session.
 
+There are many available *cheatsheets* for Pandas that can help visualizing Pandas' functionalities. Since there are many possibilities, a single page cheatsheet is either too limited or too cryptic. This [12-page cheatsheet](https://www.webpages.uidaho.edu/~stevel/cheatsheets/Pandas%20DataFrame%20Notes_12pages.pdf) is pretty self-contained and includes several examples.
+
 ### Use generative AI to help with the following tasks
 
 1. Reduce the `fires` dataframe with method `.groupby` to get just one row per month, and average temperature, average RH, and number of fires per month. The goal is to create a dataframe named `firesbymonth` with columns `avg_temp`, `avg_RH` and `fire_count`. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
 2. What is the effect of adding the method `.reset_index()` to the previous command?
 3. Sort the dataframe `firesbymonth`, such that the 12 rows are ordered by month correctly: `jan`, `feb`, `mar`, and so on.
-4. Create a new column called 'in `firesbymonth` of type string that indicates if a month is `dry&hot`, `dry&cold`, `wet&hot` or `wet&cold`. Use the mean values of `avg_temp`, `avg_RH` to establish the appropriate thresholds.
-5. Re-organize the information in `fires` into a two-way table that shows the numbers of fires per day of the week and per month, where `NaN` are replaced by 0. Towards that end, explore the `.pivot_table` method.
+4. Create a new column called `conditions` in `firesbymonth` of type string that indicates if a month is `dry&hot`, `dry&cold`, `wet&hot` or `wet&cold`. Use the mean values of `avg_temp` and `avg_RH` to establish the appropriate thresholds. Use method `.apply` and define the function to apply with `lambda`.
+5. Re-organize the information in `fires` into a two-way table that shows the total area of fires per day of the week and per month, where `NaN` are replaced by 0. Towards that end, explore the `.pivot_table` method.
 
 </details>
 
