@@ -615,7 +615,7 @@ from dataclasses import dataclass
 class Plant:
     species: str
 ```
-A class can have methods, which are functions defined for objects of the class. In the example below, `Tray` is a class with properties `species` and `number_of_plants`, and method `remove_plants` and `is_empty`. The first has one argument which is the number of plants to remove from the tray; it returns a list of objects of the class `Plant` which correspond to the plants that were removed from the tray. The method `is_empty` doesn't have an argument and returns `True` or `False`.
+A class can have methods, which are functions defined for objects of the class. In the example below, `Tray` is a class with properties `species` and `number_of_plants`, and methods `remove_plants` and `is_empty`. The first has one argument which is the number of plants to remove from the tray; it returns a list of objects of the class `Plant` which correspond to the plants that were removed from the tray. The method `is_empty` doesn't have an argument and returns `True` or `False`.
 ```
 from dataclasses import dataclass
 
@@ -651,7 +651,7 @@ The code for the full problem that envolves plants of several species, trays, po
 
 ### Use generative AI to help with the following tasks
 1. Create a script for the problem. Which classes does your script include? Which methods are available for each class?
-2. Your Nursery class should contain a method like the one below that allows you to get a report of the plants in the nursery. The `__str__` method is called when you run `print(nursery)`, where `nursery` is an instance of the class `nursery`. 
+2. Your Nursery class should contain a method like the one below that allows you to get a report of the plants in the nursery. The `__str__` method is called when you run `print(nursery)`, where `nursery` is an instance of the class `Nursery`. 
 ```
 def __str__(self):
     return (f"Nursery Status: Trays: {len(self.trays)}, Pots: {len(self.pots)}\n"
