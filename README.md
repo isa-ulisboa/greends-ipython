@@ -533,7 +533,8 @@ Exporting is done with operations named `.to_...` as listed in (https://pandas.p
 2. Read an Excel spreadsheet with: `pd.read_excel("filename.xlsx", sheetname="fires", index=False)`
 
 ### Use generative AI to help with the following tasks
-1. Create a dataframe `months_df` from a dictionary: for instance create a dictionary where keys are `jan`, `feb`, `mar`, for all 12 months, and the values are `January`, `February`, `, March` and so on.
+
+1. Create a dataframe `months_df` from a dictionary: for instance create a dictionary where keys are `jan`, `feb`, `mar`, for all 12 months, and the values are `January`, `February`, `March` and so on.
 
 ```
 month_data = {
@@ -586,26 +587,42 @@ There are many available *cheatsheets* for Pandas that can help visualizing Pand
 
 </summary>
 
-Suppose that one wants write a script in python usung classes to monitor plants at a nursery. Initially plants grow from seeds in trays and one wants to keep track of the number of trays and plants per tray. All plants in a tray are from the same species. Then, at some point, small plants are transferred to individual pots (one plant per pot). At the end, pots are sold. One wants to track the number of plants of each species that are in the nursery.
+Suppose that one wants write a script in python using classes to monitor plants at a nursery. Initially plants grow from seeds in trays and one wants to keep track of the number of trays and plants per tray. All plants in a given tray are from the same species. Then, at some point, small plants are transferred to individual pots (one plant per pot). At the end, pots are sold. One wants to track the number of plants of each species that are in the nursery.
 
-For this type of problem, one wants to mimic entities of the real world (plants, trays, pots, and the nursery) as objects in  Python code. Object-oriented programming is an intuitive form of doing so.
+For this type of problem, one wants to mimic entities of the real world (plants, trays, pots, and the nursery) as objects in  Python code. Object-oriented programming is an intuitive form of doing so. A class in Python is an object constructor, or a *blueprint* for creating objects.
 
-Creating a class the standard way, with the `__init__` method:
+The simplest example of  class, with very little functionality, is a class to store constant values, which are not supposed to change. When one calls the class `Constants` it creates an instance of the class with the two properties `MAX_PLANTS_PER_TRAY` and `SALE_PRICE`.
+```
+class Constants:
+   MAX_PLANTS_PER_TRAY=50
+   SALE_PRICE=10
+
+print(Constants.SALE_PRICE)
+```
+However, in general we intent to call the class to create one instance (one object) of the class and set the properties of that object. To indicate the values of the instance properties we use the `__init__` method:
 ```
 class Plant:
     def __init__(self, species):
         self.species = species
+
+my_plant=Plant("Rose") # create instance where property `species` has value `Rose`
+print(my_plant.species)
 ```
-or creating with the `@dataclass` decorator, see (https://docs.python.org/3/library/dataclasses.html):
+Alternatively, a class can be created with the `@dataclass` decorator, see (https://docs.python.org/3/library/dataclasses.html). In this case, the `__init__` method is set  automatically.
+```
+from dataclasses import dataclass
+@dataclass
+class Plant:
+    species: str
+```
+A class can have methods, which are functions defined for objects of the class. In the example below, `Tray` is a class with properties `species` and `number_of_plants`, and method `remove_plants` and `is_empty`. The first has one argument which is the number of plants to remove from the tray; it returns a list of objects of the class `Plant` which correspond to the plants that were removed from the tray. The method `is_empty` doesn't have an argument and returns `True` or `False`.
 ```
 from dataclasses import dataclass
 
 @dataclass
 class Plant:
     species: str
-```
-A class can have methods, which are functions defined for objects of the class. In the example below, `Tray` is a class with methods `remove_plants` (with one argument which is the number of plants to remove from the tray and place in pots) 
-```
+
 @dataclass
 class Tray:
     species: str
@@ -616,12 +633,25 @@ class Tray:
         return [Plant(self.species) for _ in range(number)]
     def is_empty(self): # returns True of False
         return self.number_of_plants == 0
-```
 
+tray=Tray('Lily', 28)
+plants=tray.remove_plants(10)
+if tray.is_empty():
+    print('The tray is empty')
+else:
+    print('There are still', tray.number_of_plants, tray.species, 'plants in the tray')
+first_plant=plants[0]
+print('The plant removed is', first_plant.species)
+```
+The code for the full problem that envolves plants of several species, trays, pots and sales can be organized in the following manner:
+    - Plant class: Simple class to represent a plant with a species.
+    - Pot class: Holds one plant each.
+    - Tray class: Holds plants of a single species and can remove plants.
+    - Nursery class: Manages trays, pots, and keeps track of plant counts by species. It has methods like add_tray, transfer_to_pots, and sell_pot to handle operations for tracking and updating counts.
 
 ### Use generative AI to help with the following tasks
 1. Create a script for the problem. Which classes does your script create? Which methods are available for each class?
-2. Verify if the script removes trays that are empty from the inventory, and update it to do that
+2. Verify if the script removes trays that are empty from the inventory, and update it if it is not the case
 3. Adapt your code
 4. Redifine classes created the standard way (with `__init__`) by classes defined with the `@dataclass` decorator (available since Python 3.7). What has changed on your code?
 
