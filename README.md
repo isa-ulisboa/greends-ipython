@@ -534,6 +534,7 @@ Exporting is done with operations named `.to_...` as listed in (https://pandas.p
 
 ### Use generative AI to help with the following tasks
 1. Create a dataframe `months_df` from a dictionary: for instance create a dictionary where keys are `jan`, `feb`, `mar`, for all 12 months, and the values are `January`, `February`, `, March` and so on.
+
 ```
 month_data = {
     'Month': [
@@ -546,9 +547,10 @@ month_data = {
     ]
 }
 months_df = pd.DataFrame(month_data)
-
 ```
+
 2. Merge with new dataframe to get a new variable that contains the full name of the month. See (https://pandas.pydata.org/docs/user_guide/merging.html)
+
 ```
 merged_df = pd.merge(fires, months_df, left_on='month', right_on='mth', how='left')
 merged_df.drop(columns='mth', inplace=True)
@@ -624,6 +626,9 @@ class Tray:
 4. Redifine classes created the standard way (with `__init__`) by classes defined with the `@dataclass` decorator (available since Python 3.7). What has changed on your code?
 
 </details>
+
+
+
 <!---
 
 I want to write a script in python sung classes to monitor plants at a nursery. Initially plants grow from seeds in trays and I want to keep track of the number of trays and plants per tray. All plants in a tray are from the same species. Then, at some point, small plants are transferred to individual pots (one plant per pot) . At the end, pots are sold. I want to track the number of plants of each species that are in the nursery.
