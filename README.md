@@ -587,11 +587,11 @@ There are many available *cheatsheets* for Pandas that can help visualizing Pand
 
 </summary>
 
-Suppose that one wants write a script in python using classes to monitor plants at a nursery. Initially plants grow from seeds in trays and one wants to keep track of the number of trays and plants per tray. All plants in a given tray are from the same species. Then, at some point, small plants are transferred to individual pots (one plant per pot). At the end, pots are sold. One wants to track the number of plants of each species that are in the nursery.
+Suppose that one wants write a script in python using classes to monitor plants at a nursery. Initially plants grow from seeds in trays and one wants to keep track of the trays and number of plants per tray. All plants in a given tray are from the same species. Then, at some point, some plants are transferred from trays to individual pots (one plant per pot). At the end, pots are sold. One wants to track the number of plants of each species that are in the nursery.
 
 For this type of problem, one wants to mimic entities of the real world (plants, trays, pots, and the nursery) as objects in  Python code. Object-oriented programming is an intuitive form of doing so. A class in Python is an object constructor, or a *blueprint* for creating objects.
 
-The simplest example of  class, with very little functionality, is a class to store constant values, which are not supposed to change. When one calls the class `Constants` it creates an instance of the class with the two properties `MAX_PLANTS_PER_TRAY` and `SALE_PRICE`.
+The simplest example of  class, with very little functionality, is a class to store constant values, which are not supposed to change. When one calls the class `Constants` defined below, an instance of the class with the two properties `MAX_PLANTS_PER_TRAY` and `SALE_PRICE` is created.
 ```
 class Constants:
    MAX_PLANTS_PER_TRAY=50
@@ -650,10 +650,17 @@ The code for the full problem that envolves plants of several species, trays, po
     - Nursery class: Manages trays, pots, and keeps track of plant counts by species. It has methods like add_tray, transfer_to_pots, and sell_pot to handle operations for tracking and updating counts.
 
 ### Use generative AI to help with the following tasks
-1. Create a script for the problem. Which classes does your script create? Which methods are available for each class?
-2. Verify if the script removes trays that are empty from the inventory, and update it if it is not the case
-3. Adapt your code
-4. Redifine classes created the standard way (with `__init__`) by classes defined with the `@dataclass` decorator (available since Python 3.7). What has changed on your code?
+1. Create a script for the problem. Which classes does your script include? Which methods are available for each class?
+2. Your Nursery class should contain a method like the one below that allows you to get a report of the plants in the nursery. The `__str__` method is called when you run `print(nursery)`, where `nursery` is an instance of the class `nursery`. 
+```
+def __str__(self):
+    return (f"Nursery Status: Trays: {len(self.trays)}, Pots: {len(self.pots)}\n"
+            f"Species in Trays: {self.tray_species_count}\n"
+            f"Species in Pots: {self.pot_species_count}")
+```
+4. Verify if the script removes trays that are empty from the inventory, and update it if it is not the case
+5. Can you keep track of the number of (non-empty) trays and pots that are in the nursery at any point? Create a function that prints that information.
+6. Redifine classes created the standard way (with `__init__`) by classes defined with the `@dataclass` decorator (available since Python 3.7). Is your code simpler and easier to read?
 
 </details>
 
