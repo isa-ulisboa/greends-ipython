@@ -583,7 +583,7 @@ There are many available *cheatsheets* for Pandas that can help visualizing Pand
 <details markdown="block">
 <summary> 
 
-# Class 9 (November 15, 2024): OOP
+# Class 9 (November 15, 2024): OOP, classes, methods
 
 </summary>
 
@@ -630,7 +630,7 @@ class Tray:
     def remove_plants(self, number): # self refers to the object of the class
         number=min(number,self.number_of_plants) #cannot remove more than available
         self.number_of_plants -= number
-        return [Plant(self.species) for _ in range(number)]
+        return [Plant(self.species) for _ in range(number)] # returns list of instances of Plant
     def is_empty(self): # returns True of False
         return self.number_of_plants == 0
 
@@ -650,17 +650,18 @@ The code for the full problem that envolves plants of several species, trays, po
     - Nursery class: Manages trays, pots, and keeps track of plant counts by species. It has methods like add_tray, transfer_to_pots, and sell_pot to handle operations for tracking and updating counts.
 
 ### Use generative AI to help with the following tasks
-1. Create a script for the problem. Which classes does your script include? Which methods are available for each class?
-2. Your Nursery class should contain a method like the one below that allows you to get a report of the plants in the nursery. The `__str__` method is called when you run `print(nursery)`, where `nursery` is an instance of the class `Nursery`. 
+1. Create a script for the problem. Start with a simplified version of the problem where there are only trays and plants (from more than one species) in the nursery, which can be represented with 3 classes: `Plant`, `Tray` and `Nursery`. Trays can be created with a given number of plants of the same species, and plants can be removed from trays. The goal in this simplified version is to create the inventory that keeps track of the number of plants of each species that are in trays or were removed from the trays.
+3. Add to the previous script a class that represents pots and adapt your script accordingly. When plants are removed from trays, they are always placed in a pot (one plant per pot). The goal is to track the plants in trays and pots.
+4. Your Nursery class should contain a method like the one below that allows you to get a report of the plants in the nursery. The `__str__` method is called when you run `print(nursery)`, where `nursery` is an instance of class `Nursery`. 
 ```
 def __str__(self):
     return (f"Nursery Status: Trays: {len(self.trays)}, Pots: {len(self.pots)}\n"
             f"Species in Trays: {self.tray_species_count}\n"
             f"Species in Pots: {self.pot_species_count}")
 ```
-4. Verify if the script removes trays that are empty from the inventory, and update it if it is not the case
-5. Can you keep track of the number of (non-empty) trays and pots that are in the nursery at any point? Create a function that prints that information.
-6. Redifine classes created the standard way (with `__init__`) by classes defined with the `@dataclass` decorator (available since Python 3.7). Is your code simpler and easier to read?
+5. Finally, consider that pots can be sold and, tehrefore, removed from the inventory.
+6. Verify if your script removes trays that are empty from the inventory, and update it if it is not the case
+7. Redifine classes created the standard way (with `__init__`) by classes defined with the `@dataclass` decorator (available since Python 3.7). Is your code simpler and easier to read?
 
 </details>
 
