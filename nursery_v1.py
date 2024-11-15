@@ -6,11 +6,7 @@ class Tray:
     def __init__(self, species, count):
         self.species = species
         self.count = count  # Number of plants of the same species in the tray
-
-    def add_plants(self, number):
-        """Add plants to the tray."""
-        self.count += number
-
+        
     def remove_plants(self, number):
         """Remove plants from the tray. Returns the number removed."""
         if number > self.count:
@@ -20,9 +16,6 @@ class Tray:
             self.count -= number
             removed = number
         return removed
-
-    def __repr__(self):
-        return f"Tray(species={self.species}, count={self.count})"
 
 class Nursery:
     def __init__(self):
