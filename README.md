@@ -686,7 +686,7 @@ This is a central topic in computer science, and therefore you can find all kind
 3. (https://www.w3schools.com/python/python_inheritance.asp), (https://www.w3schools.com/python/python_polymorphism.asp)
 
 Building on the plant nursery example of last class, the following scripts illustrate the implementation of those concepts:
-- Encapsulation:
+- Encapsulation: (OOP_encapsulation.py)
 - Inheritance: 
 - Polymorphism: 
 - Abstraction: 
