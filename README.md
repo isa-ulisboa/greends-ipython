@@ -686,10 +686,10 @@ This is a central topic in computer science, and therefore you can find all kind
 3. (https://www.w3schools.com/python/python_inheritance.asp), (https://www.w3schools.com/python/python_polymorphism.asp)
 
 Building on the plant nursery example of last class, the following scripts illustrate the implementation of those concepts:
-- Encapsulation: [OOP_encapsulation.py](OOP_encapsulation.py)
-- Inheritance: [OOP_inheritance.py](OOP_inheritance.py)
-- Polymorphism: [OOP_polymorphism.py](OOP_polymorphism.py)
-- Abstraction: [OOP_abstraction.py](OOP_abstraction.py)
+- Encapsulation: [OOP_encapsulation.py](https://github.com/isa-ulisboa/greends-ipython/blob/main/OOP_encapsulation.py)
+- Inheritance: [OOP_inheritance.py](https://github.com/isa-ulisboa/greends-ipython/blob/main/OOP_inheritance.py)
+- Polymorphism: [OOP_polymorphism.py](https://github.com/isa-ulisboa/greends-ipython/blob/main/OOP_polymorphism.py)
+- Abstraction: [OOP_abstraction.py](https://github.com/isa-ulisboa/greends-ipython/blob/main/OOP_abstraction.py)
 
 The next assignment will be the *Cookie jar* problem described at (https://cs50.harvard.edu/python/2022/psets/8/jar/). You will need to create a script for the problem and test it with `check50 cs50/problems/2022/python/jar`. 
 
