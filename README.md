@@ -666,9 +666,33 @@ def __repr__(self):
 5. Finally, consider that pots can be sold and therefore removed from the inventory.
 
 6. Verify if your script removes trays that are empty from the inventory, and update it if it is not the case.
+
 </details>
 
+<details markdown="block">
+<summary> 
 
+# Class 10 (November 22, 2024): Basic concepts of OOP
+
+</summary>
+
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20230818181616/Types-of-OOPS-2.gif" alt="alt text" width="256" >
+
+The four main concepts of Object-Oriented Programming (OOP) are *Encapsulation*, *Abstraction*, *Inheritance*, and *Polymorphism*.  These concepts work together to create modular, scalable, and maintainable code in object-oriented programming.
+
+This is a central topic in computer science, and therefore you can find all kind of resources about it. Among them, you can find simple descriptions of those concepts, with examples, at the following links:
+1. (https://www.programiz.com/python-programming/object-oriented-programming)
+2. (https://www.freecodecamp.org/news/object-oriented-programming-in-python/)
+3. (https://www.w3schools.com/python/python_inheritance.asp), (https://www.w3schools.com/python/python_polymorphism.asp)
+
+Building on the plant nursery example of last class, the following scripts illustrate the implementation of those concepts:
+- Encapsulation:
+- Inheritance: 
+- Polymorphism: 
+- Abstraction: 
+ 
+
+</details>
 
 <!---
 
