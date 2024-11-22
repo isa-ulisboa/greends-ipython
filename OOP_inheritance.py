@@ -23,8 +23,10 @@ class SingleUseTray(Tray):
     def remove_plants(self): # self refers to the object of the class
         if not self.is_usable:
             sys.exit('This tray cannot be used anymore')
+        plants = [Plant(self.species) for _ in range(self.number_of_plants)]
         self.is_usable=False
-        return [Plant(self.species) for _ in range(self.number_of_plants)]
+        self.number_of_plants= 0
+        return plants
 
 class MultipleUseTray(Tray):
     def __init__(self,species,number_of_plants):
