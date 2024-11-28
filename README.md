@@ -347,12 +347,16 @@ def main():
 
 </summary>
 
-1. Virtual environments in Python: a virtual environment (https://docs.python.org/3/library/venv.html) is:
+### Virtual environments in Python
+
+A virtual environment (https://docs.python.org/3/library/venv.html) is:
    - Used to contain a specific Python interpreter and software libraries and binaries which are needed to support a project (library or application). These are by default isolated from software in other virtual environments and Python interpreters and libraries installed in the operating system.
     - Contained in a directory, conventionally named `.venv` or `venv` in the project directory, or under a container directory for lots of virtual environments.
     - Not checked into source control systems such as Git.
     - Considered as disposable – it should be simple to delete and recreate it from scratch. You don’t place any project code in the environment.
     - Not considered as movable or copyable – you just recreate the same environment in the target location.
+
+In your system you have the *base* environment by default, and you can create one or more *virtual environments*. Below, we describe how to create a virtual environment and how to activate it, so you commands in terminal are interpreted within that environment. That allows you to encapsulate in each virtual environment you create a given Python version, and a set of Python packages with their given versions. Your data and script files remain on the usual working folders: they should not be moved to the folders where the virtual environment files are stored.
 
 The following commands work in the  [CS50 codespace](https://cs50.dev/) that runs Linux (check with `$cat /etc/os-release` in the terminal). Some need to be slightly adapted for Windows.
 
@@ -363,7 +367,7 @@ $ pip list
 $ pip show requests
 ```
 
-Next, let's create a virtual environment. One can first create (with `mkdir`) a folder called, say, `my_venvs` so all the virtual environments are created in that folder. Then, the virtual environment `myvenv` can be created with:
+Next, let's create a virtual environment. One can first create (with `mkdir`) a folder called, say, `my_venvs` so all the virtual environments are created in that folder. This makes sense since virtual enrironment folders are created independently from the working folders that contain data and scripts.  The virtual environment `myvenv` can then be created with:
 ```
 my_venvs/ $ python3 -m venv myvenv # creates environment called myvenv with Python 3
 ```
@@ -372,7 +376,7 @@ In case one needs to delete the virtual environment, one just needs to delete th
 ```
 my_venvs/ $ source myvenv/bin/activate # note that activate needs to be sourced
 ```
-As a result, the prompt shows `(myvenv) my_venvs/ $` which indicates that `myvenv` is now activated. One can check the Python version witj `$python -V`. To de-activate a virtual environment, the command is `$ deactivate`. With the environment activated, let's try to install a few packages, specifying the versions. For instance, install the following packages.
+As a result, the prompt shows `(myvenv) my_venvs/ $` which indicates that `myvenv` is now activated. One can check the Python version with `$python -V`. To de-activate a virtual environment, the command is `$ deactivate`. With the environment activated, let's try to install a few packages, specifying the versions. For instance, install the following packages.
 
 ```
 (myvenv) my_venvs/ $ pip install random11==0.0.1
@@ -385,7 +389,9 @@ Check the system path (where Python will look for installed packages)  by execut
 ```
 (myvenv) my_venvs/ $ python -c 'import sys; print(sys.path)'
 ```
-Notice that the folder in `myvenv` where the virtual environment packages are installed is listed, but the folders where base packages are stored is not. Since a virtual environment is not movable, one needs to collect the information about the installed packages in a file in case one intends to share the environment (e.g. in GitHub). Towards that end, one needs to create a file typically called `requirements.txt` with the packages names and versions, that can be used to create a clone of the environment on another machine. This is done, still within `myvenv` (i.e. with `myvenv` activated) with the following command:
+Notice that the folder in `myvenv` where the virtual environment packages are installed is listed, but the path to where base packages are stored is not. 
+
+If one wishes to share a virtual environment, the way to do that is to share a file (typically, `requirements.txt`) that allows a collaborator to re-create the environment. `requirements.txt` stores the information about the installed packages in a file in case one intends to share the environment (e.g. in GitHub). Towards that end, one needs to create `requirements.txt` with the packages names and versions, that can be used to create a clone of the environment on another machine. This is done, still within `myvenv` (i.e. with `myvenv` activated) with the following command:
 ```
 (myvenv) my_venvs/ $ pip freeze > requirements.txt  
 ```
