@@ -228,7 +228,8 @@ For a list of Python Built-in Exceptions, you can explore (https://www.w3schools
 
 </summary>
 
-1. (modules) You can store your own functions in modules (which are just python scripts) and `import` then into your main code. Let's imagine you created a file named `mymodule.py` in a given folder. In your main script, you can import the file if the folder belongs to list of folders the Python interpreter will look for. You can check that by running the following lines of codes in the Python interpreter:
+### Modules
+You can store your own functions in modules (which are just python scripts) and `import` then into your main code. Let's imagine you created a file named `mymodule.py` in a given folder. In your main script, you can import the file if the folder belongs to list of folders the Python interpreter will look for. You can check that by running the following lines of codes in the Python interpreter:
 ```
 >>>import sys
 >>>sys.path
@@ -272,7 +273,8 @@ $pip install random
 ```
 and then import it on your main script with `import random`. If you want to know which is the folder where the module is located, you can get that information with `random.__file__`.
 
-2. (`sys.argv`) Previously, we used module `sys`, in particular functions  `sys.exit()` and  `sys.path`. Another useful function is `sys.argv`,  that allows you to have access to what the user typed in at the command line `$` as in 
+### `sys.argv`
+Previously, we used module `sys`, in particular functions  `sys.exit()` and  `sys.path`. Another useful function is `sys.argv`,  that allows you to have access to what the user typed in at the command line `$` as in 
 ```
 import sys
 print(len(sys.argv)) # returns the number of words in the command line after $python
@@ -290,7 +292,8 @@ except IndexError:
 except ValueError:
     print('The arguments are not numbers')
 ```
-3. (APIs) *application program interfaces* allow you to communicate with a remote server. For instance,  `requests` is a package that allows your program to behave as a web browser would.  Consider the following script `myrequest.py` that allows you to explore the *itunes* database (https://performance-partners.apple.com/search-api):
+### APIs 
+*Application program interfaces* allow you to communicate with a remote server. For instance,  `requests` is a package that allows your program to behave as a web browser would.  Consider the following script `myrequest.py` that allows you to explore the *itunes* database (https://performance-partners.apple.com/search-api):
 ```
 import requests
 import sys
@@ -330,7 +333,8 @@ lst_urban_point = lst.mean().sample(u_poi, scale).first().get('LST_Day_1km').get
 print('Average daytime LST at urban point:', round(lst_urban_point*0.02 -273.15, 2), '°C')
 ```
 
-4. Solve problems from CS50P [Problem_set_4](https://cs50.harvard.edu/python/2022/psets/4/). In particular, for problem *Bitcoin price index* organize your code so the main function is the following:
+### Problems
+Solve problems from CS50P [Problem_set_4](https://cs50.harvard.edu/python/2022/psets/4/). In particular, for problem *Bitcoin price index* organize your code so the main function is the following:
 
 ```
 def main():
@@ -404,7 +408,7 @@ my_venvs/ $ source myvenv2/bin/activate # activate myvenv2
 
 Exercise: go back to `myvenv`, add package (say, `emoji==0.1.0`), re-build `requirements.txt`, and create new environment `myvenv3` and install the  set of packages listed in the new `requirements.txt`.
 
-2. File I/O
+### File I/O
 
 As discussed in (https://cs50.harvard.edu/python/2022/notes/6/) `open` is a functionality built into Python that allows you to open a file and utilize it in your program. The open function allows you to open a file such that you can read from it or write to it. The most basic way to use `open` allow us to enable file I/O with respect to a given file. In the example below, `w` is the argument value that indicates that the file is open in writing mode. The instruction `file.write(...)` will entirely rewrite the file, deleting the previous contents.
 ```
@@ -701,9 +705,101 @@ The next assignment will be the *Cookie jar* problem described at (https://cs50.
 
 </details>
 
+<details markdown="block">
+<summary> 
+
+# Class 11 (November 29, 2024): Unit tests
+
+</summary>
+
+This topic corresponds to [Section 5](https://cs50.harvard.edu/python/2022/weeks/5/) of the CS50 course: you can find the necessary resources on that link. In particular, see the short [https://cs50.harvard.edu/python/2022/shorts/pytest/](https://cs50.harvard.edu/python/2022/shorts/pytest/).
+
+The idea is to create functions in Python (the names of those functions start with `test_`) that are used to test existing functions or classes in the script. To execute the test functions we call `pytest` in the terminal [https://docs.pytest.org/](https://docs.pytest.org/) instead of `python`:
+
+```
+$ pytest - v # -v is optional for a more verbose output
+```
+If no arguments are given, `pytest` will execute all functions which name starts with `test_` or end with `_test` in scripts in the current directory and all its subdirectories. However, `$pytest my_file.py` will only execute the tests within that file. Moreover, `$pytest my_directory` will only execute the tests defined in files located in that directory. There are further options to select the tests to be executed with `pytest`.
+
+### Simple example of a class and tests for that class
+
+Consider you have two python modules: one with the definition of a class and the other that implement tests over that class.
+```
+# farm_carbon_footprint.py
+
+import math
+
+class Farm:
+    def __init__(self, name, area_hectares):
+        """Initialize the farm with a name and area in hectares."""
+        self.name = name
+        self.area_hectares = area_hectares
+        self.activities = []
+
+    def add_activity(self, activity, emissions_per_unit, units):
+        """Add an activity with emissions in kg CO2e per unit and units."""
+        self.activities.append((activity, emissions_per_unit, units))
+
+    def total_emissions(self):
+        """Calculate total carbon emissions from all activities."""
+        return sum(emissions_per_unit * units for _, emissions_per_unit, units in self.activities)
+
+    def emissions_per_hectare(self):
+        """Calculate carbon emissions per hectare."""
+        if self.area_hectares == 0:
+            raise ValueError("Farm area cannot be zero.")
+        return self.total_emissions() / self.area_hectares
+
+    def radius_circle_with_farm_area(self):
+        """ Calculate the radius (in meters) of a circle that has the same area as the farm"""
+        return(math.sqrt(self.area_hectares/3.1459)*100)
+```
+and
+```
+# test_farm_carbon_footprint.py
+
+import pytest
+from farm_carbon_footprint import Farm
+
+def test_add_activity():
+    farm = Farm("Green Pastures", 10)
+    farm.add_activity("Tractor Usage", 50, 5)  # 50 kg CO2e per hour, 5 hours
+    farm.add_activity("Fertilizer Use", 10, 20)  # 10 kg CO2e per kg, 20 kg
+    assert len(farm.activities) == 2
+
+def test_total_emissions():
+    farm = Farm("Green Pastures", 10)
+    farm.add_activity("Tractor Usage", 50, 5)  # 50 kg CO2e per hour, 5 hours
+    farm.add_activity("Fertilizer Use", 10, 20)  # 10 kg CO2e per kg, 20 kg
+    assert farm.total_emissions() == 450  # 250 + 200
+
+def test_emissions_per_hectare():
+    farm = Farm("Green Pastures", 10)
+    farm.add_activity("Tractor Usage", 50, 5)  # 50 kg CO2e per hour, 5 hours
+    farm.add_activity("Fertilizer Use", 10, 20)  # 10 kg CO2e per kg, 20 kg
+    assert farm.emissions_per_hectare() == 45  # 450 total / 10 hectares
+
+def test_emissions_per_hectare_zero_area():
+    farm = Farm("Tiny Farm", 0)
+    farm.add_activity("Tractor Usage", 50, 2)  # 50 kg CO2e per hour, 2 hours
+    with pytest.raises(ValueError, match="Farm area cannot be zero."): # optional: matches Value Error message in emissions_per_hectare()
+        farm.emissions_per_hectare()
+
+def test_radius_of_circle_with_farm_area():
+    farm = Farm("Circle Farm", 1)
+    assert farm.radius_circle_with_farm_area() == pytest.approx(56.38, abs=0.1)
+    farm = Farm("Circle Farm", 10)
+    assert farm.radius_circle_with_farm_area() == pytest.approx(178.3, abs=0.01)
+```
+Adapt the `Farm` class definition and `test_farm_carbon_footprint.py` in order to:
+
+1. Add a method `.number_of_activities()` to class `Farm` that returns the number of activities. Check the correctness of that method with a new test in `test_farm_carbon_footprint.py`.
+2. Adapt the `Farm`class so  `ValueError` should be raised if the property `area_hectares` is negative when you try to create an instance of `Farm`. Check with a new test in `test_farm_carbon_footprint.py` that the behavior of the class is as expected when `area_hectares` is negative.
+</details>
+
 <!---
 
-I want to write a script in python sung classes to monitor plants at a nursery. Initially plants grow from seeds in trays and I want to keep track of the number of trays and plants per tray. All plants in a tray are from the same species. Then, at some point, small plants are transferred to individual pots (one plant per pot) . At the end, pots are sold. I want to track the number of plants of each species that are in the nursery.
+I want to write a script in python  classes to monitor plants at a nursery. Initially plants grow from seeds in trays and I want to keep track of the number of trays and plants per tray. All plants in a tray are from the same species. Then, at some point, small plants are transferred to individual pots (one plant per pot) . At the end, pots are sold. I want to track the number of plants of each species that are in the nursery.
 
 #####################################################################################  last year and suggestions for this year
 Assignments:
