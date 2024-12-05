@@ -795,6 +795,77 @@ Adapt the `Farm` class definition and `test_farm_carbon_footprint.py` in order t
 
 1. Add a method `.number_of_activities()` to class `Farm` that returns the number of activities. Check the correctness of that method with a new test in `test_farm_carbon_footprint.py`.
 2. Adapt the `Farm`class so  `ValueError` should be raised if the property `area_hectares` is negative when you try to create an instance of `Farm`. Check with a new test in `test_farm_carbon_footprint.py` that the behavior of the class is as expected when `area_hectares` is negative.
+
+</details>
+
+<details markdown="block">
+<summary> 
+
+# Class 12 (December 6, 2024): Lists and dictionaries: packing, args and kwargs, comprehension
+
+### The packing/unpacking operators *  and **
+
+The packing/unpacking operators allows us to deal with structures of variable length. The example below illustrates *packing* several numbers into a list.
+```
+x=[1,2,3,4,5,6,7,8,9]
+a,*b,c=x # b is the list [2,3,4,5,6,7,8]
+print(a,b,c)
+```
+The same operator can be used to unpack:
+```
+list1=[1,2,3]
+list2=[6,7,8]
+new_list=[*list1,4,5,*list2] # values are unpacked
+print(new_list)
+```
+The * and ** operator are mostly used as arguments of functions that can accept a a variable number of arguments (like `print`): the operator * allows to pack all positional arguments into a *tuple* and the operator ** allows to pack all named arguments into a *dictionary*. In the example below, the variable `kwargs` refers to keyword arguments (i.e named arguments) . Note that one can have a combination of regular arguments, regular named arguments, *args, and **kwargs as arguments of a function, as long as keyword arguments follow positional arguments.
+
+```
+def pack(*args, **kwargs):
+    return args,kwargs
+
+x,y=pack(1,2,10, num_years=10,rate=0.03)
+
+print('Positional arguments are packed into tuple',x)
+print('Named arguments are packed into dictionary',y)
+```
+
+This can be used for instance to perform computations over a variable length sequence at in the following example. 
+```
+# Compute accumulated interest on a sequence of borrowed amounts
+def main(*args, **kwargs):
+    '''
+    args is a tuple of amounts borrowed
+    kwargs is a dictionary with keys num_years and rate
+    '''
+    S=add(args)
+
+    # Call function debt with **kwargs or kwargs
+    D=compute_debt(S,**kwargs) # D expects a number and two named arguments with names num_years and rate
+
+    # same as:
+    D=compute_debt(S,kwargs['num_years'],kwargs['rate'])
+    return S,D
+
+def add(values):
+    s=0
+    for x in values:
+        s+=x
+    return s
+
+def compute_debt(s,num_years,rate):
+    for i in range(num_years):
+        s+=s*rate
+    return s
+
+if __name__=='__main__':
+    S,D=main(1,2,10,5,4,num_years=10, rate=0.05)
+    print('Borrowed:',S)
+    print('Debt:',round(D,3))
+```
+
+
+</summary>
 </details>
 
 <!---
