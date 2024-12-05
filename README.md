@@ -926,8 +926,40 @@ def filter_kwargs(**kwargs):
 print(filter_kwargs(a=5, b=15, c=20, d=3))  # Output: {'b': 15, 'c': 20}
 ```
 
-## 2. List and dictionary comprehension
+## 2. List and dictionary comprehension, map and filter
 
+Suppose one wants to create a list with all the cubes of even numbers up to *N*. The following scripts show how this can be done with different operators that replace the traditional *loop* structure: *list comprehension*, `filter`, `map` and `lambda`
+
+In the last cases, `map` applies a given function to each element of a list. Likewise, `filter` applies a boolean function to filter elements of a list. Both function can be executed in parallel over the elements of the list since each output is independent of the outputs for the remainder elements of the list.
+
+* With list comprehension:
+
+ ```python
+ def cube(x):
+     return x*x*x
+ L=[cube(x) for x in range(N) if x%2==0]
+ ```
+* With `filter` to select even numbers and `map`to compute cubes:
+  
+  ```python
+  def even(x):
+      return x%2==0
+  numbers=list(range(N))
+  even_numbers=list(filter(even, numbers))
+  cubes=list(map(cube,even_numbers))
+  ```
+* Also with `filter` and `map` but defining implicitly the *cube* and *even* functions with `lambda` instead of `def`:
+  
+ ```python
+ numbers=list(range(N))
+ even_numbers=list(filter(lambda x: x%2==0, numbers))
+ cubes=list(map(lambda x: x*x*x,even_numbers))
+ ```
+* The most compact way of solving the problem involves `lambda` and list comprehension. In the example below, if one would just write `lambda x: x*x*x` instead pf `(lambda x: x*x*x)(x)` the output list would be a list of lambda functions.
+  
+  ```python
+  L=[(lambda x: x*x*x)(x) for x in range(N) if x%2==0]
+  ``` 
 
 ### **Exercise 1: Convert a For Loop to List Comprehension**
 Convert the following for loop into a list comprehension:
