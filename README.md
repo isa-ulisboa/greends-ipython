@@ -724,7 +724,7 @@ If no arguments are given, `pytest` will execute all functions which name starts
 ### Simple example of a class and tests for that class
 
 Consider you have two python modules: one with the definition of a class and the other that implement tests over that class.
-```
+```python
 # farm_carbon_footprint.py
 
 import math
@@ -755,7 +755,7 @@ class Farm:
         return(math.sqrt(self.area_hectares/3.1459)*100)
 ```
 and
-```
+```python
 # test_farm_carbon_footprint.py
 
 import pytest
@@ -803,16 +803,18 @@ Adapt the `Farm` class definition and `test_farm_carbon_footprint.py` in order t
 
 # Class 12 (December 6, 2024): Lists and dictionaries: packing, args and kwargs, comprehension
 
-### The packing/unpacking operators *  and **
+</summary>
+
+## 1. The packing/unpacking operators *  and **
 
 The packing/unpacking operators allows us to deal with structures of variable length. The example below illustrates *packing* several numbers into a list.
-```
+```python
 x=[1,2,3,4,5,6,7,8,9]
 a,*b,c=x # b is the list [2,3,4,5,6,7,8]
 print(a,b,c)
 ```
 The same operator can be used to unpack:
-```
+```python
 list1=[1,2,3]
 list2=[6,7,8]
 new_list=[*list1,4,5,*list2] # values are unpacked
@@ -820,7 +822,7 @@ print(new_list)
 ```
 The * and ** operator are mostly used as arguments of functions that can accept a a variable number of arguments (like `print`): the operator * allows to pack all positional arguments into a *tuple* and the operator ** allows to pack all named arguments into a *dictionary*. In the example below, the variable `kwargs` refers to keyword arguments (i.e named arguments) . Note that one can have a combination of regular arguments, regular named arguments, *args, and **kwargs as arguments of a function, as long as keyword arguments follow positional arguments.
 
-```
+```python
 def pack(*args, **kwargs):
     return args,kwargs
 
@@ -831,7 +833,7 @@ print('Named arguments are packed into dictionary',y)
 ```
 
 This can be used for instance to perform computations over a variable length sequence at in the following example. 
-```
+```python
 # Compute accumulated interest on a sequence of borrowed amounts
 def main(*args, **kwargs):
     '''
@@ -864,8 +866,70 @@ if __name__=='__main__':
     print('Debt:',round(D,3))
 ```
 
+### **Exercise 1: Summing Arguments with `*args`**  
+Write a function `sum_all` that takes any number of positional arguments and returns their sum.
 
-</summary>
+```python
+def sum_all(*args):
+    pass  # Your code here
+
+# Example usage:
+print(sum_all(1, 2, 3))       # Output: 6
+print(sum_all(10, 20, 30, 5))  # Output: 65
+```
+
+### **Exercise 2: Concatenate Strings with `*args`**  
+Create a function `concat_strings` that takes any number of string arguments using `*args` and concatenates them into a single string.
+
+```python
+def concat_strings(*args):
+    pass  # Your code here
+
+# Example usage:
+print(concat_strings("Hello", " ", "world", "!"))  # Output: "Hello world!"
+print(concat_strings("Python", " is", " fun!"))    # Output: "Python is fun!"
+```
+
+### **Exercise 3: Handling Default Keyword Arguments with `**kwargs`**  
+Write a function `greet` that accepts a keyword argument `name` (default value: `"Guest"`) and an optional keyword argument `greeting` (default value: `"Hello"`). Return the formatted greeting message.
+
+```python
+def greet(**kwargs):
+    pass  # Your code here
+
+# Example usage:
+print(greet(name="Alice", greeting="Hi"))  # Output: "Hi Alice"
+print(greet(name="Bob"))                   # Output: "Hello Bob"
+print(greet())                             # Output: "Hello Guest"
+```
+
+### **Exercise 4: Combine `*args` and `**kwargs`**  
+Write a function `describe_person` that takes positional arguments (`*args`) for hobbies and keyword arguments (`**kwargs`) for personal details (e.g., name, age). Return a formatted string describing the person.
+
+```python
+def describe_person(*args, **kwargs):
+    pass  # Your code here
+
+# Example usage:
+print(describe_person("reading", "traveling", name="Alice", age=30))
+# Output: "Alice (30 years old) enjoys reading, traveling."
+```
+
+### **Exercise 5: Filter Keyword Arguments with `**kwargs`**  
+Create a function `filter_kwargs` that takes any number of keyword arguments and returns a new dictionary containing only those with values greater than 10.
+
+```python
+def filter_kwargs(**kwargs):
+    pass  # Your code here
+
+# Example usage:
+print(filter_kwargs(a=5, b=15, c=20, d=3))  # Output: {'b': 15, 'c': 20}
+```
+
+## 2. List and dictionary comprehension
+
+
+
 </details>
 
 <!---
