@@ -841,13 +841,13 @@ def main(*args, **kwargs):
     kwargs is a dictionary with keys num_years and rate
     '''
     S=add(args)
-
     # Call function debt with **kwargs or kwargs
     D=compute_debt(S,**kwargs) # D expects a number and two named arguments with names num_years and rate
-
     # same as:
     D=compute_debt(S,kwargs['num_years'],kwargs['rate'])
-    return S,D
+    # print results
+    print('Borrowed:',S)
+    print('Debt:',round(D,3))
 
 def add(values):
     s=0
@@ -861,12 +861,10 @@ def compute_debt(s,num_years,rate):
     return s
 
 if __name__=='__main__':
-    S,D=main(1,2,10,5,4,num_years=10, rate=0.05)
-    print('Borrowed:',S)
-    print('Debt:',round(D,3))
+    main(1,2,10,5,4,num_years=10, rate=0.05)
 ```
 
-### **Exercise 1: Summing Arguments with `*args`**  
+### Exercise i) Summing Arguments with `*args`  
 Write a function `sum_all` that takes any number of positional arguments and returns their sum.
 
 ```python
@@ -878,7 +876,7 @@ print(sum_all(1, 2, 3))       # Output: 6
 print(sum_all(10, 20, 30, 5))  # Output: 65
 ```
 
-### **Exercise 2: Concatenate Strings with `*args`**  
+### Exercise ii) Concatenate Strings with `*args`
 Create a function `concat_strings` that takes any number of string arguments using `*args` and concatenates them into a single string.
 
 ```python
@@ -890,7 +888,7 @@ print(concat_strings("Hello", " ", "world", "!"))  # Output: "Hello world!"
 print(concat_strings("Python", " is", " fun!"))    # Output: "Python is fun!"
 ```
 
-### **Exercise 3: Handling Default Keyword Arguments with `**kwargs`**  
+### Exercise iii) Handling Default Keyword Arguments with `**kwargs`
 Write a function `greet` that accepts a keyword argument `name` (default value: `"Guest"`) and an optional keyword argument `greeting` (default value: `"Hello"`). Return the formatted greeting message.
 
 ```python
@@ -903,7 +901,7 @@ print(greet(name="Bob"))                   # Output: "Hello Bob"
 print(greet())                             # Output: "Hello Guest"
 ```
 
-### **Exercise 4: Combine `*args` and `**kwargs`**  
+### Exercise iv) Combine `*args` and `**kwargs`
 Write a function `describe_person` that takes positional arguments (`*args`) for hobbies and keyword arguments (`**kwargs`) for personal details (e.g., name, age). Return a formatted string describing the person.
 
 ```python
@@ -915,7 +913,7 @@ print(describe_person("reading", "traveling", name="Alice", age=30))
 # Output: "Alice (30 years old) enjoys reading, traveling."
 ```
 
-### **Exercise 5: Filter Keyword Arguments with `**kwargs`**  
+### Exercise v) Filter Keyword Arguments with `**kwargs`
 Create a function `filter_kwargs` that takes any number of keyword arguments and returns a new dictionary containing only those with values greater than 10.
 
 ```python
@@ -930,47 +928,48 @@ print(filter_kwargs(a=5, b=15, c=20, d=3))  # Output: {'b': 15, 'c': 20}
 
 Suppose one wants to create a list with all the cubes of even numbers up to *N*. The following scripts show how this can be done with different operators that replace the traditional *loop* structure: *list comprehension*, `filter`, `map` and `lambda`
 
-In the last cases, `map` applies a given function to each element of a list. Likewise, `filter` applies a boolean function to filter elements of a list. Both function can be executed in parallel over the elements of the list since each output is independent of the outputs for the remainder elements of the list.
+Operator `map` applies a given function to each element of a list. Likewise, `filter` applies a boolean function to filter elements of a list. Both function can be executed in parallel over the elements of the list since each output is independent of the outputs for the remainder elements of the list.
 
 * With list comprehension:
+```python
+def cube(x):
+    return x*x*x
+L=[cube(x) for x in range(N) if x%2==0]
+```
 
- ```python
- def cube(x):
-     return x*x*x
- L=[cube(x) for x in range(N) if x%2==0]
- ```
 * With `filter` to select even numbers and `map`to compute cubes:
-  
-  ```python
-  def even(x):
-      return x%2==0
-  numbers=list(range(N))
-  even_numbers=list(filter(even, numbers))
-  cubes=list(map(cube,even_numbers))
-  ```
-* Also with `filter` and `map` but defining implicitly the *cube* and *even* functions with `lambda` instead of `def`:
-  
- ```python
- numbers=list(range(N))
- even_numbers=list(filter(lambda x: x%2==0, numbers))
- cubes=list(map(lambda x: x*x*x,even_numbers))
- ```
-* The most compact way of solving the problem involves `lambda` and list comprehension. In the example below, if one would just write `lambda x: x*x*x` instead pf `(lambda x: x*x*x)(x)` the output list would be a list of lambda functions.
-  
-  ```python
-  L=[(lambda x: x*x*x)(x) for x in range(N) if x%2==0]
-  ``` 
+```python
+def even(x):
+    return x%2==0
+numbers=list(range(N))
+even_numbers=list(filter(even, numbers))
+cubes=list(map(cube,even_numbers))
+```
 
-### **Exercise 1: Convert a For Loop to List Comprehension**
+* Also with `filter` and `map` but defining implicitly the *cube* and *even* functions with `lambda` instead of `def`:
+```python
+numbers=list(range(N))
+even_numbers=list(filter(lambda x: x%2==0, numbers))
+cubes=list(map(lambda x: x*x*x,even_numbers))
+```
+
+* The most compact way of solving the problem involves `lambda` and list comprehension. In the example below, one needs to indicate that the $\lambda$ function has to be applied to the variable `x` in the list comprehension, using  `(lambda x: x*x*x)(x)`. Otherwise, the output list would be a list of lambda functions.
+  
+```python
+cubes=[(lambda x: x*x*x)(x) for x in range(N) if x%2==0]
+``` 
+
+### Exercise i) Convert a For Loop to List Comprehension
 Convert the following for loop into a list comprehension:
 
 ```python
 result = []
 for x in range(10):
     result.append(x**2)
+# output: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 ```
 
-### **Exercise 2: Filter Numbers with List Comprehension**
+### Exercise ii) Filter Numbers with List Comprehension
 Rewrite this code using a list comprehension:
 
 ```python
@@ -978,18 +977,20 @@ result = []
 for x in range(20):
     if x % 2 == 0:
         result.append(x)
+# output: [0, 4, 16, 36, 64]
 ```
 
-### **Exercise 3: Dictionary Comprehension**
+### Exercise iii) Dictionary Comprehension
 Convert the following code to a dictionary comprehension:
 
 ```python
 squares = {}
 for x in range(5):
     squares[x] = x**2
+# output: {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
 ```
 
-### **Exercise 4: Nested Loops with List Comprehension**
+### Exercise iv) Nested Loops with List Comprehension
 Rewrite the nested loop as a list comprehension:
 
 ```python
@@ -997,9 +998,10 @@ pairs = []
 for x in range(3):
     for y in range(2):
         pairs.append((x, y))
+# output: [(0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1)]
 ```
 
-### **Exercise 5: Conditional Dictionary Comprehension**
+### Exercise v) Conditional Dictionary Comprehension
 Transform the following code into a dictionary comprehension with a condition:
 
 ```python
@@ -1007,9 +1009,10 @@ filtered_squares = {}
 for x in range(10):
     if x % 2 == 0:
         filtered_squares[x] = x**2
+# output: {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
 ```
 
-### **Exercise 6: Conditional Transformation in List Comprehension**  
+### Exercise vi) Conditional Transformation in List Comprehension
 Convert the following loop into a list comprehension that includes a conditional transformation:
 
 ```python
@@ -1019,9 +1022,10 @@ for x in range(15):
         result.append(x**2)
     else:
         result.append(x)
+# output: [0, 1, 2, 9, 4, 5, 36, 7, 8, 81, 10, 11, 144, 13, 14]
 ```
 
-### **Exercise 7: Dictionary Comprehension with String Keys**  
+### Exercise vii) Dictionary Comprehension with String Keys
 Transform the following loop into a dictionary comprehension, using strings as keys:
 
 ```python
@@ -1029,9 +1033,10 @@ word_lengths = {}
 words = ["apple", "banana", "cherry", "date"]
 for word in words:
     word_lengths[word] = len(word)
+# output: {'apple': 5, 'banana': 6, 'cherry': 6, 'date': 4}
 ```
 
-### **Exercise 8: Flatten a Nested List with List Comprehension**  
+### Exercise viii) Flatten a Nested List with List Comprehension
 Rewrite this code using a single list comprehension to flatten the nested list:
 
 ```python
@@ -1040,21 +1045,23 @@ flattened = []
 for sublist in nested_list:
     for item in sublist:
         flattened.append(item)
+# output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-### **Exercise 9: Conditional Dictionary Comprehension with Nested Loops**  
+### Exercise ix) Conditional Dictionary Comprehension with Nested Loops
 Convert the following nested loop into a dictionary comprehension with a condition:
 
 ```python
 result = {}
-for i in range(3):
+for i in range(1,3):
     for j in range(3, 6):
         if j % i != 0:  
             result[(i, j)] = i + j
+# {(2, 3): 5, (2, 5): 7}
 ```
 
 
-### **Exercise 10: Filter and Transform Nested Dictionaries**  
+### Exercise x) Filter and Transform Nested Dictionaries
 Use a dictionary comprehension to filter and transform the following dictionary of dictionaries:
 
 ```python
@@ -1070,9 +1077,8 @@ result = {}
 for key, value in data.items():
     if value["passed"]:
         result[key] = value["score"]
+# output: {'A': 90, 'C': 75}
 ```
-
-
 
 </details>
 
