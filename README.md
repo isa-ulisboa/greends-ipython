@@ -1088,7 +1088,7 @@ for key, value in data.items():
 
 </summary>
 
-In this class we demonstrate some uses of Python to control physical devices using GPIO (general-purpose input/output) ports on a Raspberry Pi microcomputer. We will use the `gpiozero` Python package [https://gpiozero.readthedocs.io/en/latest/recipes.html](https://gpiozero.readthedocs.io/en/latest/recipes.html).
+In this class we use Python to control physical devices through GPIO (general-purpose input/output) ports on a Raspberry Pi microcomputer. We will rely on the `gpiozero` Python package [https://gpiozero.readthedocs.io/en/latest/recipes.html](https://gpiozero.readthedocs.io/en/latest/recipes.html).
 
 Topics of the class:
 - Raspberry Pi (RPi) and PiOS (Linux)
