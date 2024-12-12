@@ -1079,6 +1079,25 @@ for key, value in data.items():
         result[key] = value["score"]
 # output: {'A': 90, 'C': 75}
 ```
+</details>
+
+<details markdown="block">
+<summary> 
+
+# Class 13 (December 13, 2024): Introduction to IoT with Raspberry Pi
+
+</summary>
+
+In this class we demonstrate some uses of Python to control physical devices using GPIO (general-purpose input/output) ports on a Raspberry Pi microcomputer. We will use the `gpiozero` Python package [https://gpiozero.readthedocs.io/en/latest/recipes.html](https://gpiozero.readthedocs.io/en/latest/recipes.html).
+
+Topics of the class:
+- Raspberry Pi (RPi) and PiOS (Linux)
+- Retrive local address with `hostname -I`
+- Accessing RPi remotely with `ssh` (secure shell)
+- Connecting RPi to a breadboard using the *gpio* pins
+- Using the *nano* text editor to create scripts
+- Running scripts in RPi
+- Some basic recipes from `gpio zero` documentation that use the following physical devices: leds, buttons, and a line sensor
 
 </details>
 
