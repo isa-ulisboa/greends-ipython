@@ -1092,12 +1092,36 @@ In this class we use Python to control physical devices through GPIO (general-pu
 
 Topics of the class:
 - Raspberry Pi (RPi) and PiOS (Linux)
-- Retrive local address with `hostname -I`
+- Retrive local address of the Raspberry Pi with `hostname -I`
 - Accessing RPi remotely with `ssh` (secure shell)
 - Connecting RPi to a breadboard using the *gpio* pins
 - Using the *nano* text editor to create scripts
-- Running scripts in RPi
-- Some basic recipes from `gpio zero` documentation that use the following physical devices: leds, buttons, and a line sensor
+- Running scripts in RPi with `sudo python3 test.py`
+- Implementing some basic recipes from `gpio zero` documentation that use the following physical devices: leds, buttons, and a line sensor
+
+### Exercises with Raspberry Pi, breadboard, led, button and connection wires:
+
+1. [Blink LED](https://gpiozero.readthedocs.io/en/latest/recipes.html#led)
+2. [Check if button is pressed](https://gpiozero.readthedocs.io/en/latest/recipes.html#button)
+3. [Button controlled LED](https://gpiozero.readthedocs.io/en/latest/recipes.html#button-controlled-led)
+
+</details>
+
+<details markdown="block">
+<summary> 
+
+# Class 14 (December 20, 2024): Introduction to IoT with Raspberry Pi (cont'd)
+
+</summary>
+
+### Exercises:
+
+1. [LED board](https://gpiozero.readthedocs.io/en/latest/recipes.html#ledboard). Adapt the code `LEDboard.py` so if you execute `sudo python3 LEDboard.py some_word` the  LEDs should turn on and off to encode the input word: a *dah* (-) has a duration of 2 seconds and a *dit* (.) has a duration of 1 second. After each letter, there should be a 3 second pause before the next letter. The example below should correspond to LEDs 1 and 2 being on for 3 seconds, then LEDs 1, 2 and 3 being on for 3 seconds, then LEDs 1 and 3 being on for 1 second while LED 2 is on for 3 seconds, and so on.
+
+```
+−− −−− ·−· ··· ·       −·−· −−− −·· ·
+M   O   R   S  E        C    O   D  E
+```
 
 </details>
 
