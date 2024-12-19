@@ -1115,8 +1115,11 @@ Topics of the class:
 </summary>
 
 ### Exercises:
+1. [LED_board](https://gpiozero.readthedocs.io/en/latest/recipes.html#ledboard). Interpret the code and verify that it is behaving as expected.
 
-1. [LED board](https://gpiozero.readthedocs.io/en/latest/recipes.html#ledboard). Adapt the code `LEDboard.py` so if you execute `sudo python3 LEDboard.py some_word` the  LEDs should turn on and off to encode the input word: a *dah* (-) has a duration of 2 seconds and a *dit* (.) has a duration of 1 second. After each letter, there should be a 3 second pause before the next letter. The example below should correspond to LEDs 1 and 2 being on for 3 seconds, then LEDs 1, 2 and 3 being on for 3 seconds, then LEDs 1 and 3 being on for 1 second while LED 2 is on for 3 seconds, and so on.
+2. Look at the [advanced recipes for LEDboard](https://gpiozero.readthedocs.io/en/latest/recipes_advanced.html#ledboard-advanced). Create a "pyramid" of lights 5-3-1-3-5, that turn on and off and pause 1 second. You can build a loop such that the pyramid runs only 4 times and the execution stops.
+
+3. Adapt the code `LED_board.py` so if you execute `sudo python3 LED_morse.py some_word` the  LEDs should turn on and off to encode the input word: a *dah* (-) has a duration of 2 seconds and a *dit* (.) has a duration of 1 second. After each letter, there should be a 3 second pause before the next letter. The example below should correspond to LEDs 1 and 2 being on for 3 seconds, then LEDs 1, 2 and 3 being on for 3 seconds, then LEDs 1 and 3 being on for 1 second while LED 2 is on for 3 seconds, and so on.
 
 ```
 −− −−− ·−· ··· ·       −·−· −−− −·· ·
