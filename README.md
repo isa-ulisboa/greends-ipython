@@ -1114,7 +1114,7 @@ Topics of the class:
 
 </summary>
 
-### Exercises:
+### Exercises for led board with gpiozero (cont'd)
 1. [LED_board](https://gpiozero.readthedocs.io/en/latest/recipes.html#ledboard). Interpret the code and verify that it is behaving as expected.
 
 2. Look at the [advanced recipes for LEDboard](https://gpiozero.readthedocs.io/en/latest/recipes_advanced.html#ledboard-advanced). Create a "pyramid" of lights 5-3-1-3-5, that turn on and off and pause 1 second. You can build a loop such that the pyramid runs only 4 times and the execution stops.
@@ -1124,6 +1124,53 @@ Topics of the class:
 ```
 −− −−− ·−· ··· ·       −·−· −−− −·· ·
 M   O   R   S  E        C    O   D  E
+```
+### Other sensors
+
+There are many hardware adapters that make it easier to connect sensors to a microcomputer. Here we look at the *Raspberry Pi hat* included in the  [Grove_Base_Kit_for_Raspberry_Pi](https://wiki.seeedstudio.com/Grove_Base_Kit_for_Raspberry_Pi/). The [Grove Base Hat for Raspberry Pi](https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/) provides Digital/Analog/I2C/PWM/UART [ports](https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/#hardware-overview) to the RPi allowing it to be connected a large range of modules. 
+
+The following code show how to access a [temperature and humidity sensor](https://www.seeedstudio.com/Grove-Temperature-Humidity-Sensor-DHT1-p-745.html) readings programmatically. The sensor is connected to digital port D5. This code also allows access to gpio pin 17 to power a LED.
+
+```python
+import time
+from seeed_dht import DHT
+from gpiozero import LED
+
+led=LED(17)
+# Grove - Temperature&Humidity Sensor connected to port D5
+sensor = DHT('11', 5)
+while True:
+    humi, temp = sensor.read()
+    print('temperature {}C, humidity {}%'.format(temp, humi))
+    if humi > 85:
+        led.on()
+    else:
+        led.off()
+    time.sleep(0.5)
+```
+### Exercises
+
+1. Adapt the code above such that the LED is on when the temperature is above 24 Celsius or below 20 and is off otherwise.
+2. Interpret the code below. Create a new script that combines the temperature/humidity sensor with the ultrasonic ranger sensor and the LED.
+
+```python
+import time
+from grove.grove_ultrasonic_ranger import GroveUltrasonicRanger
+from gpiozero import LED
+led=LED(17)
+# Grove - Ultrasonic Ranger connected to port D5
+sensor = GroveUltrasonicRanger(5)
+while True:
+    distance = sensor.get_distance()
+    print('{} cm'.format(distance))
+    if distance < 20:
+         led.on()
+         print('LED on')
+         time.sleep(0.5)
+         led.off()
+         print('LED off')
+         continue
+    time.sleep(1)
 ```
 
 </details>
