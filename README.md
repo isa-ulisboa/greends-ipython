@@ -14,9 +14,9 @@ Teaching assistant: Mekaela Stevenson
 * [Learn Python with Scrimba, Olof Paulson](https://v2.scrimba.com/learn-python-c03): interactive lectures (videos), examples and exercises 
 * [Introduction to Python (VScode)](https://vscodeedu.com/courses/intro-to-python): interactive step by step lectures and exercises, real-time quizzes.
 * Basic concepts and features of the Python language and system: [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html).
-* Fenix webpage for the course (https://fenix.isa.ulisboa.pt/courses/intpy-846413499991952)
-* Moodle (2024-2025: https://elearning.ulisboa.pt/course/view.php?id=9100)
-* If you curious about the story of Python, check out [this video](https://www.youtube.com/watch?v=GfH4QL4VqJ0). You'll learn about the output of `>>> import this`.
+* Fenix webpage for the course (https://fenix.isa.ulisboa.pt/courses/intpy-846413499991952): administrative information and final grades
+* Moodle (2024-2025: https://elearning.ulisboa.pt/course/view.php?id=9100): assignments; submissions; detailed grades and comments
+* If you curious about the story of Python, check out [this video](https://www.youtube.com/watch?v=GfH4QL4VqJ0). In this video, you'll learn about the output of `>>> import this` and many other anecdotes about Python.
 
 <details markdown="block">
   
