@@ -16,6 +16,7 @@ Teaching assistant: Mekaela Stevenson
 * Basic concepts and features of the Python language and system: [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html).
 * Fenix webpage for the course (https://fenix.isa.ulisboa.pt/courses/intpy-846413499991952)
 * Moodle (2024-2025: https://elearning.ulisboa.pt/course/view.php?id=9100)
+* If you curious about the story of Python, check out [this video](https://www.youtube.com/watch?v=GfH4QL4VqJ0). You'll learn about the output of `>>> import this`.
 
 <details markdown="block">
   
@@ -66,11 +67,11 @@ Teaching assistant: Mekaela Stevenson
 6. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/psets/0/)
 </details>
 
+<!--
+
 <details markdown="block">
  
 <summary> 
-
-<!--
 
 # Class 2 (September  2025): conditionals, lists, dictionaries
 
