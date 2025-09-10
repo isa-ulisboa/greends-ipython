@@ -4,7 +4,7 @@ Masters in Data Science applied to agricultural and food sciences, environment, 
 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
-Teaching assistant: Mekaela Stevenson
+Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
 
 <details markdown="block">
 <summary>  Online resources for the course </summary>
@@ -15,7 +15,7 @@ Teaching assistant: Mekaela Stevenson
 * [Introduction to Python (VScode)](https://vscodeedu.com/courses/intro-to-python): interactive step by step lectures and exercises, real-time quizzes.
 * Basic concepts and features of the Python language and system: [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html).
 * Fenix webpage for the course (https://fenix.isa.ulisboa.pt/courses/intpy-846413499991952): administrative information and final grades
-* Moodle (2024-2025: https://elearning.ulisboa.pt/course/view.php?id=9100): assignments; submissions; detailed grades and comments
+* Moodle (https://elearning.ulisboa.pt/course/view.php?id=11236): assignments; submissions; detailed grades and comments
 * If you curious about the story of Python, check out [this video](https://www.youtube.com/watch?v=GfH4QL4VqJ0). In this video, you'll learn about the output of `>>> import this` and many other anecdotes about Python.
 
 <details markdown="block">
