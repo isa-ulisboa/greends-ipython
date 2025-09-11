@@ -57,10 +57,10 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
  * `cd foldername` change directory, e.g. `cd ..` 
  * `rmdir foldername` to delete folder
  * `clear` to clear terminal window
-3. The REPL (interactive Read -Eval-Print-Loop) environment: see https://realpython.com/interacting-with-python/
-4. All values in Python have a **type**. The five basic types are: integer, float, string, Boolean, and None.
+3. The REPL (interactive Read-Eval-Print-Loop) environment: see https://realpython.com/interacting-with-python/
+4. All values in Python have a **type**. The primitive data types are: integer, float, string, Boolean, and None (see https://www.geeksforgeeks.org/python/primitive-data-types-vs-non-primitive-data-types-in-python/)
    * strings (`str`), variables, print (a function), parameters (e.g. `end=`), input, comments, formatted strings (`f"..."`), `.strip()`, `.title` (methods)
-   * integers (`int`), operations for integers, casting (e.g. `str`to `int`)
+   * integers (`int`), operations for integers, casting (e.g. `str` to `int`)
    * floating point values (`float`), round, format floats (e.g. `f"{z:.2f}`)
    * `True`, `False`, `and`, `or`, `not`
 5. Functions, `def`, `return`
