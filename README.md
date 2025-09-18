@@ -102,7 +102,27 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
    if 'gallahad' in knights:
        print('Go Gallahad')
    ```
-9. Suggested problems: [CS50 Problem set 1 and 2](https://cs50.harvard.edu/python/2022/psets/). See the assignment on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
+8. Collaborative project: each student or small group of students should define each necessary function to complete the script below. The side effect of `main()` is a simple histogram printed in the terminal.
+ ```
+ def main():
+   # read and sort values
+   x=read_values() # x is a list of numbers, either integers or floats
+   xmin,xmax=determine_min_max(x) # integer or floats
+   # determine number of classes
+   m=number_of_classes(x) # m is a positive integer such that 2**(m-1) <= len(x) <= 2**m
+   # determine class amplitude
+   delta=amplitude(xmin,xmax,m) # positive float, the range of values divided by the number of classes
+   # Compute frequency for each class and plot histogram row by row
+   for i in range(m):
+     left=xmin+i*delta
+     right=left+delta
+     freq=determine_frequency(x,left,right) # integer;  note that one observation must below to one and only one class
+     print_frequency(freq) # the output must be '****' where each * represents one observation
+ # execute main
+ main()
+ ```
+   
+10. Suggested problems: [CS50 Problem set 1 and 2](https://cs50.harvard.edu/python/2022/psets/). See the assignment on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
 
 </details>
 
