@@ -116,14 +116,17 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
    # Compute frequency for each class and plot histogram row by row
    for i in range(m):
      left=xmin+i*delta
-     right=left+delta
+     if i < m-1:
+       right=left+delta
+     else:
+       right=left+delta+1 # either 1 or any positive value
      freq=determine_frequency(x,left,right) # integer;  note that each value must belong to one and only one class
      print_frequency(freq) # the output must be '****' where each * represents one observation
  # execute main
  main()
  ```
    
-10. Suggested problems: [CS50 Problem set 1 and 2](https://cs50.harvard.edu/python/2022/psets/). See the assignment on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
+10. Suggested problems: [CS50 Problem set 1](https://cs50.harvard.edu/python/2022/psets/). See the assignment on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
 
 </details>
 
