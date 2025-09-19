@@ -126,7 +126,7 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
  main()
  ```
    
-10. Suggested problems: [CS50 Problem set 1](https://cs50.harvard.edu/python/2022/psets/). See the assignment on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
+10. Suggested problems: [CS50 Problem set 1](https://cs50.harvard.edu/python/2022/psets/). Do not forget about the assignment on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
 
 </details>
 
