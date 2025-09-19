@@ -73,7 +73,7 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
 
 1. Conditionals:
   - `if`, `elif`, `else`:
-    ```
+    ```Python
      if score >= 70:
          print("Grade: C to A")
      elif score >= 60:
@@ -82,7 +82,7 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
          print("Grade: F")
      ```
   - `match`:
-    ```
+    ```Python
     match species:
         case 'versicolor':
             label=0
@@ -95,7 +95,7 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
 5. While loops, for loops, `break`, `break` and `return`
 6. Data type *list* `[]`: methods `append`, `extend`
 7. Data type *dictionary* `{}`, `items()`, keys `.key()` and values `.values()`
-   ```
+   ```Python
    knights = {'gallahad': 'the pure', 'robin': 'the brave'}
    for k, v in knights.items():
        print(k, v)
@@ -103,20 +103,21 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
        print('Go Gallahad')
    ```
 8. Collaborative project: each student or small group of students should define each necessary function to complete the script below. The side effect of `main()` is a simple histogram printed in the terminal.
- ```
+ ```Python
  def main():
    # read and sort values
    x=read_values() # x is a list of numbers, either integers or floats
-   xmin,xmax=determine_min_max(x) # integer or floats
+   n=len(x) # integer; number of values
+   xmin,xmax=determine_min_max(x) # integers or floats
    # determine number of classes
-   m=number_of_classes(x) # m is a positive integer such that 2**(m-1) <= len(x) <= 2**m
+   m=number_of_classes_sturges(n) # m is a positive integer such that 2**(m-1) <= n <= 2**m
    # determine class amplitude
    delta=amplitude(xmin,xmax,m) # positive float, the range of values divided by the number of classes
    # Compute frequency for each class and plot histogram row by row
    for i in range(m):
      left=xmin+i*delta
      right=left+delta
-     freq=determine_frequency(x,left,right) # integer;  note that one observation must below to one and only one class
+     freq=determine_frequency(x,left,right) # integer;  note that each value must belong to one and only one class
      print_frequency(freq) # the output must be '****' where each * represents one observation
  # execute main
  main()
