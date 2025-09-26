@@ -18,11 +18,19 @@ def main():
     print_frequency(freq) # the output must be '****' where each * represents one observation
 
 def determine_min_max(x):
+    '''
+    This function returns the minimum and maximum of a list of numbers
+    x is  list of integers or floats
+    xmin,xmax are the outputs
+    '''
     xmin = min(x)
     xmax = max(x)
     return xmin, xmax
 
 def number_of_classes_sturges(comprimento_array):
+    '''
+    comprimento_array is an integer
+    '''
     for m in range(comprimento_array):
         if 2**(m-1) <= comprimento_array <= 2**m:
             return m
@@ -31,10 +39,19 @@ def print_frequency(freq):
     print('*' * freq)
 
 def determine_frequency(x,left, right):
+    '''
+    x is a list of values
+    this function computes the number of values larger or equal than left and smaller than right
+    '''
     f=0
-    for j in range(len(x)):
-        if x[j]>=left and x[j]<right:
+    for v in x:
+      if v>=left and v<right:
             f+=1
+      '''
+      for j in range(len(x)):
+              if x[j]>=left and x[j]<right:
+                  f+=1
+      '''
     return(f)
 
 def read_values():
@@ -46,4 +63,5 @@ def amplitude(xmin,xmax,m):
 
 # execute main
 main()
+
 
