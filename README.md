@@ -136,10 +136,10 @@ One possible solution for the collaborative project: (https://github.com/isa-uli
  
 <summary>  Class 3 (September 26, 2025): exercises, list and dictionary comprehensions, best practices </summary>
 
-1. Exercises on list comprehension
+1. Exercises on list comprehension: https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_list_comprehension.md
  
 
-2. Exercises on dictionary comprehension
+2. Exercises on dictionary comprehension: https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_dict_comprehension.md
 
  
 
