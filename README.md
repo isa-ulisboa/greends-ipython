@@ -136,27 +136,19 @@ One possible solution for the collaborative project: (https://github.com/isa-uli
  
 <summary>  Class 3 (September 26, 2025): exercises, list and dictionary comprehensions, best practices </summary>
 
-1. Exercises on list comprehension: https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_list_comprehension.md
+1. Exercises on list comprehension (with some solutions): https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_list_comprehension.md
  
 
-2. Exercises on dictionary comprehension: https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_dict_comprehension.md
+2. Exercises on dictionary comprehension (with some solutions): https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_dict_comprehension.md
 
  
-
-- Exercises from [CS50 Problem set 0, 1 and 2](https://cs50.harvard.edu/python/2022/psets/).
+3. Exercises from [CS50 Problem set 0, 1 and 2](https://cs50.harvard.edu/python/2022/psets/).
 
 </details>
 
-<!--
 
 <details markdown="block">
-<summary> 
-
-# Class 4 (October 4, 2024): handling exceptions
-
-</summary>
-
-Handling exceptions in Python: raising and catching exceptions. 
+<summary>  Class 4 (October 3, 2025): Handling exceptions in Python: raising and catching exceptions </summary>  
 
 1. Example from (https://cs50.harvard.edu/python/2022/shorts/handling_exceptions/). Exercise: adapt the proposed code to be more modular, where the main function is something like the one below:
 
@@ -237,12 +229,11 @@ while True:
 For a list of Python Built-in Exceptions, you can explore (https://www.w3schools.com/python/python_ref_exceptions.asp)
 </details>
 
+
 <details markdown="block">
-<summary> 
+<summary>  Class 5 (October 10, 2025): libraries, modules, APIs </summary>
 
-# Class 5 (October 11, 2024): libraries, modules, APIs
-
-</summary>
+<!--
 
 ### Modules
 You can store your own functions in modules (which are just python scripts) and `import` then into your main code. Let's imagine you created a file named `mymodule.py` in a given folder. In your main script, you can import the file if the folder belongs to list of folders the Python interpreter will look for. You can check that by running the following lines of codes in the Python interpreter:
