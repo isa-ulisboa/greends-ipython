@@ -136,6 +136,7 @@ One possible solution for the collaborative project: (https://github.com/isa-uli
  
 <summary>  Class 3 (September 26, 2025): exercises, list and dictionary comprehensions, best practices </summary>
 
+
 1. Exercises on list comprehension (with some solutions): https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_list_comprehension.md
  
 
@@ -150,31 +151,8 @@ One possible solution for the collaborative project: (https://github.com/isa-uli
 <details markdown="block">
 <summary>  Class 4 (October 3, 2025): Handling exceptions in Python: raising and catching exceptions </summary>  
 
-1. Example from (https://cs50.harvard.edu/python/2022/shorts/handling_exceptions/). Exercise: adapt the proposed code to be more modular, where the main function is something like the one below:
 
-```
-def main():
-    spacecraft = input("Enter a spacecraft: ")
-    au=get_au(spacecraft)
-    m = convert(au)
-    print(f"{m} m")
-```
-
-2. Exercises from [CS50 Problem set 3](https://cs50.harvard.edu/python/2022/psets/3/).
-
-For the *fuel gauge* problem (https://cs50.harvard.edu/python/2022/psets/3/fuel/), try to organize your code as follows. As suggested in *hints*, you should catch `ValueError` and  `ZeroDivisionError` exceptions in your code. In the code below, the user is being asked for correct values for `x,y` until they satisfy the requirements: `x,y` must be inputted as a string `x/y`, `x` has to be less or equal to `y`, and `y` cannot be zero. The function `get_string_of_integers_X_less_than_Y` in the code below should take care of that.
-
-```
-def main():
-    # asks user for input until the input is as expected
-    x,y=get_string_of_integers_X_less_than_Y()
-    # compute percentage from two integers
-    p=compute_percentage(x,y)
-    # print output 
-    print_gauge(p)
-```
-
-3. A few examples of code that can be helpful to solve problems in problem set 3:
+1. A few examples of code that can be helpful to solve problems in [CS50 Problem set 3](https://cs50.harvard.edu/python/2022/psets/3/).
 
 Example of basic use of `try-except` to catch a `ValueError`:
 ```
@@ -198,8 +176,37 @@ def get_int():
             break
     return x
 ```
+For a list of Python Built-in Exceptions, besides `ValueError`, you can check https://www.w3schools.com/python/python_ref_exceptions.asp
 
-We may want to exit the execution of our script if some exception is caught. This can be done with `sys.exit()`, which can also be used to print a message.
+2. The *fuel gauge* problem (https://cs50.harvard.edu/python/2022/psets/3/fuel/)
+
+To solve this problem, try to organize your code as follows. As suggested in *hints*, you should catch `ValueError` and  `ZeroDivisionError` exceptions in your code. In the code below, the user is being asked for correct values for `x,y` until they satisfy the requirements: `x,y` must be inputted as a string `x/y`, `x` has to be less or equal to `y`, and `y` cannot be zero. The function `get_string_of_integers_X_less_than_Y` in the code below should take care of that.
+
+```
+def main():
+    # asks user for input until the input is as expected
+    x,y=get_string_of_integers_X_less_than_Y()
+    # compute percentage from two integers
+    p=compute_percentage(x,y)
+    # print output 
+    print_gauge(p)
+```
+
+3. Example from (https://cs50.harvard.edu/python/2022/shorts/handling_exceptions/).
+
+Exercise: adapt the code proposed in the short to be more modular, where the main function is something like the one below:
+
+```
+def main():
+    spacecraft = input("Enter a spacecraft: ")
+    au=get_au(spacecraft)
+    m = convert(au)
+    print(f"{m} m")
+```
+
+4. Other useful applications of try-except
+   
+- We may want to exit the execution of our script if some exception is caught. This can be done with `sys.exit()`, which can also be used to print a message.
 ```
 import sys # import module
 try:
@@ -208,7 +215,7 @@ except ValueError:
     sys.exit("x is not an integer")
 ```
 
-Example of code that catches `CRTL-C` or `CRTL-D`:
+- Example of code that catches `CRTL-C` or `CRTL-D`:
 
 ```
 while True:
@@ -216,17 +223,18 @@ while True:
         x=int(input())
     except ValueError:
         print('x is not integer')
-    except KeyboardInterrupt: #CTRL-C
+    except KeyboardInterrupt: #CTRL-C (in Linux, interrupt execution)
         print('\n KeyboardInterrupt')
         break
-    except EOFError: # CTRL-D
+    except EOFError: #CTRL-D (in Linux, log out terminal/end-of-file)
         print('\n EOFError')
         break
     else:
         print(x)
 ```
 
-For a list of Python Built-in Exceptions, you can explore (https://www.w3schools.com/python/python_ref_exceptions.asp)
+Exercise (Asking for an haphazard list of numbers): Create a program that asks the user to provide haphazardly a series of numbers that you want to store in a list. The user is asked for a numbber at the time. Only inputs that are numbers are stored in  the list. When the user wants to stop, it should type CTRL-D. Then, the program should print the list of numbers.
+
 </details>
 
 
