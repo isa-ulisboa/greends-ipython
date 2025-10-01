@@ -137,83 +137,11 @@ One possible solution for the collaborative project: (https://github.com/isa-uli
 <summary>  Class 3 (September 26, 2025): exercises, list and dictionary comprehensions, best practices </summary>
 
 1. Exercises on list comprehension
- - Given a list of daily temperatures (in Celsius), Use a list comprehension to make a new list with these values converted to Fahrenheit. *Hint: The formula is `(C * 9/5) + 32`.*
- ```python
- celsius = [19, 21, 24, 18, 22]
- ```
- - Given the following loop, rewrite this code using a list comprehension.
- ```python
- areas = [100, 150, 120, 180]
- squared = []
- for a in areas:
-     squared.append(a ** 2)
- ```
- - Convert the loop below into a list comprehension.
- ```python
- crops = ["maize", "wheat", "rice", "bean", "barley"]
- filtered = []
- for crop in crops:
-     if "e" in crop:
-         filtered.append(crop)
- ```
- - Convert the loop below into a list comprehension.
- ```python
-plot_counts = [11, 15, 18, 22, 27, 30]
-evens = []
-for count in plot_counts:
-    if count % 2 == 0:
-        evens.append(count)
-```
- - Given nested lists, convert this double loop into a single list comprehension that flattens the soil samples list.
- ```python
- soil_samples = [
-     [2.1, 2.3, 2.4],
-     [2.2, 2.7],
-     [2.5, 2.6]
- ]
- flat_samples = []
- for sublist in soil_samples:
-     for sample in sublist:
-         flat_samples.append(sample)
- ```
- - (advanced) The following code creates a Python `generator` and converts its content into a list. Adapt this code to some new application where it is not trivial to convert a `while` loop (which is not allowed in list comprehensions) into a `for` loop.
- ```python
- def gen():
-     i = 5
-     while i <= 20:
-         yield i
-         i += 10
- lst = [x for x in gen()]  # Now a list comprehension over a generator
- ```
+ 
 
 2. Exercises on dictionary comprehension
 
- - Increase fertilizer dosage by 10%: given a dictionary of field names and fertilizer dosage (in kg/hectare), write a dictionary comprehension which increases every dosage by 10%.
-
- ```python
- fertilizer_dosage = {
-     "Field A": 100,
-     "Field B": 90,
-     "Field C": 110
- }
- ```
-
- - Create a crop area dictionary: given lists of `crop_names` and `areas`, make a dictionary comprehension that pairs each crop with its area.
-
- ```python
- crop_names = ["maize", "soybean", "rice"]
- areas = [12, 8, 15]  # Area in hectares
- ```
-
- - Select only large fields: given a dictionary below, rewrite the code as a dictionary comprehension, selecting only fields above 10 hectares.
-
- ```python
- fields = {"North": 12, "South": 7, "East": 15, "West": 9}  # values are hectares
- large_fields = {}
- for field, area in fields.items():
-     if area > 10:
-         large_fields[field] = area
-```
+ 
 
 - Exercises from [CS50 Problem set 0, 1 and 2](https://cs50.harvard.edu/python/2022/psets/).
 
