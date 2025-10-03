@@ -151,6 +151,7 @@ One possible solution for the collaborative project: (https://github.com/isa-uli
 <details markdown="block">
 <summary>  Class 4 (October 3, 2025): Handling exceptions in Python: raising and catching exceptions </summary>  
 
+See lecture https://cs50.harvard.edu/python/weeks/3/
 
 1. A few examples of code that can be helpful to solve problems in [CS50 Problem set 3](https://cs50.harvard.edu/python/2022/psets/3/).
 
@@ -240,6 +241,9 @@ Exercise (Asking for an haphazard list of numbers): Create a program that asks t
 
 <details markdown="block">
 <summary>  Class 5 (October 10, 2025): libraries, modules, APIs </summary>
+
+See lecture https://cs50.harvard.edu/python/weeks/4/
+
 
 <!--
 
