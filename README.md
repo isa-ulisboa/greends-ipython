@@ -149,7 +149,7 @@ One possible solution for the collaborative project: (https://github.com/isa-uli
 
 
 <details markdown="block">
-<summary>  Class 4 (October 3, 2025): Handling exceptions in Python: raising and catching exceptions </summary>  
+<summary>  Class 4 (October 3, 2025): handling exceptions in Python: raising and catching exceptions </summary>  
 
 See lecture https://cs50.harvard.edu/python/weeks/3/
 
@@ -244,64 +244,130 @@ Exercise (Asking for an haphazard list of numbers): Create a program that asks t
 
 See lecture https://cs50.harvard.edu/python/weeks/4/
 
-
-<!--
-
 ### Modules
-You can store your own functions in modules (which are just python scripts) and `import` then into your main code. Let's imagine you created a file named `mymodule.py` in a given folder. In your main script, you can import the file if the folder belongs to list of folders the Python interpreter will look for. You can check that by running the following lines of codes in the Python interpreter:
-```
->>>import sys
->>>sys.path
-```
-If the folder where `mymodule.py` was created does not belong to that list, you can add it with `sys.path.append` which allows you to import your module. To that end, you can include the followings lines to your main script:
-```
-import sys
-sys.path.append(r'path-to-folder') # folder where mymodule is
-import mymodule
-```
-where `path-to-folder` is the path that you can easily copy in your IDE. 
 
-If your module includes a function named, say,  `get_integer`, you can then use the function in your main script either by calling `mymodule.get_integer()` or you can instead load the function with `from mymodule import get_integer` and then just call it with `get_integer()` in the main script as in the following script.
+Suggestion: watch https://cs50.harvard.edu/python/shorts/creating_modules_packages/
+ 
+Modules are just python scripts (files like `module_name.py`) which can be imported into your main code. You can import everything that belongs to the module, or just some given function(s) or other objects.
+
+<details markdown="block">
+<summary> Create and import your own module </summary>
+
+Exercise: Create file named `mymodule.py` and file `main.py` in http://cs50.dev. Organize the files in the following folders:
 ```
+|--- class_5 # or whatever folder name you wish
+     |--- modules
+          |--- mymodule.py
+     |--- main.py
+```
+
+The contents of `mymodule.py` are typically functions or constants that you can re-use in different contexts. Let's suppose that `mymodule.py` has the following contents.
+<details markdown="block">
+<summary> mymodule.py </summary>
+ 
+```Python
 import sys
-sys.path.append(r'/workspaces/8834091/modules') # where file mymodule.py is
-from mymodule import get_integer
-def main():
-    x=get_integer()
-    print(x)
-main()
-```
-Contents of `mymodule.py`: 
-```
-import sys
+
+Constants={
+    'e'   : 2.718281828459045, # Euler's constant
+    'pi'  : 3.141592653589793, # Archimedes' constant
+    'phi' : 1.618033988749895  # Golden ratio
+}
+
 def get_integer() -> int:
+    #get integer from user
     while True:
         try:
-            return(int(input('type a number:  ')))
+            return(int(input('Type a number:  ')))
         except ValueError:
-            print('not an integer number: try again')
+            print('Not an integer number: try again')
         except KeyboardInterrupt: #CTRL-C
             print('\n If you want to exit type CTRL-D')
         except EOFError: # CTRL-D
-            sys.exit('\n exit as requested')
-```
+            sys.exit('\n Exit as requested')
 
-Often, you import a module that is available at (https://pypi.org/project/pip/). Say you want to load the module `random` which provides a series of functions for sampling, shuffling, and extracting random numbers from a variety of probability distributions. If the module is not already available, you can typically load it in your terminal with 
+def simplify(s: str) -> str:
+    #Remove whitespaces from string and convert to lowercase
+    return s.strip().lower()
+```
+</details>
+
+and `main.py` is the following file:
+<details markdown="block">
+<summary> main.py (1st version) </summary>
+ 
+```Python
+import modules.mymodule
+
+def main():
+    x=modules.mymodule.get_integer()
+    print(x)
+
+main()
+```
+</details>
+
+If you prefer, you can explicitly import some given functions from the module as in the following example.
+
+<details markdown="block">
+<summary> main.py (2nd version) </summary>
+ 
+```Python
+from  modules.mymodule import get_integer
+
+def main():
+    x=get_integer()
+    print(x)
+
+main()
+
+```
+</details>
+
+You can also import everything from the module with `from modules.mymodule import *` instead of the more specific (and recommended) `from modules.mymodule import get_integer`.
+
+The examples above follow the directory tree that was suggested. If you change the module's location, you need to adapt he code accordingly. In alternative, you can add the path to the directories where your modules lies to `sys.path` as in the following example.
+
+```Python
+import sys
+sys.path.append(r'path-to-folder') # folder where mymodule is (e.g. `/workspaces/8834091`)
+import mymodule
+```
+</details>
+
+As explained on the recommended video, a python **package** is just a folder with modules and a special file named `__init__.py`
+
+<details markdown="block">
+<summary> Pip install</summary>
+
+Often, you import a module that is available at https://pypi.org/project/pip/. Say you want to load the module `random` which provides a series of functions for sampling, shuffling, and extracting random numbers from a variety of probability distributions. If the module is not already available, you can typically load it in your terminal with 
 ```
 $pip install random
 ```
-and then import it on your main script with `import random`. If you want to know which is the folder where the module is located, you can get that information with `random.__file__`.
+and then import it on your main script with `import random`. If you want to know which is the folder where the module is located, you can get that information with `random.__file__` as in the following script.
 
-### `sys.argv`
-Previously, we used module `sys`, in particular functions  `sys.exit()` and  `sys.path`. Another useful function is `sys.argv`,  that allows you to have access to what the user typed in at the command line `$` as in 
+```Python
+import random
+print(random.__file__)
 ```
+
+Suggestion: write a script to  estimate the value of $\pi$ with a Monte Carlo algorithm that makes calls to `random.uniform(-1, 1)`. One possible solution: https://www.geeksforgeeks.org/dsa/estimating-value-pi-using-monte-carlo/
+
+</details>
+
+### sys.argv
+Previously, we used module `sys`, in particular functions  `sys.exit()` and  `sys.path`. Another useful function is `sys.argv`,  that allows you to have access to what the user typed in at the command line `$` as in the following script.
+
+```Python
 import sys
 print(len(sys.argv)) # returns the number of words in the command line after $python
 print(sys.argv[1]) # returns the 2nd word, i.e., the first word after $python myscript.py
 ```
 
-For instance, the following script named `sum.py` prints the sum of two numbers that were specified in the command line with `$python sum.py 1.2 4.3`:
-```
+For instance, the following script named `sum.py` prints the sum of two numbers that were specified in the command line.
+
+```Python
+# sum.py
 import sys
 try:
     x,y = float(sys.argv[1]), float(sys.argv[2])
@@ -311,8 +377,16 @@ except IndexError:
 except ValueError:
     print('The arguments are not numbers')
 ```
+To run it, you can for instance execute the command `$python sum.py 1.2 4.3` in the terminal.
+
 ### APIs 
+
+Suggestion: watch https://cs50.harvard.edu/python/shorts/api_calls/ (13')
+
 *Application program interfaces* allow you to communicate with a remote server. For instance,  `requests` is a package that allows your program to behave as a web browser would.  Consider the following script `myrequest.py` that allows you to explore the *itunes* database (https://performance-partners.apple.com/search-api):
+
+#### Example: iTunes
+
 ```
 import requests
 import sys
@@ -324,33 +398,18 @@ except IndexError:
 except requests.RequestException:
    sys.exit('Request failed')
 ```
+You can then call the API from your terminal with `$python myrequest.py 'name of my favorite band'`.
+
+#### Example: GBIF
+
 You can easily adapt that code to access a different database. For instance if you want to explore the GBIF database (https://data-blog.gbif.org/post/gbif-api-beginners-guide/), you can just replace the main line of code in `myrequest.py` with
 ```
 response=requests.get('https://api.gbif.org/v1/species/match?name='+ sys.argv[1])
 ```
 and execute it with, say,  `$python myrequest.py Tracheophyta` in the terminal.
 
-There are many ways of running an API in Python. The following example shows how you can access satellite imagery through the *Google Earth Engine* API and compute the mean land surface temperature at some location from the MODIS11 product. To be able to use the API, you need to have a Google account, and an earth engine project associated to it.
-```
-# pip install earthengine-api
-import ee
-# Trigger the authentication flow.
-ee.Authenticate()
-# Initialize the library.
-ee.Initialize(project='project-name') # e.g. 'ee-my-mlc-math-isa-utl'
-# Import the MODIS land surface temperature collection.
-lst = ee.ImageCollection('MODIS/006/MOD11A1')
-# Selection of appropriate bands and dates for LST.
-lst = lst.select('LST_Day_1km', 'QC_Day').filterDate('2020-01-01', '2024-01-01')
-# Define the urban location of interest as a point near Lyon, France.
-u_lon = 4.8148
-u_lat = 45.7758
-u_poi = ee.Geometry.Point(u_lon, u_lat)
-scale = 1000  # scale in meters
-# Calculate and print the mean value of the LST collection at the point.
-lst_urban_point = lst.mean().sample(u_poi, scale).first().get('LST_Day_1km').getInfo()
-print('Average daytime LST at urban point:', round(lst_urban_point*0.02 -273.15, 2), '°C')
-```
+#### Example: open-meteo
+Another example of a useful API for weather data is https://open-meteo.com/en/docs#api_documentation. You can find a customized `requests` package for **open-meteo**  at https://pypi.org/project/openmeteo-requests/.
 
 ### Problems
 Solve problems from CS50P [Problem_set_4](https://cs50.harvard.edu/python/2022/psets/4/). In particular, for problem *Bitcoin price index* organize your code so the main function is the following:
@@ -364,11 +423,14 @@ def main():
 </details>
 
 <details markdown="block">
-<summary> 
+<summary> Class 6 (October 17, 2025): virtual environments; file I/O </summary>
 
-# Class 6 (October 18, 2024): virtual environments; file I/O
+- For virtual environments, look at [How to Use Virtual Environments with the Built-In venv Module](https://www.youtube.com/watch?v=APOPm01BVrk) (17')
+- UV: [UV - A Faster, All-in-One Package Manager to Replace Pip and Venv](https://www.youtube.com/watch?v=AMdG7IjgSPM)
+- For file I/O, you can follow https://cs50.harvard.edu/python/weeks/6/.
 
-</summary>
+
+<!--
 
 ### Virtual environments in Python
 
