@@ -240,7 +240,7 @@ Exercise (Asking for an haphazard list of numbers): Create a program that asks t
 
 
 <details markdown="block">
-<summary>  Class 5 (October 10, 2025): libraries, modules, APIs </summary>
+<summary>  Class 5 (October 10, 2025): modules, packages, APIs </summary>
 
 See lecture https://cs50.harvard.edu/python/weeks/4/
 
