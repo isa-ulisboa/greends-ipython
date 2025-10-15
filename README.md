@@ -441,9 +441,11 @@ A virtual environment (https://docs.python.org/3/library/venv.html) is:
     - Considered as disposable – it should be simple to delete and recreate it from scratch. You don’t place any project code in the environment.
     - Not considered as movable or copyable – you just recreate the same environment in the target location.
 
-In your system you have the *base* environment by default, and you can create one or more *virtual environments*. Below, we describe how to create a virtual environment and how to activate it, so you commands in terminal are interpreted within that environment. That allows you to encapsulate in each virtual environment you create a given Python version, and a set of Python packages with their given versions. Your data and script files remain on the usual working folders: they should not be moved to the folders where the virtual environment files are stored.
+In your system you have the *base* environment by default, and you can create one or more *virtual environments*. Below, we describe how to create a virtual environment and how to activate it, so your  commands at the terminal are interpreted within that environment. That allows you to encapsulate in each virtual environment you create a given Python version, and a set of Python packages with their given versions. 
 
-The following commands work in the  [CS50 codespace](https://cs50.dev/) that runs Linux (check with `$cat /etc/os-release` in the terminal). Some need to be slightly adapted for Windows.
+**Your data and script files remain on the usual working folders: they should not be moved to the folders where the virtual environment files are stored.**
+
+The following commands work in the  [CS50 codespace](https://cs50.dev/) that runs Linux (check with `$cat /etc/os-release` in the terminal). Some need to be slightly adapted for Windows (check differences at https://realpython.com/python-virtual-environments-a-primer/).
 
 Firstly, let's check what are the available packages and their versions in the base environment, and also let's get extra information about the package `requests` (e.g. dependencies):
 
