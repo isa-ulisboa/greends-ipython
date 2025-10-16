@@ -42,6 +42,7 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
 
 </details>
 </details>
+
 ---
 
 <details markdown="block">
@@ -435,6 +436,7 @@ def main():
 - UV: [UV - A Faster, All-in-One Package Manager to Replace Pip and Venv](https://www.youtube.com/watch?v=AMdG7IjgSPM)
 - For file I/O, you can follow https://cs50.harvard.edu/python/weeks/6/.
 
+<ul>
 <details markdown="block">
 <summary> Virtual environments in Python</summary>
 
@@ -508,11 +510,10 @@ Note that the file `requirements.txt` is created in the folder that contains `my
 ```
 Exercise: go back to `myprojectvenv`, add package (say, `emoji==0.1.0`), re-build `requirements.txt`, and create new environment `myproject3venv` and install the  set of packages listed in the new `requirements.txt`.
 </details>
-</details>
 
-<!--
 
-### File I/O
+<details markdown="block">
+<summary> File I/O </summary>
 
 As discussed in (https://cs50.harvard.edu/python/2022/notes/6/) `open` is a functionality built into Python that allows you to open a file and utilize it in your program. The open function allows you to open a file such that you can read from it or write to it. The most basic way to use `open` allow us to enable file I/O with respect to a given file. In the example below, `w` is the argument value that indicates that the file is open in writing mode. The instruction `file.write(...)` will entirely rewrite the file, deleting the previous contents.
 ```
@@ -541,34 +542,64 @@ with open('myfile.txt','r') as f:
         N+=1
 print('number of lines', N)
 ```
-Aa an alternative, this can be done with method `readline`. This can be included in a loop to read the whole file. Notice that when the end of the file is reached, `readline` returns the empty string, and this can be easily tested with a condition.
-
-Reading a file in Python gives the flexibility of visiting any position in the file. The initial position is 0 by default but can be instantiated with `f.seek(n)`. Then,  `f.read(10)` for instance reads *n* characters from that initial position. Method `f.tell()` returns the current position in the file. 
 
 A file can be of type *text* (human-readable) or *binary*. Binary files like images for instance are read with `with open('myfile.txt','rb') as f`. 
 
-Exercise: Consider the file downloaded from INE (the Portuguese Institute of Statistics) about causes of fires by geographical location [rural_fires.csv](rural_fires.csv). The source is INE: "Rural fires (No.) by Geographic localization (NUTS - 2013) and Cause of fire; Annual" for 2023. Write a script to read the file and exclude the lines which are not formated as a table (header lines). The formatted lines should be written into a new file, say (`table_rural_fires.csv`). 
+Exercise: Consider the file https://github.com/isa-ulisboa/greends-ipython/blob/main/INE_permanent_crops.csv downloaded from the Portuguese Institute of Statistics, INE, about the area of two permanent crops (olive plantations, vineyard) for the main regions of Portugal. The data is not structured as a *rectangular table*: specifically it contains rows that we want to ignore. We are just interested in filtering the rows that have the same number of separators, namely the column names and the rows that contain the crop areas for each region. The resulting rectangular table is to be exported to a new file.
+
+Write the code using the template below.
+
 ```
-with open('rural_fires.csv','rb') as f:
-    with open('table_rural_fires.csv',"w") as fw:
-         for line in f:
-              if line[0] in ['1','2','3']: # or smth like line.startswith('1'):
-                 fw.write(line)
-```
-Since the file contains non ASCII characters, one might want to try to decode those characters correctly. Note that Python provides methods `encode` and `decode` as in the example below.
-```
-str_original = 'ção'
-bytes_encoded = str_original.encode(encoding='utf-8')
-print(type(bytes_encoded))
-str_decoded = bytes_encoded.decode()
-print(type(str_decoded))
-print('Encoded bytes =', bytes_encoded)
-print('Decoded String =', str_decoded)
-print('str_original equals str_decoded =', str_original == str_decoded)
+def main():
+    # constants
+    input_file='INE_permanent_crops.csv'
+    output_file='output.csv'
+    sep=';'
+    number_sep=6
+    file_encoding='ISO-8859-1'
+    # main steps
+    L=read_file(input_file,file_encoding) # L is a list of the rows of the file
+    L=filter_lines(L,sep,number_sep) # L is a list of lists, after we apply the separator
+    write_to_csv(L,output_file,sep)
 ```
 
+You should complete the definitions of the following functions.
+
+```
+def read_file(file_name,file_encoding):
+    ''' reads file using the appropriate encoding and returns list of rows'''
+    with open(file_name,"r", encoding=file_encoding) as f:
+        lines=f.readlines()
+    return lines
+
+def filter_lines(L,sep,number_sep):
+    '''
+    Filter only elements of L that contains number_sep times the separator 'sep'.
+    Each filtered element of L is represented as a list of strings, the strings separated by 'sep'
+    All list of strings have the same length (number_sep+1)
+    The output is the list with just the filtered lists of strings
+    '''
+    newL=[]
+    for line in L:
+        row=line.rstrip().split(sep)
+        ...
+    return newL
+
+  def write_to_csv(L, output_file,sep):
+    '''writes each element of L as a line in the output file'''
+    with open(output_file, "w") as f:
+        for row in L:
+           ...
+  main()
+```
+</details>
+</ul>
 
 </details>
+
+<!--
+
+
 
 <details markdown="block">
 <summary> 
