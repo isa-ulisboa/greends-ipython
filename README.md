@@ -42,6 +42,7 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
 
 </details>
 </details>
+---
 
 <details markdown="block">
 <summary>  Class 1 (September 12, 2025): data types, variables, functions </summary>
@@ -67,9 +68,10 @@ Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
 6. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/psets/0/)
 </details>
 
+---
+
 <details markdown="block">
- 
-<summary>  Class 2 (September 19, 2025): conditionals, lists, dictionaries </summary>
+ <summary>  Class 2 (September 19, 2025): conditionals, lists, dictionaries </summary>
 
 1. Conditionals:
   - `if`, `elif`, `else`:
@@ -131,6 +133,7 @@ One possible solution for the collaborative project: (https://github.com/isa-uli
 
 </details>
 
+---
 
 <details markdown="block">
  
@@ -147,9 +150,10 @@ One possible solution for the collaborative project: (https://github.com/isa-uli
 
 </details>
 
+---
 
 <details markdown="block">
-<summary>  Class 4 (October 3, 2025): handling exceptions in Python: raising and catching exceptions </summary>  
+<summary>  Class 4 (October 3, 2025): handling exceptions in Python: catching and raising exceptions </summary>  
 
 See lecture https://cs50.harvard.edu/python/weeks/3/
 
@@ -238,6 +242,7 @@ Exercise (Asking for an haphazard list of numbers): Create a program that asks t
 
 </details>
 
+---
 
 <details markdown="block">
 <summary>  Class 5 (October 10, 2025): modules, packages, APIs </summary>
@@ -422,6 +427,7 @@ def main():
 ```
 </details>
 
+---
 <details markdown="block">
 <summary> Class 6 (October 17, 2025): virtual environments; file I/O </summary>
 
@@ -429,7 +435,8 @@ def main():
 - UV: [UV - A Faster, All-in-One Package Manager to Replace Pip and Venv](https://www.youtube.com/watch?v=AMdG7IjgSPM)
 - For file I/O, you can follow https://cs50.harvard.edu/python/weeks/6/.
 
-### Virtual environments in Python
+<details markdown="block">
+<summary> Virtual environments in Python</summary>
 
 A virtual environment (https://docs.python.org/3/library/venv.html) is:
    - Used to contain a specific Python interpreter and software libraries and binaries which are needed to support a project (library or application). These are by default isolated from software in other virtual environments and Python interpreters and libraries installed in the operating system.
@@ -500,6 +507,8 @@ Note that the file `requirements.txt` is created in the folder that contains `my
 (myproject2venv) .venv/ $ pip install -r requirements.txt # install packages and versions listed in requirements.txt
 ```
 Exercise: go back to `myprojectvenv`, add package (say, `emoji==0.1.0`), re-build `requirements.txt`, and create new environment `myproject3venv` and install the  set of packages listed in the new `requirements.txt`.
+</details>
+</details>
 
 <!--
 
