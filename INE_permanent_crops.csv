@@ -1,0 +1,55 @@
+
+Statistical table extracted on October 16, 2025 (18:44:00)
+http://www.ine.pt
+
+
+
+Data reference period;Geographic localization (NUTS -2013);Area of permanent crops (ha) by Geographic localization (NUTS -2013), Type (permanent crops) and Area classes (crop) -  Decennial (1) ;;;
+;;Type (permanent crops);;;
+;;Total;Olive plantations;Vineyards;
+;;Area classes (crop);;;
+;;Total;;;
+;;ha ;ha ;ha ;
+2019;PT: Portugal;860663;377234;173254;
+;1: Continente;855767;377234;171111;
+;11: Norte;255954;82777;81411;
+;16: Centro;168086;78956;42234;
+;17: Área Metropolitana de Lisboa;16428;730;9266;
+;18: Alentejo;358544;205363;36686;
+;15: Algarve;56754;9409;1513;
+;2: Região Autónoma dos Açores;2574;- -;1424;
+;3: Região Autónoma da Madeira;2322;- -;719;
+
+Area of permanent crops (ha) by Geographic localization (NUTS -2013), Type (permanent crops) and Area classes (crop) -  Decennial - Statistics Portugal, Agriculture census - historical series
+
+Note(s):
+(1) The records previous to 2019 were recalculated according to the successive administrative reorganisations of the territory until the current version.<br>It was not possible to fully convert the parishes of the municipalities of Odemira, Lisboa, Loures, Sintra, Amadora, Nordeste and Ponta Delgada.<br>In these municipalities, the results for the geographical level of the parish may be underestimated, however this problem is not reflected in the higher geographical levels.
+
+
+
+This data last updated:august 10, 2022
+
+
+Table Metadata
+
+Area of permanent crops (ha)
+Name;Area of permanent crops (ha) by Geographic localization (NUTS -2013), Type (permanent crops) and Area classes (crop) -  Decennial
+Regularity;Decennial
+Source;Statistics Portugal, Agriculture census - historical series
+First available period;1989
+Last available period;2019
+Dimensions
+     Dimension 1;Data reference period
+     Dimension 2;Geographic localization (NUTS -2013)
+     Dimension 3;Type (permanent crops)
+     Dimension 4;Area classes (crop)
+Concepts
+     PERMANENT CROPS;Crops which occupy the soil for a long period and provide repeated yields of crops over several years and do not rotate with other crops. They do not include permanent grasslands and pastures. In relation to fruit trees, only regular plantations with a minimum density of 100 trees, or 45 trees in regard to olive, fig and nut trees, are considered.
+     REFERENCE PERIOD;Period to which the information refers and which may be a specific day or a time interval (month, fiscal year, calendar year, among others).
+     AGRICULTURAL HOLDING;Technical-economic unit that uses common production factors such as labour, machinery, facilities, land, among others, fulfilling the following four conditions: 1) yield agricultural products or maintain, in good agricultural and environmental conditions, the lands that are no longer used for productive purposes; 2) reach or exceed a certain size (in area or number of animals); 3) be subject to a single management; 4) be located in a well-defined and identifiable area.
+Definition;
+Formule;
+Measure unit (symbol);Hectare (ha)
+Power of 10;0
+Observations;Data for 1989, 1999, 2009, based on census (Agricultural Census). Between these periods, biennial for odd years and with exception for 1991 and 2001, the information is based on sampling surveys (Farm structure survey).
+Last update date;10-Aug-2022
