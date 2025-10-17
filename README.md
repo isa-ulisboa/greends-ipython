@@ -597,16 +597,18 @@ def filter_lines(L,sep,number_sep):
 
 </details>
 
-<!--
-
-
+---
 
 <details markdown="block">
-<summary> 
+<summary> Class 7 (October 24, 2025): tabular data; pandas</summary>
 
-# Class 7 (October 25, 2024): tabular data; pandas
+Video sugestions:
+1. [Python Pandas Tutorial (Part 1): Getting Started with Data Analysis - Installation and Loading Data](https://www.youtube.com/watch?v=ZyhVh-qRZPA);
+2. [Python Pandas Tutorial (Part 2): DataFrame and Series Basics - Selecting Rows and Columns](https://www.youtube.com/watch?v=zmdjNSmRXF4);
+3. [Python Pandas Tutorial (Part 3): Indexes - How to Set, Reset, and Use Indexes](https://www.youtube.com/watch?v=W9XjRYFkkyw);
+4. [Python Pandas Tutorial (Part 4): Filtering - Using Conditionals to Filter Rows and Columns](https://www.youtube.com/watch?v=Lw2rlcxScZY)
 
-</summary>
+<!--
 
 ### Create a Pandas DataFrame from scratch
 
