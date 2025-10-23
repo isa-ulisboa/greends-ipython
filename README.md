@@ -611,26 +611,56 @@ def filter_lines(L,sep,number_sep):
 4. [Python Pandas Tutorial (Part 4): Filtering - Using Conditionals to Filter Rows and Columns](https://www.youtube.com/watch?v=Lw2rlcxScZY);
 5. ...
 
-<!--
+
 
 ### Create a Pandas DataFrame from scratch
 
-Pandas dataframes have an intrinsic tabular structure represented by rows and columns where each row and column has a unique *label* (name) and *position* number  inside the dataframe. The row labels, called dataframe index, can be integer numbers or string values, the column labels, called column names, are usually strings. Use the following script to create a dataframe with random values. Notice the terminology for rows (`index`) and columns (`columns`). 
+Pandas dataframes have an intrinsic tabular structure represented by rows and columns where each row and column has a unique *label* (name) and *position* number inside the dataframe. The row labels, called dataframe indices, can be integer numbers or string values. The column labels, called column names, are usually strings. Use the following script to create a dataframe from a dictionary. Notice the terminology for rows (`index`) and columns (`columns`). 
 ```
 import pandas as pd
-import numpy as np
-df = pd.DataFrame(np.random.randn(6, 4), index=list('abcdef'), columns=list('ABCD'))
-print(df)
+data = {'Product': ['A', 'B', 'C', 'D', 'E', 'F'],
+        'Price': [10, 25, 15, 30, 20, 35],
+        'Quantity': [100, 50, 75, 30, 90, 20],
+        'Sales': [1000, 1250, 1125, 900, 1800, 700]}
+df = pd.DataFrame(data)
+df = df.set_index('Product')
+display(df)
 ```
-Exercices: 
+### DataFrame and Series Basics - Selecting Rows and Columns
 
-1. print the column names of `df` with `.columns`.
-2. Create a `Series` that corresponds to column `A` with `['A']`
-3. Create a new dataframe that corresponds to columns `A` and `C` with `[['A','C']]`. 
-
-Notice that `.columns` returns a `pd.Index` object. This is to provide extra functionality and performance compared to lists. To extract a list of names, one can use  `.columns.tolist()` or `.columns.values`. 
-
-### Reading a csv file, selecting columns by name, selecting rows by condition
+1. Print the column names of `df` with `df.columns`. Note: `.columns` returns a `pd.Index` object. This is to provide extra functionality and performance compared to lists. To extract a list of names, one can use  `df.columns.to_list()`. To get an array, use `df.columns.values`. 
+2. Select columns:
+   - Create a `Series` object that corresponds to column `Price` with `df['Price']`
+   - Create a new dataframe object that corresponds to columns `Price` and `Quantity` with `df[['Price','Quantity']]`. 
+3. Select rows with boolean indexing:
+   - Create a new dataframe with only products with sales above 80 with `display(df[df['Sales'] > 1000])`
+4. Select rows and columns with `iloc` (positional indexing):
+   ```
+   # Select the first row by integer position
+   display(df.iloc[0])
+   # Select the first two rows and all columns by integer position
+   display(df.iloc[0:2, :])
+   # Select rows from index 1 to 3 (inclusive of 1, exclusive of 4)
+   # and columns from index 0 to 2 (exclusive of 2) by integer position
+   display(df.iloc[1:4, 0:2])
+   # Select a specific cell by integer position (row index 2, column index 1)
+   display(df.iloc[2, 1])
+   ``` 
+5. Select rows and columns with `loc` (label-based indexing):
+   ```
+   # Select a single row by its label
+   display(df.loc['a'])
+   # Select multiple rows by their labels
+   display(df.loc[['a', 'c', 'e']])
+   # Select rows by label and specific columns by label
+   display(df.loc[['a', 'c', 'e'], ['Price', 'Sales']])
+   # Select a slice of rows by label (inclusive of both start and stop labels)
+   display(df.loc['b':'e'])
+   # Select rows by label slice and columns by label slice
+   display(df.loc['b':'e', 'Quantity':'Sales'])
+   ```
+   
+### Read csv file 
 
 Consider the dataset that described 517 fires from the Montesinho natural park in Portugal. For each incident weekday, month, coordinates, and the burnt area are recorded, as well as several meteorological data such as rain, temperature, humidity, and wind (https://www.kaggle.com/datasets/vikasukani/forest-firearea-datasets). For reference, a copy of the file is available [forestfires.csv](forestfires.csv). The variables are:
 
@@ -648,7 +678,7 @@ Consider the dataset that described 517 fires from the Montesinho natural park i
 - rain - outside rain in mm/m2 : 0.0 to 6.4
 - area - the burned area of the forest (in ha): 0.00 to 1090.84
 
-The goal is to download the file and use package `Pandas` to explore it and solve the following tasks.
+### Explore the dataset with Pandas
 
 1. Read the file with `pd.read_csv` into a new object `fires`, and show the first 10 rows with `fires.head(10)`.
 2. Create list of column names and determine column data types with attribute `.dtypes`.
@@ -658,14 +688,33 @@ The goal is to download the file and use package `Pandas` to explore it and solv
 6. Select fires for which the temperature is higher than 25 Celsius, and between 20 and 25 Celsius; note that each condition needs to be surrounded  by `(...)` and can be connected with `&` or `|` or negated with `~`.
 7. Select fires that occured on weekends; use the conditional function `.isin()`
 8. Check if there are no `Null` values in the dataframe with `.notna()`. You can sum along columns with `.sum()`.
+9. Use `iloc` to select the first 20 fires and just the FWI based variables values.
+10. Use `loc` and `is.in()` to select fires from August and September and just FWI based variables values for those fires.
+11. Create a dataframe `months_df` from a dictionary: for instance create a dictionary where keys are `jan`, `feb`, `mar`, for all 12 months, and the values are `January`, `February`, `March` and so on.
+    ```
+    month_data = {
+        'Month': [
+            'January', 'February', 'March', 'April', 'May', 'June', 
+            'July', 'August', 'September', 'October', 'November', 'December'
+        ],
+        'mth': [
+            'jan', 'feb', 'mar', 'apr', 'may', 'jun', 
+            'jul', 'aug', 'sep', 'oct', 'nov', 'dec'
+        ]
+    }
+    months_df = pd.DataFrame(month_data)
+    ```
 
-### Select rows and columns with loc (label-based indexing) and iloc (positional indexing)
-
-These are operators to select rows and columns from a dataframe. `loc` selects rows and columns using the row and column *names*. `iloc` uses the *positions* in the table. Notice that new values can be assigned to selections defined with `loc`and `iloc`.
-
-1. Interpret the result of `fires.iloc[0:3,2:4]`
-2. Use `loc` and `is.in()` to select fires from August and September and just FWI based variables values for those fires.
-3. Use `iloc` to select the first 20 fires and just the FWI based variables values
+12. Merge with new dataframe to get a new variable that contains the full name of the month. See (https://pandas.pydata.org/docs/user_guide/merging.html)
+    ```
+    merged_df = pd.merge(fires, months_df, left_on='month', right_on='mth', how='left')
+    merged_df.drop(columns='mth', inplace=True)
+    ```
+1. Create a dataframe named `firesbymonth` with columns `avg_temp` (average temperature for fires in that month), `avg_RH` (idem, for humidity) and `fire_count` (number of fires). Towards that end, reduce the `fires` dataframe with method `.groupby` to get just one row per month, and average temperature, average RH, and number of fires per month. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
+2. What is the effect of adding the method `.reset_index()` to the previous command?
+3. Sort the dataframe `firesbymonth`, such that the 12 rows are ordered by month correctly: `jan`, `feb`, `mar`, and so on.
+4. Create a new column called `conditions` in `firesbymonth` of type string that indicates if a month is `dry&hot`, `dry&cold`, `wet&hot` or `wet&cold`. Use the mean values of `avg_temp` and `avg_RH` to establish the appropriate thresholds. Use method `.apply` and define the function to apply with `lambda`.
+5. Re-organize the information in `fires` into a two-way table that shows the total area of fires per day of the week and per month, where `NaN` are replaced by 0. Towards that end, explore the `.pivot_table` method.
 
 ### Combining positional and label-based indexing
 
@@ -682,39 +731,16 @@ Exporting is done with operations named `.to_...` as listed in (https://pandas.p
 1. Export your file as an Excel spreadsheet with  `.to_excel("filename.xlsx", sheetname="fires", index=False)`
 2. Read an Excel spreadsheet with: `pd.read_excel("filename.xlsx", sheetname="fires", index=False)`
 
-### Use generative AI to help with the following tasks
-
-1. Create a dataframe `months_df` from a dictionary: for instance create a dictionary where keys are `jan`, `feb`, `mar`, for all 12 months, and the values are `January`, `February`, `March` and so on.
-
-```
-month_data = {
-    'Month': [
-        'January', 'February', 'March', 'April', 'May', 'June', 
-        'July', 'August', 'September', 'October', 'November', 'December'
-    ],
-    'mth': [
-        'jan', 'feb', 'mar', 'apr', 'may', 'jun', 
-        'jul', 'aug', 'sep', 'oct', 'nov', 'dec'
-    ]
-}
-months_df = pd.DataFrame(month_data)
-```
-
-2. Merge with new dataframe to get a new variable that contains the full name of the month. See (https://pandas.pydata.org/docs/user_guide/merging.html)
-
-```
-merged_df = pd.merge(fires, months_df, left_on='month', right_on='mth', how='left')
-merged_df.drop(columns='mth', inplace=True)
-```
 
 </details>
 
+<!--
+
+---
 <details markdown="block">
-<summary> 
+<summary>  Class 8 (November 7, 2025): pandas (cont'd), jupyter notebooks </summary>
 
-# Class 8 (November 8, 2024): pandas (cont'd), jupyter notebooks
 
-</summary>
 
 Create a jupyter notebook for this class. If you're using your CS50 codespace, create a new file in the terminal with `$code mynotebook.ipynb` and follow the suggestions for jupyter notebooks in your codespace session.
 
