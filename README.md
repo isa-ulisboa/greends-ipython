@@ -600,18 +600,13 @@ def filter_lines(L,sep,number_sep):
 ---
 
 <details markdown="block">
-<summary> Class 7 (October 24, 2025): tabular data; pandas</summary>
+<summary> Class 7 (October 24, 2025): Jupyter notebooks, tabular data; pandas</summary>
 
 - Tutorial: https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html
 
 - Video sugestions:
-1. [Python Pandas Tutorial (Part 1): Getting Started with Data Analysis - Installation and Loading Data](https://www.youtube.com/watch?v=ZyhVh-qRZPA);
-2. [Python Pandas Tutorial (Part 2): DataFrame and Series Basics - Selecting Rows and Columns](https://www.youtube.com/watch?v=zmdjNSmRXF4);
-3. [Python Pandas Tutorial (Part 3): Indexes - How to Set, Reset, and Use Indexes](https://www.youtube.com/watch?v=W9XjRYFkkyw);
-4. [Python Pandas Tutorial (Part 4): Filtering - Using Conditionals to Filter Rows and Columns](https://www.youtube.com/watch?v=Lw2rlcxScZY);
-5. ...
-
-
+1. Overview by Rob Mulla: [Learning Pandas for Data Analysis? Start Here. (22')](https://www.youtube.com/watch?v=DkjCaAMBGWM)
+2. Course by Corey Schafer: [Pandas tutorial (11 videos)](https://www.youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS)
 
 ### Create a Pandas DataFrame from scratch
 
@@ -734,34 +729,20 @@ Exporting is done with operations named `.to_...` as listed in (https://pandas.p
 
 </details>
 
-<!--
-
 ---
 <details markdown="block">
-<summary>  Class 8 (November 7, 2025): pandas (cont'd), jupyter notebooks </summary>
+<summary>  Class 8 (November 7, 2025): Pandas</summary>
 
-
-
-Create a jupyter notebook for this class. If you're using your CS50 codespace, create a new file in the terminal with `$code mynotebook.ipynb` and follow the suggestions for jupyter notebooks in your codespace session.
-
-There are many available *cheatsheets* for Pandas that can help visualizing Pandas' functionalities. Since there are many possibilities, a single page cheatsheet is either too limited or too cryptic. This [12-page cheatsheet](https://www.webpages.uidaho.edu/~stevel/cheatsheets/Pandas%20DataFrame%20Notes_12pages.pdf) is pretty self-contained and includes several examples.
-
-### Use generative AI to help with the following tasks
-
-1. Reduce the `fires` dataframe with method `.groupby` to get just one row per month, and average temperature, average RH, and number of fires per month. The goal is to create a dataframe named `firesbymonth` with columns `avg_temp`, `avg_RH` and `fire_count`. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
-2. What is the effect of adding the method `.reset_index()` to the previous command?
-3. Sort the dataframe `firesbymonth`, such that the 12 rows are ordered by month correctly: `jan`, `feb`, `mar`, and so on.
-4. Create a new column called `conditions` in `firesbymonth` of type string that indicates if a month is `dry&hot`, `dry&cold`, `wet&hot` or `wet&cold`. Use the mean values of `avg_temp` and `avg_RH` to establish the appropriate thresholds. Use method `.apply` and define the function to apply with `lambda`.
-5. Re-organize the information in `fires` into a two-way table that shows the total area of fires per day of the week and per month, where `NaN` are replaced by 0. Towards that end, explore the `.pivot_table` method.
+Exercises with Pandas. Continued from last class
 
 </details>
 
+
+
 <details markdown="block">
-<summary> 
+<summary> Class 9 (November 15, 2025): OOP, classes, methods </summary>
 
-# Class 9 (November 15, 2024): OOP, classes, methods
-
-</summary>
+<!--
 
 Suppose that one wants write a script in python using classes to monitor plants at a nursery. Initially plants grow from seeds in trays and one wants to keep track of the trays and number of plants per tray. All plants in a given tray are from the same species. Then, at some point, some plants are transferred from trays to individual pots (one plant per pot). At the end, pots are sold. One wants to track the number of plants of each species that are in the nursery.
 
