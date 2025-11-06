@@ -613,7 +613,7 @@ def filter_lines(L,sep,number_sep):
 Pandas dataframes have an intrinsic tabular structure represented by rows and columns where each row and column has a unique *label* (name) and *position* number inside the dataframe. The row labels, called dataframe indices, can be integer numbers or string values. The column labels, called column names, are usually strings. Use the following script to create a dataframe from a dictionary. Notice the terminology for rows (`index`) and columns (`columns`). 
 ```
 import pandas as pd
-data = {'Product': ['A', 'B', 'C', 'D', 'E', 'F'],
+data = {'Product': ['a', 'b', 'c', 'd', 'e', 'f'],
         'Price': [10, 25, 15, 30, 20, 35],
         'Quantity': [100, 50, 75, 30, 90, 20],
         'Sales': [1000, 1250, 1125, 900, 1800, 700]}
@@ -730,6 +730,7 @@ Exporting is done with operations named `.to_...` as listed in (https://pandas.p
 </details>
 
 ---
+
 <details markdown="block">
 <summary>  Class 8 (November 7, 2025): Pandas</summary>
 
@@ -737,10 +738,14 @@ Exercises with Pandas. Continued from last class
 
 </details>
 
-
+---
 
 <details markdown="block">
-<summary> Class 9 (November 15, 2025): OOP, classes, methods </summary>
+<summary> Class 9 (November 15, 2025): OOP, classes, methods, attributes </summary>
+
+Suggestions:
+- [CS50P: Object-Oriented Programming](https://cs50.harvard.edu/python/weeks/8/).
+- Self contained [Python Object Oriented Programming (OOP) - For Beginners (53')](https://www.youtube.com/watch?v=JeznW_7DlB0). This beginner-friendly Python tutorial explains object-oriented programming (OOP) concepts. It covers classes and objects, demonstrating how to create custom objects using classes. Learn about methods, attributes, and inheritance.
 
 <!--
 
