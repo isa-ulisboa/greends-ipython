@@ -747,98 +747,87 @@ Suggestions:
 - [CS50P: Object-Oriented Programming](https://cs50.harvard.edu/python/weeks/8/).
 - Self contained [Python Object Oriented Programming (OOP) - For Beginners (53')](https://www.youtube.com/watch?v=JeznW_7DlB0). This beginner-friendly Python tutorial explains object-oriented programming (OOP) concepts. It covers classes and objects, demonstrating how to create custom objects using classes. Learn about methods, attributes, and inheritance.
 
-<!--
+Suppose that one wants write a script in python using classes to monitor plants at a nursery. Initially plants grow from seeds in trays and one wants to keep track of the trays and number of plants per tray. All plants in a given tray are from the same species. Plants can be removed or added to the tray. One wants to track the plants of each species that are in the nursery.
 
-Suppose that one wants write a script in python using classes to monitor plants at a nursery. Initially plants grow from seeds in trays and one wants to keep track of the trays and number of plants per tray. All plants in a given tray are from the same species. Then, at some point, some plants are transferred from trays to individual pots (one plant per pot). At the end, pots are sold. One wants to track the number of plants of each species that are in the nursery.
-
-For this type of problem, one wants to mimic entities of the real world (plants, trays, pots, and the nursery) as objects in  Python code. Object-oriented programming is an intuitive form of doing so. A class in Python is an object constructor, or a *blueprint* for creating objects.
+For this type of problem, one wants to mimic entities of the real world (plants, trays, nursery) as objects in  Python code. Object-oriented programming is an intuitive form of doing so. A class in Python is an object constructor, or a *blueprint* for creating objects.
 
 The simplest example of  class, with very little functionality, is a class to store constant values, which are not supposed to change. When one calls the class `Constants` defined below, an instance of the class with the two properties `MAX_PLANTS_PER_TRAY` and `SALE_PRICE` is created.
-```
+
+```python
 class Constants:
    MAX_PLANTS_PER_TRAY=50
-   SALE_PRICE=10
+   SALE_PRICE=5
 
 print(Constants.SALE_PRICE)
 ```
-However, in general we intent to call the class to create one instance (one object) of the class and set the properties of that object. To indicate the values of the instance properties we use the `__init__` method:
-```
-class Plant:
-    def __init__(self, species):
-        self.species = species
-
-my_plant=Plant("Rose") # create instance where property `species` has value `Rose`
-print(my_plant.species)
-```
-Alternatively, a class can be created with the `@dataclass` decorator, see (https://docs.python.org/3/library/dataclasses.html). In this case, the `__init__` method is set  automatically.
-```
-from dataclasses import dataclass
-@dataclass
-class Plant:
-    species: str
-```
-A class can have methods, which are functions defined for objects of the class. In the example below, `Tray` is a class with properties `species` and `number_of_plants`, and methods `remove_plants` and `is_empty`. The first has one argument which is the number of plants to remove from the tray; it returns a list of objects of the class `Plant` which correspond to the plants that were removed from the tray. The method `is_empty` doesn't have an argument and returns `True` or `False`.
-```
-from dataclasses import dataclass
-
-@dataclass
-class Plant:
-    species: str
-
-@dataclass
+However, in general we intent to call the class to create one instance (one object) of the class and set the **attributes** of that object. To indicate the values of the instance attributes we use the `__init__` method:
+```python
 class Tray:
-    species: str
-    number_of_plants: int
-    def remove_plants(self, number): # self refers to the object of the class
-        number=min(number,self.number_of_plants) #cannot remove more than available
-        self.number_of_plants -= number
-        return [Plant(self.species) for _ in range(number)] # returns list of instances of Plant
-    def is_empty(self): # returns True of False
-        return self.number_of_plants == 0
+  def __init__(self,species, number_of_plants=12):
+     self.species=species
+     self.number_of_plants=number_of_plants
 
-tray=Tray('Lily', 28)
-plants=tray.remove_plants(10)
-if tray.is_empty():
-    print('The tray is empty')
-else:
-    print('There are still', tray.number_of_plants, tray.species, 'plants in the tray')
-first_plant=plants[0]
-print('The plant removed is', first_plant.species)
-```
-The code for the full problem that envolves plants of several species, trays, pots and sales can be organized in the following manner:
-    - Plant class: Simple class to represent a plant with a species.
-    - Pot class: Holds one plant each.
-    - Tray class: Holds plants of a single species and can remove plants.
-    - Nursery class: Manages trays, pots, and keeps track of plant counts by species. It has methods like add_tray, transfer_to_pots, and sell_pot to handle operations for tracking and updating counts.
-
-### Use generative AI to help with the following tasks
-1. Create a script for the problem using the standard way of initializing classes with method `__init__`. Start with a simplified version of the problem where there are only trays and plants of distinct species in the nursery, which can be represented with 3 classes: `Plant`, `Tray` and `Nursery`. Trays can be created with a given number of plants of the same species, and plants can be removed from trays. The goal in this simplified version is to create the inventory that keeps track of the number of plants of each species that are in trays.
-
-One possible solution for this simplified problem that was generated by Chat GPT when asked not to use `@dataclass` is [nursery_v1.py](nursery_v1.py). Note that this code lacks the `__str__` or `__repr__` methods and therefore `print(nursery.trays)` returns a list of objects with their memory address. 
-
-2. Add a `__repr__` method similar to the one below to class `Tray` to redefine the output of `print(nursery.trays)` and make it more informative.
-
-```
-def __repr__(self):
-    return f"Tray(species={self.species}, count={self.count})"
+tray=Tray('Pansy')
+print(f"the tray has {tray.number_of_plants} {tray.species} plants")
 ```
 
-4. Add to the previous script a class that represents pots and adapt your script accordingly. When plants are removed from trays, they are always placed in a pot (one plant per pot). The goal is that the inventory tracks the plants and the species in both trays and pots (instead of just in trays as in [nursery_v1.py](nursery_v1.py)).
+A class can have **instance methods**, which are functions defined for objects of the class. In the example, `Tray` is a class with attributes `species` and `number_of_plants`, and we want to create methods `remove_plants` and `add_plants`. We can think of this as an *action* performed on the specific instance of the class.
 
-5. Finally, consider that pots can be sold and therefore removed from the inventory.
+```python
+class Tray:
+  def __init__(self,species, number_of_plants=12):
+     self.species=species
+     self.number_of_plants=number_of_plants
+  # method to remove plants from tray
+  def remove_plants(self, N):
+      # check if N plants can be removed
+      if N > self.number_of_plants:
+          self.number_of_plants=0
+      else:
+          self.number_of_plants -= N
+  # method to add plants to tray
+  def add_plants(self, N):
+      # check how many plants can be added
+      if self.number_of_plants + N > Constants.MAX_PLANTS_PER_TRAY:
+          self.number_of_plants = Constants.MAX_PLANTS_PER_TRAY
+      else:
+          self.number_of_plants += N
+```
+To test this try the following instructions, which you can think of as a sequence of actions: create tray, add or remove plants, and so on.
 
-6. Verify if your script removes trays that are empty from the inventory, and update it if it is not the case.
+```python
+tray1=Tray('Pansy', 26)
+tray2=Tray('Petunia', 28)
+tray1.add_plants(10)
+tray2.remove_plants(5)
+print(f"tray1 has {tray1.number_of_plants} {tray1.species} plants")
+print(f"tray2 has {tray2.number_of_plants} {tray2.species} plants")
+```
+Note that we don't have an adequate `print` method for this class. This can be fixed by adding the method `__str__` to the class. You can adapt the following code and include it into the `Tray` class.
+
+```
+def __str__(self):
+    return f"This tray contains {self.number_of_plants} {self.species} plants"
+```
+
+**Exercise**:
+
+If you want to have a better control on all the plants in the nursery, you might want to create a new class called, say, `Inventory`. An instance of that class will represent your nursery, which contains trays (objects from class `Tray` above), with plants from different species. Class `Inventory` could have, for instance, the following attributes and methods:
+
+- `trays`, an attribute which is a dictionary to store trays, with tray names as keys
+- `add_tray`, a method that adds a tray object to the inventory, and gives it a name
+- `remove_tray`, a method to remove a tray, identified by its name
+- `get_tray`, a method to retrieve a tray, identified by its name. This allows to obtain a `tray` object, so you can add or remove plants to it.
+-  `list_all_trays`, a method to list the current state of the inventory.
 
 </details>
 
+---
+
 <details markdown="block">
-<summary> 
+<summary> Class 10 (November 21, 2025): Basic concepts of OOP </summary>
 
-# Class 10 (November 22, 2024): Basic concepts of OOP
-
-</summary>
-
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/20230818181616/Types-of-OOPS-2.gif" alt="alt text" width="256" >
+<img src="https://media.geeksforgeeks.org/wp-content/uploads/20230818181616/Types-of-OOPS-2.gif" alt="alt text" width="256">
 
 The four main concepts of Object-Oriented Programming (OOP) are *Encapsulation*, *Abstraction*, *Inheritance*, and *Polymorphism*.  These concepts work together to create modular, scalable, and maintainable code in object-oriented programming.
 
@@ -846,6 +835,10 @@ This is a central topic in computer science, and therefore you can find all kind
 1. (https://www.programiz.com/python-programming/object-oriented-programming)
 2. (https://www.freecodecamp.org/news/object-oriented-programming-in-python/)
 3. (https://www.w3schools.com/python/python_inheritance.asp), (https://www.w3schools.com/python/python_polymorphism.asp)
+
+</details>
+<!--
+
 
 Building on the plant nursery example of last class, the following scripts illustrate the implementation of those concepts:
 - Encapsulation: [OOP_encapsulation.py](https://github.com/isa-ulisboa/greends-ipython/blob/main/OOP_encapsulation.py)
