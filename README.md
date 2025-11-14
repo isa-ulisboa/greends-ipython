@@ -820,6 +820,37 @@ If you want to have a better control on all the plants in the nursery, you might
 - `get_tray`, a method to retrieve a tray, identified by its name. This allows to obtain a `tray` object, so you can add or remove plants to it.
 -  `list_all_trays`, a method to list the current state of the inventory.
 
+Suggestion of solution:
+
+```python
+class Inventory:
+  def __init__(self,nursery_name,list_of_trays=[]):
+    self.nursery_name=nursery_name
+    self.list_of_trays=list_of_trays
+  def add_tray(self,tray):
+    self.list_of_trays.append(tray)
+  def __str__(self):
+    return f"This inventory contains {len(self.list_of_trays)} trays" 
+  def get_tray(self,index):
+    return self.list_of_trays[index]
+```
+
+Try:
+```python
+my_inventory=Inventory("my_nursery")
+tray1=Tray('Pansy',25)
+tray2=Tray('Pansy',32)
+tray3=Tray('Petunia',10)
+tray4=Tray('Petunia',25)
+my_inventory.add_tray(tray1)
+my_inventory.add_tray(tray2)
+my_inventory.add_tray(tray3)
+my_inventory.add_tray(tray4)
+tray=my_inventory.get_tray(2)
+tray.add_plants(10)
+print(tray)
+```
+
 </details>
 
 ---
