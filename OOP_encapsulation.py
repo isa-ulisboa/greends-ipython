@@ -1,3 +1,9 @@
+'''
+This script illustratess the concept of encapsulation in OOP.
+Encapsulation refers to the bundling of attributes and methods inside a single class. 
+It prevents outer classes from accessing and changing attributes and methods of a class. 
+'''
+
 class Tray:
     def __init__(self, seed_type, num_of_seeds):
         # Public attributes
