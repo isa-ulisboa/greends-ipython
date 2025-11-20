@@ -875,7 +875,7 @@ Building on the plant nursery example of last class, the following scripts illus
 - [Encapsulation: basic example](oop_encapsulation_example_3.ipynb)
 - [Encapsulation: other example](oop_encapsulation_example_4.py)
 
-Note that it is easy to abuse of classes in Python. Check the following video on [Avoid These BAD Practices in Python OOP](https://www.youtube.com/watch?v=yFLY0SVutgM) to * Learn why you should replace unnecessary classes with functions, use modules instead of classes with only static methods, and flatten deep inheritance hierarchies.*
+Note that it is easy to abuse of classes in Python. Check the following video on [Avoid These BAD Practices in Python OOP](https://www.youtube.com/watch?v=yFLY0SVutgM) about *Learn why you should replace unnecessary classes with functions, use modules instead of classes with only static methods, and flatten deep inheritance hierarchies.*
 
 Exercise: *Cookie jar* problem described at (https://cs50.harvard.edu/python/psets/8/jar/). Create a script for the problem and test it with `check50 cs50/problems/2022/python/jar`. 
 
