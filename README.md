@@ -856,7 +856,10 @@ print(tray)
 ---
 
 <details markdown="block">
-<summary> Class 10 (November 21, 2025): Basic concepts of OOP </summary>
+<summary> Class 10 (November 21, 2025): Main concepts of OOP; Unit tests </summary>
+
+<details markdown="block">
+<summary> Main concepts of OOP</summary>
 
 <img src="https://media.geeksforgeeks.org/wp-content/uploads/20230818181616/Types-of-OOPS-2.gif" alt="alt text" width="256">
 
@@ -868,27 +871,17 @@ This is a central topic in computer science, and therefore you can find all kind
 3. (https://www.w3schools.com/python/python_inheritance.asp), (https://www.w3schools.com/python/python_polymorphism.asp)
 
 
-
 Building on the plant nursery example of last class, the following scripts illustrate the implementation of those concepts:
 - [Polymorphism](oop_polymorphism_example_1.ipynb)  
 - [Inheritance](oop_inheritance_polymorphism_example_2.ipynb)
 - [Encapsulation: basic example](oop_encapsulation_example_3.ipynb)
 - [Encapsulation: other example](oop_encapsulation_example_4.py)
 
-Note that it is easy to abuse of classes in Python. Check the following video on [Avoid These BAD Practices in Python OOP](https://www.youtube.com/watch?v=yFLY0SVutgM) about *Learn why you should replace unnecessary classes with functions, use modules instead of classes with only static methods, and flatten deep inheritance hierarchies.*
-
-Exercise: *Cookie jar* problem described at (https://cs50.harvard.edu/python/psets/8/jar/). Create a script for the problem and test it with `check50 cs50/problems/2022/python/jar`. 
-
+Note that it is easy to abuse of classes in Python, which can make your code difficult to manage. Check the following video on [Avoid These BAD Practices in Python OOP](https://www.youtube.com/watch?v=yFLY0SVutgM) about *Learn why you should replace unnecessary classes with functions, use modules instead of classes with only static methods, and flatten deep inheritance hierarchies.*
 </details>
 
-<!--
-
 <details markdown="block">
-<summary> 
-
-# Class 11 (November 29, 2024): Unit tests
-
-</summary>
+<summary> Unit tests</summary>
 
 This topic corresponds to [Section 5](https://cs50.harvard.edu/python/2022/weeks/5/) of the CS50 course: you can find the necessary resources on that link. In particular, see the short [https://cs50.harvard.edu/python/2022/shorts/pytest/](https://cs50.harvard.edu/python/2022/shorts/pytest/).
 
@@ -960,7 +953,7 @@ def test_emissions_per_hectare():
 def test_emissions_per_hectare_zero_area():
     farm = Farm("Tiny Farm", 0)
     farm.add_activity("Tractor Usage", 50, 2)  # 50 kg CO2e per hour, 2 hours
-    with pytest.raises(ValueError, match="Farm area cannot be zero."): # optional: matches Value Error message in emissions_per_hectare()
+    with pytest.raises(ValueError, match="Farm area cannot be zero."): # match is optional: it matches Value Error message in emissions_per_hectare()
         farm.emissions_per_hectare()
 
 def test_radius_of_circle_with_farm_area():
@@ -969,10 +962,30 @@ def test_radius_of_circle_with_farm_area():
     farm = Farm("Circle Farm", 10)
     assert farm.radius_circle_with_farm_area() == pytest.approx(178.3, abs=0.01)
 ```
-Adapt the `Farm` class definition and `test_farm_carbon_footprint.py` in order to:
 
+Exercise: Adapt the `Farm` class definition and `test_farm_carbon_footprint.py` in order to:
 1. Add a method `.number_of_activities()` to class `Farm` that returns the number of activities. Check the correctness of that method with a new test in `test_farm_carbon_footprint.py`.
-2. Adapt the `Farm`class so  `ValueError` should be raised if the property `area_hectares` is negative when you try to create an instance of `Farm`. Check with a new test in `test_farm_carbon_footprint.py` that the behavior of the class is as expected when `area_hectares` is negative.
+2. Adapt the `Farm` class so  `ValueError` should be raised if the property `area_hectares` is negative when you try to create an instance of `Farm`. Check with a new test in `test_farm_carbon_footprint.py` that the behavior of the class is as expected when `area_hectares` is negative.
+
+
+</details>
+
+Assignment: *Cookie jar* problem described at (https://cs50.harvard.edu/python/psets/8/jar/). Create a script for the problem and test it with `check50 cs50/problems/2022/python/jar`. 
+
+</details>
+
+--- 
+
+<!--
+
+<details markdown="block">
+ 
+<summary> 
+
+# Class 11 (November 29, 2024): Unit tests
+
+</summary>
+
 
 </details>
 
