@@ -976,18 +976,16 @@ Assignment: *Cookie jar* problem described at (https://cs50.harvard.edu/python/p
 
 --- 
 
-<!--
 
 <details markdown="block">
  
-<summary> 
+<summary> Class 11 (November 28, 2025): Exercises </summary>
 
-# Class 11 (November 29, 2024): Unit tests
-
-</summary>
-
+The class was used to revise previous topics and work on exercises, including assignment #4.
 
 </details>
+
+---
 
 <details markdown="block">
 <summary> 
@@ -1150,127 +1148,8 @@ cubes=list(map(lambda x: x*x*x,even_numbers))
 cubes=[(lambda x: x*x*x)(x) for x in range(N) if x%2==0]
 ``` 
 
-### Exercise i) Convert a For Loop to List Comprehension
-Convert the following for loop into a list comprehension:
 
-```python
-result = []
-for x in range(10):
-    result.append(x**2)
-# output: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
-```
-
-### Exercise ii) Filter Numbers with List Comprehension
-Rewrite this code using a list comprehension:
-
-```python
-result = []
-for x in range(20):
-    if x % 2 == 0:
-        result.append(x)
-# output: [0, 4, 16, 36, 64]
-```
-
-### Exercise iii) Dictionary Comprehension
-Convert the following code to a dictionary comprehension:
-
-```python
-squares = {}
-for x in range(5):
-    squares[x] = x**2
-# output: {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
-```
-
-### Exercise iv) Nested Loops with List Comprehension
-Rewrite the nested loop as a list comprehension:
-
-```python
-pairs = []
-for x in range(3):
-    for y in range(2):
-        pairs.append((x, y))
-# output: [(0, 0), (0, 1), (1, 0), (1, 1), (2, 0), (2, 1)]
-```
-
-### Exercise v) Conditional Dictionary Comprehension
-Transform the following code into a dictionary comprehension with a condition:
-
-```python
-filtered_squares = {}
-for x in range(10):
-    if x % 2 == 0:
-        filtered_squares[x] = x**2
-# output: {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
-```
-
-### Exercise vi) Conditional Transformation in List Comprehension
-Convert the following loop into a list comprehension that includes a conditional transformation:
-
-```python
-result = []
-for x in range(15):
-    if x % 3 == 0:
-        result.append(x**2)
-    else:
-        result.append(x)
-# output: [0, 1, 2, 9, 4, 5, 36, 7, 8, 81, 10, 11, 144, 13, 14]
-```
-
-### Exercise vii) Dictionary Comprehension with String Keys
-Transform the following loop into a dictionary comprehension, using strings as keys:
-
-```python
-word_lengths = {}
-words = ["apple", "banana", "cherry", "date"]
-for word in words:
-    word_lengths[word] = len(word)
-# output: {'apple': 5, 'banana': 6, 'cherry': 6, 'date': 4}
-```
-
-### Exercise viii) Flatten a Nested List with List Comprehension
-Rewrite this code using a single list comprehension to flatten the nested list:
-
-```python
-nested_list = [[1, 2, 3], [4, 5], [6, 7, 8, 9]]
-flattened = []
-for sublist in nested_list:
-    for item in sublist:
-        flattened.append(item)
-# output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-```
-
-### Exercise ix) Conditional Dictionary Comprehension with Nested Loops
-Convert the following nested loop into a dictionary comprehension with a condition:
-
-```python
-result = {}
-for i in range(1,3):
-    for j in range(3, 6):
-        if j % i != 0:  
-            result[(i, j)] = i + j
-# {(2, 3): 5, (2, 5): 7}
-```
-
-
-### Exercise x) Filter and Transform Nested Dictionaries
-Use a dictionary comprehension to filter and transform the following dictionary of dictionaries:
-
-```python
-data = {
-    "A": {"score": 90, "passed": True},
-    "B": {"score": 65, "passed": False},
-    "C": {"score": 75, "passed": True},
-    "D": {"score": 50, "passed": False},
-}
-
-# Goal: Include only students who passed, and create a dictionary of their scores.
-result = {}
-for key, value in data.items():
-    if value["passed"]:
-        result[key] = value["score"]
-# output: {'A': 90, 'C': 75}
-```
-</details>
+<!--
 
 <details markdown="block">
 <summary> 
