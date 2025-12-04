@@ -988,7 +988,7 @@ The class was used to revise previous topics and work on exercises, including as
 ---
 
 <details markdown="block">
-<summary> Class 12 (December 5, 2025): Lists and dictionaries: packing, args and kwargs, map, lambda </summary>
+<summary> Class 12 (December 5, 2025): Packing/unpacking, args and kwargs, map, filter, lambda </summary>
 
 ## The packing/unpacking operators *  and **
 
