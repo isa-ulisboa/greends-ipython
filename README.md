@@ -1017,7 +1017,11 @@ print('Positional arguments are packed into tuple',x)
 print('Named arguments are packed into dictionary',y)
 ```
 
-### Exercise i) Summing Arguments with `*args`  
+Exercises on *args* and *kwargs*.
+
+<details markdown="block">
+
+###  Summing Arguments with `*args`  
 Write a function `sum_all` that takes any number of positional arguments and returns their sum.
 
 ```python
@@ -1030,7 +1034,7 @@ print(sum_all(1, 2, 3))       # Output: 6
 print(sum_all(10, 20, 30, 5))  # Output: 65
 ```
 
-### Exercise ii) Concatenate Strings with `*args`
+### Concatenate Strings with `*args`
 Create a function `concat_strings` that takes any number of string arguments using `*args` and concatenates them into a single string.
 
 ```python
@@ -1042,8 +1046,8 @@ print(concat_strings("Hello", " ", "world", "!"))  # Output: "Hello world!"
 print(concat_strings("Python", " is", " fun!"))    # Output: "Python is fun!"
 ```
 
-### Exercise iii) Handling Default Keyword Arguments with `**kwargs`
-Write a function `greet` that accepts a keyword argument `name` (default value: `"Guest"`) and an optional keyword argument `greeting` (default value: `"Hello"`). Return the formatted greeting message.
+### Handling Default Keyword Arguments with `**kwargs`
+Write a function `greet` that accepts a keyword argument `name` (default value: `"Guest"`) and an optional keyword argument `greeting` (default value: `"Hello"`). Return the formatted greeting message. Hint: consider the method `get` for dictionaries: `get(key,default)` allows to set a default value if the `key` is not present. 
 
 ```python
 def greet(**kwargs):
@@ -1055,7 +1059,7 @@ print(greet(name="Bob"))                   # Output: "Hello Bob"
 print(greet())                             # Output: "Hello Guest"
 ```
 
-### Exercise iv) Combine `*args` and `**kwargs`
+### Combine `*args` and `**kwargs` in a descriptive string
 Write a function `describe_person` that takes positional arguments (`*args`) for hobbies and keyword arguments (`**kwargs`) for personal details (e.g., name, age). Return a formatted string describing the person.
 
 ```python
@@ -1067,7 +1071,7 @@ print(describe_person("reading", "traveling", name="Alice", age=30))
 # Output: "Alice (30 years old) enjoys reading, traveling."
 ```
 
-### Exercise v) Filter Keyword Arguments with `**kwargs`
+### Filter Keyword Arguments with `**kwargs`
 Create a function `filter_kwargs` that takes any number of keyword arguments and returns a new dictionary containing only those with values greater than 10.
 
 ```python
@@ -1078,7 +1082,7 @@ def filter_kwargs(**kwargs):
 print(filter_kwargs(a=5, b=15, c=20, d=3))  # Output: {'b': 15, 'c': 20}
 ```
 
-### Exercise vi) Combine `*args` for values and `**kwargs` for parameters
+### Combine `*args` for values and `**kwargs` for parameters
 
 Suppose you borrowed several amounts and you want to compute the accumulated interest over a certain number of years. Create code that is going to use the positional arguments of the function `main` below as the amounts, `num_years` as the loan duration, and `rate`as the annual interest rate.
 
@@ -1088,8 +1092,9 @@ Suppose you borrowed several amounts and you want to compute the accumulated int
 if __name__=='__main__':
     main(1,2,10,5,4,num_years=10, rate=0.05)
 ```
+</details>
 
-## 2. List and dictionary comprehension, map and filter
+## 2. List and dictionary comprehension, map, filter and lambda
 
 Suppose one wants to create a list with all the cubes of even numbers up to *N*. The following scripts show how this can be done with different operators that replace the traditional *loop* structure: *list comprehension*, `filter`, `map` and `lambda`
 
@@ -1123,6 +1128,106 @@ cubes=list(map(lambda x: x*x*x,even_numbers))
 ```python
 cubes=[(lambda x: x*x*x)(x) for x in range(N) if x%2==0]
 ``` 
+
+Further examples and exercises:
+
+<details markdown="block">
+
+## Convert yields and filter high producers
+
+```python
+# Base data: crop yields in kilograms per field
+yields_kg = [8500, 12300, 6400, 10200, 7500]
+
+# Step 1: Convert each yield to tons (1 ton = 1000 kg)
+yields_tons = list(map(lambda y: y / 1000, yields_kg))
+
+print("Yields in tons:", yields_tons)
+```
+
+**Challenges:**
+
+- Filter only the fields with yield greater than 8 tons using `filter` and `lambda`.
+- Combine `map` and `filter` to first convert to tons and then keep only fields between 7 and 10 tons.
+
+***
+
+## Filter suitable soil pH and tag fields
+
+```python
+# Soil pH values for different fields
+soil_ph = [5.8, 6.3, 7.0, 4.9, 6.8, 7.5]
+
+# Step 1: Keep fields with pH between 6.0 and 7.0
+suitable_ph = list(filter(lambda p: 6.0 <= p <= 7.0, soil_ph))
+
+print("Suitable pH values:", suitable_ph)
+```
+
+**Challenges:**
+
+- Use `map` and `lambda` to transform each pH value into a label: `"low"`, `"ideal"`, or `"high"` based on simple thresholds.
+- Create a list of tuples `(pH, is_suitable)` where `is_suitable` is a Boolean from a `lambda` passed to `map`.
+
+***
+
+## Predict yield growth and flag underperformers
+
+```python
+# Yields in tons this year for several fields
+current_yields = [8.5, 6.0, 9.2, 5.5, 7.8]
+
+# Step 1: Project next year with 5% growth
+next_year_yields = list(map(lambda y: round(y * 1.05, 2), current_yields))
+
+print("Projected yields:", next_year_yields)
+```
+
+**Challenges:**
+
+- Use `filter` to select fields whose projected yield is still below 7 tons, marking them for improvement.
+- Use `map` to build a list of strings like `"Field 1: 8.93 tons"` based on the projected yields.
+
+***
+
+## Filter crops needing irrigation and scale irrigation amount
+
+```python
+# Average rainfall (mm) received by each crop type
+rainfall = [520, 680, 450, 800, 390, 710]
+
+# Step 1: Crops that need irrigation (rainfall < 500 mm)
+needs_irrigation = list(filter(lambda r: r < 500, rainfall))
+
+print("Rainfall for crops needing irrigation:", needs_irrigation)
+```
+
+**Challenges:**
+
+- Assume each crop needs at least 600 mm total; use `map` on `needs_irrigation` to compute how much extra water (in mm) each crop requires.
+- Build a pipeline: first `filter` crops needing irrigation, then `map` to convert required extra water from mm to liters per square meter (1 mm ≈ 1 L/m²).
+
+***
+
+## Compute productivity and select top fields
+
+```python
+# Yields in tons and corresponding areas in hectares
+yields = [8.5, 9.1, 6.3, 10.0]
+areas = [2.0, 2.5, 1.8, 3.0]
+
+# Step 1: Productivity = yield / area (tons per hectare)
+productivity = list(map(lambda y_a: round(y_a[^0] / y_a[^1], 2), zip(yields, areas)))
+
+print("Productivity (tons/ha):", productivity)
+```
+
+**Challenges:**
+
+- Use `filter` to keep only fields with productivity above 3.5 tons/ha.
+- Use `map` with `zip` to generate a list like `("Field 1", productivity_value)` and then `filter` to keep only “high productivity” fields.
+
+</details>
 
 
 <!--
