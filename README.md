@@ -990,7 +990,7 @@ The class was used to revise previous topics and work on exercises, including as
 <details markdown="block">
 <summary> Class 12 (December 5, 2025): Lists and dictionaries: packing, args and kwargs, map, lambda </summary>
 
-## 1. The packing/unpacking operators *  and **
+## The packing/unpacking operators *  and **
 
 The packing/unpacking operators allows us to deal with structures of variable length. The example below illustrates *packing* several numbers into a list.
 ```python
@@ -1017,9 +1017,8 @@ print('Positional arguments are packed into tuple',x)
 print('Named arguments are packed into dictionary',y)
 ```
 
-Exercises on *args* and *kwargs*.
-
 <details markdown="block">
+<summary>Exercises on *args* and *kwargs* </summary>
 
 ###  Summing Arguments with `*args`  
 Write a function `sum_all` that takes any number of positional arguments and returns their sum.
@@ -1094,7 +1093,7 @@ if __name__=='__main__':
 ```
 </details>
 
-## 2. List and dictionary comprehension, map, filter and lambda
+## List and dictionary comprehension, map, filter and lambda
 
 Suppose one wants to create a list with all the cubes of even numbers up to *N*. The following scripts show how this can be done with different operators that replace the traditional *loop* structure: *list comprehension*, `filter`, `map` and `lambda`
 
@@ -1129,11 +1128,10 @@ cubes=list(map(lambda x: x*x*x,even_numbers))
 cubes=[(lambda x: x*x*x)(x) for x in range(N) if x%2==0]
 ``` 
 
-Further examples and exercises:
-
 <details markdown="block">
+<summary>Further examples and exercises</summary>
 
-## Convert yields and filter high producers
+### Convert yields and filter high producers
 
 ```python
 # Base data: crop yields in kilograms per field
@@ -1152,7 +1150,7 @@ print("Yields in tons:", yields_tons)
 
 ***
 
-## Filter suitable soil pH and tag fields
+### Filter suitable soil pH and tag fields
 
 ```python
 # Soil pH values for different fields
@@ -1171,7 +1169,7 @@ print("Suitable pH values:", suitable_ph)
 
 ***
 
-## Predict yield growth and flag underperformers
+### Predict yield growth and flag underperformers
 
 ```python
 # Yields in tons this year for several fields
@@ -1190,7 +1188,7 @@ print("Projected yields:", next_year_yields)
 
 ***
 
-## Filter crops needing irrigation and scale irrigation amount
+### Filter crops needing irrigation and scale irrigation amount
 
 ```python
 # Average rainfall (mm) received by each crop type
@@ -1205,11 +1203,10 @@ print("Rainfall for crops needing irrigation:", needs_irrigation)
 **Challenges:**
 
 - Assume each crop needs at least 600 mm total; use `map` on `needs_irrigation` to compute how much extra water (in mm) each crop requires.
-- Build a pipeline: first `filter` crops needing irrigation, then `map` to convert required extra water from mm to liters per square meter (1 mm ≈ 1 L/m²).
 
 ***
 
-## Compute productivity and select top fields
+### Compute productivity and select top fields (example of use of zip)
 
 ```python
 # Yields in tons and corresponding areas in hectares
