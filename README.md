@@ -998,14 +998,14 @@ x=[1,2,3,4,5,6,7,8,9]
 a,*b,c=x # b is the list [2,3,4,5,6,7,8]
 print(a,b,c)
 ```
-The same operator can be used to unpack:
+The same operator can be used to *unpack*:
 ```python
 list1=[1,2,3]
 list2=[6,7,8]
 new_list=[*list1,4,5,*list2] # values are unpacked
 print(new_list)
 ```
-The * and ** operator are mostly used as arguments of functions that can accept a a variable number of arguments (like `print`): the operator * allows to pack all positional arguments into a *tuple* and the operator ** allows to pack all named arguments into a *dictionary*. In the example below, the variable `kwargs` refers to keyword arguments (i.e named arguments) . Note that one can have a combination of regular arguments, regular named arguments, *args, and **kwargs as arguments of a function, as long as keyword arguments follow positional arguments.
+The * and ** operator are mostly used as arguments of functions that can accept a variable number of arguments (like function `print`): the operator * allows to pack all positional arguments into a *tuple* and the operator ** allows to pack all named arguments into a *dictionary*. In the example below, the `args` refers to positional arguments and `kwargs` refers to keyword arguments (i.e named arguments) . Note that one can have a combination of regular arguments, regular named arguments, `*args`, and `**kwargs` as arguments of a function, as long as keyword arguments follow positional arguments (if you try to switch the order, Python raises a `SyntaxError`).
 
 ```python
 def pack(*args, **kwargs):
@@ -1017,43 +1017,12 @@ print('Positional arguments are packed into tuple',x)
 print('Named arguments are packed into dictionary',y)
 ```
 
-This can be used for instance to perform computations over a variable length sequence at in the following example. 
-```python
-# Compute accumulated interest on a sequence of borrowed amounts
-def main(*args, **kwargs):
-    '''
-    args is a tuple of amounts borrowed
-    kwargs is a dictionary with keys num_years and rate
-    '''
-    S=add(args)
-    # Call function debt with **kwargs or kwargs
-    D=compute_debt(S,**kwargs) # D expects a number and two named arguments with names num_years and rate
-    # same as:
-    D=compute_debt(S,kwargs['num_years'],kwargs['rate'])
-    # print results
-    print('Borrowed:',S)
-    print('Debt:',round(D,3))
-
-def add(values):
-    s=0
-    for x in values:
-        s+=x
-    return s
-
-def compute_debt(s,num_years,rate):
-    for i in range(num_years):
-        s+=s*rate
-    return s
-
-if __name__=='__main__':
-    main(1,2,10,5,4,num_years=10, rate=0.05)
-```
-
 ### Exercise i) Summing Arguments with `*args`  
 Write a function `sum_all` that takes any number of positional arguments and returns their sum.
 
 ```python
 def sum_all(*args):
+    print(args)
     pass  # Your code here
 
 # Example usage:
@@ -1107,6 +1076,17 @@ def filter_kwargs(**kwargs):
 
 # Example usage:
 print(filter_kwargs(a=5, b=15, c=20, d=3))  # Output: {'b': 15, 'c': 20}
+```
+
+### Exercise vi) Combine `*args` for values and `**kwargs` for parameters
+
+Suppose you borrowed several amounts and you want to compute the accumulated interest over a certain number of years. Create code that is going to use the positional arguments of the function `main` below as the amounts, `num_years` as the loan duration, and `rate`as the annual interest rate.
+
+```python
+# your code
+
+if __name__=='__main__':
+    main(1,2,10,5,4,num_years=10, rate=0.05)
 ```
 
 ## 2. List and dictionary comprehension, map and filter
