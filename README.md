@@ -1225,6 +1225,7 @@ print("Productivity (tons/ha):", productivity)
 - Use `map` with `zip` to generate a list like `("Field 1", productivity_value)` and then `filter` to keep only “high productivity” fields.
 
 </details>
+</details>
 
 ---
 
@@ -1235,7 +1236,7 @@ In this class we use Python to control physical devices through GPIO (general-pu
 
 Topics of the class:
 - Raspberry Pi (RPi) and PiOS (Linux)
-- Retrieve local address of the Raspberry Pi with `hostname -I`
+- Retrieve local address of the Raspberry Pi with `hostname -I`. To do this, open a terminal on RPi and type `hostname -I` to retrieve the IP address. Also, type in the terminal `whoiam` to retrieve the username, say 'pi'.
 - Accessing RPi remotely with `ssh` (secure shell)
 - Connecting RPi to a breadboard using the *gpio* pins
 - Using the *nano* text editor to create scripts
@@ -1243,12 +1244,10 @@ Topics of the class:
 - Implementing some basic recipes from `gpio zero` documentation that use the following physical devices: leds, buttons, and a line sensor
 
 To start (access RPi from local network):
-- On the RPi, open a terminal and type `hostname -I` to retrieve the IP address
-- Also, type in the terminal `whoiam` to retrieve the username, say 'pi_username'
-- Access RPi with `ssh`: open terminal (CRTL+R and type `cmd` in Windows) and at the terminal prompt `$` type smth like `$ssh pi_username@10.17.99.160` (replace by actual username and IP address). You will be prompted for the RPi password.
-- Since all the class has access to the RPi, it is important that you only work on your own working directory. So, the next step is to create it. 
-- Change directory with `$cd Documents` and create your temp directory with `$mkdir Bob` (replace by your own name)
-- Go to your directory with `$cd Bob`
+- You need: RPi username, say 'pi'; RPi password; and the RPi IP address, say '10.17.99.160'
+- Access RPi with `ssh`: open terminal (CRTL+R and type `cmd` in Windows) and at the terminal prompt `$` type smth like `$ssh pi@10.17.99.160` (replace by actual username and IP address). You will be prompted for the RPi password.
+- Since all the class has access to the RPi, it is important that you only work on your own working directory. So, the next step is to create it: change directory with `$cd Documents` and create your temp directory with `$mkdir Bob` (replace by your own name). The full path to the directory should be smth like `/Documents/Bob`
+- Go to your directory with `$cd Bob`. 
 - To create a new Python script type `$nano test.py`
 - Inside the file type `print('hello')`
 - Save contents with `CTRL-S`
