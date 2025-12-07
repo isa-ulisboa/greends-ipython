@@ -1226,26 +1226,33 @@ print("Productivity (tons/ha):", productivity)
 
 </details>
 
-
-<!--
+---
 
 <details markdown="block">
-<summary> 
-
-# Class 13 (December 13, 2024): Introduction to IoT with Raspberry Pi
-
-</summary>
+<summary>  Class 13 (December 12, 2025): Introduction to IoT with Raspberry Pi</summary>
 
 In this class we use Python to control physical devices through GPIO (general-purpose input/output) ports on a Raspberry Pi microcomputer. We will rely on the `gpiozero` Python package [https://gpiozero.readthedocs.io/en/latest/recipes.html](https://gpiozero.readthedocs.io/en/latest/recipes.html).
 
 Topics of the class:
 - Raspberry Pi (RPi) and PiOS (Linux)
-- Retrive local address of the Raspberry Pi with `hostname -I`
+- Retrieve local address of the Raspberry Pi with `hostname -I`
 - Accessing RPi remotely with `ssh` (secure shell)
 - Connecting RPi to a breadboard using the *gpio* pins
 - Using the *nano* text editor to create scripts
 - Running scripts in RPi with `sudo python3 test.py`
 - Implementing some basic recipes from `gpio zero` documentation that use the following physical devices: leds, buttons, and a line sensor
+
+To start (access RPi from local network):
+- On the RPi, open a terminal and type `hostname -I` to retrieve the IP address
+- Also, type in the terminal `whoiam` to retrieve the username, say 'pi_username'
+- Access RPi with `ssh`: open terminal (CRTL+R and type `cmd` in Windows) and at the terminal prompt `$` type smth like `$ssh pi_username@10.17.99.160` (replace by actual username and IP address). You will be prompted for the RPi password.
+- Since all the class has access to the RPi, it is important that you only work on your own working directory. So, the next step is to create it. 
+- Change directory with `$cd Documents` and create your temp directory with `$mkdir Bob` (replace by your own name)
+- Go to your directory with `$cd Bob`
+- To create a new Python script type `$nano test.py`
+- Inside the file type `print('hello')`
+- Save contents with `CTRL-S`
+- Type `$sudo python3 test.py` to execute the file. This should print `hello` in the terminal. So, now you know how to run a Python script in a Raspberry Pi.
 
 ### Exercises with Raspberry Pi, breadboard, led, button and connection wires:
 
@@ -1254,6 +1261,8 @@ Topics of the class:
 3. [Button controlled LED](https://gpiozero.readthedocs.io/en/latest/recipes.html#button-controlled-led)
 
 </details>
+
+<!--
 
 <details markdown="block">
 <summary> 
