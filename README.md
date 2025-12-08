@@ -1246,8 +1246,8 @@ Topics of the class:
 To start (access RPi from local network):
 - You need: RPi username, say 'pi'; RPi password; and the RPi IP address, say '10.17.99.160'
 - Access RPi with `ssh`: open terminal (CRTL+R and type `cmd` in Windows) and at the terminal prompt `$` type smth like `$ssh pi@10.17.99.160` (replace by actual username and IP address). You will be prompted for the RPi password.
-- Since all the class has access to the RPi, it is important that you only work on your own working directory. So, the next step is to create it: change directory with `$cd Documents/tests` and create your temp directory with `$mkdir Bob` (replace by your own name). The full path to the directory should be smth like `~/Documents/tests/Bob`
-- Go to your directory with `$cd Bob`. 
+- Since all the class has access to the RPi, it is important that you only work on your own working directory. So, the next step is to create it: change directory with `$cd Documents/tests` and create your temp directory with, say, `$mkdir bob` (replace by your own name). The full path to  your own working directory should be smth like `~/Documents/tests/bob`
+- Go to your directory with `$cd bob`. 
 - To create a new Python script (or to edit an existing one) type `$nano test.py`
 - Inside the file type `print('hello')`
 - Save contents with `CTRL-X`
