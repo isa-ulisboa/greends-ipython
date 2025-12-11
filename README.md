@@ -1232,7 +1232,9 @@ print("Productivity (tons/ha):", productivity)
 <details markdown="block">
 <summary>  Class 13 (December 12, 2025): Introduction to IoT with Raspberry Pi</summary>
 
-In this class we use Python to control physical devices through GPIO (general-purpose input/output) ports on a Raspberry Pi microcomputer. We will rely on the `gpiozero` Python package [https://gpiozero.readthedocs.io/en/latest/recipes.html](https://gpiozero.readthedocs.io/en/latest/recipes.html).
+Video suggestion: [Raspberry Pi for beginners](https://www.youtube.com/playlist?list=PLLSegLrePWgIDKJTkdLyyQskh2HDdEL3y)
+
+We will use Python to control physical devices through GPIO (general-purpose input/output) ports on a Raspberry Pi microcomputer. We will rely on the `gpiozero` Python package [https://gpiozero.readthedocs.io/en/latest/recipes.html](https://gpiozero.readthedocs.io/en/latest/recipes.html).
 
 Topics of the class:
 - Raspberry Pi (RPi) and PiOS (Linux)
@@ -1261,33 +1263,22 @@ To start (access RPi from local network):
 5. [Reaction game](https://gpiozero.readthedocs.io/en/latest/recipes.html#reaction-game)
 6. [LED board](https://gpiozero.readthedocs.io/en/latest/recipes.html#ledboard)
 
-</details>
-
-<!--
-
-<details markdown="block">
-<summary> 
-
-# Class 14 (December 20, 2024): Introduction to IoT with Raspberry Pi (cont'd)
-
-</summary>
-
-### Exercises for led board with gpiozero (cont'd)
+### Additional exercises for led board with gpiozero
 1. [LED_board](https://gpiozero.readthedocs.io/en/latest/recipes.html#ledboard). Interpret the code and verify that it is behaving as expected.
 
 2. Look at the [advanced recipes for LEDboard](https://gpiozero.readthedocs.io/en/latest/recipes_advanced.html#ledboard-advanced). Create a "pyramid" of lights 5-3-1-3-5, that turn on and off and pause 1 second. You can build a loop such that the pyramid runs only 4 times and the execution stops.
 
-3. Adapt the code `LED_board.py` so if you execute `sudo python3 LED_morse.py some_word` the  LEDs should turn on and off to encode the input word: a *dah* (-) has a duration of 2 seconds and a *dit* (.) has a duration of 1 second. After each letter, there should be a 3 second pause before the next letter. The example below should correspond to LEDs 1 and 2 being on for 3 seconds, then LEDs 1, 2 and 3 being on for 3 seconds, then LEDs 1 and 3 being on for 1 second while LED 2 is on for 3 seconds, and so on.
+</details>
 
-```
-−− −−− ·−· ··· ·       −·−· −−− −·· ·
-M   O   R   S  E        C    O   D  E
-```
-### Other sensors
+---
+
+<details markdown="block">
+<summary> Class 14 (December 19, 2025): Introduction to IoT with Raspberry Pi (cont'd)</summary>
+
 
 There are many hardware adapters that make it easier to connect sensors to a microcomputer. Here we look at the *Raspberry Pi hat* included in the  [Grove_Base_Kit_for_Raspberry_Pi](https://wiki.seeedstudio.com/Grove_Base_Kit_for_Raspberry_Pi/). The [Grove Base Hat for Raspberry Pi](https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/) provides Digital/Analog/I2C/PWM/UART [ports](https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/#hardware-overview) to the RPi allowing it to be connected a large range of modules. 
 
-The following code show how to access a [temperature and humidity sensor](https://www.seeedstudio.com/Grove-Temperature-Humidity-Sensor-DHT1-p-745.html) readings programmatically. The sensor is connected to digital port D5. This code also allows access to gpio pin 17 to power a LED. You can find a picture of the circuit on (grove_temperature_humidity.jpeg).
+The following code show how to access a [temperature and humidity sensor](https://www.seeedstudio.com/Grove-Temperature-Humidity-Sensor-DHT1-p-745.html) readings programmatically. The sensor is connected to digital port D5. This code also allows access to gpio pin 17 to power a LED. You can find a [picture of the circuit here](grove_temperature_humidity.jpeg).
 
 ```python
 import time
@@ -1309,7 +1300,7 @@ while True:
 ### Exercises
 
 1. Adapt the code above such that the LED is on when the temperature is above 24 Celsius or below 20 and is off otherwise.
-2. Interpret the code below. Create a new script that combines the temperature/humidity sensor with the ultrasonic ranger sensor and the LED.
+2. Consider the circuit [pictured here](grove_ultrasonic_ranger.jpeg) that uses an ultrasonic ranger (range of 0-4 m). Interpret the code below. 
 
 ```python
 import time
@@ -1317,6 +1308,7 @@ from grove.grove_ultrasonic_ranger import GroveUltrasonicRanger
 from gpiozero import LED
 led=LED(17)
 # Grove - Ultrasonic Ranger connected to port D5
+# resolution: 1 cm; range: 0-4 m
 sensor = GroveUltrasonicRanger(5)
 while True:
     distance = sensor.get_distance()
@@ -1331,6 +1323,7 @@ while True:
     time.sleep(1)
 ```
 
+3. Create a new script that combines the temperature/humidity sensor with the ultrasonic ranger sensor and the LED.
 </details>
 
 <!--
