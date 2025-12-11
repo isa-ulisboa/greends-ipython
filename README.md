@@ -1253,11 +1253,13 @@ To start (access RPi from local network):
 - Save contents with `CTRL-X`
 - Type on terminal `$sudo python3 test.py` to execute the file. This should print `hello` in the terminal. So, you have run a Python script in a Raspberry Pi.
 
-### Exercises with Raspberry Pi, breadboard, led, button and connection wires:
+### Exercises with Raspberry Pi, breadboard, leds, button and connection wires:
 
-1. [Blink LED](https://gpiozero.readthedocs.io/en/latest/recipes.html#led)
-2. [Check if button is pressed](https://gpiozero.readthedocs.io/en/latest/recipes.html#button)
-3. [Button controlled LED](https://gpiozero.readthedocs.io/en/latest/recipes.html#button-controlled-led)
+1. [Blink LED](https://gpiozero.readthedocs.io/en/latest/recipes.html#led). To determine what is the resistor to use for different types of leds, check (https://www.hobby-hour.com/electronics/ledcalc.php): recall that the RPi voltage at the GPIO pins is 3.3 v.
+3. [Check if button is pressed](https://gpiozero.readthedocs.io/en/latest/recipes.html#button)
+4. [Button controlled LED](https://gpiozero.readthedocs.io/en/latest/recipes.html#button-controlled-led)
+5. [Reaction game](https://gpiozero.readthedocs.io/en/latest/recipes.html#reaction-game)
+6. [LED board](https://gpiozero.readthedocs.io/en/latest/recipes.html#ledboard)
 
 </details>
 
@@ -1285,7 +1287,7 @@ M   O   R   S  E        C    O   D  E
 
 There are many hardware adapters that make it easier to connect sensors to a microcomputer. Here we look at the *Raspberry Pi hat* included in the  [Grove_Base_Kit_for_Raspberry_Pi](https://wiki.seeedstudio.com/Grove_Base_Kit_for_Raspberry_Pi/). The [Grove Base Hat for Raspberry Pi](https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/) provides Digital/Analog/I2C/PWM/UART [ports](https://wiki.seeedstudio.com/Grove_Base_Hat_for_Raspberry_Pi/#hardware-overview) to the RPi allowing it to be connected a large range of modules. 
 
-The following code show how to access a [temperature and humidity sensor](https://www.seeedstudio.com/Grove-Temperature-Humidity-Sensor-DHT1-p-745.html) readings programmatically. The sensor is connected to digital port D5. This code also allows access to gpio pin 17 to power a LED.
+The following code show how to access a [temperature and humidity sensor](https://www.seeedstudio.com/Grove-Temperature-Humidity-Sensor-DHT1-p-745.html) readings programmatically. The sensor is connected to digital port D5. This code also allows access to gpio pin 17 to power a LED. You can find a picture of the circuit on (grove_temperature_humidity.jpeg).
 
 ```python
 import time
