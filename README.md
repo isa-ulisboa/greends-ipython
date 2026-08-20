@@ -6,6 +6,8 @@ Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
 Teaching assistant: 
 
+---
+
 <details markdown="block">
 <summary>  Online resources for the course </summary>
 
@@ -32,7 +34,9 @@ Teaching assistant:
   * Basic concepts and features of the Python language and system: [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html).
   * Python Programming course at [PP.fi](https://programming-25.mooc.fi/): same features as CS50 but to test your solutions to problems you are required to pass previous tests 
   * If you curious about the story of Python, check out [this video](https://www.youtube.com/watch?v=GfH4QL4VqJ0). In this video, you'll learn about the output of `>>> import this` and many other anecdotes about Python.
+  
   </blockquote>
+</details>
 </details>
 
 ---
@@ -40,7 +44,7 @@ Teaching assistant:
 <details markdown="block">
 <summary>  Class 1 (September 11, 2026): data types, variables, functions </summary>
  
-1.  The recommendation for this class is to code in the CS50 codespace. Two steps: 1. log in into your GitHub account; 2. access your code space at <https://cs50.dev/>. This environment allows you to test automatically your scripts for the CS50 problem sets and gives access to a customize AI bot (DDB) 
+1.  The recommendation for this class is to code using the CS50 codespace. Two steps: 1. log in into your GitHub account; 2. access your code space at <https://cs50.dev/>. This environment allows you to test automatically your scripts for the CS50 problem sets and gives access to a customized AI bot (DDB) 
 2. Some useful keyworks for the command line interface (CLI) in terminal: 
  * `code filename.py` to create a new file 
  * `ls` to list files in folder
@@ -58,7 +62,8 @@ Teaching assistant:
    * floating point values (`float`), round, format floats (e.g. `f"{z:.2f}`)
    * `True`, `False`, `and`, `or`, `not`
 5. Functions, `def`, `return`
-6. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/psets/0/)
+6. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/psets/0/). Find a solution to the problems at your CS50 codespace, and dialog with the AI bot (DDB) for help. The bot won't produce code but will help you by answering your questions: very precise prompts originate more details in the answers. Resist the temptation of looking for a solution on the web or using a generic AI bot. 
+
 </details>
 
 <!--
