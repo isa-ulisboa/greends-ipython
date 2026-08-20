@@ -9,15 +9,26 @@ Teaching assistant:
 <details markdown="block">
 <summary>  Online resources for the course </summary>
 
-* **Required:** If you don't have one already, create a GitHub account at <https://github.com/signup>
-* **Required:** [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python): lectures (videos and notes), problems sets, shorts; The platform allows you to test your code at the [CS50 codespace](https://cs50.dev/) for the proposed problems (you need to have your own GitHub account to access the codespace).
+<details markdown="block">
+<summary>  Required </summary>
+
 * **Required** (you need to self-register using this link) Moodle (https://elearning.ulisboa.pt/course/view.php?id=11236): assignments; submissions; detailed grades and comments
+* **Required:** If you don't have one already, create a GitHub account at <https://github.com/signup>
+* **Required:** [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python): lectures (videos and notes), problems sets, shorts;
+* **Required:** [CS50 codespace](https://cs50.dev/): VScode codespace that allows you to use a customized AI bot (CDD) and test your solutions for the proposed problems (you can access the codespace with your GitHub user).
 * Fenix webpage for the course (https://fenix.isa.ulisboa.pt/courses/intpy-846413499991952): administrative information and final grades
+
+</details>
+
+<details markdown="block">
+<summary>  Other tutorials and reference materials </summary>
+  
 * [Learn Python with Scrimba, Olof Paulson](https://v2.scrimba.com/learn-python-c03): interactive lectures (videos), examples and exercises 
 * [Introduction to Python (VScode)](https://vscodeedu.com/courses/intro-to-python): interactive step by step lectures and exercises, real-time quizzes.
 * Basic concepts and features of the Python language and system: [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html).
 * Python Programming course at [PP.fi](https://programming-25.mooc.fi/): same features as CS50 but to test your solutions to problems you are required to pass previous tests 
 * If you curious about the story of Python, check out [this video](https://www.youtube.com/watch?v=GfH4QL4VqJ0). In this video, you'll learn about the output of `>>> import this` and many other anecdotes about Python.
+</details>
 
 <details markdown="block">
   
