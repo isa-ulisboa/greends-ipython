@@ -1,14 +1,15 @@
-# Introduction to Python 2025/2026
+# Introduction to Python 2026/2027
 
 Masters in Data Science applied to agricultural and food sciences, environment, and forestry engineering.
 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
-Teaching assistant: Mekaela Stevenson (mekaela@edu.ulisboa.pt)
+Teaching assistant: 
 
 <details markdown="block">
 <summary>  Online resources for the course </summary>
- 
+
+* **Required:** If you don't have one already, create a GitHub account at <https://github.com/signup>
 * **Required:** [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python): lectures (videos and notes), problems sets, shorts; The platform allows you to test your code at the [CS50 codespace](https://cs50.dev/) for the proposed problems (you need to have your own GitHub account to access the codespace).
 * **Required** (you need to self-register using this link) Moodle (https://elearning.ulisboa.pt/course/view.php?id=11236): assignments; submissions; detailed grades and comments
 * Fenix webpage for the course (https://fenix.isa.ulisboa.pt/courses/intpy-846413499991952): administrative information and final grades
