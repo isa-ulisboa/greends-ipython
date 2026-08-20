@@ -13,10 +13,11 @@ Teaching assistant:
   <summary>  Required </summary>
   <blockquote>
   
-  * **Required** (you need to self-register using this link) Moodle (https://elearning.ulisboa.pt/course/view.php?id=11236): assignments; submissions; detailed grades and comments
-  * **Required:** If you don't have one already, create a GitHub account at <https://github.com/signup>
-  * **Required:** [CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python): lectures (videos and notes), problems sets, shorts;
-  * **Required:** [CS50 codespace](https://cs50.dev/): VScode codespace that allows you to use a customized AI bot (CDD) and test your solutions for the proposed problems (you can access the codespace with your GitHub user).
+  * You need to self-register for the course in Moodle at <https://elearning.ulisboa.pt/course/view.php?id=11236>. The Moodle site allows you to access assignments; submissions; detailed grades and comments
+  * If you don't have one already, create a GitHub account at <https://github.com/signup>
+  * [CS50P: CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python). Lectures (videos and notes), problems sets, shorts;
+  * [CS50 codespace](https://cs50.dev/). VScode codespace that allows you to use a customized AI bot (CS50's duck debugger, or DDB for short) and test your solutions for CS50P proposed problems (you can access the codespace with your GitHub user).
+  * [Python tutor](https://pythontutor.com/). Python Tutor is a online tool that lets you write code in a web browser and see what happens step-by-step as the computer runs it.
   * Fenix webpage for the course (https://fenix.isa.ulisboa.pt/courses/intpy-846413499991952): administrative information and final grades
   
   </blockquote>
@@ -37,35 +38,9 @@ Teaching assistant:
 ---
 
 <details markdown="block">
-<summary> Course contents: the course will cover some topics in CS50P and PP.fi  </summary>
-
-| CS50P     | Contents |  PP.fi | Contents |
-| ----------- | ----------- |----------- | ----------- |
-| Lecture 0    | Creating Code with Python; Functions; Bugs; Strings and Parameters; Formatting Strings; More on Strings; Integers or int; Readability Wins; Float Basics; More on Floats; Def; Returning Values    | Part 1 |   Intro; I/O; More about variables; Arithmetic operations; Conditional statements |
-| Lecture 1    | Conditionals, if Statements, Control FlowModulo; Creating Our Own Parity Function; Pythonic; match | Part 2  |  Programming terminology; More conditionals; Combining conditions; Simple loops |
-| Lecture 2    | Loops; While Loops; For Loops; Improving with User Input; More About Lists; Length; Dictionaries, More on code modularity  |  Part 3 |  Loops with conditions; Working with strings; More loops; Defining functions |
-|  |   | Part 4 |    The Visual Studio Code editor, Python interpreter and built-in debugging tool; More functions; Lists; Definite iteration; Print statement formatting; More strings and lists |
-|   |   | Part 5 |  More lists; References; Dictionary; Tuple |
-| Lecture 3 | Exceptions, Runtime Errors, try, else, Creating a Function to Get an Integer, pass | Part 6  |  Reading files; Writing files; Handling errors; Local and global variables |
-| Lecture 4 |  Libraries, Random, Statistics, Command-Line Arguments, slice, Packages, APIs, Making Your Own Libraries|  Part 7 | Modules; Randomness; Times and dates; Data processing; Creating your own modules; More Python features  |
-| Lecture 5 | Unit Tests; assert; pytest; Testing Strings; Organizing Tests into Folders | | |
-| Lecture 6| File I/O; open; with; CSV; Binary Files and PIL | | |
-| Lecture 7 | Regular Expressions; Case Sensitivity; Cleaning Up User Input; Extracting User Input |||
-| Lecture 8 | Object-Oriented Programming; Classes; raise; Decorators;  Class Methods; Static Methods; Inheritance; Inheritance and Exceptions; Operator Overloading| Part 8 | Objects and methods; Classes and objects; Defining classes; Defining methods; More examples of classes |
-| | | Part 9 | Objects and references; Objects as attributes; Encapsulation; Scope of methods; Class attributes; More examples with classes |
-| | | Part 10 | Class hierarchies; Access modifiers; Object oriented programming techniques; Developing a larger application |
-| Lecture 9 | set; Global Variables; Constants; Type Hints; Docstrings; argparse; Unpacking; args and kwargs; map; List Comprehensions; filter; Dictionary Comprehensions; enumerate; Generators and Iterators | Part 11 |  List comprehensions; More comprehensions; Recursion; More recursion examples |
-| | | Part 12 | Functions as arguments; Generators; Functional programming; Regular expressions|
-
-</details>
-</details>
-
----
-
-<details markdown="block">
-<summary>  Class 1 (September 12, 2025): data types, variables, functions </summary>
+<summary>  Class 1 (September 11, 2026): data types, variables, functions </summary>
  
-1.  The recommendation for this class is to code in the CS50 cloud environment (VScode). Two steps: 1. log in into your github account; 2. access your code space at https://cs50.dev/. This environment allows you to test automatically your scripts for the CS50 problem sets. 
+1.  The recommendation for this class is to code in the CS50 codespace. Two steps: 1. log in into your GitHub account; 2. access your code space at <https://cs50.dev/>. This environment allows you to test automatically your scripts for the CS50 problem sets and gives access to a customize AI bot (DDB) 
 2. Some useful keyworks for the command line interface (CLI) in terminal: 
  * `code filename.py` to create a new file 
  * `ls` to list files in folder
@@ -76,8 +51,8 @@ Teaching assistant:
  * `cd foldername` change directory, e.g. `cd ..` 
  * `rmdir foldername` to delete folder
  * `clear` to clear terminal window
-3. The REPL (interactive Read-Eval-Print-Loop) environment: see https://realpython.com/interacting-with-python/
-4. All values in Python have a **type**. The primitive data types are: integer, float, string, Boolean, and None (see https://www.geeksforgeeks.org/python/primitive-data-types-vs-non-primitive-data-types-in-python/)
+3. Typing `python` gives you access to a REPL (interactive Read-Eval-Print-Loop) environment (<https://realpython.com/interacting-with-python/>).
+4. All values in Python have a **type**. The primitive data types are: integer, float, string, Boolean, and None (see <https://www.geeksforgeeks.org/python/primitive-data-types-vs-non-primitive-data-types-in-python/>)
    * strings (`str`), variables, print (a function), parameters (e.g. `end=`), input, comments, formatted strings (`f"..."`), `.strip()`, `.title` (methods)
    * integers (`int`), operations for integers, casting (e.g. `str` to `int`)
    * floating point values (`float`), round, format floats (e.g. `f"{z:.2f}`)
@@ -85,6 +60,8 @@ Teaching assistant:
 5. Functions, `def`, `return`
 6. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/psets/0/)
 </details>
+
+<!--
 
 ---
 
@@ -1343,5 +1320,4 @@ while True:
 3. Create a new script that combines the temperature/humidity sensor with the ultrasonic ranger sensor and the LED.
 </details>
 
-<!--
 -->
