@@ -28,10 +28,12 @@ Teaching assistant:
 * Basic concepts and features of the Python language and system: [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html).
 * Python Programming course at [PP.fi](https://programming-25.mooc.fi/): same features as CS50 but to test your solutions to problems you are required to pass previous tests 
 * If you curious about the story of Python, check out [this video](https://www.youtube.com/watch?v=GfH4QL4VqJ0). In this video, you'll learn about the output of `>>> import this` and many other anecdotes about Python.
+
 </details>
 
+---
+
 <details markdown="block">
-  
 <summary> Course contents: the course will cover some topics in CS50P and PP.fi  </summary>
 
 | CS50P     | Contents |  PP.fi | Contents |
