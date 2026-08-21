@@ -4,8 +4,9 @@ Masters in Data Science applied to agricultural and food sciences, environment, 
 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
-Teaching assistant: 
-
+<!--
+Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
+-->
 ---
 
 <details markdown="block">
@@ -20,7 +21,7 @@ Teaching assistant:
   * [CS50P: CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python). Lectures (videos and notes), problems sets, shorts;
   * [CS50 codespace](https://cs50.dev/). VScode codespace that allows you to use a customized AI bot (CS50's duck debugger, or DDB for short) and test your solutions for CS50P proposed problems (you can access the codespace with your GitHub user).
   * [Python tutor](https://pythontutor.com/). Python Tutor is a online tool that lets you write code in a web browser and see what happens step-by-step as the computer runs it.
-  * Fenix webpage for the course (https://fenix.isa.ulisboa.pt/courses/intpy-846413499991952): administrative information and final grades
+  * [Fenix webpage for the course](https://fenix.isa.ulisboa.pt/courses/intpy-564938523285845): administrative information and final grades
   
   </blockquote>
 </details>
