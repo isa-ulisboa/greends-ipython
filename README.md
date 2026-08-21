@@ -15,7 +15,7 @@ Teaching assistant:
   <summary>  Required </summary>
   <blockquote>
   
-  * You need to self-register for the course in Moodle at <https://elearning.ulisboa.pt/course/view.php?id=11236>. The Moodle site allows you to access assignments; submissions; detailed grades and comments
+  * You need to self-register for the course in Moodle at <https://elearning.ulisboa.pt/user/index.php?id=12863>. The Moodle site allows you to access assignments; submissions; detailed grades and comments
   * If you don't have one already, create a GitHub account at <https://github.com/signup>
   * [CS50P: CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python). Lectures (videos and notes), problems sets, shorts;
   * [CS50 codespace](https://cs50.dev/). VScode codespace that allows you to use a customized AI bot (CS50's duck debugger, or DDB for short) and test your solutions for CS50P proposed problems (you can access the codespace with your GitHub user).
