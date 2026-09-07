@@ -14,12 +14,10 @@ def main():
   m=number_of_classes_sturges(n) # m is a positive integer such that 2**(m-1) <= n <= 2**m
   # determine class amplitude
   delta=amplitude(xmin,xmax,m) # positive float, the range of values divided by the number of classes
-  # compute list of break points for the histogram, from xmin to xmax
+  # compute list of (left,right) class boundaries for the histogram, from xmin to xmax
   bins=compute_bins(xmin,xmax,delta)
   # Compute frequency for each class and plot histogram row by row
-  for i in range(len(bins)-1):
-    left=bins[i]
-    right=bins[i+1]
+  for left,right in bins:
     freq=determine_frequency(x,left,right) # integer;  note that each value must belong to one and only one class
     print_frequency(freq) # the output must be '****' where each * represents one observation
 
@@ -44,16 +42,18 @@ def compute_bins(xmin,xmax,delta):
     '''
     xmin, xmax are integers or floats: the minimum and maximum of the data
     delta is a positive number: the width (amplitude) of each class
-    returns a list of break points, starting at xmin, spaced by delta,
-    with the last break point pushed past xmax so that xmax itself
-    (and every value up to it) falls inside the last class
+    returns a list of (left,right) tuples, one per class, starting at xmin
+    and spaced by delta, with the last right pushed past xmax so that xmax
+    itself (and every value up to it) falls inside the last class
     '''
-    bins=[xmin]
+    bins=[]
     left=xmin
     while left<xmax:
-        left=left+delta
-        bins.append(left)
-    bins[-1]=bins[-1]+1
+        right=left+delta
+        bins.append((left,right))
+        left=right
+    last_left,last_right=bins[-1]
+    bins[-1]=(last_left,last_right+1)
     return bins
 
 def print_frequency(freq):
@@ -68,11 +68,6 @@ def determine_frequency(x,left, right):
     for v in x:
       if v>=left and v<right:
             f+=1
-      '''
-      for j in range(len(x)):
-              if x[j]>=left and x[j]<right:
-                  f+=1
-      '''
     return(f)
 
 def read_values():
