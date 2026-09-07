@@ -43,7 +43,7 @@ Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
 ---
 
 <details markdown="block">
-<summary>  Class 1 (September 11, 2026): data types, variables, functions </summary>
+<summary>  Class 1 (September 11, 2026): data types, variables, lists, functions </summary>
  
 1.  The recommendation for this class is to code using the CS50 codespace. Two steps: 1. log in into your GitHub account; 2. access your code space at <https://cs50.dev/>. This environment allows you to test automatically your scripts for the CS50 problem sets and gives access to a customized AI bot (DDB) 
 2. Some useful keyworks for the command line interface (CLI) in terminal: 
