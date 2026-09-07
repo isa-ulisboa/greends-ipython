@@ -2,7 +2,7 @@ Create one file inside `submissions/`, named after your group, for example `team
 
 Example student file:
 
-# submissions/team_03.py
+### submissions/team_03.py
 
     def run():
             return "Hello from team 03"
