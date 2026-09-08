@@ -4,9 +4,8 @@ Masters in Data Science applied to agricultural and food sciences, environment, 
 
 Instructor: Manuel Campagnolo (mlc@isa.ulisboa.pt)
 
-<!--
 Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
--->
+
 ---
 
 <details markdown="block">
@@ -68,6 +67,20 @@ Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
 </details>
 
 <!--
+
+# Create Pull request: Very short version for students
+
+```text
+1. Fork the course repository.
+2. In your fork, go to collaboration-exercise/submissions/.
+3. Create a file called `team_name.py`.
+4. Add a `run()` function.
+5. Commit the file.
+6. Click Contribute → Open pull request.
+7. Make sure it goes from your fork to the teacher’s original repository.
+8. Click Create pull request.
+```
+
 
 ---
 
