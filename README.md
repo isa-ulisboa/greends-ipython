@@ -49,7 +49,7 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 <summary>  Class 1 (September 11, 2026): data types, variables, lists, functions </summary>
  
 1.  The recommendation for this class is to code using the CS50 codespace. Two steps: 1. log in into your GitHub account; 2. access your code space at <https://cs50.dev/>. This environment allows you to test automatically your scripts for the CS50 problem sets and gives access to a customized AI bot (DDB) 
-2. Some useful keyworks for the command line interface (CLI) in terminal: 
+2. Some useful keyworks for the command line interface (CLI): 
  * `code filename.py` to create a new file 
  * `ls` to list files in folder
  * `cp filename newfilename` to copy a file, e.g. `cp ..\hello.py  farewell.py` (`..` represents parent folder)
@@ -60,13 +60,17 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
  * `rmdir foldername` to delete folder
  * `clear` to clear terminal window
 3. Typing `python` gives you access to a REPL (interactive Read-Eval-Print-Loop) environment (<https://realpython.com/interacting-with-python/>).
-4. All values in Python have a **type**. The primitive data types are: integer, float, string, Boolean, and None (see <https://www.geeksforgeeks.org/python/primitive-data-types-vs-non-primitive-data-types-in-python/>)
+4. All values in Python have a **type**. The **primitive data types** are: integer, float, string, Boolean, and None (see <https://www.geeksforgeeks.org/python/primitive-data-types-vs-non-primitive-data-types-in-python/>). There are also **Non-Primitive Data Types** like `list`, `tuple`, `set` and `dictionary`. 
    * strings (`str`), variables, print (a function), parameters (e.g. `end=`), input, comments, formatted strings (`f"..."`), `.strip()`, `.title` (methods)
    * integers (`int`), operations for integers, casting (e.g. `str` to `int`)
    * floating point values (`float`), round, format floats (e.g. `f"{z:.2f}`)
-   * `True`, `False`, `and`, `or`, `not`
-5. Functions, `def`, `return`
-6. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/psets/0/). Find a solution to the problems at your CS50 codespace, and dialog with the AI bot (DDB) for help. The bot won't produce code but will help you by answering your questions: very precise prompts originate more details in the answers. Resist the temptation of looking for a solution on the web or using a generic AI bot. 
+   * Boolean: `True`, `False`, that can be combined with operators `and`, `or`, `not`
+5. Functions, `def`, `return`. Example:
+  ```
+  def square(x):
+      return x*x
+  ```
+6. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/psets/0/). Find a solution to the problems at your CS50 codespace, and dialog with the AI bot (DDB) for help. The bot won't produce code but will help you by answering your to questions: very precise prompts originate more details in the answers. Resist the temptation of looking for a solution on the web or using a generic AI bot. 
 
 </details>
 
