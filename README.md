@@ -70,7 +70,9 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
   def square(x):
       return x*x
   ```
-6. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/psets/0/). Find a solution to the problems at your CS50 codespace, and dialog with the AI bot (DDB) for help. The bot won't produce code but will help you by answering your to questions: very precise prompts originate more details in the answers. Resist the temptation of looking for a solution on the web or using a generic AI bot. 
+6. View the step-by-step execution of this code on [Python Tutor](https://pythontutor.com/visualize.html#code=def%20main%28%29%3A%0A%20%20%20%20x%3D4%0A%20%20%20%20y%3Dsquare%28x%29%0A%20%20%20%20print%28f%22%7Bx%7D%20squared%20is%20%7By%7D%22%29%0A%0Adef%20square%28n%29%3A%0A%20%20%20%20s%3Dn*n%0A%20%20%20%20return%28s%29%0A%0Amain%28%29&curInstr=12&mode=display&origin=opt-frontend.js&py=311). Identify the variables scope. Try to add `print(s)` in line 4 after calling `square` in the `main` function: why do you get a `NameError`?
+
+7. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/psets/0/). Find a solution to the problems at your CS50 codespace, and dialog with the AI bot (DDB) for help. The bot won't produce code but will help you by answering your to questions: very precise prompts originate more details in the answers. Resist the temptation of looking for a solution on the web or using a generic AI bot. 
 
 </details>
 
