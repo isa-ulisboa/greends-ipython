@@ -8,6 +8,8 @@ Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
 
 ---
 
+**Revised class schedule**: class (Friday, room 48) will start at 11:45 and end at 14:45, with a ~45 minute break for lunch.
+
 Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 
 ---
