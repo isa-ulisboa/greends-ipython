@@ -78,26 +78,11 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 
 </details>
 
-<!--
-
-# Create Pull request: Very short version for students
-
-```text
-1. Fork the course repository.
-2. In your fork, go to collaboration-exercise/submissions/.
-3. Create a file called `team_name.py`.
-4. Add a `run()` function.
-5. Commit the file.
-6. Click Contribute → Open pull request.
-7. Make sure it goes from your fork to the teacher’s original repository.
-8. Click Create pull request.
-```
-
 
 ---
 
 <details markdown="block">
- <summary>  Class 2 (September 19, 2025): conditionals, lists, dictionaries </summary>
+ <summary>  Class 2 (September 18, 2026): conditionals, lists, dictionaries </summary>
 
 1. Conditionals:
   - `if`, `elif`, `else`:
@@ -114,7 +99,7 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
     match species:
         case 'versicolor':
             label=0
-        case 'virginica'
+        case 'virginica':
             label=1
         case _:
             label=2
@@ -153,11 +138,30 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
  # execute main
  main()
  ```
+---
+ 
+To share code, students should submit a  *pull request* on GitHub:
+
+```text
+1. Fork the course repository.
+2. In your fork, go to collaboration-exercise/submissions/.
+3. Create a file called `team_name.py`.
+4. Add a `run()` function.
+5. Commit the file.
+6. Click Contribute → Open pull request.
+7. Make sure it goes from your fork to the teacher’s original repository.
+8. Click Create pull request.
+```
+
 One possible solution for the collaborative project: (https://github.com/isa-ulisboa/greends-ipython/edit/main/collaborative_project_session2.py)
    
 10. Suggested problems: [CS50 Problem set 1](https://cs50.harvard.edu/python/2022/psets/). Do not forget about the assignment on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
 
 </details>
+
+<!--
+
+
 
 ---
 
