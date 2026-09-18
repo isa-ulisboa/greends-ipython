@@ -84,6 +84,8 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 <details markdown="block">
  <summary>  Class 2 (September 18, 2026): conditionals, lists, dictionaries </summary>
 
+0. See [notes on CS50P lecture 1](https://cs50.harvard.edu/python/notes/1/)
+
 1. Conditionals:
   - `if`, `elif`, `else`:
     ```Python
