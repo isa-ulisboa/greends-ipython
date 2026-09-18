@@ -136,6 +136,11 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
     
 9. Assignment #1 available on Moodle: problems [File extensions (set 1)](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine (set 2)](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates (set 2)](https://cs50.harvard.edu/python/2022/psets/2/plates/)
 
+
+</details>
+
+<!--
+
 10. Collaborative project: each student or small group of students should define each necessary function to complete the script below. The side effect of `main()` is a simple histogram printed in the terminal.
  ```Python
  def main():
@@ -175,11 +180,6 @@ To share code, students should submit a  *pull request* on GitHub:
 ```
 
 One possible solution for the collaborative project: (https://github.com/isa-ulisboa/greends-ipython/edit/main/collaborative_project_session2.py)
-
-</details>
-
-<!--
-
 
 
 ---
