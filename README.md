@@ -155,8 +155,9 @@ To share code, students should submit a  *pull request* on GitHub:
 
 One possible solution for the collaborative project: (https://github.com/isa-ulisboa/greends-ipython/edit/main/collaborative_project_session2.py)
    
-10. Suggested problems: [CS50 Problem set 1](https://cs50.harvard.edu/python/2022/psets/).
-11. Assignment #1 available on Moodle: problems [File extensions](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates](https://cs50.harvard.edu/python/2022/psets/2/plates/)
+10. Suggested problems: [CS50 Problem set 1](https://cs50.harvard.edu/python/2022/psets/): Deep Thought, Home Federal Savings Bank, Math Interpreter, Meal Time
+    
+12. Assignment #1 available on Moodle: problems [File extensions (set 1)](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine (set 2)](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates (set 2)](https://cs50.harvard.edu/python/2022/psets/2/plates/)
 
 </details>
 
