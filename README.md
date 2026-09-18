@@ -84,9 +84,9 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 <details markdown="block">
  <summary>  Class 2 (September 18, 2026): conditionals, lists, dictionaries </summary>
 
-0. See [notes on CS50P lecture 1](https://cs50.harvard.edu/python/notes/1/)
+1. See [notes on CS50P lecture 1](https://cs50.harvard.edu/python/notes/1/)
 
-1. Conditionals:
+2. Conditionals:
   - `if`, `elif`, `else`:
     ```Python
      if score >= 70:
@@ -106,10 +106,10 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
         case _:
             label=2
     ```
-4. Pythonic coding: `def main()`, define other functions, call `main()`. The code must be modular.
-5. While loops, for loops, `break`, `break` and `return`
-6. Data type *list* `[]`: methods `append`, `extend`
-7. Data type *dictionary* `{}`, `items()`, keys `.key()` and values `.values()`
+3. Pythonic coding: `def main()`, define other functions, call `main()`. The code must be modular.
+4. While loops, for loops, `break`, `break` and `return`
+5. Data type *list* `[]`: methods `append`, `extend`
+6. Data type *dictionary* `{}`, `items()`, keys `.key()` and values `.values()`
    ```Python
    knights = {'gallahad': 'the pure', 'robin': 'the brave'}
    for k, v in knights.items():
@@ -117,7 +117,11 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
    if 'gallahad' in knights:
        print('Go Gallahad')
    ```
-8. Collaborative project: each student or small group of students should define each necessary function to complete the script below. The side effect of `main()` is a simple histogram printed in the terminal.
+7. Suggested problems: [CS50 Problem set 1](https://cs50.harvard.edu/python/2022/psets/): Deep Thought, Home Federal Savings Bank, Math Interpreter, Meal Time
+    
+8. Assignment #1 available on Moodle: problems [File extensions (set 1)](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine (set 2)](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates (set 2)](https://cs50.harvard.edu/python/2022/psets/2/plates/)
+
+9. Collaborative project: each student or small group of students should define each necessary function to complete the script below. The side effect of `main()` is a simple histogram printed in the terminal.
  ```Python
  def main():
    # read and sort values
@@ -156,10 +160,6 @@ To share code, students should submit a  *pull request* on GitHub:
 ```
 
 One possible solution for the collaborative project: (https://github.com/isa-ulisboa/greends-ipython/edit/main/collaborative_project_session2.py)
-   
-10. Suggested problems: [CS50 Problem set 1](https://cs50.harvard.edu/python/2022/psets/): Deep Thought, Home Federal Savings Bank, Math Interpreter, Meal Time
-    
-12. Assignment #1 available on Moodle: problems [File extensions (set 1)](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine (set 2)](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates (set 2)](https://cs50.harvard.edu/python/2022/psets/2/plates/)
 
 </details>
 
