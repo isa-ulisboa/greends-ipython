@@ -32,9 +32,10 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 </details>
 
 <details markdown="block">
-  <summary>  Other tutorials and reference materials </summary>
+  <summary>  Advanced exercises, alternative tutorials and reference materials </summary>
   <blockquote>
   
+  * [Codewars](https://www.codewars.com/)  is an online educational platform used to practice, improve, and master programming skills through gamified coding challenges in Python and many other programming languages. You can log in with your GitHub account and choose your proficiency level. Codewars will propose exercises for your level. 
   * [Learn Python with Scrimba, Olof Paulson](https://v2.scrimba.com/learn-python-c03): interactive lectures (videos), examples and exercises 
   * [Introduction to Python (VScode)](https://vscodeedu.com/courses/intro-to-python): interactive step by step lectures and exercises, real-time quizzes.
   * Basic concepts and features of the Python language and system: [The Python Tutorial at python.org](https://docs.python.org/3/tutorial/index.html).
