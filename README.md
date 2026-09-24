@@ -146,13 +146,14 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 
 1. See lecture on [List and dictionary comprehensions](https://cs50.harvard.edu/python/shorts/list_dictionary_comprehensions/)
 
-2. Exercises on list comprehension (with some solutions): https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_list_comprehension.md
+2. [Exercises on list comprehension (with some solutions)](docs/exercises_list_comprehension.md)
  
 
-2. Exercises on dictionary comprehension (with some solutions): https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_dict_comprehension.md
+2. [Exercises on dictionary comprehension (with some solutions)](docs/exercises_dict_comprehension.md)
 
  
 3. Collaborative project: each student or small group of students should define each necessary function to complete the script below. The side effect of `main()` is a simple histogram printed in the terminal.
+   
  ```Python
  def main():
    # read and sort values
