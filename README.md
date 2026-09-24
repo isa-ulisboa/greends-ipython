@@ -181,17 +181,15 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 To share code, students should submit a  *pull request* on GitHub:
 
 ```text
-1. Fork the course repository.
-2. In your fork, go to collaboration-exercise/submissions/.
-3. Create a file called `team_name.py`.
-4. Add a `run()` function.
+1. Fork the course repository `https://github.com/isa-ulisboa/greends-ipython` on your GitHub account
+2. In your fork, go to `collaborative_proj/submissions/`.
+3. Create a file called `team_name.py` with your own team name, say `team_01.py`
+4. Add a `run()` function to the file.
 5. Commit the file.
 6. Click Contribute → Open pull request.
-7. Make sure it goes from your fork to the teacher’s original repository.
-8. Click Create pull request.
+7. Make sure it goes from your fork to the teacher’s original repository `https://github.com/isa-ulisboa/greends-ipython`
+8. Click `Create pull request`.
 ```
-
-One possible solution for the collaborative project: (https://github.com/isa-ulisboa/greends-ipython/edit/main/collaborative_project_session2.py)
 
 </blockquote>
 </details>
