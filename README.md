@@ -156,9 +156,10 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
    
  ```Python
  def main():
-   # read and sort values
+   # read values
    x=read_values() # x is a list of numbers, either integers or floats
    n=len(x) # integer; number of values
+   # determine min value and max value 
    xmin,xmax=determine_min_max(x) # integers or floats
    # determine number of classes
    m=number_of_classes_sturges(n) # m is a positive integer such that 2**(m-1) <= n <= 2**m
@@ -178,13 +179,14 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
  ```
 ---
  
-To share code, students should submit a  *pull request* on GitHub:
+To share code, students should submit a  *pull request* on GitHub.
 
+To test this procedure with a trivial `run()` function for each team:
 ```text
 1. Fork the course repository `https://github.com/isa-ulisboa/greends-ipython` on your GitHub account
 2. In your fork, go to `collaborative_proj/submissions/`.
 3. Create a file called `team_name.py` with your own team name, say `team_01.py`
-4. Add a `run()` function to the file.
+4. Add a `run()` function to the file with contents like `print('team 1')`
 5. Commit the file.
 6. Click Contribute → Open pull request.
 7. Make sure it goes from your fork to the teacher’s original repository `https://github.com/isa-ulisboa/greends-ipython`
