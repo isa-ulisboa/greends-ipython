@@ -16,11 +16,8 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 
 <details markdown="block">
 <summary>  Online resources for the course </summary>
+<blockquote>
 
-<details markdown="block">
-  <summary>  Required </summary>
-  <blockquote>
-  
   * You need to self-register for the course in Moodle at <https://elearning.ulisboa.pt/user/index.php?id=12863>. The Moodle site allows you to access assignments; submissions; detailed grades and comments
   * If you don't have one already, create a GitHub account at <https://github.com/signup>
   * [CS50P: CS50’s Introduction to Programming with Python](https://cs50.harvard.edu/python). Lectures (videos and notes), problems sets, shorts;
@@ -28,12 +25,10 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
   * [Python tutor](https://pythontutor.com/). Python Tutor is a online tool that lets you write code in a web browser and see what happens step-by-step as the computer runs it.
   * [Fenix webpage for the course](https://fenix.isa.ulisboa.pt/courses/intpy-564938523285845): administrative information and final grades
   
-  </blockquote>
-</details>
+
 
 <details markdown="block">
   <summary>  Advanced exercises, alternative tutorials and reference materials </summary>
-  <blockquote>
   
   * [Codewars](https://www.codewars.com/)  is an online educational platform used to practice, improve, and master programming skills through gamified coding challenges in Python and many other programming languages. You can log in with your GitHub account and choose your proficiency level. Codewars will propose exercises for your level. 
   * [Learn Python with Scrimba, Olof Paulson](https://v2.scrimba.com/learn-python-c03): interactive lectures (videos), examples and exercises 
@@ -50,7 +45,8 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 
 <details markdown="block">
 <summary>  Class 1 (September 11, 2026): data types, variables, lists, functions </summary>
- 
+<blockquote>
+
 1.  The recommendation for this class is to code using the CS50 codespace. Two steps: 1. log in into your GitHub account; 2. access your code space at <https://cs50.dev/>. This environment allows you to test automatically your scripts for the CS50 problem sets and gives access to a customized AI bot (DDB) 
 2. Some useful keyworks for the command line interface (CLI): 
  * `code filename.py` to create a new file 
@@ -77,13 +73,15 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
 
 7. Suggested problems: [CS50 Problem set 0](https://cs50.harvard.edu/python/psets/0/). Find a solution to the problems at your CS50 codespace, and dialog with the AI bot (DDB) for help. The bot won't produce code but will help you by answering your to questions: very precise prompts originate more details in the answers. Resist the temptation of looking for a solution on the web or using a generic AI bot. 
 
+</blockquote>
 </details>
 
 
 ---
 
 <details markdown="block">
- <summary>  Class 2 (September 18, 2026): conditionals, lists, dictionaries </summary>
+<summary>  Class 2 (September 18, 2026): conditionals, lists, dictionaries </summary>
+<blockquote>
 
 1. See:
    - [notes on CS50P lecture 1](https://cs50.harvard.edu/python/notes/1/): conditionals `if`, `match`, boolean expressions, etc
@@ -137,12 +135,24 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
     
 9. Assignment #1 available on Moodle: problems [File extensions (set 1)](https://cs50.harvard.edu/python/2022/psets/1/extensions/), [Coke machine (set 2)](https://cs50.harvard.edu/python/2022/psets/2/coke/), [Plates (set 2)](https://cs50.harvard.edu/python/2022/psets/2/plates/)
 
-
+</blockquote>
 </details>
 
-<!--
+---
 
-10. Collaborative project: each student or small group of students should define each necessary function to complete the script below. The side effect of `main()` is a simple histogram printed in the terminal.
+<details markdown="block">
+<summary>  Class 3 (September 25, 2026): list and dictionary comprehensions, collaborative exercise </summary>
+<blockquote>
+
+1. See lecture on [List and dictionary comprehensions](https://cs50.harvard.edu/python/shorts/list_dictionary_comprehensions/)
+
+2. Exercises on list comprehension (with some solutions): https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_list_comprehension.md
+ 
+
+2. Exercises on dictionary comprehension (with some solutions): https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_dict_comprehension.md
+
+ 
+3. Collaborative project: each student or small group of students should define each necessary function to complete the script below. The side effect of `main()` is a simple histogram printed in the terminal.
  ```Python
  def main():
    # read and sort values
@@ -182,25 +192,19 @@ To share code, students should submit a  *pull request* on GitHub:
 
 One possible solution for the collaborative project: (https://github.com/isa-ulisboa/greends-ipython/edit/main/collaborative_project_session2.py)
 
-
----
-
-<details markdown="block">
- 
-<summary>  Class 3 (September 26, 2025): exercises, list and dictionary comprehensions, best practices </summary>
-
-
-1. Exercises on list comprehension (with some solutions): https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_list_comprehension.md
- 
-
-2. Exercises on dictionary comprehension (with some solutions): https://github.com/isa-ulisboa/greends-ipython/blob/main/exercises_dict_comprehension.md
-
- 
-3. Exercises from [CS50 Problem set 0, 1 and 2](https://cs50.harvard.edu/python/2022/psets/).
-
+</blockquote>
 </details>
 
 ---
+
+<!--
+
+10. 
+
+
+---
+
+
 
 <details markdown="block">
 <summary>  Class 4 (October 3, 2025): handling exceptions in Python: catching and raising exceptions </summary>  
