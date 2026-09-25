@@ -24,7 +24,8 @@ Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8>
   * [CS50 codespace](https://cs50.dev/). VScode codespace that allows you to use a customized AI bot (CS50's duck debugger, or DDB for short) and test your solutions for CS50P proposed problems (you can access the codespace with your GitHub user).
   * [Python tutor](https://pythontutor.com/). Python Tutor is a online tool that lets you write code in a web browser and see what happens step-by-step as the computer runs it.
   * [Fenix webpage for the course](https://fenix.isa.ulisboa.pt/courses/intpy-564938523285845): administrative information and final grades
-  
+  * [help me](https://1drv.ms/o/c/0bedfe7ffa5a0eb8/IgA-CgpLN8IVTJsDg9FJ9m67AQrx95SYxoXvGRBOMDVRwjI
+)
 
 
 <details markdown="block">
