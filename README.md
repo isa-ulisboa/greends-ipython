@@ -188,7 +188,7 @@ def main():
  
 To share code, students should submit a  *pull request* on GitHub.
 
-To test this procedure with a trivial `run()` function for each team:
+Test how to perform a pull request with a trivial `run()` function for each team:
 ```text
 1. Fork the course repository `https://github.com/isa-ulisboa/greends-ipython` on your GitHub account
 2. In your fork, go to `collaborative_proj/submissions/`.
@@ -205,21 +205,15 @@ To test this procedure with a trivial `run()` function for each team:
 
 ---
 
-<!--
-
-10. 
-
-
----
-
-
 
 <details markdown="block">
-<summary>  Class 4 (October 3, 2025): handling exceptions in Python: catching and raising exceptions </summary>  
+<summary>  Class 4 (October 2, 2026): handling exceptions in Python: catching and raising exceptions </summary>  
 
-See lecture https://cs50.harvard.edu/python/weeks/3/
+0. See [CS50P lecture 3](https://cs50.harvard.edu/python/weeks/3)
 
 1. A few examples of code that can be helpful to solve problems in [CS50 Problem set 3](https://cs50.harvard.edu/python/2022/psets/3/).
+
+<blockquote>
 
 Example of basic use of `try-except` to catch a `ValueError`:
 ```
@@ -245,7 +239,11 @@ def get_int():
 ```
 For a list of Python Built-in Exceptions, besides `ValueError`, you can check https://www.w3schools.com/python/python_ref_exceptions.asp
 
+</blockquote>
+
 2. The *fuel gauge* problem (https://cs50.harvard.edu/python/2022/psets/3/fuel/)
+
+<blockquote>
 
 To solve this problem, try to organize your code as follows. As suggested in *hints*, you should catch `ValueError` and  `ZeroDivisionError` exceptions in your code. In the code below, the user is being asked for correct values for `x,y` until they satisfy the requirements: `x,y` must be inputted as a string `x/y`, `x` has to be less or equal to `y`, and `y` cannot be zero. The function `get_string_of_integers_X_less_than_Y` in the code below should take care of that.
 
@@ -259,7 +257,11 @@ def main():
     print_gauge(p)
 ```
 
-3. Example from (https://cs50.harvard.edu/python/2022/shorts/handling_exceptions/).
+</blockquote>
+
+3. Example from <https://cs50.harvard.edu/python/2022/shorts/handling_exceptions/>
+
+<blockquote>
 
 Exercise: adapt the code proposed in the short to be more modular, where the main function is something like the one below:
 
@@ -270,8 +272,11 @@ def main():
     m = convert(au)
     print(f"{m} m")
 ```
+</blockquote>
 
 4. Other useful applications of try-except
+
+<blockquote>
    
 - We may want to exit the execution of our script if some exception is caught. This can be done with `sys.exit()`, which can also be used to print a message.
 ```
@@ -299,12 +304,15 @@ while True:
     else:
         print(x)
 ```
+</blockquote>
 
-Exercise (Asking for an haphazard list of numbers): Create a program that asks the user to provide haphazardly a series of numbers that you want to store in a list. The user is asked for a number at the time. Only inputs that are numbers are stored in  the list. When the user wants to stop, it should type CTRL-D. Then, the program should print the list of numbers.
+5. Exercise (Asking for an haphazard list of numbers): Create a program that asks the user to provide haphazardly a series of numbers that you want to store in a list. The user is asked for a number at the time. Only inputs that are numbers are stored in  the list. When the user wants to stop, it should type CTRL-D. Then, the program should print the list of numbers.
 
 </details>
 
 ---
+
+<!--
 
 <details markdown="block">
 <summary>  Class 5 (October 10, 2025): modules, packages, APIs </summary>
