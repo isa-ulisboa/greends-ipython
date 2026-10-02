@@ -209,7 +209,7 @@ Test how to perform a pull request with a trivial `run()` function for each team
 <details markdown="block">
 <summary>  Class 4 (October 2, 2026): handling exceptions in Python: catching and raising exceptions </summary>  
 
-0. See [CS50P lecture 3](https://cs50.harvard.edu/python/weeks/3)
+0. See [CS50P lecture 3](https://cs50.harvard.edu/python/weeks/3), in particular the [short oh handling exceptions](https://cs50.harvard.edu/python/shorts/handling_exceptions/)
 
 1. A few examples of code that can be helpful to solve problems in [CS50 Problem set 3](https://cs50.harvard.edu/python/2022/psets/3/).
 
