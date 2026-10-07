@@ -312,16 +312,16 @@ while True:
 
 ---
 
+<details markdown="block">
+<summary>  Class 5 (October 9, 2026): modules, packages, APIs </summary>
 
+1. See lecture <https://cs50.harvard.edu/python/weeks/4/>
+
+2. Modules and packages
 
 <details markdown="block">
-<summary>  Class 5 (October 10, 2025): modules, packages, APIs </summary>
 
-See lecture https://cs50.harvard.edu/python/weeks/4/
-
-### Modules
-
-Suggestion: watch https://cs50.harvard.edu/python/shorts/creating_modules_packages/
+Suggestion: watch <https://cs50.harvard.edu/python/shorts/creating_modules_packages/>
  
 Modules are just python scripts (files like `module_name.py`) which can be imported into your main code. You can import everything that belongs to the module, or just some given function(s) or other objects.
 
@@ -332,13 +332,13 @@ Exercise: Create file named `mymodule.py` and file `main.py` in http://cs50.dev.
 ```
 |--- class_5 # or whatever folder name you wish
      |--- modules
-          |--- mymodule.py
+          |--- config.py
      |--- main.py
 ```
 
-The contents of `mymodule.py` are typically functions or constants that you can re-use in different contexts. Let's suppose that `mymodule.py` has the following contents.
+The contents of `config.py` are typically functions or constants that you can re-use in different contexts. Let's suppose that `config.py` has the following contents.
 <details markdown="block">
-<summary> mymodule.py </summary>
+<summary> config.py </summary>
  
 ```Python
 import sys
@@ -360,10 +360,6 @@ def get_integer() -> int:
             print('\n If you want to exit type CTRL-D')
         except EOFError: # CTRL-D
             sys.exit('\n Exit as requested')
-
-def simplify(s: str) -> str:
-    #Remove whitespaces from string and convert to lowercase
-    return s.strip().lower()
 ```
 </details>
 
@@ -372,10 +368,10 @@ and `main.py` is the following file:
 <summary> main.py (1st version) </summary>
  
 ```Python
-import modules.mymodule
+import modules.config
 
 def main():
-    x=modules.mymodule.get_integer()
+    x=modules.config.get_integer()
     print(x)
 
 main()
@@ -388,7 +384,7 @@ If you prefer, you can explicitly import some given functions from the module as
 <summary> main.py (2nd version) </summary>
  
 ```Python
-from  modules.mymodule import get_integer
+from  modules.config import get_integer
 
 def main():
     x=get_integer()
@@ -399,18 +395,19 @@ main()
 ```
 </details>
 
-You can also import everything from the module with `from modules.mymodule import *` instead of the more specific (and recommended) `from modules.mymodule import get_integer`.
+You can also import everything from the module with `from modules.config import *` instead of the more specific (and recommended) `from modules.config import get_integer`.
 
 The examples above follow the directory tree that was suggested. If you change the module's location, you need to adapt he code accordingly. In alternative, you can add the path to the directories where your modules lies to `sys.path` as in the following example.
 
 ```Python
 import sys
-sys.path.append(r'path-to-folder') # folder where mymodule is (e.g. `/workspaces/8834091`)
-import mymodule
+sys.path.append(r'path-to-folder') # folder where config is (e.g. `/workspaces/8834091`)
+import config
 ```
 </details>
 
 As explained on the recommended video, a python **package** is just a folder with modules and a special file named `__init__.py`
+
 
 <details markdown="block">
 <summary> Pip install</summary>
@@ -427,6 +424,8 @@ print(random.__file__)
 ```
 
 Suggestion: write a script to  estimate the value of $\pi$ with a Monte Carlo algorithm that makes calls to `random.uniform(-1, 1)`. One possible solution: https://www.geeksforgeeks.org/dsa/estimating-value-pi-using-monte-carlo/
+
+</details>
 
 </details>
 
