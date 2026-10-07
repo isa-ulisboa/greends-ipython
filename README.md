@@ -312,7 +312,7 @@ while True:
 
 ---
 
-<!--
+
 
 <details markdown="block">
 <summary>  Class 5 (October 10, 2025): modules, packages, APIs </summary>
@@ -462,7 +462,7 @@ Suggestion: watch https://cs50.harvard.edu/python/shorts/api_calls/ (13')
 
 #### Example: iTunes
 
-```
+```Python
 import requests
 import sys
 try:
@@ -475,6 +475,9 @@ except requests.RequestException:
 ```
 You can then call the API from your terminal with `$python myrequest.py 'name of my favorite band'`.
 
+#### Example: OpenMeteo
+
+
 #### Example: GBIF
 
 You can easily adapt that code to access a different database. For instance if you want to explore the GBIF database (https://data-blog.gbif.org/post/gbif-api-beginners-guide/), you can just replace the main line of code in `myrequest.py` with
@@ -484,7 +487,39 @@ response=requests.get('https://api.gbif.org/v1/species/match?name='+ sys.argv[1]
 and execute it with, say,  `$python myrequest.py Tracheophyta` in the terminal.
 
 #### Example: open-meteo
+
 Another example of a useful API for weather data is https://open-meteo.com/en/docs#api_documentation. You can find a customized `requests` package for **open-meteo**  at https://pypi.org/project/openmeteo-requests/.
+
+```Python
+import openmeteo_requests
+
+openmeteo = openmeteo_requests.Client()
+
+# Make sure all required weather variables are listed here
+# The order of variables in hourly or daily is important to assign them correctly below
+url = "https://api.open-meteo.com/v1/forecast"
+params = {
+	"latitude": [38.74,41.15], # Lisbon, Porto
+	"longitude": [-9.14,-8.6] ,
+	"current": ["temperature_2m", "relative_humidity_2m","wind_speed_10m"],
+}
+responses = openmeteo.weather_api(url, params=params)
+
+# Process first location. Add a for-loop for multiple locations or weather models
+for i in range(len(responses)):
+    response = responses[i]
+    print(f"Coordinates: {response.Latitude()}°N {response.Longitude()}°E")
+    print(f"Elevation: {response.Elevation()} m")
+
+    # Process current data. The order of variables needs to be the same as requested.
+    current = response.Current()
+    print(f"Current temperature_2m: {current.Variables(0).Value()}")
+    print(f"Current relative_humidity_2m: {current.Variables(1).Value()}")
+    print(f"Current wind_spreed_10m: {current.Variables(2).Value()}")
+    print()
+```
+
+
 
 ### Problems
 Solve problems from CS50P [Problem_set_4](https://cs50.harvard.edu/python/2022/psets/4/). In particular, for problem *Bitcoin price index* organize your code so the main function is the following:
@@ -496,6 +531,8 @@ def main():
     print(f"${x*price:,.4f}")
 ```
 </details>
+
+<!--
 
 ---
 <details markdown="block">
