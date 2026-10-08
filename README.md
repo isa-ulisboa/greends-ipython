@@ -15,7 +15,7 @@ Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
 ---
 
 <details markdown="block">
-<summary>  Online resources for the course </summary>
+<summary><h2>  Online resources for the course </h2></summary>
 <blockquote>
 
   * You need to self-register for the course in Moodle at <https://elearning.ulisboa.pt/user/index.php?id=12863>. The Moodle site allows you to access assignments; submissions; detailed grades and comments
@@ -44,7 +44,7 @@ Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
 ---
 
 <details markdown="block">
-<summary>  Class 1 (September 11, 2026): data types, variables, lists, functions </summary>
+<summary><h2>  Class 1 (September 11, 2026): data types, variables, lists, functions </h2></summary>
 <blockquote>
 
 1.  The recommendation for this class is to code using the CS50 codespace. Two steps: 1. log in into your GitHub account; 2. access your code space at <https://cs50.dev/>. This environment allows you to test automatically your scripts for the CS50 problem sets and gives access to a customized AI bot (DDB) 
@@ -80,7 +80,7 @@ Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
 ---
 
 <details markdown="block">
-<summary>  Class 2 (September 18, 2026): conditionals, lists, dictionaries </summary>
+<summary><h2> Class 2 (September 18, 2026): conditionals, lists, dictionaries </h2></summary>
 <blockquote>
 
 1. See:
@@ -88,8 +88,8 @@ Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
    - [notes on CS50P lecture 2](https://cs50.harvard.edu/python/weeks/2/): `for` and `while` loops, etc
 
 3. Conditionals:
-  - `if`, `elif`, `else`:
-    ```Python
+   - `if`, `elif`, `else`:
+     ```Python
      if score >= 70:
          print("Grade: C to A")
      elif score >= 60:
@@ -97,16 +97,16 @@ Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
      else:
          print("Grade: F")
      ```
-  - `match`:
-    ```Python
-    match species:
-        case 'versicolor':
-            label=0
-        case 'virginica':
-            label=1
-        case _:
-            label=2
-    ```
+   - `match`:
+     ```Python
+     match species:
+         case 'versicolor':
+             label=0
+         case 'virginica':
+             label=1
+         case _:
+             label=2
+     ```
 3. Pythonic coding: `def main()`, define other functions, call `main()`. The code must be modular.
 4. While loops, for loops, `break`, `break` and `return`
    ```
@@ -141,7 +141,7 @@ Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
 ---
 
 <details markdown="block">
-<summary>  Class 3 (September 25, 2026): list and dictionary comprehensions, collaborative exercise </summary>
+<summary><h2>  Class 3 (September 25, 2026): list and dictionary comprehensions, collaborative exercise </h2></summary>
 <blockquote>
 
 1. See lecture on [List and dictionary comprehensions](https://cs50.harvard.edu/python/shorts/list_dictionary_comprehensions/)
@@ -207,7 +207,7 @@ Test how to perform a pull request with a trivial `run()` function for each team
 
 
 <details markdown="block">
-<summary>  Class 4 (October 2, 2026): handling exceptions in Python: catching and raising exceptions </summary>  
+<summary><h2>  Class 4 (October 2, 2026): handling exceptions in Python: catching and raising exceptions </h2></summary>  
 
 0. See [CS50P lecture 3](https://cs50.harvard.edu/python/weeks/3), in particular the [short on handling exceptions](https://cs50.harvard.edu/python/shorts/handling_exceptions/): `try`, `except`, `ValueError`, `KeyError`.
 
@@ -313,14 +313,13 @@ while True:
 ---
 
 <details markdown="block">
-<summary>  Class 5 (October 9, 2026): modules, packages, APIs </summary>
+<summary><h2>  Class 5 (October 9, 2026): modules, packages, APIs </h2></summary>
 
 1. See lecture <https://cs50.harvard.edu/python/weeks/4/>
 
 2. Modules and packages
 <blockquote>
 
-<details markdown="block">
 
 Suggestion: watch <https://cs50.harvard.edu/python/shorts/creating_modules_packages/>
  
@@ -416,6 +415,7 @@ As explained on the recommended video, a python **package** is just a folder wit
 <summary> Pip install</summary>
 
 Often, you import a module that is available at https://pypi.org/project/pip/. Say you want to load the module `random` which provides a series of functions for sampling, shuffling, and extracting random numbers from a variety of probability distributions. If the module is not already available, you can typically load it in your terminal with 
+
 ```
 $pip install random
 ```
@@ -432,10 +432,10 @@ Suggestion: write a script to  estimate the value of $\pi$ with a Monte Carlo al
 
 
 </blockquote>
-</details>
 
 3. `sys.argv`
-   
+<blockquote>
+
 Previously, we used module `sys`, in particular functions  `sys.exit()` and  `sys.path`. Another useful function is `sys.argv`,  that allows you to have access to what the user typed in at the command line `$` as in the following script.
 
 ```Python
@@ -463,6 +463,8 @@ except ValueError:
 </details>
 
 To run it, you can for instance execute the command `$python sum.py 1.2 4.3` in the terminal.
+
+</blockquote>
 
 
 
@@ -544,6 +546,7 @@ def main():
     price=get_bitcoin_price()
     print(f"${x*price:,.4f}")
 ```
+-->
 </details>
 
 <!--
