@@ -467,16 +467,15 @@ To run it, you can for instance execute the command `$python sum.py 1.2 4.3` in 
 </blockquote>
 
 
-
-<!--
-
-### APIs 
+4. APIs
+<blockquote>
 
 Suggestion: watch https://cs50.harvard.edu/python/shorts/api_calls/ (13')
 
 *Application program interfaces* allow you to communicate with a remote server. For instance,  `requests` is a package that allows your program to behave as a web browser would.  Consider the following script `myrequest.py` that allows you to explore the *itunes* database (https://performance-partners.apple.com/search-api):
 
-#### Example: iTunes
+<details markdown="block">
+<summary> Example: iTunes </summary>
 
 ```Python
 import requests
@@ -491,10 +490,10 @@ except requests.RequestException:
 ```
 You can then call the API from your terminal with `$python myrequest.py 'name of my favorite band'`.
 
-#### Example: OpenMeteo
+</details>
 
-
-#### Example: GBIF
+<details markdown="block">
+<summary> Example: GBIF </summary>
 
 You can easily adapt that code to access a different database. For instance if you want to explore the GBIF database (https://data-blog.gbif.org/post/gbif-api-beginners-guide/), you can just replace the main line of code in `myrequest.py` with
 ```
@@ -502,7 +501,10 @@ response=requests.get('https://api.gbif.org/v1/species/match?name='+ sys.argv[1]
 ```
 and execute it with, say,  `$python myrequest.py Tracheophyta` in the terminal.
 
-#### Example: open-meteo
+</details>
+
+<details markdown="block">
+<summary> Example: open-meteo </summary>
 
 Another example of a useful API for weather data is https://open-meteo.com/en/docs#api_documentation. You can find a customized `requests` package for **open-meteo**  at https://pypi.org/project/openmeteo-requests/.
 
@@ -534,11 +536,14 @@ for i in range(len(responses)):
     print(f"Current wind_spreed_10m: {current.Variables(2).Value()}")
     print()
 ```
+</details>
 
+</blockquote>
 
+5. Suggested problem
+<blockquote>
 
-### Problems
-Solve problems from CS50P [Problem_set_4](https://cs50.harvard.edu/python/2022/psets/4/). In particular, for problem *Bitcoin price index* organize your code so the main function is the following:
+Solve problem *Bitcoin price index* from CS50P [Problem_set_4](https://cs50.harvard.edu/python/2022/psets/4/). In particular, organize your code so the main function is the following:
 
 ```
 def main():
@@ -546,7 +551,8 @@ def main():
     price=get_bitcoin_price()
     print(f"${x*price:,.4f}")
 ```
--->
+</blockquote>
+
 </details>
 
 <!--
