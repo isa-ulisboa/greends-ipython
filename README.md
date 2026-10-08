@@ -318,6 +318,7 @@ while True:
 1. See lecture <https://cs50.harvard.edu/python/weeks/4/>
 
 2. Modules and packages
+<blockquote>
 
 <details markdown="block">
 
@@ -429,9 +430,9 @@ Suggestion: write a script to  estimate the value of $\pi$ with a Monte Carlo al
 
 </details>
 
+
+</blockquote>
 </details>
-
-
 
 3. `sys.argv`
    
