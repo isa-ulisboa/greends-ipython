@@ -323,22 +323,23 @@ while True:
 
 Suggestion: watch <https://cs50.harvard.edu/python/shorts/creating_modules_packages/>
  
-Modules are just python scripts (files like `module_name.py`) which can be imported into your main code. You can import everything that belongs to the module, or just some given function(s) or other objects.
+Modules are just python scripts (files like `module_name.py`) which can be imported into your main code and that can be shared between multiple applications. You can import everything that belongs to the module, or just some given function(s) or other objects.
 
 <details markdown="block">
 <summary> Create and import your own module </summary>
 
-Exercise: Create file named `mymodule.py` and file `main.py` in http://cs50.dev. Organize the files in the following folders:
+Exercise: Create file named `utils.py` and file `main.py` in http://cs50.dev. Organize the files in the following folders:
 ```
 |--- class_5 # or whatever folder name you wish
-     |--- modules
-          |--- config.py
+     |--- common # General reusable code used across the project
+          |--- utils.py
      |--- main.py
 ```
 
-The contents of `config.py` are typically functions or constants that you can re-use in different contexts. Let's suppose that `config.py` has the following contents.
+The contents of `utils.py` are typically functions or constants that you can re-use in different contexts. Let's suppose that `utils.py` has the following contents.
+
 <details markdown="block">
-<summary> config.py </summary>
+<summary> utils.py </summary>
  
 ```Python
 import sys
@@ -364,14 +365,15 @@ def get_integer() -> int:
 </details>
 
 and `main.py` is the following file:
+
 <details markdown="block">
 <summary> main.py (1st version) </summary>
  
 ```Python
-import modules.config
+import common.utils
 
 def main():
-    x=modules.config.get_integer()
+    x=common.utils.get_integer()
     print(x)
 
 main()
@@ -384,7 +386,7 @@ If you prefer, you can explicitly import some given functions from the module as
 <summary> main.py (2nd version) </summary>
  
 ```Python
-from  modules.config import get_integer
+from  common.utils import get_integer
 
 def main():
     x=get_integer()
@@ -395,14 +397,14 @@ main()
 ```
 </details>
 
-You can also import everything from the module with `from modules.config import *` instead of the more specific (and recommended) `from modules.config import get_integer`.
+You can also import everything from the module with `from common.utils import *` instead of the more specific (and recommended) `from common.utils import get_integer`.
 
 The examples above follow the directory tree that was suggested. If you change the module's location, you need to adapt he code accordingly. In alternative, you can add the path to the directories where your modules lies to `sys.path` as in the following example.
 
 ```Python
 import sys
-sys.path.append(r'path-to-folder') # folder where config is (e.g. `/workspaces/8834091`)
-import config
+sys.path.append(r'path-to-folder') # folder where your module is (e.g. `/workspaces/8834091`)
+import utils
 ```
 </details>
 
@@ -429,7 +431,10 @@ Suggestion: write a script to  estimate the value of $\pi$ with a Monte Carlo al
 
 </details>
 
-### sys.argv
+<!--
+
+3. `sys.argv`
+   
 Previously, we used module `sys`, in particular functions  `sys.exit()` and  `sys.path`. Another useful function is `sys.argv`,  that allows you to have access to what the user typed in at the command line `$` as in the following script.
 
 ```Python
