@@ -332,6 +332,7 @@ Exercise: Create file named `utils.py` and file `main.py` in http://cs50.dev. Or
 ```
 |--- class_5 # or whatever folder name you wish
      |--- common # General reusable code used across the project
+          |--- __init__.py # optional: marks the folder as a package
           |--- utils.py
      |--- main.py
 ```
@@ -380,6 +381,8 @@ main()
 ```
 </details>
 
+Run `main.py` from inside the `class_5` folder (`cd class_5`, then `python main.py`), so that Python can find the `common` folder.
+
 If you prefer, you can explicitly import some given functions from the module as in the following example.
 
 <details markdown="block">
@@ -399,11 +402,11 @@ main()
 
 You can also import everything from the module with `from common.utils import *` instead of the more specific (and recommended) `from common.utils import get_integer`.
 
-The examples above follow the directory tree that was suggested. If you change the module's location, you need to adapt he code accordingly. In alternative, you can add the path to the directories where your modules lies to `sys.path` as in the following example.
+The examples above follow the directory tree that was suggested. If you change the module's location, you need to adapt the code accordingly. In alternative, you can add the path to the directories where your modules lies to `sys.path` as in the following example.
 
 ```Python
 import sys
-sys.path.append(r'path-to-folder') # folder where your module is (e.g. `/workspaces/8834091`)
+sys.path.append(r'path-to-folder') # folder that contains utils.py (e.g. `/workspaces/8834091/class_5/common`)
 import utils
 ```
 </details>
