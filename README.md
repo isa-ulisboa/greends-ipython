@@ -431,7 +431,7 @@ Suggestion: write a script to  estimate the value of $\pi$ with a Monte Carlo al
 
 </details>
 
-<!--
+
 
 3. `sys.argv`
    
@@ -445,6 +445,9 @@ print(sys.argv[1]) # returns the 2nd word, i.e., the first word after $python my
 
 For instance, the following script named `sum.py` prints the sum of two numbers that were specified in the command line.
 
+<details markdown="block">
+<summary> sum.py </summary>
+
 ```Python
 # sum.py
 import sys
@@ -456,7 +459,13 @@ except IndexError:
 except ValueError:
     print('The arguments are not numbers')
 ```
+</details>
+
 To run it, you can for instance execute the command `$python sum.py 1.2 4.3` in the terminal.
+
+
+
+<!--
 
 ### APIs 
 
