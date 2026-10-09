@@ -484,21 +484,21 @@ Suggestion: watch https://cs50.harvard.edu/python/shorts/api_calls/ (13')
 import requests
 import sys
 try:
-    response = requests.get("https://itunes.apple.com/search?entity=song&limit=1&term=" + sys.argv[1])
+    response = requests.get("https://itunes.apple.com/search?entity=song&limit=2&term=" + sys.argv[1])
     print(response.json())
 except IndexError:
     sys.exit('Missing argument')
 except requests.RequestException:
    sys.exit('Request failed')
 ```
-You can then call the API from your terminal with `$python myrequest.py 'name of my favorite band'`.
+You can then call the API from your terminal with `$python myrequest.py 'name of my favorite band'`. What you see printed on the terminal is a dictionary. How can you edit your script such that the output is just a list of track names (key `trackName`)? Notice that `&limit=2` in the search sets the number of songs that are returned by the API.
 
 </details>
 
 <details markdown="block">
 <summary> Example: GBIF </summary>
 
-You can easily adapt that code to access a different database. For instance if you want to explore the GBIF database (https://data-blog.gbif.org/post/gbif-api-beginners-guide/), you can just replace the main line of code in `myrequest.py` with
+You can easily adapt that code to access a different database. For instance if you want to explore the GBIF database <https://data-blog.gbif.org/post/gbif-api-beginners-guide/>, you can just replace the main line of code in `myrequest.py` with
 ```
 response=requests.get('https://api.gbif.org/v1/species/match?name='+ sys.argv[1])
 ```
