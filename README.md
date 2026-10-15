@@ -417,16 +417,20 @@ As explained on the recommended video, a python **package** is just a folder wit
 <details markdown="block">
 <summary> Pip install</summary>
 
-Often, you import a module that is available at https://pypi.org/project/pip/. Say you want to load the module `random` which provides a series of functions for sampling, shuffling, and extracting random numbers from a variety of probability distributions. If the module is not already available, you can typically load it in your terminal with 
+Some modules, like `sys`, `math` or `random`, are part of the Python *standard library*: they come with Python and can be imported without installing anything. For instance, `random` provides a series of functions for sampling, shuffling, and extracting random numbers from a variety of probability distributions.
+
+Many other packages are available at the Python Package Index, https://pypi.org/. They need to be installed before they can be imported, which is done in the terminal with `pip`. For instance, the package `requests` (used below to access APIs) is installed with
 
 ```
-$pip install random
+$ pip install requests
 ```
-and then import it on your main script with `import random`. If you want to know which is the folder where the module is located, you can get that information with `random.__file__` as in the following script.
+and then imported in your script with `import requests`. If you want to know the folder where a module is located, you can get that information with the attribute `__file__`, as in the following script. Compare the two folders: the standard library and the installed packages (`site-packages`) are in different places.
 
 ```Python
 import random
+import requests
 print(random.__file__)
+print(requests.__file__)
 ```
 
 Suggestion: write a script to  estimate the value of $\pi$ with a Monte Carlo algorithm that makes calls to `random.uniform(-1, 1)`. One possible solution: https://www.geeksforgeeks.org/dsa/estimating-value-pi-using-monte-carlo/
@@ -558,176 +562,282 @@ def main():
 
 </details>
 
-<!--
+
 
 ---
 <details markdown="block">
-<summary> Class 6 (October 17, 2025): virtual environments; file I/O </summary>
+<summary><h2>  Class 6 (October 16, 2026): virtual environments; file I/O with images </h2></summary>
 
-- For virtual environments, look at [How to Use Virtual Environments with the Built-In venv Module](https://www.youtube.com/watch?v=APOPm01BVrk) (17')
-- UV: [UV - A Faster, All-in-One Package Manager to Replace Pip and Venv](https://www.youtube.com/watch?v=AMdG7IjgSPM)
-- For file I/O, you can follow https://cs50.harvard.edu/python/weeks/6/.
+- For virtual environments, watch [How to Use Virtual Environments with the Built-In venv Module](https://www.youtube.com/watch?v=APOPm01BVrk) (17') and see the official documentation <https://docs.python.org/3/library/venv.html>
+- For file I/O and images with Pillow, see lecture <https://cs50.harvard.edu/python/weeks/6/> (sections on `open`, `with` and *Binary Files and PIL*). CSV files will be discussed later with Pandas.
+
+In this class we build a small project, `image_project`, that downloads and processes images of leaves. First we prepare a virtual environment with the packages the project needs (`requests` and `Pillow`), then we use it to read and write text and image files. At the end of the class, the project folder should look like this:
+
+```
+image_project/            <- all commands are run from here
+|--- .venv/               <- the virtual environment (created by python -m venv .venv; not shared)
+|--- .gitignore           <- tells Git to ignore .venv/
+|--- requirements.txt     <- list of packages and versions (shared)
+|--- images/              <- input images
+|--- output/              <- files created by our scripts
+|--- download_image.py
+|--- explore_image.py
+|--- process_images.py
+```
 
 <ul>
 <details markdown="block">
-<summary> Virtual environments in Python</summary>
+<summary> 1. Why virtual environments? </summary>
 
-A virtual environment (https://docs.python.org/3/library/venv.html) is:
-   - Used to contain a specific Python interpreter and software libraries and binaries which are needed to support a project (library or application). These are by default isolated from software in other virtual environments and Python interpreters and libraries installed in the operating system.
-    - Contained in a directory, conventionally named `.venv` or `venv` in the project directory, or under a container directory for many virtual environments.
-    - Not checked into source control systems such as Git.
-    - Considered as disposable – it should be simple to delete and recreate it from scratch. *You don’t place any project code in the environment.*
-    - Not considered as movable or copyable – you just recreate the same environment in the target location.
+Suppose your script was written and tested with version 12.0.0 of Pillow, but a colleague has an older version installed that behaves differently, or another project of yours needs a different version. Installing every package in the same place (the *base* environment) quickly leads to conflicts. A *virtual environment* solves this problem. It is:
 
-In your system you have the *base* environment by default, and you can create one or more *virtual environments*. Below, we describe how to create a virtual environment and how to activate it in Python, so your  commands at the terminal are *interpreted within that environment*. That allows you to encapsulate in each virtual environment you create a given Python version, and a set of Python packages with their given versions. 
+- A folder that contains a Python interpreter and a set of packages, with given versions, for **one** project. It is isolated from other virtual environments and from the packages installed in the base environment.
+- Conventionally named `.venv` and placed at the root of the project folder. Tools such as VS Code detect it automatically.
+- Disposable: it should be simple to delete and re-create it from scratch. **You never place your scripts or data inside `.venv`.**
+- Not shared (e.g. not checked into Git) and not copied to another computer. Instead, one shares the list of packages (`requirements.txt`) and each person re-creates the environment.
 
-**Your data and script files remain on the usual working folders: they should not be moved to the folders where the virtual environment files are stored.**
-
-The following commands work in the  [CS50 codespace](https://cs50.dev/) that runs Linux (check with `$cat /etc/os-release` in the terminal). Some need to be slightly adapted for Windows (check differences for instance at https://realpython.com/python-virtual-environments-a-primer/).
-
-Firstly, let's check what are the available packages and their versions in the base environment, and also let's get extra information about the package `requests` (e.g. dependencies):
+Let's first look at the base environment. The following commands list the installed packages and show information about the package `requests` (version, location, dependencies):
 
 ```
-$ pip list 
+$ pip list
 $ pip show requests
 ```
 
-Next, let's create a virtual environment. 
+The commands below work in the [CS50 codespace](https://cs50.dev/), which runs Linux. When a command is different in Windows, the Windows version is given in a comment.
 
-0. One can first create (with `mkdir`) a folder called, say, `myproject` that contains our project. 
-
-1. Then create a subfolder `.venv` for the virtual environment(s). This folder should be separated from the working folders that contain data and scripts.  
-
-2. The virtual environment `myproject` can then be created with:
-```
-.venv/ $ python3 -m venv myprojectvenv # creates environment called 'myprojectvenv' with Python 3
-```
-In case one needs to delete the virtual environment, one just needs to delete the folder. This can be done with `.venv/ $ sudo rm -rf myprojectvenv` in the terminal (Linux). 
-
-3. After the virtual environment has been created, one needs to activate it. In Linux, this is done by executing `activate` which lies in the `bin` folder of the virtual environment:
-
-```
-.venv/ $ source myprojectvenv/bin/activate # note that activate needs to be sourced
-```
-As a result, the prompt shows `(myprojectvenv) .venv/ $` which indicates that `myprojectvenv` is now activated. One can check the Python version with `$python -V`. To de-activate a virtual environment, the command is `$ deactivate`. 
-
-4. With the environment activated, let's try to install a few packages, specifying the versions. For instance, install the following packages.
-
-```
-(myprojectvenv) .venv/ $ pip install random11==0.0.1
-(myprojectvenv) .venv/ $ pip install geopy==1.23.0
-(myprojectvenv) .venv/ $ pip install requests==2.25.0
-```
-Some of this packages depend on additional packages that are installed automatically. 
-
-5. To list all instaled packages within the environment `myprojectvenv` one can execute  `(myprojectvenv) $ pip list` as before. Compare the version of `requests` in `myprojectvenv` with the version returned initially in the base environment: this one is 2.25.0 while the one in the base environment is more recent. One can also check where `requests` is installed in `myprojectvenv` with the command  `(myprojectvenv) $ pip show requests`. 
-
-6. Check the system path (where Python will look for installed packages)  by executing `print(sys.path)`: one can do this from the terminal with the command
-```
-(myprojectvenv) .venv/ $ python -c 'import sys; print(sys.path)'
-```
-Notice that the folder in `myprojectvenv` where the virtual environment packages are installed is listed, but the path to where base packages are stored is not. 
-
-7. If one wishes to share a virtual environment, the way to do that is to share a file (typically, `requirements.txt`) that allows a collaborator to re-create the environment. The file `requirements.txt` stores the information about the installed packages in a file in case one intends to share the environment (e.g. in GitHub). Towards that end, one needs to create `requirements.txt` with the packages names and versions, that can be used to create a clone of the environment on another machine. This is done, still within `myprojectvenv` (i.e. with `myprojectvenv` activated) with the following command:
-```
-(myprojectvenv) .venv/ $ pip freeze > requirements.txt  
-```
-Note that the file `requirements.txt` is created in the folder that contains `myprojectvenv` and not within `myprojectvenv` itself: this makes sense, since one does not want to store scripts or data within `myprojectvenv` but just packages and the Python installation.  
-
-8. Since `requirements.txt` is now available, one can create a copy of `myprojectvenv` called, say, `myprojectvenv2`. Firstly, one needs to de-activate `myprojectvenv` with `$ deactivate`. Then, the commands to be executed in the terminal are:
-```
-.venv/ $ python3 - m venv myproject2venv # create new virtual environment 
-.venv/ $ source myproject2venv/bin/activate # activate myproject2venv
-(myproject2venv) .venv/ $ pip install -r requirements.txt # install packages and versions listed in requirements.txt
-```
-Exercise: go back to `myprojectvenv`, add package (say, `emoji==0.1.0`), re-build `requirements.txt`, and create new environment `myproject3venv` and install the  set of packages listed in the new `requirements.txt`.
 </details>
 
+<details markdown="block">
+<summary> 2. Create and activate a virtual environment </summary>
+
+1. Create the project folder and move into it. From now on, all commands are executed from `image_project`:
+```
+$ mkdir image_project
+$ cd image_project
+```
+
+2. Create the virtual environment. This creates the folder `.venv` inside `image_project`:
+```
+image_project/ $ python -m venv .venv
+```
+Since the name starts with a dot, `.venv` is a hidden folder: use `ls -a` to see it.
+
+3. Activate the environment:
+```
+image_project/ $ source .venv/bin/activate      # Windows: .venv\Scripts\activate
+```
+The prompt now starts with `(.venv)`, which shows that the environment is active: the commands `python` and `pip` now refer to the Python and packages in `.venv`. To de-activate it, the command is `deactivate`.
+
+4. Check which Python is running and which packages are installed. A new environment has (almost) no packages:
+```
+(.venv) image_project/ $ python -c "import sys; print(sys.prefix)"
+(.venv) image_project/ $ pip list
+```
+`sys.prefix` is the folder of the Python installation in use: it should be the `.venv` folder of your project.
+
+</details>
 
 <details markdown="block">
-<summary> File I/O </summary>
+<summary> 3. Install packages and create requirements.txt </summary>
 
-As discussed in (https://cs50.harvard.edu/python/2022/notes/6/) `open` is a functionality built into Python that allows you to open a file and utilize it in your program. The open function allows you to open a file such that you can read from it or write to it. The most basic way to use `open` allow us to enable file I/O with respect to a given file. In the example below, `w` is the argument value that indicates that the file is open in writing mode. The instruction `file.write(...)` will entirely rewrite the file, deleting the previous contents.
+1. With the environment active, install the packages for the project, specifying the versions:
 ```
-name='Bob'
-file = open("names.txt", "w")
-file.write(name)
+(.venv) image_project/ $ pip install pillow==12.0.0 requests==2.32.5
+```
+Packages that these depend on (e.g. `urllib3` for `requests`) are installed automatically. Compare the result of `pip list` and `pip show requests` with what you got in the base environment: the version and the location are different.
+
+2. Check where Python looks for packages:
+```
+(.venv) image_project/ $ python -c "import sys; print(sys.path)"
+```
+The `site-packages` folder inside `.venv` is listed, but the folder where the base environment packages are stored is not.
+
+3. Save the list of installed packages and versions to `requirements.txt`, at the root of the project:
+```
+(.venv) image_project/ $ pip freeze > requirements.txt
+```
+Open `requirements.txt` to see its contents: one line per package, such as `pillow==12.0.0`.
+
+4. Tell Git to ignore the `.venv` folder, by creating a file `.gitignore` with the line `.venv/`:
+```
+(.venv) image_project/ $ echo ".venv/" > .gitignore
+```
+If you share the project (e.g. on GitHub), you share the scripts, `requirements.txt` and `.gitignore`, but not `.venv`.
+
+</details>
+
+<details markdown="block">
+<summary> 4. Delete and re-create the environment </summary>
+
+Since `.venv` is disposable, we can delete it and re-create it from `requirements.txt`. This is also what a colleague does after downloading your project.
+
+```
+(.venv) image_project/ $ deactivate
+image_project/ $ rm -rf .venv                     # Windows (PowerShell): Remove-Item -Recurse -Force .venv
+image_project/ $ python -m venv .venv
+image_project/ $ source .venv/bin/activate        # Windows: .venv\Scripts\activate
+(.venv) image_project/ $ pip install -r requirements.txt
+(.venv) image_project/ $ pip list
+```
+
+Exercise: install one more package in your environment (say, `emoji`), update `requirements.txt`, and send the file to a colleague. Your colleague should create a new project folder with a `.venv` environment from your `requirements.txt` and check with `pip list` that both environments have the same packages and versions.
+
+</details>
+
+<details markdown="block">
+<summary> 5. Reading and writing text files </summary>
+
+First, create the folders for the input and output files: `(.venv) image_project/ $ mkdir images output`.
+
+`open` is a function built into Python that allows you to open a file to read from it or to write to it. The second argument is the *mode*: `"w"` (write), `"a"` (append) or `"r"` (read, the default). In the example below, the file is opened in writing mode: if the file already exists, its previous contents are deleted.
+```Python
+note = "olive leaf, upper surface dark green\n"
+file = open("output/notes.txt", "w")
+file.write(note)
 file.close()
 ```
-As an alternative, if the goal is to add new contents to the file, which is appended to the existent content, then `w` should be replaced by `a` (append). Each call to `file.write(name)` will then add the value of `name` to the end of `file`. 
+Notice that `write` does not add a new line: we need to include `"\n"` at the end of the string. To add new contents at the end of an existing file, open it in mode `"a"` (append) instead.
 
-Instead of explicitly opening and closing a file, it's simpler to use the so-called *context manager* in Python, using the keyword `with`, which automatically closes the file:
+Instead of explicitly opening and closing a file, it's simpler and safer to use a *context manager*, with the keyword `with`, which automatically closes the file at the end of the block, even if an error occurs:
+```Python
+with open("output/notes.txt", "a") as f:
+    f.write("olive leaf, lower surface silvery\n")
 ```
-with open("names.txt", "w") as f:
-  f.write(name)
+
+To read the file, open it in mode `"r"`. The method `readlines` returns a list where each element is a line of the file (including the `"\n"` at the end):
+```Python
+with open("output/notes.txt", "r") as f:
+    lines = f.readlines()
+print(lines)
 ```
-If one wishes to read from a file, then the file has to be opened in reading mode as in the following example. The method `readlines` reads all lines of the file, and stores them in a list, where each element of the list is the contents of the corresponding line.
-```
-with open("names.txt", "r") as f:
-  L=f.readlines(name)
-```
-However, it is possible to read one line at the time:
-```
-with open('myfile.txt','r') as f:
-    N=0
+It is also possible to read the file one line at a time, which is better for large files:
+```Python
+with open("output/notes.txt", "r") as f:
     for line in f:
-        N+=1
-print('number of lines', N)
+        print(line.rstrip()) # rstrip() removes the "\n" at the end of the line
 ```
 
-A file can be of type *text* (human-readable) or *binary*. Binary files like images for instance are read with `with open('myfile.txt','rb') as f`. 
+</details>
 
-Exercise: Consider the file https://github.com/isa-ulisboa/greends-ipython/blob/main/INE_permanent_crops.csv downloaded from the Portuguese Institute of Statistics, INE, about the area of two permanent crops (olive plantations, vineyard) for the main regions of Portugal. The data is not structured as a *rectangular table*: specifically it contains rows that we want to ignore. We are just interested in filtering the rows that have the same number of separators, namely the column names and the rows that contain the crop areas for each region. The resulting rectangular table is to be exported to a new file.
+<details markdown="block">
+<summary> 6. Binary files: downloading and inspecting an image </summary>
 
-Write the code using the template below.
+Files can be *text* files (human-readable, like `notes.txt` or a `.py` script) or *binary* files, like images. Binary files are opened with the modes `"rb"` and `"wb"`, and their contents are `bytes` instead of `str`.
 
+The following script `download_image.py` downloads a photo of an olive leaf (upper and lower surface) from Wikimedia Commons, using the package `requests` (see class 5). The image is in `response.content`, which is a `bytes` object, so the file is opened in mode `"wb"`. Wikimedia Commons rejects requests without a descriptive *User-Agent* (the name of the program that makes the request), so we add one in `headers`.
+
+```Python
+# download_image.py
+import requests
+
+url = "https://upload.wikimedia.org/wikipedia/commons/b/b2/Olive-tree-leaf-0.jpg"
+headers = {"User-Agent": "greends-ipython-course/1.0"}
+response = requests.get(url, headers=headers)
+response.raise_for_status() # raises an exception if the download failed
+print(response.headers["Content-Type"], len(response.content), "bytes")
+
+with open("images/olive_leaf.jpg", "wb") as f:
+    f.write(response.content)
 ```
+If the download fails, you can copy the same image from [datasets/olive_leaf.jpg](datasets/olive_leaf.jpg) in this repository. (Photo: Rnbc at en.wikipedia, [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), via [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Olive-tree-leaf-0.jpg).)
+
+The first bytes of a file usually identify its format. Let's read the first 4 bytes of the image:
+```Python
+with open("images/olive_leaf.jpg", "rb") as f:
+    first_bytes = f.read(4)
+print(first_bytes) # b'\xff\xd8\xff\xe0'
+```
+All JPEG files start with `b'\xff\xd8'`, and all PNG files start with `b'\x89PNG'`. Try to open the image in text mode (`"r"`) and see what happens.
+
+</details>
+
+<details markdown="block">
+<summary> 7. Images with Pillow </summary>
+
+Reading the bytes of an image is not enough to work with its pixels: we need to *decode* the file format. The package `Pillow` (imported as `PIL`) does that for many formats. The following script `explore_image.py` opens the image, prints its properties and saves three new images in `output`.
+
+```Python
+# explore_image.py
+from PIL import Image
+
+with Image.open("images/olive_leaf.jpg") as img:
+    print(img.format, img.size, img.mode) # JPEG (1024, 768) RGB
+
+    # each pixel of an RGB image is a tuple (red, green, blue) with values between 0 and 255
+    print("upper surface:", img.getpixel((450, 220))) # (x, y) = (column, row), from the top-left corner
+    print("lower surface:", img.getpixel((500, 580)))
+
+    gray = img.convert("L") # "L" means grayscale: one value between 0 (black) and 255 (white) per pixel
+    gray.save("output/olive_leaf_gray.png") # the format is given by the extension
+
+    thumb = img.copy()
+    thumb.thumbnail((256, 256)) # resizes in place, keeping the proportions
+    thumb.save("output/olive_leaf_thumb.jpg")
+
+    img.rotate(90, expand=True).save("output/olive_leaf_rotated.jpg")
+```
+
+Questions:
+- Which surface of the leaf is brighter? Compare the values of `gray.getpixel(...)` at the same two points.
+- What is the size of the thumbnail? Why is it not `(256, 256)`?
+- Check the first bytes of `output/olive_leaf_gray.png` as in step 6: is it a PNG file?
+
+</details>
+
+<details markdown="block">
+<summary> 8. Exercise: process a folder of images </summary>
+
+Write a script `process_images.py` that creates a grayscale thumbnail of each image in a folder, and keeps a log of the processed files. The input and output folders are given in the command line (see `sys.argv` in class 5):
+```
+(.venv) image_project/ $ python process_images.py images output
+```
+For each image `name.jpg` (or `.jpeg`, `.png`) in `images`, the script saves `output/name_thumb.png` and appends a line `name.jpg -> output/name_thumb.png` to the file `output/log.txt`. Other files in the folder are ignored. Add a few more leaf images to `images` to test it.
+
+Use the template below. The module `os` (standard library) provides `os.listdir(folder)`, which returns the list of file names in a folder, `os.path.join(folder, name)`, which builds a path, and `os.path.splitext(name)`, which splits a name such as `"olive_leaf.jpg"` into `("olive_leaf", ".jpg")`.
+
+```Python
+import os
+import sys
+from PIL import Image
+
 def main():
-    # constants
-    input_file='INE_permanent_crops.csv'
-    output_file='output.csv'
-    sep=';'
-    number_sep=6
-    file_encoding='ISO-8859-1'
-    # main steps
-    L=read_file(input_file,file_encoding) # L is a list of the rows of the file
-    L=filter_lines(L,sep,number_sep) # L is a list of lists, after we apply the separator
-    write_to_csv(L,output_file,sep)
+    input_folder, output_folder = read_command_line()
+    for file_name in os.listdir(input_folder):
+        if is_image(file_name):
+            input_path = os.path.join(input_folder, file_name)
+            output_path = make_thumbnail(input_path, output_folder)
+            write_log(output_folder, file_name, output_path)
+
+def read_command_line():
+    '''returns the input and output folders; exits with a usage message if they are missing'''
+    ...
+
+def is_image(file_name):
+    '''returns True if the extension of file_name is .jpg, .jpeg or .png (in lower or upper case)'''
+    ...
+
+def make_thumbnail(input_path, output_folder, size=(256, 256)):
+    '''saves a grayscale thumbnail of the image as a png file in output_folder and returns its path'''
+    name = os.path.splitext(os.path.basename(input_path))[0]
+    output_path = os.path.join(output_folder, name + "_thumb.png")
+    ...
+    return output_path
+
+def write_log(output_folder, file_name, output_path):
+    '''appends the line "file_name -> output_path" to output_folder/log.txt'''
+    ...
+
+main()
 ```
 
-You should complete the definitions of the following functions.
+Suggested problem: *CS50 P-Shirt* from CS50P [Problem set 6](https://cs50.harvard.edu/python/psets/6/).
 
-```
-def read_file(file_name,file_encoding):
-    ''' reads file using the appropriate encoding and returns list of rows'''
-    with open(file_name,"r", encoding=file_encoding) as f:
-        lines=f.readlines()
-    return lines
-
-def filter_lines(L,sep,number_sep):
-    '''
-    Filter only elements of L that contains number_sep times the separator 'sep'.
-    Each filtered element of L is represented as a list of strings, the strings separated by 'sep'
-    All list of strings have the same length (number_sep+1)
-    The output is the list with just the filtered lists of strings
-    '''
-    newL=[]
-    for line in L:
-        row=line.rstrip().split(sep)
-        ...
-    return newL
-
-  def write_to_csv(L, output_file,sep):
-    '''writes each element of L as a line in the output file'''
-    with open(output_file, "w") as f:
-        for row in L:
-           ...
-  main()
-```
 </details>
 </ul>
 
 </details>
+
+<!--
 
 ---
 
