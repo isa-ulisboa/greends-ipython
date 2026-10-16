@@ -691,9 +691,8 @@ First, create the folders for the input and output files: `(.venv) image_project
 
 `open` is a function built into Python that allows you to open a file to read from it or to write to it. The second argument is the *mode*: `"w"` (write), `"a"` (append) or `"r"` (read, the default). In the example below, the file is opened in writing mode: if the file already exists, its previous contents are deleted.
 ```Python
-note = "olive leaf, upper surface dark green\n"
 file = open("output/notes.txt", "w")
-file.write(note)
+file.write("olive leaf, upper surface dark green\n")
 file.close()
 ```
 Notice that `write` does not add a new line: we need to include `"\n"` at the end of the string. To add new contents at the end of an existing file, open it in mode `"a"` (append) instead.
