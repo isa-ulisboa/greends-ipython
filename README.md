@@ -12,6 +12,7 @@ Teaching assistant: Hannah Nathanson (hnathanson@edu.ulisboa.pt)
 
 <!-- Please fill the course diagnostic form at <https://forms.gle/VMK681TQ3LMXZqWU8> --->
 
+
 ---
 
 <details markdown="block">
