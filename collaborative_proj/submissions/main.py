@@ -1,3 +1,5 @@
+# Create an histogram in the terminal from a list of input values
+
 from read_values import read_values
 from determine_min_max import determine_min_max
 from number_of_classes_sturges import number_of_classes_sturges
@@ -24,5 +26,6 @@ def main():
         right=left+delta+1 # either 1 or any positive value
      freq=determine_frequency(x,left,right) # integer;  note that each value must belong to one and only one class
      print_frequency(freq) # the output must be '****' where each * represents one observation
+
 # execute main
-#main()
+main()
