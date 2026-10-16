@@ -580,6 +580,7 @@ image_project/            <- all commands are run from here
 |--- requirements.txt     <- list of packages and versions (shared)
 |--- images/              <- input images
 |--- output/              <- files created by our scripts
+|--- notes.py
 |--- download_image.py
 |--- explore_image.py
 |--- process_images.py
@@ -687,29 +688,39 @@ Exercise: install one more package in your environment (say, `emoji`), update `r
 <details markdown="block">
 <summary> 5. Reading and writing text files </summary>
 
-First, create the folders for the input and output files: `(.venv) image_project/ $ mkdir images output`.
+First, create the folders for the input and output files:
+```
+(.venv) image_project/ $ mkdir images output
+```
 
-`open` is a function built into Python that allows you to open a file to read from it or to write to it. The second argument is the *mode*: `"w"` (write), `"a"` (append) or `"r"` (read, the default). In the example below, the file is opened in writing mode: if the file already exists, its previous contents are deleted.
+In this step we write a script `notes.py`, in the `image_project` folder, that writes some notes about the leaf to a text file and then reads them back. Add each piece of code below at the end of `notes.py`, and run the script after each addition with
+```
+(.venv) image_project/ $ python notes.py
+```
+Then check the contents of `output/notes.txt` (open it in the editor, or use `cat output/notes.txt` in the terminal).
+
+`open` is a function built into Python that allows you to open a file to read from it or to write to it. The second argument is the *mode*: `"w"` (write), `"a"` (append) or `"r"` (read, the default). In the code below, the file is opened in writing mode: if the file already exists, its previous contents are deleted. This is why running `notes.py` several times does not accumulate notes: each run starts with an empty file.
 ```Python
+# notes.py
 file = open("output/notes.txt", "w")
 file.write("olive leaf, upper surface dark green\n")
 file.close()
 ```
 Notice that `write` does not add a new line: we need to include `"\n"` at the end of the string. To add new contents at the end of an existing file, open it in mode `"a"` (append) instead.
 
-Instead of explicitly opening and closing a file, it's simpler and safer to use a *context manager*, with the keyword `with`, which automatically closes the file at the end of the block, even if an error occurs:
+Instead of explicitly opening and closing a file, it's simpler and safer to use a *context manager*, with the keyword `with`, which automatically closes the file at the end of the block, even if an error occurs. Add the following lines to `notes.py`, which append a second note to the file:
 ```Python
 with open("output/notes.txt", "a") as f:
     f.write("olive leaf, lower surface silvery\n")
 ```
 
-To read the file, open it in mode `"r"`. The method `readlines` returns a list where each element is a line of the file (including the `"\n"` at the end):
+To read the file, open it in mode `"r"`. The method `readlines` returns a list where each element is a line of the file (including the `"\n"` at the end). Add these lines to `notes.py`, so the script prints what it wrote:
 ```Python
 with open("output/notes.txt", "r") as f:
     lines = f.readlines()
 print(lines)
 ```
-It is also possible to read the file one line at a time, which is better for large files:
+It is also possible to read the file one line at a time, which is better for large files. Add this last block to `notes.py` and compare its output with the previous one:
 ```Python
 with open("output/notes.txt", "r") as f:
     for line in f:
