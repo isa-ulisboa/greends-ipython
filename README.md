@@ -892,22 +892,17 @@ In the terminal of the [CS50 codespace](https://cs50.dev/):
 $ mkdir class7
 $ cd class7
 ```
-2. (Recommended, see Class 6) Create and activate a virtual environment:
-```
-$ python -m venv .venv
-$ source .venv/bin/activate
-```
-3. Install `pandas`, and `ipykernel`, which allows VS Code to run notebooks with this environment:
+2. Install `pandas`, and `ipykernel`, which allows VS Code to run notebooks. Here we install them in the default Python of the codespace, **without** a virtual environment: the notebook's kernel picker in cs50.dev does not easily find a `.venv` created inside a subfolder. If a virtual environment is active (its name appears in the prompt), run `deactivate` first.
 ```
 $ pip install pandas ipykernel
 ```
-4. Download the notebook and open it:
+3. Download the notebook and open it:
 ```
 $ wget https://raw.githubusercontent.com/isa-ulisboa/greends-ipython/main/class7/class7_pandas.ipynb
 $ code class7_pandas.ipynb
 ```
-5. Click **Select Kernel** (top right of the notebook) → **Python Environments** → choose `.venv`. If VS Code asks to install the *Jupyter* extension, accept.
-6. Run the first cell. If it shows the pandas version, you are ready.
+4. Click **Select Kernel** (top right of the notebook) → **Python Environments** → choose the default Python 3 (not a `.venv`). If VS Code asks to install the *Jupyter* extension, accept.
+5. Run the first cell. If it shows the pandas version, you are ready.
 
 The datasets are read directly from the course repository, so there is no need to download them.
 
