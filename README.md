@@ -881,7 +881,7 @@ The goal of this class is not to memorise pandas syntax, which is well documente
 
 <ul>
 <details markdown="block">
-<summary> 1. Setup: a Jupyter notebook in the CS50 codespace </summary>
+<summary> Setup: a Jupyter notebook in the CS50 codespace </summary>
 
 A Jupyter notebook (`.ipynb`) mixes text cells (Markdown) and code cells. Code cells are run one at a time with **Shift+Enter**, and their results (tables, numbers, plots) appear right below. Variables stay in memory between cells, which makes notebooks convenient to explore data step by step.
 
@@ -911,29 +911,36 @@ If the notebook cannot be set up in the codespace, open it in [Google Colab](htt
 </details>
 
 <details markdown="block">
-<summary> 2. The logic of pandas </summary>
+<summary> Part 1 — How pandas thinks </summary>
 
-1. **A table is a set of typed columns, not a list of rows.** Until now, we stored records as lists of dictionaries, one per observation. A `DataFrame` stores them as columns, and each column (a `Series`) has a single data type (`df.dtypes`). A `DataFrame` can be thought of as a dictionary of columns that share the same row labels.
-2. **Vectorisation: describe *what*, not *how*.** Because a column has one type, an operation can be applied to the whole column at once, instead of looping over its elements:
-   ```
-   # the "Python lists" way
-   temp_f = []
-   for t in fires['temp']:
-       temp_f.append(t * 9 / 5 + 32)
-   # the pandas way
-   fires['temp_f'] = fires['temp'] * 9 / 5 + 32
-   ```
-   The second version is shorter, and also much faster on large tables since the loop runs in compiled code.
-3. **A boolean column is a question.** `fires['temp'] > 25` is a column of `True`/`False` (a *mask*), and `fires[mask]` keeps the rows where the mask is `True`. Masks are combined with `&` (and), `|` (or), `~` (not), with each condition between parentheses. Since `True` counts as 1, `mask.sum()` counts and `mask.mean()` gives a proportion.
-4. **Rows have labels (the index), and pandas matches data by label.** See section 3.
-5. **Split–apply–combine.** `fires.groupby('month')['area'].sum()` splits the rows by month, applies `sum` to each group and combines the results in a new table. This replaces the "loop and accumulate in a dictionary" pattern that we used in Classes 2 and 3. Together with `merge` (combine two tables through a common key, like a database join), it answers most descriptive questions about a dataset.
+**1.1 From a list of rows to a table of columns.** Until now, we stored records as lists of dictionaries, one per observation. A `DataFrame` stores them as columns, and each column (a `Series`) has a single data type (`df.dtypes`). A `DataFrame` can be thought of as a dictionary of columns that share the same row labels.
 
-</details>
+**1.2 Vectorisation: describe *what*, not *how*.** Because a column has one type, an operation can be applied to the whole column at once, instead of looping over its elements:
+```
+# the "Python lists" way
+temp_f = []
+for t in fires['temp']:
+    temp_f.append(t * 9 / 5 + 32)
+# the pandas way
+fires['temp_f'] = fires['temp'] * 9 / 5 + 32
+```
+The second version is shorter, and also much faster on large tables since the loop runs in compiled code.
 
-<details markdown="block">
-<summary> 3. The index: labels vs positions </summary>
+**1.3 The forest fires dataset.** The dataset [datasets/forestfires.csv](datasets/forestfires.csv) describes 517 fires in the Montesinho natural park, in Portugal ([source](https://archive.ics.uci.edu/dataset/162/forest+fires)). The variables are:
 
-Every row of a `DataFrame` has a **label** (the *index*, shown on the left) and a **position** (0, 1, 2, ...). Columns also have labels (the column names) and positions. There are two ways to select rows and columns:
+- `X`, `Y`: cell in a 9×9 grid over the park map
+- `month`, `day`: month (`jan` to `dec`) and weekday (`mon` to `sun`); note that there is no year
+- `FFMC`, `DMC`, `DC`, `ISI`: indices of the Canadian Fire Weather Index (FWI) system
+- `temp`: temperature (°C); `RH`: relative humidity (%); `wind`: wind speed (km/h); `rain`: rain (mm/m²)
+- `area`: burned area (ha), from 0 to 1090.84
+
+The file is read with `pd.read_csv` and explored with `.head()`, `.shape`, `.info()` and `.describe()`. Look before you compute: the mean and the median of `area` are very different, because most fires burned (almost) nothing.
+
+**1.4 Boolean masks: asking questions to the data.** `fires['temp'] > 25` is a column of `True`/`False` (a *mask*), and `fires[mask]` keeps the rows where the mask is `True`. Masks are combined with `&` (and), `|` (or), `~` (not), with each condition between parentheses, and `.isin()` checks membership in a list. Since `True` counts as 1, `mask.sum()` counts and `mask.mean()` gives a proportion.
+
+- *Exercise 1.4*: How many fires occurred on weekends? Is it more than expected if fires were spread evenly over the week?
+
+**1.5 The index: labels, not positions.** Every row of a `DataFrame` has a **label** (the *index*, shown on the left) and a **position** (0, 1, 2, ...). Columns also have labels (the column names) and positions. There are two ways to select rows and columns:
 
 | | `.loc[rows, columns]` | `.iloc[rows, columns]` |
 |---|---|---|
@@ -964,21 +971,31 @@ a + b            # jan 21, feb 32, mar 13
 ```
 For instance, `fires.loc[fires['area'] > 10, 'month'].value_counts() / fires['month'].value_counts()` gives the proportion of large fires for each month, although the two counts have months in different orders.
 
-`.reindex(labels)` builds a new `Series` (or `DataFrame`) with exactly the given labels, in the given order: existing labels keep their values, new labels get `NaN`, and labels not in the list are dropped:
-```
-a.reindex(['mar', 'jan', 'apr'])     # mar 3, jan 1, apr NaN (feb is dropped)
-```
-
-**After `groupby`, the group key becomes the index** of the result, sorted alphabetically (`apr`, `aug`, `dec`, ...). Therefore, the rows can be put in calendar order with `.reindex(['jan', 'feb', ...])`, and `.reset_index()` turns the index back into an ordinary column (useful before exporting or merging).
-
 If needed, labels and positions can be converted into each other: `fires.columns.get_indexer(['FFMC', 'DMC'])` gives the positions of the columns, to use with `iloc`; `fires.index[0:20]` gives the labels of the first 20 rows, to use with `loc`.
+
+- *Exercise 1.5*: Use `loc` to select the FWI variables for the fires in August and September. Then use `iloc` to take the first 5 rows of the result. Why does `.loc[0:4]` not give the same result?
 
 </details>
 
 <details markdown="block">
-<summary> 4. Tidy vs wide data </summary>
+<summary> Part 2 — Split, apply, combine; tidy and wide data </summary>
 
-A table is **tidy** when (1) each variable is a column, (2) each observation is a row, and (3) each type of observational unit is a table. The forest fires table is tidy: one row per fire, one column per variable.
+**2.1 `groupby`.** `fires.groupby('month')['area'].sum()` **splits** the rows by month, **applies** `sum` to each group and **combines** the results in a new table. This replaces the "loop and accumulate in a dictionary" pattern that we used in Classes 2 and 3. Several summaries can be computed at once with `.agg(...)`:
+```
+by_month = fires.groupby('month').agg(n_fires=('area', 'size'), total_area=('area', 'sum'))
+```
+
+**After `groupby`, the group key becomes the index** of the result, sorted alphabetically (`apr`, `aug`, `dec`, ...). `.reindex(labels)` builds a new `Series` (or `DataFrame`) with exactly the given labels, in the given order: existing labels keep their values, new labels get `NaN`, and labels not in the list are dropped:
+```
+a.reindex(['mar', 'jan', 'apr'])     # mar 3, jan 1, apr NaN (feb is dropped)
+```
+Therefore, the rows of `by_month` can be put in calendar order with `.reindex(['jan', 'feb', ...])`, and `.reset_index()` turns the index back into an ordinary column (useful before exporting or merging).
+
+- *Exercise 2.1*: Group by `day` instead. On which weekday is the *median* burned area largest? And the number of fires?
+
+**2.2 Joining tables: `merge`.** `merge` combines two tables through a common key, like a database join. In the notebook, a table `months` with the full name and the season of each month is merged with `fires`, to compare the burned area by season.
+
+**2.3 Tidy vs wide data.** A table is **tidy** when (1) each variable is a column, (2) each observation is a row, and (3) each type of observational unit is a table ([Wickham, 2014](https://doi.org/10.18637/jss.v059.i10)). The forest fires table is tidy: one row per fire, one column per variable.
 
 A **wide** table spreads a variable across several columns. For instance, the total burned area by month and weekday:
 ```
@@ -993,57 +1010,42 @@ Rule of thumb: keep data tidy while working, and make it wide at the end, for a 
 </details>
 
 <details markdown="block">
-<summary> 5. Exercises with the forest fires dataset </summary>
-
-The dataset [datasets/forestfires.csv](datasets/forestfires.csv) describes 517 fires in the Montesinho natural park, in Portugal ([source](https://archive.ics.uci.edu/dataset/162/forest+fires)). The variables are:
-
-- `X`, `Y`: cell in a 9×9 grid over the park map
-- `month`, `day`: month (`jan` to `dec`) and weekday (`mon` to `sun`); note that there is no year
-- `FFMC`, `DMC`, `DC`, `ISI`: indices of the Canadian Fire Weather Index (FWI) system
-- `temp`: temperature (°C); `RH`: relative humidity (%); `wind`: wind speed (km/h); `rain`: rain (mm/m²)
-- `area`: burned area (ha), from 0 to 1090.84
-
-The notebook covers the following exercises:
-
-1. Read the file with `pd.read_csv` into a dataframe `fires`. Explore it with `.head()`, `.shape`, `.dtypes`, `.info()` and `.describe()`.
-2. Compare the mean and the median of `area`. What proportion of the fires has `area == 0`? What is the best summary of a "typical" fire?
-3. Select the fires with temperature above 25 °C, and with temperature between 20 and 25 °C.
-4. How many fires occurred on weekends (use `.isin()`)? Is it more than expected if fires were spread evenly over the week?
-5. Use `loc` to select the FWI variables for the fires in August and September. Then use `iloc` to take the first 5 rows of the result. Why does `.loc[0:4]` not give the same result?
-6. Create a dataframe `by_month` with one row per month and columns `n_fires`, `avg_temp`, `avg_RH` and `total_area`, using `.groupby('month').agg(...)`. Order its rows from `jan` to `dec` with `.reindex()`. What is the effect of `.reset_index()`?
-7. Create a dataframe `months` with the abbreviation, full name and season of each month, and `merge` it with `fires`. Compare the burned area by season.
-8. Build a two-way table with the total burned area per month and weekday with `.pivot_table()`, and convert it back to a tidy table with `.melt()`.
-
-</details>
-
-<details markdown="block">
-<summary> 6. On your own: rural fires in Portugal (INE) </summary>
+<summary> Part 3 — On your own: rural fires in Portugal (INE) </summary>
 
 The file [datasets/rural_fires.csv](datasets/rural_fires.csv) was exported from [INE](https://www.ine.pt), and contains the number of rural fires in 2023 by geographic unit and cause of fire. As with most official statistics, it was prepared for people and not for computing:
 
 - the first 11 lines contain titles, and there are notes at the end of the file;
 - the separator is `;`;
-- each number is followed by ` &`, so pandas reads numbers as text;
+- each number is followed by ` &`, so pandas reads numbers as text (`dtype: object`);
 - the first column combines a code and a name (`1111601: Arcos de Valdevez`);
 - the rows mix different units (country, NUTS I, II, III regions, and municipalities);
 - the table is wide: the cause of the fire is spread over six columns.
 
-Part 3 of the notebook guides you through the following steps, from basic to challenging:
+The notebook first shows the raw text of the file, and then reads only the data rows into a dataframe `rf` with `pd.read_csv(..., sep=';', skiprows=11, nrows=347, header=None, usecols=range(8), names=[...])`. The exercises go from basic to challenging:
 
-1. Look at the raw text of the file, and read only the data rows with `pd.read_csv(..., sep=';', skiprows=11, nrows=347, header=None, usecols=range(8), names=[...])`.
-2. Convert the numeric columns to integers, using string methods on whole columns (`.str.replace`, `.str.strip`), and `.astype(int)`.
-3. Split the first column into `code` and `name` with `.str.split(': ', n=1, expand=True)`, and keep the municipalities (codes with 7 characters).
-4. Validate the data: does the sum over municipalities equal the total for Portugal? Is the total of each municipality equal to the sum of the six causes?
-5. Compute the percentage of fires due to negligence in each municipality.
-6. Convert the table into a tidy table with columns `code`, `name`, `cause`, `n_fires` with `.melt()`.
-7. Use the first two characters of the municipality code to obtain its NUTS II region, and `merge` with the NUTS II rows to get the region names.
-8. Compute the percentage of each cause in each region, and present the result as a wide table (regions × causes).
-9. Export the tidy table with `.to_csv('rural_fires_2023_tidy.csv', index=False)`.
+*Basic*
+
+- **3.1** Convert the numeric columns to integers, using string methods on whole columns (`.str.replace`, `.str.strip`), and `.astype(int)`.
+- **3.2** Split the first column into `code` and `name` with `.str.split(': ', n=1, expand=True)`.
+- **3.3** Keep the municipalities (codes with 7 characters) in a dataframe `mun`.
+- **3.4** Find the 10 municipalities with the most fires (`sort_values` or `nlargest`).
+
+*Intermediate*
+
+- **3.5** Validate the data: does the sum over municipalities equal the total for Portugal? Is the total of each municipality equal to the sum of the six causes?
+- **3.6** Compute the percentage of fires due to negligence in each municipality.
+
+*Challenge*
+
+- **3.7** Convert the table into a tidy table with columns `code`, `name`, `cause`, `n_fires` with `.melt()`.
+- **3.8** Use the first two characters of the municipality code to obtain its NUTS II region, and `merge` with the NUTS II rows to get the region names.
+- **3.9** Compute the percentage of each cause in each region, and present the result as a wide table (regions × causes).
+- **3.10** Export the tidy table with `.to_csv('rural_fires_2023_tidy.csv', index=False)`.
 
 </details>
 
 <details markdown="block">
-<summary> 7. Exporting to file </summary>
+<summary> Reference: exporting to file </summary>
 
 Exporting is done with methods named `.to_...`, and reading with functions named `pd.read_...`, as listed in <https://pandas.pydata.org/docs/user_guide/io.html>. For instance:
 
