@@ -201,6 +201,20 @@ Test how to perform a pull request with a trivial `run()` function for each team
 8. Click `Create pull request`.
 ```
 
+If the teacher's original repository changes after you forked it (for instance, the README is updated or other teams' pull requests are merged), your fork does not update automatically. Before working on a new submission, bring your fork up to date:
+```text
+1. Open your fork on GitHub (https://github.com/<your_username>/greends-ipython).
+2. If it says "This branch is X commits behind isa-ulisboa/greends-ipython:main", click Sync fork → Update branch.
+3. If you also have a local clone of your fork, run `git pull` in it to get the updates.
+```
+Alternatively, from a local clone of your fork, using the command line:
+```bash
+git remote add upstream https://github.com/isa-ulisboa/greends-ipython.git   # only the first time
+git fetch upstream
+git merge upstream/main
+git push origin main
+```
+
 </blockquote>
 </details>
 
@@ -848,139 +862,207 @@ Suggested problem: *CS50 P-Shirt* from CS50P [Problem set 6](https://cs50.harvar
 
 </details>
 
-<!--
+
 
 ---
 
 <details markdown="block">
-<summary> Class 7 (October 24, 2025): Jupyter notebooks, tabular data; pandas</summary>
+<summary><h2>  Class 7 (October 23, 2026): Jupyter notebooks; tabular data with pandas </h2></summary>
 
-- Tutorial: https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html
+- Getting started with pandas: <https://pandas.pydata.org/docs/getting_started/intro_tutorials/index.html>
+- Videos: overview by Rob Mulla, [Learning Pandas for Data Analysis? Start Here.](https://www.youtube.com/watch?v=DkjCaAMBGWM) (22'); course by Corey Schafer, [Pandas tutorial](https://www.youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS) (11 videos)
+- Tidy data: H. Wickham (2014), [Tidy Data](https://doi.org/10.18637/jss.v059.i10), *Journal of Statistical Software* 59(10)
 
-- Video sugestions:
-1. Overview by Rob Mulla: [Learning Pandas for Data Analysis? Start Here. (22')](https://www.youtube.com/watch?v=DkjCaAMBGWM)
-2. Course by Corey Schafer: [Pandas tutorial (11 videos)](https://www.youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS)
+The goal of this class is not to memorise pandas syntax, which is well documented, but to understand **how pandas thinks about data**, because that is what makes it a tool for data science. All the code is in the notebook [class7/class7_pandas.ipynb](class7/class7_pandas.ipynb):
 
-### Create a Pandas DataFrame from scratch
+- **Part 1** (expository): typed columns and vectorisation, boolean masks, the index.
+- **Part 2** (guided): `groupby`, `merge`, tidy vs wide tables.
+- **Part 3** (on your own): cleaning and analysing official statistics on rural fires in Portugal (INE).
 
-Pandas dataframes have an intrinsic tabular structure represented by rows and columns where each row and column has a unique *label* (name) and *position* number inside the dataframe. The row labels, called dataframe indices, can be integer numbers or string values. The column labels, called column names, are usually strings. Use the following script to create a dataframe from a dictionary. Notice the terminology for rows (`index`) and columns (`columns`). 
+<ul>
+<details markdown="block">
+<summary> 1. Setup: a Jupyter notebook in the CS50 codespace </summary>
+
+A Jupyter notebook (`.ipynb`) mixes text cells (Markdown) and code cells. Code cells are run one at a time with **Shift+Enter**, and their results (tables, numbers, plots) appear right below. Variables stay in memory between cells, which makes notebooks convenient to explore data step by step.
+
+In the terminal of the [CS50 codespace](https://cs50.dev/):
+
+1. Create a folder for the class and move into it:
 ```
-import pandas as pd
-data = {'Product': ['a', 'b', 'c', 'd', 'e', 'f'],
-        'Price': [10, 25, 15, 30, 20, 35],
-        'Quantity': [100, 50, 75, 30, 90, 20],
-        'Sales': [1000, 1250, 1125, 900, 1800, 700]}
-df = pd.DataFrame(data)
-df = df.set_index('Product')
-display(df)
+$ mkdir class7
+$ cd class7
 ```
-### DataFrame and Series Basics - Selecting Rows and Columns
+2. (Recommended, see Class 6) Create and activate a virtual environment:
+```
+$ python -m venv .venv
+$ source .venv/bin/activate
+```
+3. Install `pandas`, and `ipykernel`, which allows VS Code to run notebooks with this environment:
+```
+$ pip install pandas ipykernel
+```
+4. Download the notebook and open it:
+```
+$ wget https://raw.githubusercontent.com/isa-ulisboa/greends-ipython/main/class7/class7_pandas.ipynb
+$ code class7_pandas.ipynb
+```
+5. Click **Select Kernel** (top right of the notebook) → **Python Environments** → choose `.venv`. If VS Code asks to install the *Jupyter* extension, accept.
+6. Run the first cell. If it shows the pandas version, you are ready.
 
-1. Print the column names of `df` with `df.columns`. Note: `.columns` returns a `pd.Index` object. This is to provide extra functionality and performance compared to lists. To extract a list of names, one can use  `df.columns.to_list()`. To get an array, use `df.columns.values`. 
-2. Select columns:
-   - Create a `Series` object that corresponds to column `Price` with `df['Price']`
-   - Create a new dataframe object that corresponds to columns `Price` and `Quantity` with `df[['Price','Quantity']]`. 
-3. Select rows with boolean indexing:
-   - Create a new dataframe with only products with sales above 80 with `display(df[df['Sales'] > 1000])`
-4. Select rows and columns with `iloc` (positional indexing):
-   ```
-   # Select the first row by integer position
-   display(df.iloc[0])
-   # Select the first two rows and all columns by integer position
-   display(df.iloc[0:2, :])
-   # Select rows from index 1 to 3 (inclusive of 1, exclusive of 4)
-   # and columns from index 0 to 2 (exclusive of 2) by integer position
-   display(df.iloc[1:4, 0:2])
-   # Select a specific cell by integer position (row index 2, column index 1)
-   display(df.iloc[2, 1])
-   ``` 
-5. Select rows and columns with `loc` (label-based indexing):
-   ```
-   # Select a single row by its label
-   display(df.loc['a'])
-   # Select multiple rows by their labels
-   display(df.loc[['a', 'c', 'e']])
-   # Select rows by label and specific columns by label
-   display(df.loc[['a', 'c', 'e'], ['Price', 'Sales']])
-   # Select a slice of rows by label (inclusive of both start and stop labels)
-   display(df.loc['b':'e'])
-   # Select rows by label slice and columns by label slice
-   display(df.loc['b':'e', 'Quantity':'Sales'])
-   ```
-   
-### Read csv file 
+The datasets are read directly from the course repository, so there is no need to download them.
 
-Consider the dataset that described 517 fires from the Montesinho natural park in Portugal. For each incident weekday, month, coordinates, and the burnt area are recorded, as well as several meteorological data such as rain, temperature, humidity, and wind (https://www.kaggle.com/datasets/vikasukani/forest-firearea-datasets). For reference, a copy of the file is available [forestfires.csv](forestfires.csv). The variables are:
-
-- X - x-axis spatial coordinate within the Montesinho park map: 1 to 9
-- Y - y-axis spatial coordinate within the Montesinho park map: 2 to 9
-- month - month of the year: "Jan" to "dec"
-- day - day of the week: "mon" to "sun"
-- FFMC - FFMC index from the FWI system: 18.7 to 96.20
-- DMC - DMC index from the FWI system: 1.1 to 291.3
-- DC - DC index from the FWI system: 7.9 to 860.6
-- ISI - ISI index from the FWI system: 0.0 to 56.10
-- temp - the temperature in Celsius degrees: 2.2 to 33.30
-- RH - relative humidity in %: 15.0 to 100
-- wind - wind speed in km/h: 0.40 to 9.40
-- rain - outside rain in mm/m2 : 0.0 to 6.4
-- area - the burned area of the forest (in ha): 0.00 to 1090.84
-
-### Explore the dataset with Pandas
-
-1. Read the file with `pd.read_csv` into a new object `fires`, and show the first 10 rows with `fires.head(10)`.
-2. Create list of column names and determine column data types with attribute `.dtypes`.
-3. Print a summary of the dataframe with `.info()`.
-4. Create a `Series` with the temperature values for all 517 fires.
-5. Create a `DataFrame` just with columns `month` and `day`.
-6. Select fires for which the temperature is higher than 25 Celsius, and between 20 and 25 Celsius; note that each condition needs to be surrounded  by `(...)` and can be connected with `&` or `|` or negated with `~`.
-7. Select fires that occured on weekends; use the conditional function `.isin()`
-8. Check if there are no `Null` values in the dataframe with `.notna()`. You can sum along columns with `.sum()`.
-9. Use `iloc` to select the first 20 fires and just the FWI based variables values.
-10. Use `loc` and `is.in()` to select fires from August and September and just FWI based variables values for those fires.
-11. Create a dataframe `months_df` from a dictionary: for instance create a dictionary where keys are `jan`, `feb`, `mar`, for all 12 months, and the values are `January`, `February`, `March` and so on.
-    ```
-    month_data = {
-        'Month': [
-            'January', 'February', 'March', 'April', 'May', 'June', 
-            'July', 'August', 'September', 'October', 'November', 'December'
-        ],
-        'mth': [
-            'jan', 'feb', 'mar', 'apr', 'may', 'jun', 
-            'jul', 'aug', 'sep', 'oct', 'nov', 'dec'
-        ]
-    }
-    months_df = pd.DataFrame(month_data)
-    ```
-
-12. Merge with new dataframe to get a new variable that contains the full name of the month. See (https://pandas.pydata.org/docs/user_guide/merging.html)
-    ```
-    merged_df = pd.merge(fires, months_df, left_on='month', right_on='mth', how='left')
-    merged_df.drop(columns='mth', inplace=True)
-    ```
-1. Create a dataframe named `firesbymonth` with columns `avg_temp` (average temperature for fires in that month), `avg_RH` (idem, for humidity) and `fire_count` (number of fires). Towards that end, reduce the `fires` dataframe with method `.groupby` to get just one row per month, and average temperature, average RH, and number of fires per month. See (https://pandas.pydata.org/docs/user_guide/groupby.html)
-2. What is the effect of adding the method `.reset_index()` to the previous command?
-3. Sort the dataframe `firesbymonth`, such that the 12 rows are ordered by month correctly: `jan`, `feb`, `mar`, and so on.
-4. Create a new column called `conditions` in `firesbymonth` of type string that indicates if a month is `dry&hot`, `dry&cold`, `wet&hot` or `wet&cold`. Use the mean values of `avg_temp` and `avg_RH` to establish the appropriate thresholds. Use method `.apply` and define the function to apply with `lambda`.
-5. Re-organize the information in `fires` into a two-way table that shows the total area of fires per day of the week and per month, where `NaN` are replaced by 0. Towards that end, explore the `.pivot_table` method.
-
-### Combining positional and label-based indexing
-
-There are several possibilities to combine positional and label-based indexing:
-
-1. (with `iloc`) Using `df.columns.get_loc()` which converts the name of one column into its position. Then `iloc` can be used to perform the selection. For multiple columns determined by a list of column names, one can use instead `df.columns.get_indexer()`. Example: Use `iloc` to select the first 20 fires and just the FWI based variables values, using the names rather than the positions of those variables. Solution: `FWI_positions=fires.columns.get_indexer(['FFMC','DMC','DC','ISI'])` and `
-fires.iloc[0:20,FWI_positions]`
-2. (with `loc`) Using `df.index[]` to extract the index names. Then, `loc` can be used to perform the selection. Solution: `fires.loc[fires.index[0:20], ['FFMC', 'DMC', 'DC', 'ISI']]`.
-
-### Exporting to file
-
-Exporting is done with operations named `.to_...` as listed in (https://pandas.pydata.org/docs/user_guide/io.html)
-
-1. Export your file as an Excel spreadsheet with  `.to_excel("filename.xlsx", sheetname="fires", index=False)`
-2. Read an Excel spreadsheet with: `pd.read_excel("filename.xlsx", sheetname="fires", index=False)`
-
+If the notebook cannot be set up in the codespace, open it in [Google Colab](https://colab.research.google.com/) (*File → Open notebook → GitHub*, then paste the notebook's URL).
 
 </details>
+
+<details markdown="block">
+<summary> 2. The logic of pandas </summary>
+
+1. **A table is a set of typed columns, not a list of rows.** Until now, we stored records as lists of dictionaries, one per observation. A `DataFrame` stores them as columns, and each column (a `Series`) has a single data type (`df.dtypes`). A `DataFrame` can be thought of as a dictionary of columns that share the same row labels.
+2. **Vectorisation: describe *what*, not *how*.** Because a column has one type, an operation can be applied to the whole column at once, instead of looping over its elements:
+   ```
+   # the "Python lists" way
+   temp_f = []
+   for t in fires['temp']:
+       temp_f.append(t * 9 / 5 + 32)
+   # the pandas way
+   fires['temp_f'] = fires['temp'] * 9 / 5 + 32
+   ```
+   The second version is shorter, and also much faster on large tables since the loop runs in compiled code.
+3. **A boolean column is a question.** `fires['temp'] > 25` is a column of `True`/`False` (a *mask*), and `fires[mask]` keeps the rows where the mask is `True`. Masks are combined with `&` (and), `|` (or), `~` (not), with each condition between parentheses. Since `True` counts as 1, `mask.sum()` counts and `mask.mean()` gives a proportion.
+4. **Rows have labels (the index), and pandas matches data by label.** See section 3.
+5. **Split–apply–combine.** `fires.groupby('month')['area'].sum()` splits the rows by month, applies `sum` to each group and combines the results in a new table. This replaces the "loop and accumulate in a dictionary" pattern that we used in Classes 2 and 3. Together with `merge` (combine two tables through a common key, like a database join), it answers most descriptive questions about a dataset.
+
+</details>
+
+<details markdown="block">
+<summary> 3. The index: labels vs positions </summary>
+
+Every row of a `DataFrame` has a **label** (the *index*, shown on the left) and a **position** (0, 1, 2, ...). Columns also have labels (the column names) and positions. There are two ways to select rows and columns:
+
+| | `.loc[rows, columns]` | `.iloc[rows, columns]` |
+|---|---|---|
+| selects by | label | position |
+| slice `a:b` | includes `b` | excludes `b`, like Python lists |
+| slice example | `fires.loc[0:4, 'temp':'wind']`<br>5 rows (labels 0 to 4), columns `temp`, `RH`, `wind` | `fires.iloc[0:4, 8:10]`<br>4 rows (positions 0 to 3), columns `temp`, `RH` (positions 8, 9) |
+| typical use | `fires.loc[fires['month'] == 'aug', ['temp', 'RH']]` | `fires.iloc[:20, 4:8]` |
+
+When a CSV file is read, the index is `0, 1, 2, ...`, so labels and positions coincide and `loc` and `iloc` *seem* to do the same thing. The difference appears as soon as rows are filtered, because **the original labels are kept**:
+```
+hot = fires[fires['temp'] > 25]
+hot.iloc[0]      # first row of hot (by position)
+hot.loc[0]       # KeyError: there is no longer a row with label 0
+```
+
+Labels do not need to be integers. `set_index` turns a column into the index:
+```
+months = pd.DataFrame({'mth': ['jan', 'feb', 'mar'], 'name': ['January', 'February', 'March']})
+months = months.set_index('mth')
+months.loc['feb', 'name']    # 'February'
+```
+
+**Why does the index exist? Alignment.** When two `Series` are combined, pandas matches their values **by label**, not by position. Labels that exist in only one of them give `NaN` (missing value), instead of a silent mismatch:
+```
+a = pd.Series([1, 2, 3], index=['jan', 'feb', 'mar'])
+b = pd.Series([10, 20, 30], index=['mar', 'jan', 'feb'])
+a + b            # jan 21, feb 32, mar 13
+```
+For instance, `fires.loc[fires['area'] > 10, 'month'].value_counts() / fires['month'].value_counts()` gives the proportion of large fires for each month, although the two counts have months in different orders.
+
+`.reindex(labels)` builds a new `Series` (or `DataFrame`) with exactly the given labels, in the given order: existing labels keep their values, new labels get `NaN`, and labels not in the list are dropped:
+```
+a.reindex(['mar', 'jan', 'apr'])     # mar 3, jan 1, apr NaN (feb is dropped)
+```
+
+**After `groupby`, the group key becomes the index** of the result, sorted alphabetically (`apr`, `aug`, `dec`, ...). Therefore, the rows can be put in calendar order with `.reindex(['jan', 'feb', ...])`, and `.reset_index()` turns the index back into an ordinary column (useful before exporting or merging).
+
+If needed, labels and positions can be converted into each other: `fires.columns.get_indexer(['FFMC', 'DMC'])` gives the positions of the columns, to use with `iloc`; `fires.index[0:20]` gives the labels of the first 20 rows, to use with `loc`.
+
+</details>
+
+<details markdown="block">
+<summary> 4. Tidy vs wide data </summary>
+
+A table is **tidy** when (1) each variable is a column, (2) each observation is a row, and (3) each type of observational unit is a table. The forest fires table is tidy: one row per fire, one column per variable.
+
+A **wide** table spreads a variable across several columns. For instance, the total burned area by month and weekday:
+```
+wide = fires.pivot_table(index='month', columns='day', values='area', aggfunc='sum', fill_value=0)
+```
+Here, the weekday is a variable, but each weekday became a column. Wide tables are good for **people** (easy to read and compare, common in reports and in official statistics). Tidy tables are good for **computing**: filtering, `groupby`, `merge` and plotting all expect one variable per column. `melt` converts a wide table into a tidy (long) one:
+```
+long = wide.reset_index().melt(id_vars='month', var_name='day', value_name='area')
+```
+Rule of thumb: keep data tidy while working, and make it wide at the end, for a report.
+
+</details>
+
+<details markdown="block">
+<summary> 5. Exercises with the forest fires dataset </summary>
+
+The dataset [datasets/forestfires.csv](datasets/forestfires.csv) describes 517 fires in the Montesinho natural park, in Portugal ([source](https://archive.ics.uci.edu/dataset/162/forest+fires)). The variables are:
+
+- `X`, `Y`: cell in a 9×9 grid over the park map
+- `month`, `day`: month (`jan` to `dec`) and weekday (`mon` to `sun`); note that there is no year
+- `FFMC`, `DMC`, `DC`, `ISI`: indices of the Canadian Fire Weather Index (FWI) system
+- `temp`: temperature (°C); `RH`: relative humidity (%); `wind`: wind speed (km/h); `rain`: rain (mm/m²)
+- `area`: burned area (ha), from 0 to 1090.84
+
+The notebook covers the following exercises:
+
+1. Read the file with `pd.read_csv` into a dataframe `fires`. Explore it with `.head()`, `.shape`, `.dtypes`, `.info()` and `.describe()`.
+2. Compare the mean and the median of `area`. What proportion of the fires has `area == 0`? What is the best summary of a "typical" fire?
+3. Select the fires with temperature above 25 °C, and with temperature between 20 and 25 °C.
+4. How many fires occurred on weekends (use `.isin()`)? Is it more than expected if fires were spread evenly over the week?
+5. Use `loc` to select the FWI variables for the fires in August and September. Then use `iloc` to take the first 5 rows of the result. Why does `.loc[0:4]` not give the same result?
+6. Create a dataframe `by_month` with one row per month and columns `n_fires`, `avg_temp`, `avg_RH` and `total_area`, using `.groupby('month').agg(...)`. Order its rows from `jan` to `dec` with `.reindex()`. What is the effect of `.reset_index()`?
+7. Create a dataframe `months` with the abbreviation, full name and season of each month, and `merge` it with `fires`. Compare the burned area by season.
+8. Build a two-way table with the total burned area per month and weekday with `.pivot_table()`, and convert it back to a tidy table with `.melt()`.
+
+</details>
+
+<details markdown="block">
+<summary> 6. On your own: rural fires in Portugal (INE) </summary>
+
+The file [datasets/rural_fires.csv](datasets/rural_fires.csv) was exported from [INE](https://www.ine.pt), and contains the number of rural fires in 2023 by geographic unit and cause of fire. As with most official statistics, it was prepared for people and not for computing:
+
+- the first 11 lines contain titles, and there are notes at the end of the file;
+- the separator is `;`;
+- each number is followed by ` &`, so pandas reads numbers as text;
+- the first column combines a code and a name (`1111601: Arcos de Valdevez`);
+- the rows mix different units (country, NUTS I, II, III regions, and municipalities);
+- the table is wide: the cause of the fire is spread over six columns.
+
+Part 3 of the notebook guides you through the following steps, from basic to challenging:
+
+1. Look at the raw text of the file, and read only the data rows with `pd.read_csv(..., sep=';', skiprows=11, nrows=347, header=None, usecols=range(8), names=[...])`.
+2. Convert the numeric columns to integers, using string methods on whole columns (`.str.replace`, `.str.strip`), and `.astype(int)`.
+3. Split the first column into `code` and `name` with `.str.split(': ', n=1, expand=True)`, and keep the municipalities (codes with 7 characters).
+4. Validate the data: does the sum over municipalities equal the total for Portugal? Is the total of each municipality equal to the sum of the six causes?
+5. Compute the percentage of fires due to negligence in each municipality.
+6. Convert the table into a tidy table with columns `code`, `name`, `cause`, `n_fires` with `.melt()`.
+7. Use the first two characters of the municipality code to obtain its NUTS II region, and `merge` with the NUTS II rows to get the region names.
+8. Compute the percentage of each cause in each region, and present the result as a wide table (regions × causes).
+9. Export the tidy table with `.to_csv('rural_fires_2023_tidy.csv', index=False)`.
+
+</details>
+
+<details markdown="block">
+<summary> 7. Exporting to file </summary>
+
+Exporting is done with methods named `.to_...`, and reading with functions named `pd.read_...`, as listed in <https://pandas.pydata.org/docs/user_guide/io.html>. For instance:
+
+1. Export a dataframe as a CSV file with `df.to_csv('filename.csv', index=False)`. Use `index=False` unless the index contains information (for instance, after `groupby`); otherwise, the labels `0, 1, 2, ...` are written as an extra column.
+2. Export as an Excel spreadsheet with `df.to_excel('filename.xlsx', sheet_name='fires', index=False)` (requires `pip install openpyxl`).
+3. Read an Excel spreadsheet with `pd.read_excel('filename.xlsx', sheet_name='fires')`.
+
+</details>
+</ul>
+
+</details>
+
+
+<!--
 
 ---
 
