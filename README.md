@@ -985,11 +985,11 @@ If needed, labels and positions can be converted into each other: `fires.columns
 by_month = fires.groupby('month').agg(n_fires=('area', 'size'), total_area=('area', 'sum'))
 ```
 
-**After `groupby`, the group key becomes the index** of the result, sorted alphabetically (`apr`, `aug`, `dec`, ...). `.reindex(labels)` builds a new `Series` (or `DataFrame`) with exactly the given labels, in the given order: existing labels keep their values, new labels get `NaN`, and labels not in the list are dropped:
+**After `groupby`, the group key becomes the index** of the result, sorted alphabetically (`apr`, `aug`, `dec`, ...). `.reindex(labels)` builds a new `Series` (or `DataFrame`) with exactly the given labels, in the given order: existing labels keep their values, new labels get `NaN`, and labels not in the list are dropped. The table `months` of section 1.5 (with all 12 months, in the notebook) has the months in calendar order as its index, so `months.index` is exactly the list of labels needed:
 ```
-a.reindex(['mar', 'jan', 'apr'])     # mar 3, jan 1, apr NaN (feb is dropped)
+by_month = by_month.reindex(months.index)   # rows from jan to dec
 ```
-Therefore, the rows of `by_month` can be put in calendar order with `.reindex(['jan', 'feb', ...])`, and `.reset_index()` turns the index back into an ordinary column (useful before exporting or merging).
+`.reset_index()` turns the index back into an ordinary column (useful before exporting or merging).
 
 - *Exercise 2.1*: Group by `day` instead. On which weekday is the *median* burned area largest? And the number of fires?
 
@@ -997,7 +997,9 @@ Therefore, the rows of `by_month` can be put in calendar order with `.reindex(['
 
 **2.3 Tidy vs wide data.** A table is **tidy** when (1) each variable is a column, (2) each observation is a row, and (3) each type of observational unit is a table ([Wickham, 2014](https://doi.org/10.18637/jss.v059.i10)). The forest fires table is tidy: one row per fire, one column per variable.
 
-A **wide** table spreads a variable across several columns. For instance, the total burned area by month and weekday:
+Two methods convert between the two shapes, and they are (roughly) inverse operations: `pivot_table` goes from **tidy to wide** (the values of one column become the row labels, `index`, the values of another column become the column names, `columns`, and each cell summarises a third column, `values`, with a function, `aggfunc`), and `melt` goes from **wide to tidy** (the column names become the values of a new column). "Roughly" because `pivot_table` aggregates: after `melt` we get back the totals per month and weekday, not the individual fires.
+
+A **wide** table spreads a variable across several columns. For instance, the total burned area by month and weekday (`fill_value=0` fills the combinations without any fire):
 ```
 wide = fires.pivot_table(index='month', columns='day', values='area', aggfunc='sum', fill_value=0)
 ```
