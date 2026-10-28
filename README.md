@@ -1172,10 +1172,11 @@ The notebook first shows the raw text of the file, and then reads only the data 
 ---
 
 <details markdown="block">
-<summary><h2>  Class 9 (November 27, 2026): objects and classes; attributes and methods </h2></summary>
+<summary><h2>  Class 9 (November 13, 2026): objects and classes; attributes and methods </h2></summary>
 
 - CS50P, [Lecture 8: Object-Oriented Programming](https://cs50.harvard.edu/python/weeks/8/). For this class, the first part of the lecture (classes, attributes, methods, `raise`, `__str__`) is enough.
-- Video: [Python Object Oriented Programming (OOP) - For Beginners](https://www.youtube.com/watch?v=JeznW_7DlB0) (53'): classes and objects, attributes, methods, and inheritance.
+- CS50P. In particular, check the shorts on classes, methods and variables, in this order: Classes, 
+Instance Variables,  Instance Methods, and Class Methods and Class Variables.
 
 The goal of this class is to understand **what an object is**, and to write your first classes. As an example, we model a plant nursery: plants grow in trays, all plants of a tray are of the same species, and plants can be added to or removed from a tray. We want to keep track of the trays and of the number of plants of each species.
 
