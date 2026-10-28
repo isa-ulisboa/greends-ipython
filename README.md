@@ -877,7 +877,8 @@ The goal of this class is not to memorise pandas syntax, which is well documente
 
 - **Part 1** (expository): typed columns and vectorisation, boolean masks, the index.
 - **Part 2** (guided): `groupby`, `merge`, tidy vs wide tables.
-- **Part 3** (on your own): cleaning and analysing official statistics on rural fires in Portugal (INE).
+
+The exercises on rural fires in Portugal (INE), which were Part 3 of this class, are now in Class 8.
 
 <ul>
 <details markdown="block">
@@ -1012,41 +1013,6 @@ Rule of thumb: keep data tidy while working, and make it wide at the end, for a 
 </details>
 
 <details markdown="block">
-<summary> Part 3 — On your own: rural fires in Portugal (INE) </summary>
-
-The file [datasets/rural_fires.csv](datasets/rural_fires.csv) was exported from [INE](https://www.ine.pt), and contains the number of rural fires in 2023 by geographic unit and cause of fire. As with most official statistics, it was prepared for people and not for computing:
-
-- the first 11 lines contain titles, and there are notes at the end of the file;
-- the separator is `;`;
-- each number is followed by ` &`, so pandas reads numbers as text (`dtype: object`);
-- the first column combines a code and a name (`1111601: Arcos de Valdevez`);
-- the rows mix different units (country, NUTS I, II, III regions, and municipalities);
-- the table is wide: the cause of the fire is spread over six columns.
-
-The notebook first shows the raw text of the file, and then reads only the data rows into a dataframe `rf` with `pd.read_csv(..., sep=';', skiprows=11, nrows=347, header=None, usecols=range(8), names=[...])`. The exercises go from basic to challenging:
-
-*Basic*
-
-- **3.1** Convert the numeric columns to integers, using string methods on whole columns (`.str.replace`, `.str.strip`), and `.astype(int)`.
-- **3.2** Split the first column into `code` and `name` with `.str.split(': ', n=1, expand=True)`.
-- **3.3** Keep the municipalities (codes with 7 characters) in a dataframe `mun`.
-- **3.4** Find the 10 municipalities with the most fires (`sort_values` or `nlargest`).
-
-*Intermediate*
-
-- **3.5** Validate the data: does the sum over municipalities equal the total for Portugal? Is the total of each municipality equal to the sum of the six causes?
-- **3.6** Compute the percentage of fires due to negligence in each municipality.
-
-*Challenge*
-
-- **3.7** Convert the table into a tidy table with columns `code`, `name`, `cause`, `n_fires` with `.melt()`.
-- **3.8** Use the first two characters of the municipality code to obtain its NUTS II region, and `merge` with the NUTS II rows to get the region names.
-- **3.9** Compute the percentage of each cause in each region, and present the result as a wide table (regions × causes).
-- **3.10** Export the tidy table with `.to_csv('rural_fires_2023_tidy.csv', index=False)`.
-
-</details>
-
-<details markdown="block">
 <summary> Reference: exporting to file </summary>
 
 Exporting is done with methods named `.to_...`, and reading with functions named `pd.read_...`, as listed in <https://pandas.pydata.org/docs/user_guide/io.html>. For instance:
@@ -1060,132 +1026,412 @@ Exporting is done with methods named `.to_...`, and reading with functions named
 
 </details>
 
-
-<!--
-
 ---
 
 <details markdown="block">
-<summary>  Class 8 (November 7, 2025): Pandas</summary>
+<summary><h2>  Class 8 (November 6, 2026): pandas, continued: select, sort, group, create </h2></summary>
 
-Exercises with Pandas. Continued from last class
+- pandas user guide: [indexing and selecting data](https://pandas.pydata.org/docs/user_guide/indexing.html), [working with text data](https://pandas.pydata.org/docs/user_guide/text.html), [group by: split-apply-combine](https://pandas.pydata.org/docs/user_guide/groupby.html)
+- Videos: course by Corey Schafer, [Pandas tutorial](https://www.youtube.com/playlist?list=PL-osiE80TeTsWmV9i9c58mdDCSskIFdDS), in particular the videos on filtering, sorting, and grouping and aggregating
+
+This class continues Class 7, and focuses on the four operations that are needed in **assignment #3**:
+
+| question | pandas |
+|---|---|
+| Which rows? | masks: comparisons, `&` `\|` `~`, `.between`, `.isin`, string methods `.str...` |
+| In which order? | `sort_values` (one or more columns), `nlargest` |
+| What is the summary for each group? | `groupby` + `agg` |
+| How do I create a new variable? | arithmetic on columns; `apply` with a function or a `lambda` |
+
+All the code is in the notebook [class8/class8_pandas.ipynb](class8/class8_pandas.ipynb):
+
+- **Part 1** (guided): the four operations, on the forest fires dataset of Class 7.
+- **Part 2** (on your own): cleaning and analysing official statistics on rural fires in Portugal (INE). This was Part 3 of Class 7: if you have already done some of the exercises, continue from where you stopped.
+
+The notebook is set up as in Class 7 (see *Setup* in Class 7), in a folder `class8`:
+```
+$ mkdir class8
+$ cd class8
+$ wget https://raw.githubusercontent.com/isa-ulisboa/greends-ipython/main/class8/class8_pandas.ipynb
+$ code class8_pandas.ipynb
+```
+
+<ul>
+<details markdown="block">
+<summary> Part 1 — Select, sort, group, create </summary>
+
+**1.1 Selecting rows.** A condition on a column gives a *mask* (a column of `True`/`False`), and `fires[mask]` keeps the rows where the mask is `True`. Conditions are combined with `&` (and), `|` (or), `~` (not), and each condition needs its own parentheses. The Python words `and` and `or` do not work on whole columns (`ValueError: The truth value of a Series is ambiguous`).
+```python
+fires[(fires['temp'] > 25) & (fires['RH'] < 30)]
+fires[fires['temp'].between(20, 22)]                  # 20 <= temp <= 22
+fires[fires['month'].isin(['jun', 'jul', 'aug', 'sep'])]
+fires[~fires['month'].isin(['jun', 'jul', 'aug', 'sep'])]
+```
+The methods of Python strings are applied to a whole text column through `.str`, for instance `.str.upper()`, `.str.startswith('j')`, `.str.contains('Vila')`, `.str.replace('&', '')`, `.str.len()` or `.str[:2]` (first two characters). `fires.loc[mask, ['month', 'area']]` selects rows and columns at the same time, and `mask.sum()` counts the rows.
+
+- *Exercise 1.1*: How many fires occurred in summer with wind above 5 km/h and no rain?
+
+**1.2 Sorting.** `sort_values` returns a new, sorted table. With a list of columns, rows are sorted by the first column, then by the second one for rows with the same value in the first column, and so on; `ascending` can be a list too:
+```python
+fires.sort_values('area', ascending=False)
+fires.sort_values(['month', 'area'], ascending=[True, False])   # within each month, largest fires first
+fires.nlargest(5, 'area')
+```
+- *Exercise 1.2*: Sort the fires by `day` and then by `temp` (highest first), and show the 3 hottest fires of each weekday with `.groupby('day').head(3)`.
+
+**1.3 Group and aggregate.** The pattern is `table.groupby(KEY)[COLUMN].FUNCTION()`. `.agg` computes several summaries at once, and *named aggregation* (`new_name=(column, function)`) chooses the names of the result. Operations can be chained: select, then group, then sort.
+```python
+fires.groupby('month')['area'].agg(['size', 'sum', 'mean', 'max'])
+fires.groupby('month').agg(n_fires=('area', 'size'), mean_temp=('temp', 'mean'), total_area=('area', 'sum'))
+fires[fires['area'] > 0].groupby('month')['area'].median().sort_values(ascending=False)
+fires.groupby(['month', 'day']).size().reset_index(name='n_fires')            # two keys
+```
+- *Exercise 1.3*: For each weekday, compute the number of fires, the mean temperature and the total burned area, sorted by total burned area.
+
+**1.4 New variables: `apply` and `lambda`.** When the new variable is a formula, use arithmetic on columns (`fires['area'] / 100`). When the rule needs an `if`/`else`, or a function of your own, `.apply(f)` calls the function `f` on each value of the column. A **lambda** is a function without a name, written in one line: `lambda a: expression` is the same as `def f(a): return expression`. With `axis=1`, the function is applied to each **row**, and can use several columns.
+```python
+def size_class(a):
+    if a == 0:
+        return 'none'
+    elif a < 10:
+        return 'small'
+    else:
+        return 'large'
+
+fires['size_class'] = fires['area'].apply(size_class)                          # a function, without ()
+fires['burned'] = fires['area'].apply(lambda a: 'yes' if a > 0 else 'no')      # a lambda
+fires['season'] = fires['month'].apply(lambda m: season[m])                    # season is a dictionary
+fires['hot_dry'] = fires.apply(lambda row: row['temp'] > 25 and row['RH'] < 30, axis=1)   # each row
+fires.groupby('size_class')['temp'].mean()                                     # group by the new variable
+```
+Rule of thumb: use arithmetic and masks when possible (they are much faster), and `apply` when you need a function of your own.
+
+- *Exercise 1.4*: Create a column `wind_class` (`calm`, `moderate`, `strong`) with `apply`, and compute the mean burned area for each class. Create a column `weekend` with `apply` and a `lambda`, and compare the proportion of fires that burned something on weekends and on weekdays.
+
+</details>
+
+<details markdown="block">
+<summary> Part 2 — On your own: rural fires in Portugal (INE) </summary>
+
+The file [datasets/rural_fires.csv](datasets/rural_fires.csv) was exported from [INE](https://www.ine.pt), the Portuguese national statistics institute, and contains the number of rural fires in 2023 by geographic unit and by cause of fire. The geographic units follow the NUTS classification (version 2024), with hierarchical codes:
+
+| code | level | examples |
+|---|---|---|
+| `PT` | country | Portugal |
+| 1 character | NUTS I | `1` Continente, `2` Açores, `3` Madeira |
+| 2 characters | NUTS II | `11` Norte, `19` Centro, `1A` Grande Lisboa, `1B` Península de Setúbal, `1C` Alentejo, `1D` Oeste e Vale do Tejo, `15` Algarve, `20`, `30` |
+| 3 characters | NUTS III | `111` Alto Minho, `112` Cávado, ... |
+| 7 characters | municipality | `1111601` Arcos de Valdevez |
+
+The code of a municipality starts with the codes of its NUTS II (2 characters) and NUTS III (3 characters) regions. As with most official statistics, the file was prepared for people and not for computing:
+
+- the first 11 lines contain titles, and there are notes at the end of the file;
+- the separator is `;`;
+- each number is followed by ` &`, so pandas reads numbers as text (`dtype` is `object`, or `str` in pandas 3);
+- the first column combines a code and a name (`1111601: Arcos de Valdevez`);
+- the rows mix different units (country, NUTS I, II, III regions, and municipalities);
+- the table is wide: the cause of the fire is spread over six columns.
+
+The notebook first shows the raw text of the file, and then reads only the data rows into a dataframe `rf` with `pd.read_csv(..., sep=';', skiprows=11, nrows=347, header=None, usecols=range(8), names=[...])`. The exercises follow a typical workflow: clean, then select, sort, create and group (Part 1), and finally report.
+
+*Cleaning*
+
+- **2.1** Convert the numeric columns to integers, either with string methods on whole columns (`.str.replace`, `.str.strip`, `.astype(int)`), or with `apply` and a `lambda` that converts one value.
+- **2.2** Split the first column into `code` and `name` with `.str.split(': ', n=1, expand=True)`.
+
+*Selecting rows*
+
+- **2.3** Keep the municipalities (codes with 7 characters) in a dataframe `mun`, and add columns `nuts2` and `nuts3` with the first characters of the code.
+- **2.4** With masks: the number of fires in a list of cities (`.isin`), in the municipalities whose name starts with `Vila`, the municipalities without fires, and the municipalities of the Alentejo with more than 20 fires.
+
+*Sorting*
+
+- **2.5** The 10 municipalities with the most fires, and the 3 municipalities with the most fires in each NUTS II region (sort by two columns).
+
+*Validating and creating new variables*
+
+- **2.6** Validate the data: does the sum over municipalities equal the total for Portugal? Is the total of each municipality equal to the sum of the six causes?
+- **2.7** The percentage of fires due to negligence in each municipality.
+- **2.8** With `apply`: a class of municipality by number of fires (`none`, `few`, `some`, `many`), and the main cause of fire in each municipality (`apply` on rows with `axis=1`).
+
+*Grouping*
+
+- **2.9** For each NUTS II region: number of municipalities, total, mean and maximum number of fires; the region names with `merge`; and the number of municipalities by region and main cause (two keys).
+
+*Challenge*
+
+- **2.10** Convert the table into a tidy table with columns `code`, `name`, `nuts2`, `cause`, `n_fires` with `.melt()`.
+- **2.11** Compute the percentage of each cause in each region, and present the result as a wide table (regions × causes).
+- **2.12** Export the tidy table with `.to_csv('rural_fires_2023_tidy.csv', index=False)` (see *Reference: exporting to file* in Class 7).
+
+</details>
+</ul>
 
 </details>
 
 ---
 
 <details markdown="block">
-<summary> Class 9 (November 15, 2025): OOP, classes, methods, attributes </summary>
+<summary><h2>  Class 9 (November 27, 2026): objects and classes; attributes and methods </h2></summary>
 
-Suggestions:
-- [CS50P: Object-Oriented Programming](https://cs50.harvard.edu/python/weeks/8/).
-- Self contained [Python Object Oriented Programming (OOP) - For Beginners (53')](https://www.youtube.com/watch?v=JeznW_7DlB0). This beginner-friendly Python tutorial explains object-oriented programming (OOP) concepts. It covers classes and objects, demonstrating how to create custom objects using classes. Learn about methods, attributes, and inheritance.
+- CS50P, [Lecture 8: Object-Oriented Programming](https://cs50.harvard.edu/python/weeks/8/). For this class, the first part of the lecture (classes, attributes, methods, `raise`, `__str__`) is enough.
+- Video: [Python Object Oriented Programming (OOP) - For Beginners](https://www.youtube.com/watch?v=JeznW_7DlB0) (53'): classes and objects, attributes, methods, and inheritance.
 
-Suppose that one wants write a script in python using classes to monitor plants at a nursery. Initially plants grow from seeds in trays and one wants to keep track of the trays and number of plants per tray. All plants in a given tray are from the same species. Plants can be removed or added to the tray. One wants to track the plants of each species that are in the nursery.
+The goal of this class is to understand **what an object is**, and to write your first classes. As an example, we model a plant nursery: plants grow in trays, all plants of a tray are of the same species, and plants can be added to or removed from a tray. We want to keep track of the trays and of the number of plants of each species.
 
-For this type of problem, one wants to mimic entities of the real world (plants, trays, nursery) as objects in  Python code. Object-oriented programming is an intuitive form of doing so. A class in Python is an object constructor, or a *blueprint* for creating objects.
+- **Part 1** (expository): you have been using objects for weeks.
+- **Part 2** (guided): from a dictionary to a class: `__init__`, `self`, attributes.
+- **Part 3** (guided): methods with rules, `__str__`, objects that contain objects.
+- **Part 4** (on your own): a nursery inventory.
 
-The simplest example of  class, with very little functionality, is a class to store constant values, which are not supposed to change. When one calls the class `Constants` defined below, an instance of the class with the two properties `MAX_PLANTS_PER_TRAY` and `SALE_PRICE` is created.
+Create a folder `class9` in the [CS50 codespace](https://cs50.dev/) and write the code of Parts 2 and 3 in a script, for instance `nursery.py`, and run it with `python nursery.py`. Short tests can also be done in the Python REPL (type `python` in the terminal).
 
+<ul>
+<details markdown="block">
+<summary> Part 1 — You have been using objects </summary>
+
+**1.1 Data and actions.** Every value in Python is an **object**, and every object belongs to a **class** (its type). An object bundles **data** (its *attributes*) and **actions** on that data (its *methods*):
 ```python
-class Constants:
-   MAX_PLANTS_PER_TRAY=50
-   SALE_PRICE=5
+s = "Quercus suber"
+type(s)          # <class 'str'>: s is an object (an instance) of class str
+s.upper()        # method: an action, with parentheses
+s.split()        # another method of class str
 
-print(Constants.SALE_PRICE)
+values = [12, 3, 7]
+type(values)     # <class 'list'>
+values.append(5) # method: changes the list
+values.sort()
 ```
-However, in general we intent to call the class to create one instance (one object) of the class and set the **attributes** of that object. To indicate the values of the instance attributes we use the `__init__` method:
+In Class 7 we used both kinds with pandas: `fires.shape` and `fires.columns` are **attributes** (data, no parentheses), while `fires.head()` and `fires.groupby('month')` are **methods** (actions, with parentheses). The same happened with Pillow in Class 6 (`img.size` and `img.rotate(90)`) and with `requests` in Class 5 (`response.status_code` and `response.json()`).
+
+The function `dir(s)` lists all attributes and methods of an object.
+
+- *Exercise 1.1*: Create two strings `a = "olive"` and `b = "cork oak"`. Do `a.upper()` and `b.upper()` run the same code? Do they return the same result? Why?
+
+The answer to exercise 1.1 is the main idea of this class: all objects of a class share the same **methods** (the class is the *blueprint*), but each object has its own **data**. Today we write our own classes.
+
+</details>
+
+<details markdown="block">
+<summary> Part 2 — From a dictionary to a class </summary>
+
+**2.1 A tray as a dictionary.** With what we know from Classes 2 and 3, a tray could be a dictionary, and actions on trays could be functions that receive the dictionary as their first argument:
+```python
+def new_tray(species, n_plants):
+    return {"species": species, "n_plants": n_plants}
+
+def add_plants(tray, n):
+    tray["n_plants"] += n
+
+tray1 = new_tray("Pansy", 26)
+add_plants(tray1, 10)
+print(tray1["n_plants"])
+```
+This works, but the data and the functions are separate: nothing says that `add_plants` is meant for trays, and any dictionary (or anything else) can be passed to it.
+
+**2.2 The same tray as a class.** A **class** puts the data and the functions together:
 ```python
 class Tray:
-  def __init__(self,species, number_of_plants=12):
-     self.species=species
-     self.number_of_plants=number_of_plants
+    def __init__(self, species, n_plants):
+        self.species = species
+        self.n_plants = n_plants
 
-tray=Tray('Pansy')
-print(f"the tray has {tray.number_of_plants} {tray.species} plants")
-```
+    def add_plants(self, n):
+        self.n_plants += n
 
-A class can have **instance methods**, which are functions defined for objects of the class. In the example, `Tray` is a class with attributes `species` and `number_of_plants`, and we want to create methods `remove_plants` and `add_plants`. We can think of this as an *action* performed on the specific instance of the class.
-
-```python
-class Tray:
-  def __init__(self,species, number_of_plants=12):
-     self.species=species
-     self.number_of_plants=number_of_plants
-  # method to remove plants from tray
-  def remove_plants(self, N):
-      # check if N plants can be removed
-      if N > self.number_of_plants:
-          self.number_of_plants=0
-      else:
-          self.number_of_plants -= N
-  # method to add plants to tray
-  def add_plants(self, N):
-      # check how many plants can be added
-      if self.number_of_plants + N > Constants.MAX_PLANTS_PER_TRAY:
-          self.number_of_plants = Constants.MAX_PLANTS_PER_TRAY
-      else:
-          self.number_of_plants += N
-```
-To test this try the following instructions, which you can think of as a sequence of actions: create tray, add or remove plants, and so on.
-
-```python
-tray1=Tray('Pansy', 26)
-tray2=Tray('Petunia', 28)
+tray1 = Tray("Pansy", 26)
 tray1.add_plants(10)
+print(tray1.n_plants)
+```
+Compare the two versions line by line:
+
+| dictionary + functions | class |
+|---|---|
+| `def new_tray(species, n_plants):` | `def __init__(self, species, n_plants):` |
+| `tray1 = new_tray("Pansy", 26)` | `tray1 = Tray("Pansy", 26)` |
+| `tray1["n_plants"]` | `tray1.n_plants` (an **attribute**) |
+| `def add_plants(tray, n):` | `def add_plants(self, n):` (a **method**) |
+| `add_plants(tray1, 10)` | `tray1.add_plants(10)` |
+
+- `Tray("Pansy", 26)` creates a new, empty object of class `Tray`, calls `__init__` to fill in its attributes, and returns the object. The object is called an **instance** of the class.
+- `self` is the object that the method works on, exactly like the argument `tray` in the dictionary version. When you write `tray1.add_plants(10)`, Python runs `Tray.add_plants(tray1, 10)`: try both and check that they do the same thing.
+- By convention, class names use *CamelCase* (`Tray`, `PlantNursery`), while variables, functions and methods use *snake_case* (`n_plants`, `add_plants`).
+
+**2.3 Each instance has its own data.**
+```python
+tray1 = Tray("Pansy", 26)
+tray2 = Tray("Petunia", 28)
+tray2.add_plants(5)
+print(tray1.n_plants, tray2.n_plants)
+```
+- *Exercise 2.3*: Before running the code, predict what it prints. Then change `__init__` so that `n_plants` is optional, with default value 0 (as for any function), and create a tray with `Tray("Begonia")`.
+
+**2.4 The most common errors.** Each line marked `# bug` below is wrong. Run the code, read the error message, and fix it:
+```python
+class Tray:
+    def __init__(self, species, n_plants):
+        self.species = species
+        self.n_plants = n_plants
+
+    def add_plants(n):            # bug 1
+        self.n_plants += n
+
+    def remove_plants(self, n):
+        n_plants -= n             # bug 2
+
+tray1 = Tray("Pansy", 26)
+tray1.add_plants(10)
+tray1.remove_plants(5)
+tray2 = Tray                      # bug 3
 tray2.remove_plants(5)
-print(f"tray1 has {tray1.number_of_plants} {tray1.species} plants")
-print(f"tray2 has {tray2.number_of_plants} {tray2.species} plants")
-```
-Note that we don't have an adequate `print` method for this class. This can be fixed by adding the method `__str__` to the class. You can adapt the following code and include it into the `Tray` class.
-
-```
-def __str__(self):
-    return f"This tray contains {self.number_of_plants} {self.species} plants"
 ```
 
-**Exercise**:
+</details>
 
-If you want to have a better control on all the plants in the nursery, you might want to create a new class called, say, `Inventory`. An instance of that class will represent your nursery, which contains trays (objects from class `Tray` above), with plants from different species. Class `Inventory` could have, for instance, the following attributes and methods:
+<details markdown="block">
+<summary> Part 3 — Methods with rules, <code>__str__</code>, objects that contain objects </summary>
 
-- `trays`, an attribute which is a dictionary to store trays, with tray names as keys
-- `add_tray`, a method that adds a tray object to the inventory, and gives it a name
-- `remove_tray`, a method to remove a tray, identified by its name
-- `get_tray`, a method to retrieve a tray, identified by its name. This allows to obtain a `tray` object, so you can add or remove plants to it.
--  `list_all_trays`, a method to list the current state of the inventory.
+**3.1 Methods keep the object valid.** A tray has room for at most 50 plants, and one cannot remove more plants than there are in the tray. If all changes to a tray go through its methods, the methods can enforce these rules, and **raise** an exception (Class 4) when a rule is broken:
+```python
+class Tray:
+    MAX_PLANTS = 50   # class attribute: shared by all trays
 
-Suggestion of solution:
+    def __init__(self, species, n_plants=0):
+        if n_plants < 0 or n_plants > Tray.MAX_PLANTS:
+            raise ValueError(f"n_plants must be between 0 and {Tray.MAX_PLANTS}")
+        self.species = species
+        self.n_plants = n_plants
 
+    def add_plants(self, n):
+        if self.n_plants + n > Tray.MAX_PLANTS:
+            raise ValueError(f"there is only room for {Tray.MAX_PLANTS - self.n_plants} more plants")
+        self.n_plants += n
+
+    def remove_plants(self, n):
+        if n > self.n_plants:
+            raise ValueError(f"the tray only has {self.n_plants} plants")
+        self.n_plants -= n
+```
+`MAX_PLANTS` is a **class attribute**: it is defined once, in the class, and is the same for all trays (`Tray.MAX_PLANTS`). `self.species` and `self.n_plants` are **instance attributes**: each tray has its own values.
+
+- *Exercise 3.1*: Create a tray with 40 plants and try to add 20 plants. Then catch the error with `try`/`except ValueError` and print the message of the exception.
+
+Note that Python does not prevent `tray1.n_plants = -5`: methods only protect the object if we use them. We will see in Class 10 how to signal that an attribute should not be changed directly (*encapsulation*).
+
+**3.2 Printing an object: `__str__`.** Try `print(tray1)`: the result looks like `<__main__.Tray object at 0x7f...>`, which is not very informative. When an object is printed, or converted with `str()`, or used in an f-string, Python calls its method `__str__`, which should return a string. Add this method to class `Tray`:
+```python
+    def __str__(self):
+        return f"{self.n_plants} {self.species} plants"
+```
+Methods whose names start and end with double underscores, like `__init__` and `__str__`, are called *special methods*: we do not call them directly, Python calls them for us (`Tray(...)` calls `__init__`, `print(...)` calls `__str__`).
+
+- *Exercise 3.2*: Change `__str__` so that it also shows how many plants can still be added to the tray.
+
+**3.3 Objects that contain objects.** The nursery is also an object: it has a name and contains trays. Its attribute `trays` is a dictionary whose values are `Tray` objects, with the tray names as keys:
 ```python
 class Inventory:
-  def __init__(self,nursery_name,list_of_trays=[]):
-    self.nursery_name=nursery_name
-    self.list_of_trays=list_of_trays
-  def add_tray(self,tray):
-    self.list_of_trays.append(tray)
-  def __str__(self):
-    return f"This inventory contains {len(self.list_of_trays)} trays" 
-  def get_tray(self,index):
-    return self.list_of_trays[index]
-```
+    def __init__(self, name):
+        self.name = name
+        self.trays = {}   # tray name -> Tray object
 
-Try:
+    def add_tray(self, tray_name, tray):
+        self.trays[tray_name] = tray
+
+    def get_tray(self, tray_name):
+        return self.trays[tray_name]
+
+    def __str__(self):
+        return f"{self.name}: {len(self.trays)} trays"
+
+nursery = Inventory("ISA nursery")
+nursery.add_tray("A1", Tray("Pansy", 25))
+nursery.add_tray("A2", Tray("Petunia", 10))
+nursery.get_tray("A2").add_plants(10)
+print(nursery)
+print(nursery.get_tray("A2"))
+```
+`get_tray` returns the tray object itself, not a copy, so `nursery.get_tray("A2").add_plants(10)` changes the tray that is in the inventory.
+
+**3.4 Puzzle: a shared dictionary.** In this version, the trays can be given when the inventory is created, with an empty dictionary as the default value:
 ```python
-my_inventory=Inventory("my_nursery")
-tray1=Tray('Pansy',25)
-tray2=Tray('Pansy',32)
-tray3=Tray('Petunia',10)
-tray4=Tray('Petunia',25)
-my_inventory.add_tray(tray1)
-my_inventory.add_tray(tray2)
-my_inventory.add_tray(tray3)
-my_inventory.add_tray(tray4)
-tray=my_inventory.get_tray(2)
-tray.add_plants(10)
-print(tray)
+class Inventory:
+    def __init__(self, name, trays={}):
+        self.name = name
+        self.trays = trays
+
+    def add_tray(self, tray_name, tray):
+        self.trays[tray_name] = tray
+
+north = Inventory("North")
+south = Inventory("South")
+north.add_tray("A1", Tray("Pansy", 25))
+print(len(south.trays))
+```
+- *Exercise 3.4*: Predict what is printed, and run the code. Why?
+
+The default value `{}` is created only once, when `def` is executed, and not each time the function is called: all inventories created without the argument `trays` share **the same** dictionary. Rule: never use a list or a dictionary as a default value. Create it inside `__init__` (as in 3.3), or use `trays=None` and then `if trays is None: trays = {}`.
+
+**3.5 Looking ahead.** A class can be built from another class: for instance, `class MultipleUseTray(Tray):` would inherit all attributes and methods of `Tray`, and only add or change what is different. This is called *inheritance*, and it is one of the main concepts of OOP that we will see in Class 10.
+
+</details>
+
+<details markdown="block">
+<summary> Part 4 — On your own: a nursery inventory </summary>
+
+Start from class `Tray` (3.1, with `__str__` from 3.2) and class `Inventory` (3.3) in the script `nursery.py`. Add the following methods to class `Inventory`:
+
+- **4.1** `remove_tray(tray_name)`: removes a tray, and raises `ValueError` if there is no tray with that name.
+- **4.2** `list_all_trays()`: prints one line per tray, for instance `A1: 25 Pansy plants`.
+- **4.3** `n_plants()`: returns the total number of plants in the nursery.
+- **4.4** `plants_by_species()`: returns a dictionary with the number of plants of each species, for instance `{"Pansy": 57, "Petunia": 10}`.
+- **4.5** `empty_trays()`: returns a list with the names of the empty trays.
+- **4.6** `total_value(prices)`: returns the value of all plants in the nursery, where `prices` is a dictionary with the price of each species.
+
+*Challenge*
+
+- **4.7** `sell(species, n)`: removes `n` plants of the given species, taking them from the trays in order (first empty the first tray of that species, then the next one, and so on). If there are not enough plants, raise `ValueError` **without changing any tray**.
+- **4.8** `load_csv(path)`: adds trays read from a CSV file with columns `tray,species,n_plants` (create a small file yourself; see Class 6 for reading files).
+- **4.9** `to_dataframe()`: returns a pandas `DataFrame` with one row per tray and columns `tray`, `species`, `n_plants` (see Class 7). Use it to sort the trays by number of plants.
+
+**Check your solution.** Copy the following lines to the end of `nursery.py` and run the script. `assert condition` does nothing if the condition is `True`, and stops the script with an `AssertionError` if it is `False`. If you see `All checks passed`, your methods work as expected. Comment out the lines for the methods you have not written yet. (In Class 10, we will write tests like these with `pytest`.)
+```python
+nursery = Inventory("ISA nursery")
+nursery.add_tray("A1", Tray("Pansy", 25))
+nursery.add_tray("A2", Tray("Pansy", 32))
+nursery.add_tray("B1", Tray("Petunia", 10))
+nursery.add_tray("B2", Tray("Petunia"))
+
+assert nursery.n_plants() == 67
+assert nursery.plants_by_species() == {"Pansy": 57, "Petunia": 10}
+assert nursery.empty_trays() == ["B2"]
+
+nursery.remove_tray("B2")
+assert list(nursery.trays) == ["A1", "A2", "B1"]
+
+prices = {"Pansy": 1.5, "Petunia": 2.0}
+assert nursery.total_value(prices) == 105.5
+
+# challenge 4.7
+nursery.sell("Pansy", 30)            # 25 from A1, then 5 from A2
+assert nursery.get_tray("A1").n_plants == 0
+assert nursery.get_tray("A2").n_plants == 27
+try:
+    nursery.sell("Petunia", 100)     # not enough plants: nothing should change
+    assert False, "sell should raise ValueError"
+except ValueError:
+    pass
+assert nursery.get_tray("B1").n_plants == 10
+
+nursery.list_all_trays()
+print("All checks passed")
 ```
 
 </details>
+</ul>
+
+</details>
+
+<!--
 
 ---
 
