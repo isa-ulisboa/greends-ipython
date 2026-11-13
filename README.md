@@ -1395,6 +1395,7 @@ Start from class `Tray` (3.1, with `__str__` from 3.2) and class `Inventory` (3.
 - **4.5** `empty_trays()`: returns a list with the names of the empty trays.
 - **4.6** `total_value(prices)`: returns the value of all plants in the nursery, where `prices` is a dictionary with the price of each species.
 
+<br>
 Some more challenging exercises:
 
 - **4.7** `sell(species, n)`: removes `n` plants of the given species, taking them from the trays in order (first empty the first tray of that species, then the next one, and so on). If there are not enough plants, raise `ValueError` **without changing any tray**.
