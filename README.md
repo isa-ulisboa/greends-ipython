@@ -1312,6 +1312,13 @@ class Tray:
         if n > self.n_plants:
             raise ValueError(f"the tray only has {self.n_plants} plants")
         self.n_plants -= n
+try:
+    tray = Tray('Pansy', n_plants=60)
+except ValueError as e:
+    print(e)
+else:
+    print(tray.n_plants)   # runs only if the tray was created
+
 ```
 `MAX_PLANTS` is a **class attribute**: it is defined once, in the class, and is the same for all trays (`Tray.MAX_PLANTS`). `self.species` and `self.n_plants` are **instance attributes**: each tray has its own values.
 
