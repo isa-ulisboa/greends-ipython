@@ -1401,6 +1401,12 @@ Start from class `Tray` (3.1, with `__str__` from 3.2) and class `Inventory` (3.
 - **4.8** `load_csv(path)`: adds trays read from a CSV file with columns `tray,species,n_plants` (create a small file yourself; see Class 6 for reading files).
 - **4.9** `to_dataframe()`: returns a pandas `DataFrame` with one row per tray and columns `tray`, `species`, `n_plants` (see Class 7). Use it to sort the trays by number of plants.
 
+</details>
+</ul>
+
+</details>
+
+<!--
 **Check your solution.** Copy the following lines to the end of `nursery.py` and run the script. `assert condition` does nothing if the condition is `True`, and stops the script with an `AssertionError` if it is `False`. If you see `All checks passed`, your methods work as expected. Comment out the lines for the methods you have not written yet. (In Class 10, we will write tests like these with `pytest`.)
 ```python
 nursery = Inventory("ISA nursery")
