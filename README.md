@@ -1324,7 +1324,7 @@ else:
 
 - *Exercise 3.1*: Create a tray with 40 plants and try to add 20 plants. Then catch the error with `try`/`except ValueError` and print the message of the exception.
 
-Note that Python does not prevent `tray1.n_plants = -5`: methods only protect the object if we use them. We will see in Class 11 how to signal that an attribute should not be changed directly (*encapsulation*).
+Note that Python does not prevent `tray1.n_plants = -5`: methods only protect the object if we use them. We will see in Class 11 how to prevent it with *properties*.
 
 **3.2 Printing an object: `__str__`.** Try `print(tray1)`: the result looks like `<__main__.Tray object at 0x7f...>`, which is not very informative. When an object is printed, or converted with `str()`, or used in an f-string, Python calls its method `__str__`, which should return a string. Add this method to class `Tray`:
 ```python
@@ -1408,7 +1408,7 @@ Some more challenging exercises:
 </details>
 
 <!--
-**Check your solution.** Copy the following lines to the end of `nursery.py` and run the script. `assert condition` does nothing if the condition is `True`, and stops the script with an `AssertionError` if it is `False`. If you see `All checks passed`, your methods work as expected. Comment out the lines for the methods you have not written yet. (In Class 11, we will write tests like these with `pytest`.)
+**Check your solution.** Copy the following lines to the end of `nursery.py` and run the script. `assert condition` does nothing if the condition is `True`, and stops the script with an `AssertionError` if it is `False`. If you see `All checks passed`, your methods work as expected. Comment out the lines for the methods you have not written yet. (In Class 12, we will write tests like these with `pytest`.)
 ```python
 nursery = Inventory("ISA nursery")
 nursery.add_tray("A1", Tray("Pansy", 25))
@@ -1460,227 +1460,193 @@ There is no Python class this week: the masters students are on a field trip.
 ---
 
 <details markdown="block">
-<summary><h2>  Class 11 (November 27, 2026): inheritance, polymorphism, encapsulation; unit tests </h2></summary>
+<summary><h2>  Class 11 (November 27, 2026): classes in practice: class methods, properties, when to use classes </h2></summary>
 
-- CS50P, [Lecture 8: Object-Oriented Programming](https://cs50.harvard.edu/python/weeks/8/): the second part of the lecture (properties, inheritance, operator overloading). Shorts: *Inheritance*, *Properties*.
-- CS50P, [Lecture 5: Unit Tests](https://cs50.harvard.edu/python/weeks/5/), and the short on [pytest](https://cs50.harvard.edu/python/2022/shorts/pytest/).
-- Short descriptions of the main concepts of OOP, with examples: [Programiz](https://www.programiz.com/python-programming/object-oriented-programming), [freeCodeCamp](https://www.freecodecamp.org/news/object-oriented-programming-in-python/), W3Schools on [inheritance](https://www.w3schools.com/python/python_inheritance.asp) and [polymorphism](https://www.w3schools.com/python/python_polymorphism.asp).
-- RealPython, [Single and Double Underscores in Python Names](https://realpython.com/python-double-underscore/).
+- CS50P, [Lecture 8: Object-Oriented Programming](https://cs50.harvard.edu/python/weeks/8/), and its [notes](https://cs50.harvard.edu/python/notes/8/): this class covers the rest of the lecture (properties, class methods, inheritance, operator overloading).
+- CS50P shorts, to revise Class 9: *Classes*, *Instance Variables*, *Instance Methods*, *Class Methods and Class Variables* (on the [Lecture 8 page](https://cs50.harvard.edu/python/weeks/8/)).
+- Video: [Avoid These BAD Practices in Python OOP](https://www.youtube.com/watch?v=yFLY0SVutgM), on unnecessary classes and deep inheritance hierarchies.
 
-This class completes the introduction to OOP started in Class 9. We keep the plant nursery example (classes `Tray` and `Inventory`), and use it to illustrate the four main concepts of OOP: *abstraction*, *encapsulation*, *inheritance* and *polymorphism*. Then we replace the `assert` checks of Class 9 by **unit tests** run with `pytest`.
+This class revises and practises the basics of Class 9, adds a few tools that make classes safer and more convenient (class methods, properties, special methods), and discusses **when** classes are a good choice. We keep the plant nursery example. At the end of the class, you should be ready to solve the *Cookie jar* problem on your own.
 
-- **Part 1** (expository): the four main concepts of OOP.
-- **Part 2** (guided): inheritance and polymorphism: types of trays.
-- **Part 3** (guided): encapsulation: `_`, `__` and properties.
-- **Part 4** (guided): unit tests with `pytest`.
+- **Part 1** (guided): revision, and class methods.
+- **Part 2** (guided): properties.
+- **Part 3** (expository): when to use a class.
+- **Part 4** (guided): inheritance, used sparingly, and composition.
 - **Part 5** (on your own): exercises, and the *Cookie jar* assignment.
 
-Create a folder `class11` in the [CS50 codespace](https://cs50.dev/) and copy into it the script `nursery.py` of Class 9 (`cp ../class9/nursery.py .`). **Delete the check lines at the end of the script**: they will become the tests of Part 4. Check that `pytest` is installed with `pytest --version`, and otherwise install it with `pip install pytest`.
+Create a folder `class11` in the [CS50 codespace](https://cs50.dev/), copy into it the script `nursery.py` of Class 9 (`cp ../class9/nursery.py .`), and keep working on that script.
 
 <ul>
 <details markdown="block">
-<summary> Part 1 — The four main concepts of OOP </summary>
+<summary> Part 1 — Revision, and class methods </summary>
 
-<img src="https://media.geeksforgeeks.org/wp-content/uploads/20230818181616/Types-of-OOPS-2.gif" alt="The four main concepts of OOP" width="256">
+**1.1 Revision.** Watch the four CS50P shorts listed above, and find each idea in the class `Tray` of Class 9:
 
-In Class 9, we already used two of these concepts without naming them:
+| short | in class `Tray` |
+|---|---|
+| *Classes* | `class Tray:` is the blueprint; `Tray("Pansy", 26)` creates an instance |
+| *Instance Variables* | `self.species`, `self.n_plants`: each tray has its own values |
+| *Instance Methods* | `add_plants(self, n)`, `remove_plants(self, n)`, `__str__(self)`: they receive the instance as `self` |
+| *Class Methods and Class Variables* | `MAX_PLANTS`: one value shared by all trays. Class methods: see 1.2 |
 
-| concept | idea | in the nursery example |
-|---|---|---|
-| **Abstraction** | the user of a class only needs to know *what* its methods do, not *how* | `nursery.n_plants()` returns the total number of plants: whoever calls it does not need to know that the trays are stored in a dictionary |
-| **Encapsulation** | data and methods are bundled together, and the data is changed only through the methods | `add_plants` and `remove_plants` enforce the rules of a tray (Class 9, 3.1) |
-| **Inheritance** | a new class is built from an existing class, and only adds or changes what is different | a `SingleUseTray` is a `Tray` that cannot be refilled (Part 2) |
-| **Polymorphism** | the same method call does different things depending on the class of the object | `tray.add_plants(5)` follows different rules for each type of tray (Part 2) |
+- *Exercise 1.1*: Create two trays, change `Tray.MAX_PLANTS` to 60, and check the effect on both trays. Then do `tray1.MAX_PLANTS = 70`, and check `tray2.MAX_PLANTS` and `Tray.MAX_PLANTS`. What happened?
 
-Abstraction is what makes classes useful in larger programs: if we decide to store the trays of an `Inventory` in a list instead of a dictionary, only the methods of `Inventory` have to change, and not the code that uses them.
-
-We have also used polymorphism from the start of the course: `len("cork")`, `len([1, 2, 3])` and `len({"a": 1})` all work, but count different things; `+` adds numbers and concatenates strings; and `print(x)` calls the method `__str__` of the class of `x`, whatever it is.
-
-- *Exercise 1.1*: Define two classes `Plant` (attributes `species` and `price`) and `Tree` (attributes `species` and `height_m`), each with its own `__str__`. Create a list with a few plants and trees and print them all in a `for` loop. Which `__str__` is called at each step?
-
-Classes are a tool, not a goal: a class with a single method, or with no data, is usually better written as a function. See the video [Avoid These BAD Practices in Python OOP](https://www.youtube.com/watch?v=yFLY0SVutgM) about unnecessary classes and deep inheritance hierarchies.
-
-</details>
-
-<details markdown="block">
-<summary> Part 2 — Inheritance and polymorphism: types of trays </summary>
-
-**2.1 A child class.** The nursery uses two types of trays: biodegradable trays, which are planted with the seedlings and so can be emptied only once, and plastic trays, which can be refilled a limited number of times. Both are trays: they have a species and a number of plants, at most 50 plants, and a `__str__`. Instead of copying class `Tray`, we write classes that **inherit** from it. Add to `nursery.py`, after class `Tray`:
-```python
-class SingleUseTray(Tray):
-    def __init__(self, species, n_plants=0):
-        super().__init__(species, n_plants)   # runs __init__ of Tray
-        self.used = False                     # new attribute
-
-    def remove_plants(self, n):
-        super().remove_plants(n)              # same rules as any tray
-        self.used = True
-
-    def add_plants(self, n):
-        if self.used:
-            raise ValueError("a single-use tray cannot be refilled")
-        super().add_plants(n)
-```
-- `class SingleUseTray(Tray)` says that `SingleUseTray` is a **child** (or subclass) of the **parent** class `Tray`: it inherits all its attributes and methods (`species`, `n_plants`, `MAX_PLANTS`, `__str__`, ...).
-- A method defined again in the child class **overrides** the method of the parent. `super()` gives access to the method of the parent, so the child only adds what is different, and the rules of `Tray` (at most 50 plants) still apply.
-- `isinstance(obj, Tray)` is `True` for a `Tray` and for any of its children; `isinstance(obj, SingleUseTray)` is `True` only for single-use trays.
-
-- *Exercise 2.1*: Create `t = SingleUseTray("Rose", 30)`, print it, remove 30 plants, and then try to add 10 plants. Which methods of `t` are defined in `SingleUseTray`, and which ones come from `Tray`?
-
-**2.2 Another child class.** A plastic tray can be filled at most `max_uses` times:
-```python
-class MultipleUseTray(Tray):
-    def __init__(self, species, n_plants=0, max_uses=3):
-        super().__init__(species, n_plants)
-        self.max_uses = max_uses
-        self.n_uses = 0
-
-    def add_plants(self, n):
-        if self.n_uses >= self.max_uses:
-            raise ValueError(f"the tray was already used {self.max_uses} times")
-        super().add_plants(n)
-        self.n_uses += 1
-
-    def __str__(self):
-        return f"{super().__str__()} (used {self.n_uses} of {self.max_uses} times)"
-```
-Note that `__init__` of `MultipleUseTray` has an extra argument, `max_uses`, and that `__str__` extends the `__str__` of the parent instead of replacing it.
-
-**2.3 Polymorphism.** The same code works for all types of trays, and each tray follows its own rules:
-```python
-trays = [Tray("Pansy", 20), SingleUseTray("Rose", 30), MultipleUseTray("Lily", 10, max_uses=2)]
-for tray in trays:
-    try:
-        tray.remove_plants(5)
-        tray.add_plants(5)
-    except ValueError as e:
-        print(f"{tray.species}: {e}")
-    print(tray)
-```
-The loop does not check the type of each tray: Python calls the method `add_plants` of the class of each object. For the same reason, class `Inventory` of Class 9 works with the new types of trays **without any change**: `nursery.add_tray("C1", SingleUseTray("Rose", 30))`.
-
-- *Exercise 2.3*: Predict what the loop prints, and run it. Then add a `MultipleUseTray` to the inventory of Class 9, and check that `n_plants()` and `plants_by_species()` still work.
-
-</details>
-
-<details markdown="block">
-<summary> Part 3 — Encapsulation: <code>_</code>, <code>__</code> and properties </summary>
-
-**3.1 The problem.** In Class 9, the methods of `Tray` enforce the rules of a tray, but nothing prevents `tray1.n_plants = -5`. Python has no truly private attributes: instead, it uses naming conventions.
-
-- `_n_plants` (one underscore): by **convention**, an internal attribute, which should not be used outside the class. Python does not prevent it, but other programmers know they should not.
-- `__price` (two underscores): Python **renames** the attribute to `_Plant__price` (*name mangling*), which makes it harder to change by accident from outside the class.
-
-**3.2 Puzzle: name mangling.**
-```python
-class Plant:
-    def __init__(self, species):
-        self.species = species
-        self.__price = 10
-
-    def set_price(self, price):
-        if price <= 0:
-            raise ValueError("the price must be positive")
-        self.__price = price
-
-    def __str__(self):
-        return f"{self.species} costs {self.__price}"
-
-p = Plant("Rose")
-p.__price = 20
-print(p)
-p.set_price(15)
-print(p)
-```
-- *Exercise 3.2*: Predict what is printed, and run the code. Then `print(vars(p))`, which shows all the attributes of `p`, to understand why.
-
-**3.3 Properties.** A **property** looks like an attribute from outside the class, but each time it is changed, a method runs, which can validate the new value. Replace `__init__`, `add_plants` and `remove_plants` of class `Tray` by:
+**1.2 Class methods: another way to create objects.** The data of a nursery is often in a file, with one tray per line, for instance `Pansy,25` (species, number of plants). A **class method** receives the class (`cls`), not an instance (`self`), and is called on the class itself. It is often used as an alternative way to create objects:
 ```python
 class Tray:
-    MAX_PLANTS = 50
+    ...
+    @classmethod
+    def from_csv_row(cls, row):
+        species, n_plants = row.split(",")
+        return cls(species.strip(), int(n_plants))   # cls(...) is Tray(...)
 
-    def __init__(self, species, n_plants=0):
+tray = Tray.from_csv_row("Petunia,30")
+print(tray)
+```
+`@classmethod` is a *decorator*: it changes how the method is called. Inside the class, `cls(...)` does the same as `Tray(...)`. This is the same idea as `Student.get()` in the CS50P notes.
+
+</details>
+
+<details markdown="block">
+<summary> Part 2 — Properties </summary>
+
+**2.1 Trays of different sizes.** In Class 9, all trays had at most `MAX_PLANTS = 50` plants. Real trays come in a few standard sizes, for instance 24, 50 or 104 cells. The **capacity** is now different for each tray, so it becomes an instance variable, while the list of valid sizes is shared by all trays (a class variable). In Class 9, we also noticed that nothing prevents `tray1.n_plants = -5`. **Properties** solve both problems. Replace the beginning of class `Tray` by:
+```python
+class Tray:
+    CAPACITIES = (24, 50, 104)          # class variable: standard tray sizes
+
+    def __init__(self, species, n_plants=0, capacity=50):
+        if capacity not in Tray.CAPACITIES:
+            raise ValueError(f"capacity must be one of {Tray.CAPACITIES}")
+        self._capacity = capacity       # must come before n_plants (see the setter)
         self.species = species
-        self.n_plants = n_plants          # calls the setter below
+        self.n_plants = n_plants        # calls the setter below
 
     @property
-    def n_plants(self):                   # getter: runs on tray.n_plants
+    def capacity(self):                 # read-only: there is no setter
+        return self._capacity
+
+    @property
+    def n_plants(self):                 # getter: runs on tray.n_plants
         return self._n_plants
 
     @n_plants.setter
-    def n_plants(self, value):            # setter: runs on tray.n_plants = value
-        if value < 0 or value > Tray.MAX_PLANTS:
-            raise ValueError(f"n_plants must be between 0 and {Tray.MAX_PLANTS}")
+    def n_plants(self, value):          # setter: runs on tray.n_plants = value
+        if value < 0:
+            raise ValueError("n_plants cannot be negative")
+        if value > self.capacity:
+            raise ValueError(f"the tray only has {self.capacity} cells")
         self._n_plants = value
 
+    @property
+    def free_cells(self):               # computed from other attributes
+        return self.capacity - self.n_plants
+
     def add_plants(self, n):
-        self.n_plants += n                # also goes through the setter
+        self.n_plants += n              # also goes through the setter
 
     def remove_plants(self, n):
         self.n_plants -= n
+
+    def __str__(self):
+        return f"{self.n_plants} {self.species} plants ({self.free_cells} free cells)"
 ```
-The value is stored in `self._n_plants`, and the rule is now written in **one** place, the setter, which runs in `__init__`, in `add_plants`, in `remove_plants`, and also in `tray1.n_plants = -5`. The code that uses `Tray` (`tray.n_plants`, class `Inventory`, the child classes of Part 2) does not change.
+- From outside the class, a property looks like an attribute: `tray.n_plants`, `tray.n_plants = 10`, `tray.capacity`, without parentheses. But each time it is read or changed, a method runs.
+- The value is stored in an attribute with a leading underscore (`self._n_plants`). The underscore is a **convention**: it tells other programmers that the attribute is internal, and should not be used outside the class. Python does not prevent it.
+- The rule on the number of plants is now written in **one** place, the setter, which runs in `__init__`, in `add_plants`, in `remove_plants`, and also in `tray.n_plants = -5`.
+- `capacity` has a getter but no setter, so it is **read-only**: `tray.capacity = 100` raises `AttributeError`. `free_cells` is computed each time it is read, so it is always up to date.
 
-- *Exercise 3.3*: Check that `tray1.n_plants = -5` and `Tray("Pansy", 60)` now raise `ValueError`. Then turn `species` into a property that only accepts non-empty strings.
-
-Another way to encapsulate data, common in other languages, is to write *getter* and *setter* methods (`get_stage()`, `set_stage(stage)`): see [oop/oop_encapsulation_example_4.py](oop/oop_encapsulation_example_4.py). In Python, properties are preferred, since the attribute can be used as usual.
+- *Exercise 2.1*: Check that `Tray("Pansy", 30, capacity=24)`, `tray.n_plants = -5`, `tray.add_plants(100)` and `tray.capacity = 100` all raise an exception. Which exception, in each case?
+- *Exercise 2.2*: Change `Tray.from_csv_row` (1.2) so that it also reads the capacity, for instance `Petunia,30,24`. Check that class `Inventory` of Class 9 still works with the new `Tray`.
+- *Exercise 2.3*: Turn `species` into a property whose setter only accepts non-empty strings (as `house` in the CS50P notes).
 
 </details>
 
 <details markdown="block">
-<summary> Part 4 — Unit tests with <code>pytest</code> </summary>
+<summary> Part 3 — When to use a class </summary>
 
-**4.1 From `assert` to tests.** In Class 9, we checked the methods with `assert` lines at the end of the script. The problem is that the script stops at the first error, and the checks get mixed with the code. With `pytest`, each check is a **test function** whose name starts with `test_`, in a separate file whose name starts with `test_`. `pytest` finds and runs all test functions, and reports which ones fail. Create the file `test_nursery.py` in the folder `class11`:
+Classes are a tool, not a goal. A class is a good choice when the program has **several objects of the same kind, each with its own data, and rules about how that data changes**. The trays are a good example: a nursery has many trays, each tray has its own species and number of plants, and the methods keep every tray valid.
+
+Ask these questions before writing a class:
+
+1. Will there be **several instances**, each with its own data?
+2. Does the data **change** over time, and must it stay valid?
+3. Are there **several operations** on the same data?
+
+If the answer to all of them is *no*, a function (or a dictionary, for data without behaviour) is usually simpler. Two common signs of an unnecessary class:
 ```python
-import pytest
-from nursery import Tray, SingleUseTray, Inventory
+# a class with no data: these are just functions
+class Converter:
+    def kg_to_tons(self, kg):
+        return kg / 1000
+    def ha_to_m2(self, ha):
+        return ha * 10000
 
-def make_nursery():
-    nursery = Inventory("ISA nursery")
-    nursery.add_tray("A1", Tray("Pansy", 25))
-    nursery.add_tray("A2", Tray("Pansy", 32))
-    nursery.add_tray("B1", Tray("Petunia", 10))
-    return nursery
+c = Converter()
+c.kg_to_tons(2500)
 
-def test_n_plants():
-    assert make_nursery().n_plants() == 67
+# a class with a single method, called once after creating the object
+class GerminationRate:
+    def __init__(self, n_seeds, n_germinated):
+        self.n_seeds = n_seeds
+        self.n_germinated = n_germinated
+    def compute(self):
+        return self.n_germinated / self.n_seeds
 
-def test_total_value():
-    prices = {"Pansy": 1.1, "Petunia": 2.2}
-    assert make_nursery().total_value(prices) == pytest.approx(84.7)
-
-def test_too_many_plants():
-    with pytest.raises(ValueError):
-        Tray("Pansy", 60)
-
-def test_add_too_many():
-    tray = Tray("Pansy", 40)
-    with pytest.raises(ValueError, match="between 0 and 50"):
-        tray.add_plants(20)
-    assert tray.n_plants == 40            # the tray did not change
-
-def test_single_use():
-    tray = SingleUseTray("Rose", 30)
-    tray.remove_plants(30)
-    with pytest.raises(ValueError):
-        tray.add_plants(10)
+GerminationRate(100, 87).compute()
 ```
-and run, in the terminal:
+Both are simpler as functions: `kg_to_tons(2500)` and `germination_rate(100, 87)`. Functions that belong together can be grouped in a **module** (Class 5), for instance `units.py`, and imported with `import units`.
+
+- *Exercise 3.1*: Rewrite both examples as functions, in a module `units.py`, and use them from another script.
+- *Exercise 3.2*: For each case, would you write a class or a function? Why? (a) convert a temperature from °F to °C; (b) a greenhouse whose sensors store their readings, and raise an alarm when the temperature is too high; (c) the area of a field from its length and width; (d) a seed bank where seed lots are added, withdrawn, and expire.
+
+</details>
+
+<details markdown="block">
+<summary> Part 4 — Inheritance, used sparingly, and composition </summary>
+
+**4.1 You have been using inheritance.** The exceptions of Python form a hierarchy: `ValueError` and `KeyError` are kinds of `Exception`. A new class can be built from an existing one: it **inherits** all its attributes and methods. A new exception for the nursery takes two lines:
+```python
+class CapacityError(ValueError):
+    """Raised when a tray does not have room for the plants."""
 ```
-$ pytest test_nursery.py
-$ pytest -v test_nursery.py     # one line per test
+`CapacityError` is a **child** (subclass) of the **parent** `ValueError`. Raise it in the setter of `n_plants` when `value > self.capacity`. A `CapacityError` *is a* `ValueError`, so `except ValueError` still catches it, and `except CapacityError` catches only this error.
+
+- *Exercise 4.1*: Add `CapacityError` to `nursery.py`, and check what `isinstance(e, ValueError)` and `isinstance(e, CapacityError)` return for the exceptions raised by `tray.add_plants(100)` and by `tray.n_plants = -5`.
+
+**4.2 A child class with `super()`.** Seeds are sown in trays too, but only some of them germinate. A `SeedTray` is a `Tray` with an extra attribute and an extra method:
+```python
+class SeedTray(Tray):
+    def __init__(self, species, n_seeds=0, capacity=50, germination_rate=0.8):
+        super().__init__(species, n_seeds, capacity)   # runs __init__ of Tray
+        self.germination_rate = germination_rate
+
+    def expected_plants(self):
+        return round(self.n_plants * self.germination_rate)
+
+    def __str__(self):                                  # overrides __str__ of Tray
+        return f"{super().__str__()}, {self.expected_plants()} expected to germinate"
 ```
-- `from nursery import ...` imports the classes from `nursery.py` (Class 5). This is why the checks had to be removed from `nursery.py`: they would run at each import.
-- Each test creates its own objects (here with the helper function `make_nursery`), so that tests do not depend on each other.
-- `pytest.approx` compares floats with a tolerance: `1.1 * 2` is not exactly `2.2` in Python.
-- `with pytest.raises(ValueError):` passes only if the code inside raises `ValueError`; `match` also checks the error message.
-- With no arguments, `pytest` runs all files `test_*.py` (or `*_test.py`) in the current folder and its subfolders.
+`super()` gives access to the methods of the parent: the child only adds or changes what is different, and the rules of `Tray` (capacity, number of plants) still apply. A method defined again in the child **overrides** the method of the parent.
 
-- *Exercise 4.1*: Break one method on purpose (for instance, `return 0` in `n_plants`), run `pytest`, and read the report. Then fix it.
+**4.3 Do not abuse inheritance.** In Class 9 (3.5) we suggested `class MultipleUseTray(Tray)`, for plastic trays that can be reused. It is tempting to go on:
+```
+Tray
+├── PlasticTray
+│   ├── ReusablePlasticTray
+│   │   └── ReusablePlasticTrayWithLid
+│   └── SingleUsePlasticTray
+└── BiodegradableTray
+```
+Each new feature (material, reuse, lid) multiplies the number of classes, and a change in a class affects all classes below it. When trays differ only in their **data**, a single class with more attributes is simpler: `Tray("Pansy", 25, material="plastic", max_uses=5)`. Rules of thumb:
 
-**4.2 What to test.** Good tests check the usual cases, the **limits** (a tray with exactly 0 or 50 plants), and the errors (the cases that must raise an exception). A test should be written for each bug that is found, so that it does not come back.
+- the objects differ only in data → **attributes** of a single class;
+- *is a*, with different behaviour → **inheritance**, with few levels (a `SeedTray` is a `Tray` that can predict germination);
+- *has a* → **composition**: an object stores other objects as attributes.
 
-- *Exercise 4.2*: Convert the remaining checks of Class 9 (`plants_by_species`, `empty_trays`, `remove_tray`, `sell`) into test functions.
+**4.4 Composition.** You already used composition in Class 9: an `Inventory` *has* trays, stored in its attribute `trays`. The inventory does not need to know which kind of tray it holds: `nursery.add_tray("S1", SeedTray("Basil", 50))` works without changing `Inventory`, and so does `nursery.n_plants()`, since every tray has an attribute `n_plants`. The same call works on different kinds of objects (this is called *polymorphism*): this is why `print` works on trays and on seed trays, each with its own `__str__`.
+
+- *Exercise 4.4*: Add a `SeedTray` to the inventory of Class 9, and check that `list_all_trays()` and `plants_by_species()` still work.
 
 </details>
 
@@ -1689,13 +1655,152 @@ $ pytest -v test_nursery.py     # one line per test
 
 *Nursery*
 
-- **5.1** Write tests for `MultipleUseTray`: a tray created with `max_uses=2` can be filled twice, and raises `ValueError` the third time.
-- **5.2** Write a child class `SeedTray(Tray)` with an extra attribute `germination_rate` (between 0 and 1, validated with a property), and a method `expected_plants()` that returns the expected number of seedlings. Override `__str__`, and write tests for the new class.
-- **5.3** Add a method `count_by_type()` to `Inventory` that returns a dictionary with the number of trays of each class, for instance `{"Tray": 2, "SingleUseTray": 1}` (hint: `type(tray).__name__`).
+- **5.1** `__add__`. In the CS50P notes, `Vault.__add__` defines what `+` does for two vaults: `a + b` calls `a.__add__(b)`. Define `__add__` in class `Tray`, so that `tray1 + tray2` returns a **new** tray with the plants of both trays, and the capacity of the larger one. Raise `ValueError` if the species are different. The original trays do not change. What happens when the plants do not fit in the new tray?
+```python
+merged = Tray("Pansy", 20, capacity=24) + Tray("Pansy", 30)
+print(merged)                    # 50 Pansy plants (0 free cells)
+Tray("Pansy") + Tray("Petunia")  # ValueError
+```
+- **5.2** Add a method `load_csv(path)` to class `Inventory`, that reads a file with lines like `A1,Pansy,25,50` (tray name, species, number of plants, capacity), and uses `Tray.from_csv_row` to create the trays.
+- **5.3** Add a method `free_cells()` to class `Inventory`, that returns the total number of free cells in the nursery, and a method `full_trays()`, that returns the names of the trays with no free cells.
+- **5.4** Add the attributes `material` and `max_uses` (default `None`, meaning no limit) to class `Tray`, and an attribute `n_uses` that counts how many times the tray was filled with `add_plants`. When a tray has been filled `max_uses` times, `add_plants` should raise `ValueError` (see 4.3).
+
+*Assignment*
+
+- **5.5** Solve the *Cookie jar* problem described at <https://cs50.harvard.edu/python/psets/8/jar/>, and check it with `check50 cs50/problems/2022/python/jar`. Class `Jar` is very close to class `Tray`:
+
+| `Jar` | `Tray` |
+|---|---|
+| `Jar(capacity=12)`, `ValueError` if the capacity is not valid | `Tray(species, n_plants, capacity)` (2.1) |
+| `jar.capacity`, read-only | `tray.capacity` (2.1) |
+| `jar.size`: number of cookies | `tray.n_plants` (2.1) |
+| `deposit(n)`, `withdraw(n)`, `ValueError` if impossible | `add_plants(n)`, `remove_plants(n)` |
+| `str(jar)`: one 🍪 per cookie | `__str__` |
+
+In Class 12, you will write tests for your class `Jar` in `test_jar.py`.
+
+</details>
+</ul>
+
+</details>
+
+---
+
+<details markdown="block">
+<summary><h2>  Class 12 (December 4, 2026): unit tests with pytest </h2></summary>
+
+- CS50P, [Lecture 5: Unit Tests](https://cs50.harvard.edu/python/weeks/5/), and the short on [pytest](https://cs50.harvard.edu/python/2022/shorts/pytest/).
+- pytest documentation: <https://docs.pytest.org/>
+
+Until now, we checked our code by running it and looking at what it prints. This becomes tedious, and error prone, as the code grows: each change can break something that worked before. In this class, we write **unit tests**: small functions that check automatically that other functions and classes work as expected. We test the nursery classes of Class 11, and your class `Jar`.
+
+- **Part 1** (guided): `assert`, and test functions with `pytest`.
+- **Part 2** (guided): what to test.
+- **Part 3** (on your own): tests for the nursery, for a farm, and for the cookie jar.
+
+Create a folder `class12` in the [CS50 codespace](https://cs50.dev/), and copy into it the script `nursery.py` of Class 11 (`cp ../class11/nursery.py .`). If the script ends with code that creates and prints trays, delete it or move it to another script, since `nursery.py` will be imported by the tests. Check that `pytest` is installed with `pytest --version`, and otherwise install it with `pip install pytest`.
+
+<ul>
+<details markdown="block">
+<summary> Part 1 — <code>assert</code> and test functions </summary>
+
+**1.1 `assert`.** The statement `assert condition` does nothing if the condition is `True`, and raises an `AssertionError` if it is `False`:
+```python
+tray = Tray("Pansy", 25)
+tray.add_plants(10)
+assert tray.n_plants == 35      # nothing happens: the method works
+assert tray.n_plants == 30      # AssertionError
+```
+
+**1.2 Test functions.** With `pytest`, each check is written in a **test function** whose name starts with `test_`, in a separate file whose name starts with `test_`. `pytest` finds and runs all test functions, and reports which ones pass and which ones fail, instead of stopping at the first error. Create the file `test_nursery.py` in the folder `class12`:
+```python
+import pytest
+from nursery import Tray, Inventory
+
+
+def make_nursery():
+    nursery = Inventory("ISA nursery")
+    nursery.add_tray("A1", Tray("Pansy", 25))
+    nursery.add_tray("A2", Tray("Pansy", 32))
+    nursery.add_tray("B1", Tray("Petunia", 10, capacity=24))
+    return nursery
+
+
+def test_add_plants():
+    tray = Tray("Pansy", 20)
+    tray.add_plants(10)
+    assert tray.n_plants == 30
+    assert tray.free_cells == 20
+
+
+def test_n_plants():
+    assert make_nursery().n_plants() == 67
+
+
+def test_total_value():
+    prices = {"Pansy": 1.1, "Petunia": 2.2}
+    assert make_nursery().total_value(prices) == pytest.approx(84.7)
+
+
+def test_too_many_plants():
+    with pytest.raises(ValueError):
+        Tray("Pansy", 30, capacity=24)
+
+
+def test_add_too_many():
+    tray = Tray("Pansy", 40)
+    with pytest.raises(ValueError, match="only has 50 cells"):
+        tray.add_plants(20)
+    assert tray.n_plants == 40            # the tray did not change
+
+
+def test_capacity_is_read_only():
+    tray = Tray("Pansy")
+    with pytest.raises(AttributeError):
+        tray.capacity = 100
+```
+and run, in the terminal:
+```
+$ pytest test_nursery.py
+$ pytest -v test_nursery.py     # one line per test
+```
+- `from nursery import ...` imports the classes from `nursery.py` (Class 5). This is why `nursery.py` should not contain code that runs when it is imported.
+- Each test creates its own objects (here with the helper function `make_nursery`), so that tests do not depend on each other.
+- `pytest.approx` compares floats with a tolerance: `1.1 * 2` is not exactly `2.2` in Python.
+- `with pytest.raises(ValueError):` passes only if the code inside raises `ValueError`; `match` also checks the error message.
+- With no arguments, `pytest` runs all files `test_*.py` (or `*_test.py`) in the current folder and its subfolders.
+
+- *Exercise 1.2*: Break one method on purpose (for instance, `return 0` in `n_plants`), run `pytest`, and read the report. Then fix it.
+
+</details>
+
+<details markdown="block">
+<summary> Part 2 — What to test </summary>
+
+Good tests check:
+
+- the **usual cases**: `add_plants(10)` on a tray with 20 plants gives 30 plants;
+- the **limits**: a tray with 0 plants, a full tray (`n_plants == capacity`), removing all the plants;
+- the **errors**: the cases that must raise an exception, and that the object did not change after the exception;
+- after each bug that is found, a test that would have caught it, so that it does not come back.
+
+Tests are written for one **unit** (a function, or a method) at a time, which is why they are called *unit tests*. A test should not depend on the order in which tests are run, nor on files or on the internet.
+
+- *Exercise 2.1*: Write tests for the limits: `Tray("Pansy", 0)`, `Tray("Pansy", 24, capacity=24)`, and removing all the plants of a tray.
+- *Exercise 2.2*: Write tests for `Tray.from_csv_row` and for `__add__` (Class 11, 5.1), including a test that checks that adding trays of different species raises `ValueError`.
+
+</details>
+
+<details markdown="block">
+<summary> Part 3 — On your own </summary>
+
+*Nursery*
+
+- **3.1** Write test functions for the other methods of `Inventory` that you wrote in Classes 9 and 11 (for instance `plants_by_species`, `empty_trays`, `remove_tray`, `sell`, `free_cells`), including a test that checks that `remove_tray` raises `ValueError` for a tray that does not exist.
 
 *Farm carbon footprint*
 
-The module below defines a class `Farm`, and the test file checks its methods. Copy both into the folder `class11`, and run `pytest test_farm_carbon_footprint.py`.
+The module below defines a class `Farm`, and the test file checks its methods. Copy both into the folder `class12`, and run `pytest test_farm_carbon_footprint.py`.
 
 <details markdown="block">
 <summary> farm_carbon_footprint.py </summary>
@@ -1771,14 +1876,12 @@ def test_radius_of_circle_with_farm_area():
 
 </details>
 
-- **5.4** Add a method `number_of_activities()` to class `Farm`, and a test for it.
-- **5.5** Change class `Farm` so that `ValueError` is raised when a farm is created with a negative `area_hectares` (use a property, as in 3.3). Write a test that checks it.
+- **3.2** Add a method `number_of_activities()` to class `Farm`, and a test for it.
+- **3.3** Change class `Farm` so that `ValueError` is raised when a farm is created with a negative `area_hectares` (use a property, as in Class 11). Write a test that checks it.
 
-*Assignment*
+*Cookie jar*
 
-- **5.6** Solve the *Cookie jar* problem described at <https://cs50.harvard.edu/python/psets/8/jar/>, and check it with `check50 cs50/problems/2022/python/jar`. Write your own tests in `test_jar.py`.
-
-More examples of the concepts of this class (Colab notebooks): [polymorphism](oop/oop_polymorphism_example_1.ipynb), [inheritance and polymorphism](oop/oop_inheritance_polymorphism_example_2.ipynb), [encapsulation](oop/oop_encapsulation_example_3.ipynb).
+- **3.4** Write at least four test functions for your class `Jar` (Class 11) in `test_jar.py`, one for each of `__init__`, `__str__`, `deposit` and `withdraw`, and run them with `pytest test_jar.py`.
 
 </details>
 </ul>
