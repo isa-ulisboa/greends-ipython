@@ -1489,7 +1489,7 @@ Create a folder `class11` in the [CS50 codespace](https://cs50.dev/), copy into 
 | *Instance Methods* | `add_plants(self, n)`, `remove_plants(self, n)`, `__str__(self)`: they receive the instance as `self` |
 | *Class Methods and Class Variables* | `MAX_PLANTS`: one value shared by all trays. Class methods: see 1.2 |
 
-- *Exercise 1.1*: Create two trays, change `Tray.MAX_PLANTS` to 60, and check the effect on both trays. Then do `tray1.MAX_PLANTS = 70`, and check `tray2.MAX_PLANTS` and `Tray.MAX_PLANTS`. What happened?
+- *Exercise 1.1*: Add a class variable `n_trays` to class `Tray`, that counts how many trays have been created: it starts at 0, and `__init__` increases it with `Tray.n_trays += 1`. Create a few trays, and print `Tray.n_trays`. Should a tray that could not be created (for instance `Tray("Pansy", 60)`) be counted? Where should the line `Tray.n_trays += 1` be in `__init__`?
 
 **1.2 Class methods: another way to create objects.** The data of a nursery is often in a file, with one tray per line, for instance `Pansy,25` (species, number of plants). A **class method** receives the class (`cls`), not an instance (`self`), and is called on the class itself. It is often used as an alternative way to create objects:
 ```python
