@@ -1,5 +1,5 @@
 # nursery.py: starting script for Class 11
-# Classes Tray and Inventory of Class 9 (Parts 3 and 4).
+# Class Tray of Class 9 (3.1 and 3.2).
 
 
 class Tray:
@@ -23,42 +23,3 @@ class Tray:
 
     def __str__(self):
         return f"{self.n_plants} {self.species} plants"
-
-
-class Inventory:
-    def __init__(self, name):
-        self.name = name
-        self.trays = {}   # tray name -> Tray object
-
-    def add_tray(self, tray_name, tray):
-        self.trays[tray_name] = tray
-
-    def get_tray(self, tray_name):
-        return self.trays[tray_name]
-
-    def remove_tray(self, tray_name):
-        if tray_name not in self.trays:
-            raise ValueError(f"there is no tray {tray_name}")
-        del self.trays[tray_name]
-
-    def list_all_trays(self):
-        for tray_name, tray in self.trays.items():
-            print(f"{tray_name}: {tray}")
-
-    def n_plants(self):
-        return sum(tray.n_plants for tray in self.trays.values())
-
-    def plants_by_species(self):
-        counts = {}
-        for tray in self.trays.values():
-            counts[tray.species] = counts.get(tray.species, 0) + tray.n_plants
-        return counts
-
-    def empty_trays(self):
-        return [tray_name for tray_name, tray in self.trays.items() if tray.n_plants == 0]
-
-    def total_value(self, prices):
-        return sum(tray.n_plants * prices[tray.species] for tray in self.trays.values())
-
-    def __str__(self):
-        return f"{self.name}: {len(self.trays)} trays"

@@ -1480,19 +1480,20 @@ Create a folder `class11` in the [CS50 codespace](https://cs50.dev/), and start 
 <details markdown="block">
 <summary> Setup: the starting script <code>nursery.py</code> </summary>
 
-Your own `nursery.py` changed many times during the exercises of Class 9. To start Class 11 from the same point, download the script [class11/nursery.py](class11/nursery.py), which contains class `Tray` (Class 9, 3.1 and 3.2) and class `Inventory` with the methods of Class 9, Part 4 (except the challenges):
+Your own `nursery.py` changed many times during the exercises of Class 9. To start Class 11 from the same point, download the script [class11/nursery.py](class11/nursery.py), which contains class `Tray` of Class 9 (3.1 and 3.2). In this class we only work with trays: class `Inventory` of Class 9 is not needed.
 ```
 $ mkdir class11
 $ cd class11
 $ wget https://raw.githubusercontent.com/isa-ulisboa/greends-ipython/main/class11/nursery.py
 $ code nursery.py
 ```
-The script only defines the classes. To try them, add code at the end of the script, for instance:
+The script only defines the class. To try it, add code at the end of the script, for instance:
 ```python
-nursery = Inventory("ISA nursery")
-nursery.add_tray("A1", Tray("Pansy", 25))
-nursery.add_tray("B1", Tray("Petunia", 10))
-nursery.list_all_trays()
+tray1 = Tray("Pansy", 25)
+tray2 = Tray("Petunia", 10)
+tray2.add_plants(15)
+print(tray1)
+print(tray2)
 ```
 and run it with `python nursery.py`. All the changes of Class 11 are made in this script.
 
@@ -1578,7 +1579,7 @@ class Tray:
 - `capacity` has a getter but no setter, so it is **read-only**: `tray.capacity = 100` raises `AttributeError`. `free_cells` is computed each time it is read, so it is always up to date.
 
 - *Exercise 2.1*: Check that `Tray("Pansy", 30, capacity=24)`, `tray.n_plants = -5`, `tray.add_plants(100)` and `tray.capacity = 100` all raise an exception. Which exception, in each case?
-- *Exercise 2.2*: Change `Tray.from_csv_row` (1.2) so that it also reads the capacity, for instance `Petunia,30,24`. Check that class `Inventory` of Class 9 still works with the new `Tray`.
+- *Exercise 2.2*: Change `Tray.from_csv_row` (1.2) so that it also reads the capacity, for instance `Petunia,24,24`. Then create a list of trays from the list `rows = ["Pansy,25,50", "Petunia,24,24", "Begonia,0,104"]` with a list comprehension, and print each tray.
 - *Exercise 2.3*: Turn `species` into a property whose setter only accepts non-empty strings (as `house` in the CS50P notes).
 
 </details>
@@ -1665,9 +1666,16 @@ Each new feature (material, reuse, lid) multiplies the number of classes, and a 
 - *is a*, with different behaviour → **inheritance**, with few levels (a `SeedTray` is a `Tray` that can predict germination);
 - *has a* → **composition**: an object stores other objects as attributes.
 
-**4.4 Composition.** You already used composition in Class 9: an `Inventory` *has* trays, stored in its attribute `trays`. The inventory does not need to know which kind of tray it holds: `nursery.add_tray("S1", SeedTray("Basil", 50))` works without changing `Inventory`, and so does `nursery.n_plants()`, since every tray has an attribute `n_plants`. The same call works on different kinds of objects (this is called *polymorphism*): this is why `print` works on trays and on seed trays, each with its own `__str__`.
+**4.4 Composition and polymorphism.** You already used composition in Class 9: an `Inventory` is not a kind of tray, it *has* trays, stored in its attribute `trays`. Code that holds trays, in an object or simply in a list, does not need to know which kind of tray each one is:
+```python
+trays = [Tray("Pansy", 25), SeedTray("Basil", 50, germination_rate=0.7), Tray("Petunia", 10, capacity=24)]
+for tray in trays:
+    print(tray)                                # each tray uses the __str__ of its own class
+print(sum(tray.n_plants for tray in trays))    # every tray has n_plants
+```
+The same call works on different kinds of objects, and each object responds in its own way: this is called *polymorphism*.
 
-- *Exercise 4.4*: Add a `SeedTray` to the inventory of Class 9, and check that `list_all_trays()` and `plants_by_species()` still work.
+- *Exercise 4.4*: Predict what the loop prints. Then try to compute the total number of plants expected in the nursery with `sum(tray.expected_plants() for tray in trays)`. Why does it fail? Add a method `expected_plants()` to class `Tray`, that returns `n_plants`, so that the same call works for all trays.
 
 </details>
 
@@ -1682,8 +1690,8 @@ merged = Tray("Pansy", 20, capacity=24) + Tray("Pansy", 30)
 print(merged)                    # 50 Pansy plants (0 free cells)
 Tray("Pansy") + Tray("Petunia")  # ValueError
 ```
-- **5.2** Add a method `load_csv(path)` to class `Inventory`, that reads a file with lines like `A1,Pansy,25,50` (tray name, species, number of plants, capacity), and uses `Tray.from_csv_row` to create the trays.
-- **5.3** Add a method `free_cells()` to class `Inventory`, that returns the total number of free cells in the nursery, and a method `full_trays()`, that returns the names of the trays with no free cells.
+- **5.2** Write a **function** (not a class: see Part 3) `load_trays(path)`, that reads a file with lines like `Pansy,25,50` (species, number of plants, capacity), uses `Tray.from_csv_row` to create a tray for each line, and returns the list of trays. Create a small file yourself to test it (see Class 6 for reading files).
+- **5.3** Write the functions `free_cells(trays)`, that returns the total number of free cells in a list of trays, and `full_trays(trays)`, that returns the list of the trays with no free cells. Use them with the list of trays of 5.2.
 - **5.4** Add the attributes `material` and `max_uses` (default `None`, meaning no limit) to class `Tray`, and an attribute `n_uses` that counts how many times the tray was filled with `add_plants`. When a tray has been filled `max_uses` times, `add_plants` should raise `ValueError` (see 4.3).
 
 *Assignment*
@@ -1713,7 +1721,7 @@ In Class 12, you will write tests for your class `Jar` in `test_jar.py`.
 - CS50P, [Lecture 5: Unit Tests](https://cs50.harvard.edu/python/weeks/5/), and the short on [pytest](https://cs50.harvard.edu/python/2022/shorts/pytest/).
 - pytest documentation: <https://docs.pytest.org/>
 
-Until now, we checked our code by running it and looking at what it prints. This becomes tedious, and error prone, as the code grows: each change can break something that worked before. In this class, we write **unit tests**: small functions that check automatically that other functions and classes work as expected. We test the nursery classes of Class 11, and your class `Jar`.
+Until now, we checked our code by running it and looking at what it prints. This becomes tedious, and error prone, as the code grows: each change can break something that worked before. In this class, we write **unit tests**: small functions that check automatically that other functions and classes work as expected. We test class `Tray` of Class 11, and your class `Jar`.
 
 - **Part 1** (guided): `assert`, and test functions with `pytest`.
 - **Part 2** (guided): what to test.
@@ -1736,15 +1744,7 @@ assert tray.n_plants == 30      # AssertionError
 **1.2 Test functions.** With `pytest`, each check is written in a **test function** whose name starts with `test_`, in a separate file whose name starts with `test_`. `pytest` finds and runs all test functions, and reports which ones pass and which ones fail, instead of stopping at the first error. Create the file `test_nursery.py` in the folder `class12`:
 ```python
 import pytest
-from nursery import Tray, Inventory
-
-
-def make_nursery():
-    nursery = Inventory("ISA nursery")
-    nursery.add_tray("A1", Tray("Pansy", 25))
-    nursery.add_tray("A2", Tray("Pansy", 32))
-    nursery.add_tray("B1", Tray("Petunia", 10, capacity=24))
-    return nursery
+from nursery import Tray
 
 
 def test_add_plants():
@@ -1754,13 +1754,11 @@ def test_add_plants():
     assert tray.free_cells == 20
 
 
-def test_n_plants():
-    assert make_nursery().n_plants() == 67
-
-
-def test_total_value():
-    prices = {"Pansy": 1.1, "Petunia": 2.2}
-    assert make_nursery().total_value(prices) == pytest.approx(84.7)
+def test_remove_plants():
+    tray = Tray("Petunia", 10, capacity=24)
+    tray.remove_plants(4)
+    assert tray.n_plants == 6
+    assert tray.free_cells == 18
 
 
 def test_too_many_plants():
@@ -1785,13 +1783,12 @@ and run, in the terminal:
 $ pytest test_nursery.py
 $ pytest -v test_nursery.py     # one line per test
 ```
-- `from nursery import ...` imports the classes from `nursery.py` (Class 5). This is why `nursery.py` should not contain code that runs when it is imported.
-- Each test creates its own objects (here with the helper function `make_nursery`), so that tests do not depend on each other.
-- `pytest.approx` compares floats with a tolerance: `1.1 * 2` is not exactly `2.2` in Python.
+- `from nursery import Tray` imports the class from `nursery.py` (Class 5). This is why `nursery.py` should not contain code that runs when it is imported.
+- Each test creates its own trays, so that tests do not depend on each other.
 - `with pytest.raises(ValueError):` passes only if the code inside raises `ValueError`; `match` also checks the error message.
 - With no arguments, `pytest` runs all files `test_*.py` (or `*_test.py`) in the current folder and its subfolders.
 
-- *Exercise 1.2*: Break one method on purpose (for instance, `return 0` in `n_plants`), run `pytest`, and read the report. Then fix it.
+- *Exercise 1.2*: Break one method on purpose (for instance, replace `-=` by `+=` in `remove_plants`), run `pytest`, and read the report. Then fix it.
 
 </details>
 
@@ -1817,11 +1814,11 @@ Tests are written for one **unit** (a function, or a method) at a time, which is
 
 *Nursery*
 
-- **3.1** Write test functions for the other methods of `Inventory` that you wrote in Classes 9 and 11 (for instance `plants_by_species`, `empty_trays`, `remove_tray`, `sell`, `free_cells`), including a test that checks that `remove_tray` raises `ValueError` for a tray that does not exist.
+- **3.1** Write test functions for what you added in Class 11: the property `species` (2.3), `CapacityError` (4.1), `SeedTray` and `expected_plants` (4.2, 4.4), `max_uses` (5.4), and the functions `free_cells` and `full_trays` (5.3). Create the lists of trays inside the tests, not from a file.
 
 *Farm carbon footprint*
 
-The module below defines a class `Farm`, and the test file checks its methods. Copy both into the folder `class12`, and run `pytest test_farm_carbon_footprint.py`.
+The module below defines a class `Farm`, and the test file checks its methods. Copy both into the folder `class12`, and run `pytest test_farm_carbon_footprint.py`. Note the use of `pytest.approx`, which compares floats with a tolerance (here `abs=0.01`): floats are rarely exact (in Python, `0.1 + 0.2 == 0.3` is `False`), so they should not be compared with `==`.
 
 <details markdown="block">
 <summary> farm_carbon_footprint.py </summary>
