@@ -1474,9 +1474,30 @@ This class revises and practises the basics of Class 9, adds a few tools that ma
 - **Part 4** (guided): inheritance, used sparingly, and composition.
 - **Part 5** (on your own): exercises, and the *Cookie jar* assignment.
 
-Create a folder `class11` in the [CS50 codespace](https://cs50.dev/), copy into it the script `nursery.py` of Class 9 (`cp ../class9/nursery.py .`), and keep working on that script.
+Create a folder `class11` in the [CS50 codespace](https://cs50.dev/), and start from the script `nursery.py` described in *Setup* below.
 
 <ul>
+<details markdown="block">
+<summary> Setup: the starting script <code>nursery.py</code> </summary>
+
+Your own `nursery.py` changed many times during the exercises of Class 9. To start Class 11 from the same point, download the script [class11/nursery.py](class11/nursery.py), which contains class `Tray` (Class 9, 3.1 and 3.2) and class `Inventory` with the methods of Class 9, Part 4 (except the challenges):
+```
+$ mkdir class11
+$ cd class11
+$ wget https://raw.githubusercontent.com/isa-ulisboa/greends-ipython/main/class11/nursery.py
+$ code nursery.py
+```
+The script only defines the classes. To try them, add code at the end of the script, for instance:
+```python
+nursery = Inventory("ISA nursery")
+nursery.add_tray("A1", Tray("Pansy", 25))
+nursery.add_tray("B1", Tray("Petunia", 10))
+nursery.list_all_trays()
+```
+and run it with `python nursery.py`. All the changes of Class 11 are made in this script.
+
+</details>
+
 <details markdown="block">
 <summary> Part 1 — Revision, and class methods </summary>
 
