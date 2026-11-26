@@ -1469,7 +1469,7 @@ There is no Python class this week: the masters students are on a field trip.
 This class revises and practises the basics of Class 9, adds a few tools that make classes safer and more convenient (class methods, properties, special methods), and discusses **when** classes are a good choice. We keep the plant nursery example. At the end of the class, you should be ready to solve the *Cookie jar* problem on your own.
 
 - **Part 1** (guided): revision, and class methods.
-- **Part 2** (guided): properties.
+- **Part 2** (guided): the leading underscore, and properties.
 - **Part 3** (expository): when to use a class.
 - **Part 4** (guided): inheritance, used sparingly, and composition.
 - **Part 5** (on your own): exercises, and the *Cookie jar* assignment.
@@ -1562,56 +1562,60 @@ print(tray)
 </details>
 
 <details markdown="block">
-<summary> Part 2 — Properties </summary>
+<summary> Part 2 — Attributes and properties </summary>
 
 **2.1 The problem.** The methods of `Tray` check the rules of a tray (between 0 and 50 plants), but in Class 9 we noticed that nothing prevents:
 ```python
 tray1 = Tray("Pansy", 20)
 tray1.n_plants = -5        # no error: the tray is now invalid
 ```
-We would like the check to run **every time** `n_plants` changes, including in an assignment like this one, while still writing `tray1.n_plants` as usual. This is what **properties** do.
+The methods only protect the tray if we use them. We would like to tell whoever uses class `Tray`: *you can read the number of plants, but only change it with `add_plants` and `remove_plants`*.
 
-**2.2 A property: getter and setter.** In this version of `Tray`, `n_plants` becomes a property. The rest of the class is as in Class 9:
+**2.2 The leading underscore.** In Python, an attribute whose name starts with an underscore, such as `_n_plants`, is **internal**: by convention, it is only used by the methods of the class, and not by the code outside the class. In `nursery.py`, rename the attribute `n_plants` to `_n_plants` (only the attribute `self.n_plants`, not the argument `n_plants` of `__init__`):
 ```python
 class Tray:
     MAX_PLANTS = 50
 
     def __init__(self, species, n_plants=0):
-        self.species = species
-        self.n_plants = n_plants        # calls the setter: the value is checked
-
-    @property
-    def n_plants(self):                 # getter: runs on tray.n_plants
-        return self._n_plants
-
-    @n_plants.setter
-    def n_plants(self, value):          # setter: runs on tray.n_plants = value
-        if value < 0 or value > Tray.MAX_PLANTS:
+        if n_plants < 0 or n_plants > Tray.MAX_PLANTS:
             raise ValueError(f"n_plants must be between 0 and {Tray.MAX_PLANTS}")
-        self._n_plants = value
+        self.species = species
+        self._n_plants = n_plants       # internal: only changed by the methods below
 
     def add_plants(self, n):
-        self.n_plants += n              # getter, then setter: the value is checked
+        if self._n_plants + n > Tray.MAX_PLANTS:
+            raise ValueError(f"there is only room for {Tray.MAX_PLANTS - self._n_plants} more plants")
+        self._n_plants += n
 
     def remove_plants(self, n):
-        self.n_plants -= n
+        if n > self._n_plants:
+            raise ValueError(f"the tray only has {self._n_plants} plants")
+        self._n_plants -= n
 
     def __str__(self):
-        return f"{self.n_plants} {self.species} plants"
+        return f"{self._n_plants} {self.species} plants"
 ```
-Line by line:
+The underscore is only a **convention**, a message to other programmers: Python does not prevent `tray1._n_plants = -5`. But whoever writes it knows that they are using the class in a way it was not meant to be used.
 
-- `@property` (a decorator, like `@classmethod`) turns the method `n_plants` into the **getter** of a property: reading `tray.n_plants`, **without** parentheses, runs this method and gives its result.
-- `@n_plants.setter` defines a second method, with the **same name**, as the **setter**: `tray.n_plants = value` runs this method with the new value. If the value is not valid, it raises `ValueError`, and `n_plants` does not change.
-- The value itself is stored in **another** attribute, `self._n_plants`. It cannot be stored in `self.n_plants`, since that would call the setter again, and again, forever (try it: Python stops with a `RecursionError`).
-- The leading underscore of `_n_plants` is a **convention**: it tells other programmers that the attribute is internal, and should not be used outside the class. Python does not prevent it.
-- `self.n_plants = n_plants` in `__init__` also calls the setter, so the check runs when a tray is created, and `__init__` no longer needs its own `if`. In the same way, `self.n_plants += n` reads the value (getter) and assigns the new one (setter), so `add_plants` and `remove_plants` no longer need their own checks either: the rule is written in **one** place.
+- *Exercise 2.2*: Create a tray, and print `vars(tray)`, which shows the attributes of the tray. Then try `print(tray.n_plants)` and `tray._n_plants = -5`. Which line raises an error, and why?
 
-From outside the class nothing changes: `tray.n_plants` and `tray.n_plants = 10` are written as before, but now every change is checked.
+**2.3 A property.** Now the number of plants is internal, but it is still useful to read it from outside the class, for instance to count the plants of the nursery. A **property** is a method that is used as if it were an attribute: it is marked with `@property` on the line before `def` (a decorator, like `@classmethod`), and it is read **without** parentheses. Add to class `Tray`:
+```python
+    @property
+    def n_plants(self):
+        return self._n_plants
+```
+and try:
+```python
+tray1 = Tray("Pansy", 20)
+print(tray1.n_plants)      # 20: runs the method n_plants, without parentheses
+tray1.add_plants(10)
+print(tray1.n_plants)      # 30
+tray1.n_plants = -5        # AttributeError: the property can be read, but not assigned
+```
+The problem of 2.1 is solved: `tray1.n_plants` is read as before, but the number of plants can only be changed with `add_plants` and `remove_plants`, which check the rules. A property like this one is **read-only**. (Python can also define properties that can be assigned, with a *setter*, as `house` in the CS50P notes. We do not need them in this course.)
 
-- *Exercise 2.2*: Create a tray, try `tray.n_plants = -5`, `tray.add_plants(100)` and `Tray("Pansy", 60)`, and print `vars(tray)`. Where is the number of plants stored? Then, in the setter, replace `self._n_plants = value` by `self.n_plants = value`, and create a tray: what happens, and why?
-
-**2.3 Read-only and computed properties: trays of different sizes.** In Class 9, all trays had at most `MAX_PLANTS = 50` plants. Real trays come in a few standard sizes, for instance 24, 50 or 104 cells. The **capacity** is now different for each tray, so it becomes an instance variable, while the list of valid sizes is shared by all trays (a class variable). The capacity of a tray should not change once the tray is created: it becomes a property with a getter but **no setter**. The number of free cells is computed from the capacity and the number of plants: it becomes a property too. Replace class `Tray` by the following, and add `from_csv_row` of 1.4 at the end:
+**2.4 Trays of different sizes.** In Class 9, all trays had at most `MAX_PLANTS = 50` plants. Real trays come in a few standard sizes, for instance 24, 50 or 104 cells. The **capacity** is now different for each tray, so it becomes an instance variable, while the list of valid sizes is shared by all trays (a class variable). The capacity of a tray does not change once the tray is created, so it becomes a read-only property, like `n_plants`. The number of free cells is computed from the capacity and the number of plants: it becomes a property too. Replace class `Tray` by the following, and add `from_csv_row` of 1.4 at the end:
 ```python
 class Tray:
     CAPACITIES = (24, 50, 104)          # class variable: standard tray sizes
@@ -1619,46 +1623,58 @@ class Tray:
     def __init__(self, species, n_plants=0, capacity=50):
         if capacity not in Tray.CAPACITIES:
             raise ValueError(f"capacity must be one of {Tray.CAPACITIES}")
-        self._capacity = capacity       # must come before n_plants (see the setter)
+        if n_plants < 0:
+            raise ValueError("n_plants cannot be negative")
+        if n_plants > capacity:
+            raise ValueError(f"the tray only has {capacity} cells")
         self.species = species
-        self.n_plants = n_plants        # calls the setter below
+        self._capacity = capacity
+        self._n_plants = n_plants
 
     @property
-    def capacity(self):                 # read-only: there is no setter
+    def capacity(self):                 # read-only
         return self._capacity
 
     @property
-    def n_plants(self):                 # getter: runs on tray.n_plants
+    def n_plants(self):                 # read-only
         return self._n_plants
 
-    @n_plants.setter
-    def n_plants(self, value):          # setter: runs on tray.n_plants = value
-        if value < 0:
-            raise ValueError("n_plants cannot be negative")
-        if value > self.capacity:
-            raise ValueError(f"the tray only has {self.capacity} cells")
-        self._n_plants = value
-
     @property
-    def free_cells(self):               # computed from other attributes
-        return self.capacity - self.n_plants
+    def free_cells(self):               # computed from the other attributes
+        return self._capacity - self._n_plants
 
     def add_plants(self, n):
-        self.n_plants += n              # also goes through the setter
+        if n > self.free_cells:
+            raise ValueError(f"the tray only has {self.capacity} cells, and {self.free_cells} are free")
+        self._n_plants += n
 
     def remove_plants(self, n):
-        self.n_plants -= n
+        if n > self._n_plants:
+            raise ValueError(f"the tray only has {self._n_plants} plants")
+        self._n_plants -= n
 
     def __str__(self):
         return f"{self.n_plants} {self.species} plants ({self.free_cells} free cells)"
 ```
-- `n_plants` is the property of 2.2, but the setter now compares the value with the capacity of the tray (`self.capacity`) instead of `MAX_PLANTS`. This is why `self._capacity` must be set **before** `self.n_plants` in `__init__`: the setter needs the capacity.
-- `capacity` has a getter but no setter, so it is **read-only**: `tray.capacity` works, but `tray.capacity = 100` raises `AttributeError`.
-- `free_cells` has no attribute of its own: it is computed each time it is read, so it is always up to date.
+- `capacity` and `n_plants` are read-only properties: their values are stored in the internal attributes `_capacity` and `_n_plants`, and only the methods of the class change them.
+- `free_cells` has no attribute of its own: it is computed each time it is read, so it is always up to date. Without a property, we would need an attribute `free_cells`, and we would have to update it in `__init__`, `add_plants` and `remove_plants`, and never forget to.
+- Inside the class, the methods can use the internal attributes (`self._n_plants`) or the properties (`self.free_cells`).
 
-- *Exercise 2.3*: Check that `Tray("Pansy", 30, capacity=24)`, `tray.n_plants = -5`, `tray.add_plants(100)` and `tray.capacity = 100` all raise an exception. Which exception, in each case?
-- *Exercise 2.4*: Change `Tray.from_csv_row` (1.4) so that it also reads the capacity, for instance `Petunia,24,24`. Then create a list of trays from the list `rows = ["Pansy,25,50", "Petunia,24,24", "Begonia,0,104"]` with a list comprehension, and print each tray.
-- *Exercise 2.5*: Turn `species` into a property whose setter only accepts non-empty strings (as `house` in the CS50P notes).
+**2.5 Attribute or property?** Outside the class, both are written in the same way, `tray.species` or `tray.free_cells`, without parentheses. The difference is in what happens behind:
+
+| | attribute | property |
+|---|---|---|
+| defined | in `__init__`: `self.species = species` | as a method, with `@property` |
+| the value | is stored in the object | is returned by the method, each time it is read |
+| read | `tray.species` | `tray.free_cells` (no parentheses) |
+| assign | `tray.species = "Begonia"` works | `tray.free_cells = 0` raises `AttributeError` |
+| use it for | data that can change freely | data that should not be changed directly (`capacity`, `n_plants`), and values computed from other attributes (`free_cells`) |
+
+A property is also an alternative to a method without arguments: `free_cells` could be a method, called with `tray.free_cells()`. A property is preferable for a simple value of the object, which takes no time to compute; a method is preferable when the object *does* something (`add_plants`), or when there are arguments.
+
+- *Exercise 2.5*: Check that `Tray("Pansy", 30, capacity=24)`, `Tray("Pansy", capacity=30)`, `tray.add_plants(100)`, `tray.n_plants = 10`, `tray.capacity = 104` and `tray.free_cells = 0` all raise an exception. Which exception, in each case?
+- *Exercise 2.6*: Change `Tray.from_csv_row` (1.4) so that it also reads the capacity, for instance `Petunia,24,24`. Then create a list of trays from the list `rows = ["Pansy,25,50", "Petunia,24,24", "Begonia,0,104"]` with a list comprehension, and print each tray.
+- *Exercise 2.7*: Add a property `is_full`, that is `True` when the tray has no free cells. Then discuss: should `species` stay an attribute, or become a read-only property?
 
 </details>
 
@@ -1710,9 +1726,9 @@ Both are simpler as functions: `kg_to_tons(2500)` and `germination_rate(100, 87)
 class CapacityError(ValueError):
     """Raised when a tray does not have room for the plants."""
 ```
-`CapacityError` is a **child** (subclass) of the **parent** `ValueError`. Raise it in the setter of `n_plants` when `value > self.capacity`. A `CapacityError` *is a* `ValueError`, so `except ValueError` still catches it, and `except CapacityError` catches only this error.
+`CapacityError` is a **child** (subclass) of the **parent** `ValueError`. Raise it instead of `ValueError` when the plants do not fit in the tray, in `__init__` and in `add_plants`. A `CapacityError` *is a* `ValueError`, so `except ValueError` still catches it, and `except CapacityError` catches only this error.
 
-- *Exercise 4.1*: Add `CapacityError` to `nursery.py`, and check what `isinstance(e, ValueError)` and `isinstance(e, CapacityError)` return for the exceptions raised by `tray.add_plants(100)` and by `tray.n_plants = -5`.
+- *Exercise 4.1*: Add `CapacityError` to `nursery.py`, and check what `isinstance(e, ValueError)` and `isinstance(e, CapacityError)` return for the exceptions raised by `tray.add_plants(100)` and by `tray.remove_plants(100)`.
 
 **4.2 A child class with `super()`.** Seeds are sown in trays too, but only some of them germinate. A `SeedTray` is a `Tray` with an extra attribute and an extra method:
 ```python
@@ -1778,9 +1794,9 @@ Tray("Pansy") + Tray("Petunia")  # ValueError
 
 | `Jar` | `Tray` |
 |---|---|
-| `Jar(capacity=12)`, `ValueError` if the capacity is not valid | `Tray(species, n_plants, capacity)` (2.3) |
-| `jar.capacity`, read-only | `tray.capacity` (2.3) |
-| `jar.size`: number of cookies | `tray.n_plants` (2.2) |
+| `Jar(capacity=12)`, `ValueError` if the capacity is not valid | `Tray(species, n_plants, capacity)` (2.4) |
+| `jar.capacity`, read-only | `tray.capacity` (2.4) |
+| `jar.size`: number of cookies, read-only | `tray.n_plants` (2.3) |
 | `deposit(n)`, `withdraw(n)`, `ValueError` if impossible | `add_plants(n)`, `remove_plants(n)` |
 | `str(jar)`: one 🍪 per cookie | `__str__` |
 
@@ -1892,7 +1908,7 @@ Tests are written for one **unit** (a function, or a method) at a time, which is
 
 *Nursery*
 
-- **3.1** Write test functions for what you added in Class 11: the property `species` (2.5), `CapacityError` (4.1), `SeedTray` and `expected_plants` (4.2, 4.4), `max_uses` (5.4), and the functions `free_cells` and `full_trays` (5.3). Create the lists of trays inside the tests, not from a file.
+- **3.1** Write test functions for what you added in Class 11: the property `is_full` (2.7), `CapacityError` (4.1), `SeedTray` and `expected_plants` (4.2, 4.4), `max_uses` (5.4), and the functions `free_cells` and `full_trays` (5.3). Create the lists of trays inside the tests, not from a file.
 
 *Farm carbon footprint*
 
@@ -1973,7 +1989,7 @@ def test_radius_of_circle_with_farm_area():
 </details>
 
 - **3.2** Add a method `number_of_activities()` to class `Farm`, and a test for it.
-- **3.3** Change class `Farm` so that `ValueError` is raised when a farm is created with a negative `area_hectares` (use a property, as in Class 11). Write a test that checks it.
+- **3.3** Change class `Farm` so that `ValueError` is raised when a farm is created with a negative `area_hectares` (check it in `__init__`, as in class `Tray` of Class 11). Write a test that checks it.
 
 *Cookie jar*
 
