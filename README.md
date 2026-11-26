@@ -1511,9 +1511,13 @@ and run it with `python nursery.py`. All the changes of Class 11 are made in thi
 | *Instance Methods* | `add_plants(self, n)`, `remove_plants(self, n)`, `__str__(self)`: they receive the instance as `self` |
 | *Class Methods and Class Variables* | `MAX_PLANTS`: one value shared by all trays (see 1.2). Class methods: see 1.3 and 1.4 |
 
+<br>
+
 **1.2. Class variable**: set a variable to count the number of instances created in a class
 
 - *Exercise 1.2*: Add a class variable `n_trays` to class `Tray`, that counts how many trays have been created: it starts at 0, and `__init__` increases it with `Tray.n_trays += 1`. Create a few trays, and print `Tray.n_trays`. Should a tray that could not be created (for instance `Tray("Pansy", 60)`) be counted? Where should the line `Tray.n_trays += 1` be in `__init__`?
+
+<br>
 
 **1.3 Class methods.** All the methods we have written so far are **instance methods**: they work on one object, which they receive as `self`, and they are called on that object (`tray1.add_plants(10)`). Sometimes a method is about the class as a whole, not about one tray in particular. A **class method** receives the class itself as its first argument, called `cls` by convention, and is called on the class (`Tray.method()`), without the need for an existing tray. It is marked with `@classmethod` on the line before `def` (a *decorator*: it changes how the method is called).
 
@@ -1536,6 +1540,8 @@ class Tray:
 Tray.report()        # called on the class: no tray is needed
 ```
 Inside a class method, `cls` is the class `Tray`: `cls.n_trays` is the same as `Tray.n_trays`.
+
+<br>
 
 **1.4 Class methods to create objects.** The most common use of class methods is to offer another way to create objects. For instance, the data of a nursery is often in a file, with one tray per line, such as `Petunia,30` (species, number of plants). Without a class method, the line has to be split each time a tray is created:
 ```python
@@ -1569,7 +1575,9 @@ print(tray)
 tray1 = Tray("Pansy", 20)
 tray1.n_plants = -5        # no error: the tray is now invalid
 ```
-The methods only protect the tray if we use them. We would like to tell whoever uses class `Tray`: *you can read the number of plants, but only change it with `add_plants` and `remove_plants`*.\
+The methods only protect the tray if we use them. We would like to tell whoever uses class `Tray`: *you can read the number of plants, but only change it with `add_plants` and `remove_plants`*.
+
+<br>
 
 **2.2 The leading underscore.** In Python, an attribute whose name starts with an underscore, such as `_n_plants`, is **internal**: by convention, it is only used by the methods of the class, and not by the code outside the class. In `nursery.py`, rename the attribute `n_plants` to `_n_plants` (only the attribute `self.n_plants`, not the argument `n_plants` of `__init__`):
 ```python
@@ -1598,8 +1606,9 @@ class Tray:
 ```
 In this case, the argument `n_plants` of `__init__` was not changed. Note that the underscore is only a **convention**, a message to other programmers: Python does not prevent `tray1._n_plants = -5`. But whoever writes it knows that they are using the class in a way it was not meant to be used.
 
-- *Exercise 2.2*: Create a tray, and print `vars(tray)`, which shows the attributes of the tray. Then try `print(tray.n_plants)` and `tray._n_plants = -5`. Which line raises an error, and why?\
+- *Exercise 2.2*: Create a tray, and print `vars(tray)`, which shows the attributes of the tray. Then try `print(tray.n_plants)` and `tray._n_plants = -5`. Which line raises an error, and why?
 
+<br>
 
 **2.3 A property.** Now the number of plants is internal, but it is still useful to read it from outside the class, for instance to count the plants of the nursery. A **property** is a method that is used as if it were an attribute: it is marked with `@property` on the line before `def` (a decorator, like `@classmethod`), and it is read **without** parentheses. Add to class `Tray`:
 ```python
@@ -1615,7 +1624,9 @@ tray1.add_plants(10)
 print(tray1.n_plants)      # 30
 tray1.n_plants = -5        # AttributeError: the property can be read, but not assigned
 ```
-The problem of 2.1 is solved: `tray1.n_plants` is read as before, but the number of plants can only be changed with `add_plants` and `remove_plants`, which check the rules. A property like this one is **read-only**. (Python can also define properties that can be assigned, with a *setter*, as `house` in the CS50P notes. We do not need them in this course.)\
+The problem of 2.1 is solved: `tray1.n_plants` is read as before, but the number of plants can only be changed with `add_plants` and `remove_plants`, which check the rules. A property like this one is **read-only**. (Python can also define properties that can be assigned, with a *setter*, as `house` in the CS50P notes. We do not need them in this course.)
+
+<br>
 
 **2.4 Trays of different sizes.** In Class 9, all trays had at most `MAX_PLANTS = 50` plants. Real trays come in a few standard sizes, for instance 24, 50 or 104 cells. The **capacity** is now different for each tray, so it becomes an instance variable, while the list of valid sizes is shared by all trays (a class variable). The capacity of a tray does not change once the tray is created, so it becomes a read-only property, like `n_plants`. The number of free cells is computed from the capacity and the number of plants: it becomes a property too. Replace class `Tray` by the following, and add `from_csv_row` of 1.4 at the end:
 ```python
@@ -1662,7 +1673,7 @@ class Tray:
 - `free_cells` has no attribute of its own: it is computed each time it is read, so it is always up to date. Without a property, we would need an attribute `free_cells`, and we would have to update it in `__init__`, `add_plants` and `remove_plants`, and never forget to.
 - Inside the class, the methods can use the internal attributes (`self._n_plants`) or the properties (`self.free_cells`).
 
-\
+<br>
 
 **2.5 Attribute or property?** Outside the class, both are written in the same way, `tray.species` or `tray.free_cells`, without parentheses. The difference is in what happens behind:
 
@@ -1734,6 +1745,8 @@ class CapacityError(ValueError):
 
 - *Exercise 4.1*: Add `CapacityError` to `nursery.py`, and check what `isinstance(e, ValueError)` and `isinstance(e, CapacityError)` return for the exceptions raised by `tray.add_plants(100)` and by `tray.remove_plants(100)`.
 
+<br>
+
 **4.2 A child class with `super()`.** Seeds are sown in trays too, but only some of them germinate. A `SeedTray` is a `Tray` with an extra attribute and an extra method:
 ```python
 class SeedTray(Tray):
@@ -1749,6 +1762,8 @@ class SeedTray(Tray):
 ```
 `super()` gives access to the methods of the parent: the child only adds or changes what is different, and the rules of `Tray` (capacity, number of plants) still apply. A method defined again in the child **overrides** the method of the parent.
 
+<br>
+
 **4.3 Do not abuse inheritance.** In Class 9 (3.5) we suggested `class MultipleUseTray(Tray)`, for plastic trays that can be reused. It is tempting to go on:
 ```
 Tray
@@ -1763,6 +1778,8 @@ Each new feature (material, reuse, lid) multiplies the number of classes, and a 
 - the objects differ only in data → **attributes** of a single class;
 - *is a*, with different behaviour → **inheritance**, with few levels (a `SeedTray` is a `Tray` that can predict germination);
 - *has a* → **composition**: an object stores other objects as attributes.
+
+<br>
 
 **4.4 Composition and polymorphism.** You already used composition in Class 9: an `Inventory` is not a kind of tray, it *has* trays, stored in its attribute `trays`. Code that holds trays, in an object or simply in a list, does not need to know which kind of tray each one is:
 ```python
@@ -1838,6 +1855,8 @@ tray.add_plants(10)
 assert tray.n_plants == 35      # nothing happens: the method works
 assert tray.n_plants == 30      # AssertionError
 ```
+
+<br>
 
 **1.2 Test functions.** With `pytest`, each check is written in a **test function** whose name starts with `test_`, in a separate file whose name starts with `test_`. `pytest` finds and runs all test functions, and reports which ones pass and which ones fail, instead of stopping at the first error. Create the file `test_nursery.py` in the folder `class12`:
 ```python
