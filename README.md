@@ -1596,7 +1596,7 @@ class Tray:
         return f"{self._n_plants} {self.species} plants"
 
 ```
-In this case, attribute `n_plants` was not changed. Note that the underscore is only a **convention**, a message to other programmers: Python does not prevent `tray1._n_plants = -5`. But whoever writes it knows that they are using the class in a way it was not meant to be used.
+In this case, the argument `n_plants` of `__init__` was not changed. Note that the underscore is only a **convention**, a message to other programmers: Python does not prevent `tray1._n_plants = -5`. But whoever writes it knows that they are using the class in a way it was not meant to be used.
 
 - *Exercise 2.2*: Create a tray, and print `vars(tray)`, which shows the attributes of the tray. Then try `print(tray.n_plants)` and `tray._n_plants = -5`. Which line raises an error, and why?\
 
