@@ -1569,7 +1569,7 @@ print(tray)
 tray1 = Tray("Pansy", 20)
 tray1.n_plants = -5        # no error: the tray is now invalid
 ```
-The methods only protect the tray if we use them. We would like to tell whoever uses class `Tray`: *you can read the number of plants, but only change it with `add_plants` and `remove_plants`*.
+The methods only protect the tray if we use them. We would like to tell whoever uses class `Tray`: *you can read the number of plants, but only change it with `add_plants` and `remove_plants`*.\
 
 **2.2 The leading underscore.** In Python, an attribute whose name starts with an underscore, such as `_n_plants`, is **internal**: by convention, it is only used by the methods of the class, and not by the code outside the class. In `nursery.py`, rename the attribute `n_plants` to `_n_plants` (only the attribute `self.n_plants`, not the argument `n_plants` of `__init__`):
 ```python
@@ -1594,10 +1594,12 @@ class Tray:
 
     def __str__(self):
         return f"{self._n_plants} {self.species} plants"
-```
-The underscore is only a **convention**, a message to other programmers: Python does not prevent `tray1._n_plants = -5`. But whoever writes it knows that they are using the class in a way it was not meant to be used.
 
-- *Exercise 2.2*: Create a tray, and print `vars(tray)`, which shows the attributes of the tray. Then try `print(tray.n_plants)` and `tray._n_plants = -5`. Which line raises an error, and why?
+```
+In this case, attribute `n_plants` was not changed. Note that the underscore is only a **convention**, a message to other programmers: Python does not prevent `tray1._n_plants = -5`. But whoever writes it knows that they are using the class in a way it was not meant to be used.
+
+- *Exercise 2.2*: Create a tray, and print `vars(tray)`, which shows the attributes of the tray. Then try `print(tray.n_plants)` and `tray._n_plants = -5`. Which line raises an error, and why?\
+
 
 **2.3 A property.** Now the number of plants is internal, but it is still useful to read it from outside the class, for instance to count the plants of the nursery. A **property** is a method that is used as if it were an attribute: it is marked with `@property` on the line before `def` (a decorator, like `@classmethod`), and it is read **without** parentheses. Add to class `Tray`:
 ```python
@@ -1613,7 +1615,7 @@ tray1.add_plants(10)
 print(tray1.n_plants)      # 30
 tray1.n_plants = -5        # AttributeError: the property can be read, but not assigned
 ```
-The problem of 2.1 is solved: `tray1.n_plants` is read as before, but the number of plants can only be changed with `add_plants` and `remove_plants`, which check the rules. A property like this one is **read-only**. (Python can also define properties that can be assigned, with a *setter*, as `house` in the CS50P notes. We do not need them in this course.)
+The problem of 2.1 is solved: `tray1.n_plants` is read as before, but the number of plants can only be changed with `add_plants` and `remove_plants`, which check the rules. A property like this one is **read-only**. (Python can also define properties that can be assigned, with a *setter*, as `house` in the CS50P notes. We do not need them in this course.)\
 
 **2.4 Trays of different sizes.** In Class 9, all trays had at most `MAX_PLANTS = 50` plants. Real trays come in a few standard sizes, for instance 24, 50 or 104 cells. The **capacity** is now different for each tray, so it becomes an instance variable, while the list of valid sizes is shared by all trays (a class variable). The capacity of a tray does not change once the tray is created, so it becomes a read-only property, like `n_plants`. The number of free cells is computed from the capacity and the number of plants: it becomes a property too. Replace class `Tray` by the following, and add `from_csv_row` of 1.4 at the end:
 ```python
@@ -1659,6 +1661,8 @@ class Tray:
 - `capacity` and `n_plants` are read-only properties: their values are stored in the internal attributes `_capacity` and `_n_plants`, and only the methods of the class change them.
 - `free_cells` has no attribute of its own: it is computed each time it is read, so it is always up to date. Without a property, we would need an attribute `free_cells`, and we would have to update it in `__init__`, `add_plants` and `remove_plants`, and never forget to.
 - Inside the class, the methods can use the internal attributes (`self._n_plants`) or the properties (`self.free_cells`).
+
+\
 
 **2.5 Attribute or property?** Outside the class, both are written in the same way, `tray.species` or `tray.free_cells`, without parentheses. The difference is in what happens behind:
 
