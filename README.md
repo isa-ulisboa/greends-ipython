@@ -1852,6 +1852,8 @@ In Class 12, you will write tests for your class `Jar` in `test_jar.py`.
 
 </details>
 
+<!--
+
 ---
 
 <details markdown="block">
