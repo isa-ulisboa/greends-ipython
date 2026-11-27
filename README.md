@@ -1766,7 +1766,7 @@ Each new feature (material, reuse, lid) multiplies the number of classes, and a 
 - *is a*, with different behaviour → **inheritance**, with few levels (a `SeedTray` is a `Tray` that can predict germination);
 - *has a* → **composition**: an object stores other objects as attributes.
 
-**4.4 Composition.** In a greenhouse, trays are placed on benches. A bench is not a kind of tray, so `class Bench(Tray)` would make no sense: a bench *has* trays. In **composition**, an object stores other objects in its attributes, and its methods do their work by calling the methods of those objects:
+**4.4 Composition.** You already used composition in Class 9: an `Inventory` is not a kind of tray, but it *has* trays, stored in its attribute `trays`. Here is a second example. In a greenhouse, trays are placed on benches. A bench is not a kind of tray, so `class Bench(Tray)` would make no sense: a bench *has* trays. In **composition**, an object stores other objects in its attributes, and its methods do their work by calling the methods of those objects:
 ```python
 class Bench:
     def __init__(self, name):
@@ -1788,7 +1788,7 @@ bench.add_tray(Tray("Pansy", 25))
 bench.add_tray(Tray("Petunia", 10, capacity=24))
 print(bench)                               # bench A1: 2 trays, 35 plants
 ```
-`Bench` does not need to know how a tray stores its plants or checks its rules: it only uses what the trays offer (here, `n_plants`). Class `Inventory` of Class 9 was built in the same way. Compare:
+`Bench` does not need to know how a tray stores its plants or checks its rules: it only uses what the trays offer (here, `n_plants`). Unlike `Inventory`, `Bench` keeps its trays in a list instead of a dictionary, since it does not need to find a tray by its name. Compare:
 
 | | inheritance | composition |
 |---|---|---|
